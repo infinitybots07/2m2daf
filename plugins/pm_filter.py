@@ -521,7 +521,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "filter":
         buttons = [[
             InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ', callback_data='auto'),
-            InlineKeyboardButton('Mᴀɴᴜᴀʟ Fɪʟᴛᴇʀ', Callback_data="manual")
+            InlineKeyboardButton('Mᴀɴᴜᴀʟ Fɪʟᴛᴇʀ', callback_data="manual")
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
@@ -532,6 +532,33 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data="help")
         ]]
         await query.message.edit_text(text=script.CONNECTION_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
+        
+    elif query.data == "admin":
+        buttons = [[
+            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
+        ]]
+        await query.message.edit_text(text=script.ADMIN_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode='html')
+        
+    elif query.data == "filestore":
+        await query.answer("Page Does Not Exist")
+     
+    elif query.data == "json":
+        buttons = [[
+            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
+        ]]
+        await query.message.edit_text(text=script.JSON_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode'html')
+        
+    elif query.data == "auto":
+        buttons = [[
+            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
+        ]]
+        await query.message.edit_text(text=script.AUTOFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode'html')
+        
+    elif query.data == "manual":
+        buttons = [[
+            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
+        ]]
+        await query.message.edit_text(text=script.MANUALFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode'html')
         
     elif query.data == "stats":
         buttons = [[
@@ -652,6 +679,10 @@ async def auto_filter(client, msg, spoll=False):
                 if settings["spell_check"]:
                     return await advantage_spell_chok(msg)
                 else:
+                    buttons = [[
+                        InlineKeyboardButton('🕵️‍♂️ Sᴇᴀʀᴄʜ Oɴ Gᴏᴏɢʟᴇ 🕵️‍♂️', url='https://google.com)
+                    ]]
+                    await query.msg.reply(text="Hᴇʏ Bᴜᴅᴅʏ I Cᴏᴜʟᴅ Nᴏᴛ Aɴʏᴛʜɪɴɢ Rᴇᴋᴀᴛᴇᴅ Tʜᴀᴛ Pʟᴇᴀsᴇ Cʜᴇᴄᴋ Sᴏᴇʟʟɪɴɢ", reply_markup = InlineKeyboardMarkup(buttons))
                     return
         else:
             return
