@@ -21,13 +21,13 @@ BATCH_FILES = {}
 @Client.on_message(filters.command("start"))
 async def start(client, message):
     if message.chat.type in ['group', 'supergroup']:
-        buttons = [
-            [
-                InlineKeyboardButton('𝙿𝚁𝙸𝚅𝙰𝚃𝙴 𝙱𝙾𝚃', url=f"https://t.me/NL_MP4")
-            ]
-            ]
+        await message.reply_photo(photo=random.choice(PICS))
+        buttons = [[
+      
+            InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start')
+        ]]     
         reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply(script.PRIVATEBOT_TXT.format(message.from_user.mention if message.from_user else message.chat.title, temp.U_NAME, temp.B_NAME), reply_markup=reply_markup)
+        await message.reply(script.START_TXT.format(message.from_user.mention if message.from_user else message.chat.title, temp.U_NAME, temp.B_NAME), reply_markup=reply_markup)
         await asyncio.sleep(2) # 😢 https://github.com/Aadhi000/Ajax-Extra-Features/blob/master/plugins/p_ttishow.py#L17 😬 wait a bit, before checking.
         if not await db.get_chat(message.chat.id):
             total=await client.get_chat_members_count(message.chat.id)
@@ -38,14 +38,14 @@ async def start(client, message):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
+        await message.reply_photo(photo=random.choice(PICS))
         buttons = [[
       
-            InlineKeyboardButton('sᴜʀᴘʀɪsᴇ', callback_data='start')
+            InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)        
-        await message.reply_photo(
-            photo=random.choice(PICS),
-            caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
+        await message.reply_text(
+            text=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
             parse_mode='html'
         )         
@@ -73,18 +73,16 @@ async def start(client, message):
  
         return
     if len(message.command) ==2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
+        await message.reply_photo(photo=random.choice(PICS))
         buttons = [[
-      
-            InlineKeyboardButton('sᴜʀᴘʀɪsᴇ', callback_data='start')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_chat_action("typing")
-        await message.reply_photo(
-            photo=random.choice(PICS),
-            caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
+            InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start')
+        ]]     
+        reply_markup = InlineKeyboardMarkup(buttons)        
+        await message.reply_text(
+            text=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
             parse_mode='html'
-        )
+        )         
         return
     data = message.command[1]
     try:
