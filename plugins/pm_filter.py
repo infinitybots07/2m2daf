@@ -682,7 +682,7 @@ async def auto_filter(client, msg, spoll=False):
                     buttons = [[
                         InlineKeyboardButton('🕵️‍♂️ Sᴇᴀʀᴄʜ Oɴ Gᴏᴏɢʟᴇ 🕵️‍♂️', url=f'https://google.com/search?q={msg.text.replace(" ", "+")}')
                     ]]
-                    await query.msg.reply(text="Hᴇʏ Bᴜᴅᴅʏ I Cᴏᴜʟᴅ Nᴏᴛ Aɴʏᴛʜɪɴɢ Rᴇᴋᴀᴛᴇᴅ Tʜᴀᴛ Pʟᴇᴀsᴇ Cʜᴇᴄᴋ Sᴏᴇʟʟɪɴɢ", reply_markup = InlineKeyboardMarkup(buttons))
+                    await msg.reply(text="Hᴇʏ Bᴜᴅᴅʏ I Cᴏᴜʟᴅ Nᴏᴛ Aɴʏᴛʜɪɴɢ Rᴇᴋᴀᴛᴇᴅ Tʜᴀᴛ Pʟᴇᴀsᴇ Cʜᴇᴄᴋ Sᴏᴇʟʟɪɴɢ", reply_markup = InlineKeyboardMarkup(buttons))
                     return
         else:
             return
