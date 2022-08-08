@@ -517,7 +517,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ', url='t.me/NL_BOTxCHAT'),
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start')
         ]]
-        await query.msesage.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
+        await query.message.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
 
     elif query.data == "stats":
         buttons = [[
