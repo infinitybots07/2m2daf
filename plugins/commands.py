@@ -24,7 +24,7 @@ async def start(client, message):
         await message.reply_photo(photo=random.choice(PICS))
         buttons = [[
       
-            InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start')
+            InlineKeyboardButton('➕ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ➕', url='http://t.me/CL_FILTER_BOT?startgroup=true')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply(script.START_TXT.format(message.from_user.mention if message.from_user else message.chat.title, temp.U_NAME, temp.B_NAME), reply_markup=reply_markup)
@@ -41,7 +41,7 @@ async def start(client, message):
         await message.reply_photo(photo=random.choice(PICS))
         buttons = [[
       
-            InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start')
+            InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ Fᴏʀ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start2')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)        
         await message.reply_text(
@@ -75,7 +75,7 @@ async def start(client, message):
     if len(message.command) ==2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         await message.reply_photo(photo=random.choice(PICS))
         buttons = [[
-            InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start')
+            InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ Fᴏʀ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start2')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)        
         await message.reply_text(
