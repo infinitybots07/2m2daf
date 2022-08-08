@@ -487,7 +487,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Tᴇʟᴇɢʀᴀᴍ', url='t.me/NL_MP4'),
             InlineKeyboardButton('Iɴsᴛᴀɢʀᴀᴍ', url='https://instagram.com/__nihaal_efx__?igshid=YmMyMTA2M2Y=')
         ],[
-            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2,)
+            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
         await query.message.edit_text(text='<u><b>Cᴏɴᴛᴀᴄᴛ Oᴡɴᴇʀ</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cᴏɴᴛᴀᴄᴛ Mʏ Oᴡɴᴇʀ', reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
 
