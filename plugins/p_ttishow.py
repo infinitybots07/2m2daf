@@ -49,15 +49,19 @@ async def save_group(bot, message):
     else:
         settings = await get_settings(message.chat.id)
         if settings["welcome"]:
-            for u in message.new_chat_members:
+            buttons = [[
+                    InlineKeyboardButton('🕵️‍♂️ ɢʀᴏᴜᴘ ʀᴜʟᴇs 🕵️‍♂️', url="https://telegra.ph/GROUP-RULES-04-24")
+                ]]
                 if (temp.MELCOW).get('welcome') is not None:
                     try:
                         await (temp.MELCOW['welcome']).delete()
                     except:
                         pass
-                temp.MELCOW['welcome'] = await message.reply(f"<b>Hey, {u.mention} ✨, Welcome To Our Group {message.chat.title}. You Can Find Movies / Series / Animes etc. From Here. Enjoy 😉.</b>")
-                await asyncio.sleep(20)
-                await temp.MELCOW['welcome'].delete()
+                temp.MELCOW['welcome'] = await message.reply_video(
+                video="https://telegra.ph/file/922ba803c3e701590dc97.mp4",
+                caption=f"<b>🔖 ʜᴇʟʟᴏ ᴍʏ ғʀɪᴇɴᴅ {u.mention},</b><b> ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ </b><b>{message.chat.title} 🤤</b>",
+                reply_markup=InlineKeyboardMarkup(buttons))
+
                                         
 
 @Client.on_message(filters.command('leave') & filters.user(ADMINS))
