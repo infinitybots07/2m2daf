@@ -502,7 +502,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Jsᴏɴ', callback_data='json'),
             InlineKeyboardButton('Sᴛᴀᴛᴜs', callback_data='stats')
         ],[
-            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start')
+            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
         await query.message.edit_text(
             text=script.HELP_TXT.format(query.from_user.mention), 
