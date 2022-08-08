@@ -487,7 +487,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Tᴇʟᴇɢʀᴀᴍ', url='t.me/NL_MP4'),
             InlineKeyboardButton('Iɴsᴛᴀɢʀᴀᴍ', url='https://instagram.com/__nihaal_efx__?igshid=YmMyMTA2M2Y=')
         ]]
-        await query.message.edit_text(text='<u><b>Cᴏɴᴛᴀᴄᴛ Oᴡɴᴇʀ</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cᴏɴᴛᴀᴄᴛ Mʏ Oᴡɴᴇʀ', disable_web_page_preview=True, reply_markup = InlineKeyboardMarkup(buttons), parse_mode='html')
+        await query.message.edit_text(text='<u><b>Cᴏɴᴛᴀᴄᴛ Oᴡɴᴇʀ</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cᴏɴᴛᴀᴄᴛ Mʏ Oᴡɴᴇʀ', reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
 
     elif query.data == "help":
         buttons = [[
@@ -502,7 +502,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start')
         ]]
-        await query.message.edit_text(text=script.HELP_TXT.format(query.from_user.mention), disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons), parse_mode'html')
+        await query.message.edit_text(text=script.HELP_TXT.format(query.from_user.mention), reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode'html')
 
     elif query.data == "about":
         buttons = [[
