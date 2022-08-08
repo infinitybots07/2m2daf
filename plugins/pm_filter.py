@@ -493,16 +493,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('Fɪʟᴛᴇʀs', callback_data='filter'),
             InlineKeyboardButton('Cᴏɴɴᴇᴄᴛɪᴏɴ', callback_data='coct')
-        ],[
+        ], [
             InlineKeyboardButton('Aᴅᴍɪɴ', callback_data='admin'),
             InlineKeyboardButton('Fɪʟᴇ Sᴛᴏʀᴇ', callback_data='filestore')
-        ],[ 
+        ], [ 
             InlineKeyboardButton('Jsᴏɴ', callback_data='json'),
             InlineKeyboardButton('Sᴛᴀᴛᴜs', callback_data='stats')
-        ],[
+        ], [
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start')
         ]]
-        await query.message.edit_text(text=script.HELP_TXT.format(query.from_user.mention), reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode'html')
+        await query.message.edit_text(
+            text=script.HELP_TXT.format(query.from_user.mention), 
+            reply_markup = InlineKeyboardMarkup(buttons),
+            disable_web_page_preview=True, 
+            parse_mode'html'
+        )
 
     elif query.data == "about":
         buttons = [[
