@@ -12,6 +12,7 @@ class script(object):
 
     HELP_TXT = """Hᴇʏ {} Wᴇʟᴄᴏᴍᴇ Tᴏ Mʏ Hᴇʟᴘ Iғ Yᴏᴜ Sᴇᴇᴍ Lᴏsᴛ Oʀ Hᴀᴠᴇ A Dᴏᴜʙᴛ Usᴇ Tʜᴇ Bᴜᴛᴛᴏɴs Bᴇʟᴏᴡ Tᴏ Nᴀᴠɪɢᴀᴛᴇ Tʜʀᴏᴜɢʜ Iᴛ !"""
     
+    CONNECTION_TXT = """Loading..."""
     
     STATUS_TXT = """╔══╗╔══╗╔══╗ ╔══╗╔══╗
 ║══╣╚╗╔╝║╔╗║ ╚╗╔╝║══╣
