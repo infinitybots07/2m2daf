@@ -14,6 +14,14 @@ class script(object):
     
     CONNECTION_TXT = """Loading..."""
     
+    MANUALFILTER_TXT = """Loading...."""
+    
+    AUTOFILTER_TXT = """Loading...."""
+    
+    ADMIN_TXT = """Loading..."""
+    
+    JSON_TXT = """Loading...."""
+    
     STATUS_TXT = """╔══╗╔══╗╔══╗ ╔══╗╔══╗
 ║══╣╚╗╔╝║╔╗║ ╚╗╔╝║══╣
 ╠══║   ║║   ║╠╣║    ║║   ╠══║
