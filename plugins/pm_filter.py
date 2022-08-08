@@ -506,7 +506,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.HELP_TXT.format(query.from_user.mention), 
             reply_markup = InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True, 
-            parse_mode'html'
+            parse_mode='html'
         )
 
     elif query.data == "about":
