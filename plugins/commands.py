@@ -39,13 +39,30 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         await message.reply_photo(photo=random.choice(PICS))
+        m = datetime.datetime.now(pytz.timezone("Asia/Kolkata"))
+
+        Time = m.hour
+        
+        if Time < 12:
+            nihaal="ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ" 
+        elif Time < 15:
+            nihaal="ɢᴏᴏᴅ ᴀғᴛᴇʀɴᴏᴏɴ" 
+        elif Time < 20:
+            nihaal="ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ"
+        else:
+            nihaal="ɢᴏᴏᴅ ɴɪɢʜᴛ"
+        
+        START_TXT = f"""
+<b>{nihaal} {message.from_user.mention}  ʙᴜᴅᴅʏ
+ᴍʏ ɴᴀᴍᴇ ɪꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 𝐓ʜᴏᴍᴀs 𝐒ʜᴇʟʙʏ 』</b></a>  ɪ ᴄᴀɴ ᴘʀᴏᴠɪᴅᴇ ʏᴏᴜ ᴍᴏᴠɪᴇꜱ ᴊᴜꜱᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ꜱᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ 😈</b>
+"""
         buttons = [[
       
             InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ Fᴏʀ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start2')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)        
         await message.reply_text(
-            text=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
+            text=START_TXT,
             reply_markup=reply_markup,
             parse_mode='html'
         )         
@@ -74,12 +91,29 @@ async def start(client, message):
         return
     if len(message.command) ==2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         await message.reply_photo(photo=random.choice(PICS))
+        m = datetime.datetime.now(pytz.timezone("Asia/Kolkata"))
+
+        Time = m.hour
+        
+        if Time < 12:
+            nihaal="ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ" 
+        elif Time < 15:
+            nihaal="ɢᴏᴏᴅ ᴀғᴛᴇʀɴᴏᴏɴ" 
+        elif Time < 20:
+            nihaal="ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ"
+        else:
+            nihaal="ɢᴏᴏᴅ ɴɪɢʜᴛ"
+        
+        START_TXT = f"""
+<b>{nihaal} {message.from_user.mention}  ʙᴜᴅᴅʏ
+ᴍʏ ɴᴀᴍᴇ ɪꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 𝐓ʜᴏᴍᴀs 𝐒ʜᴇʟʙʏ 』</b></a>  ɪ ᴄᴀɴ ᴘʀᴏᴠɪᴅᴇ ʏᴏᴜ ᴍᴏᴠɪᴇꜱ ᴊᴜꜱᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ꜱᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ 😈</b>
+"""
         buttons = [[
             InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ Fᴏʀ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start2')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)        
         await message.reply_text(
-            text=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
+,           text=START_TXT,
             reply_markup=reply_markup,
             parse_mode='html'
         )         
