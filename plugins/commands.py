@@ -115,7 +115,7 @@ async def start(client, message):
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)        
         await message.reply_text(
-,           text=START_TXT,
+            text=START_TXT,
             reply_markup=reply_markup,
             parse_mode='html'
         )         
