@@ -3,7 +3,8 @@ import asyncio
 import re
 import ast
 import random
-
+import datetime
+import pytz
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
@@ -450,13 +451,30 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "pages":
         await query.answer()
     elif query.data == "start":
+        m = datetime.datetime.now(pytz.timezone("Asia/Kolkata"))
+
+        Time = m.hour
+        
+        if Time < 12:
+            nihaal="ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ" 
+        elif Time < 15:
+            nihaal="ɢᴏᴏᴅ ᴀғᴛᴇʀɴᴏᴏɴ" 
+        elif Time < 20:
+            nihaal="ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ"
+        else:
+            nihaal="ɢᴏᴏᴅ ɴɪɢʜᴛ"
+        
+        START_TXT = f"""
+<b>{nihaal} {message.from_user.mention}  ʙᴜᴅᴅʏ
+ᴍʏ ɴᴀᴍᴇ ɪꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 𝐓ʜᴏᴍᴀs 𝐒ʜᴇʟʙʏ 』</b></a>  ɪ ᴄᴀɴ ᴘʀᴏᴠɪᴅᴇ ʏᴏᴜ ᴍᴏᴠɪᴇꜱ ᴊᴜꜱᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ꜱᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ 😈</b>
+"""
         buttons = [[
       
             InlineKeyboardButton('Cʟɪᴄᴋ Hᴇʀᴇ Fᴏʀ Mᴏʀᴇ Bᴜᴛᴛᴏɴs', callback_data='start2')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(        
-            text=script.START_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
+            text=START_TXT,
             reply_markup=reply_markup,
             disable_web_page_preview=True,
             parse_mode='html'
