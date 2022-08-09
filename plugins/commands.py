@@ -65,6 +65,7 @@ async def start(client, message):
         reply_markup = InlineKeyboardMarkup(buttons)        
         await message.reply_text(
             text=START_TXT,
+            disable_web_page_priview=True,
             reply_markup=reply_markup,
             parse_mode='html'
         )         
@@ -116,6 +117,7 @@ async def start(client, message):
         reply_markup = InlineKeyboardMarkup(buttons)        
         await message.reply_text(
             text=START_TXT,
+            disable_web_page_priview=True,
             reply_markup=reply_markup,
             parse_mode='html'
         )         
