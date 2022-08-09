@@ -379,13 +379,8 @@ async def settings(client, message):
             and str(userid) not in ADMINS
     ):
         return
-
     settings = await get_settings(grp_id)
     if settings is not None:
-    if settings["button"]
-        nihaal="Single"
-    else:
-        nihaal="Double"
         buttons = [
             [
                 InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
@@ -426,11 +421,9 @@ async def settings(client, message):
                 InlineKeyboardButton('Cʟᴏsᴇ Sᴇᴛᴛɪɴɢs', callback_data='close_data')
             ]
         ]
-
         reply_markup = InlineKeyboardMarkup(buttons)
-
         await message.reply_text(
-            text=f"<b>Change Your Settings for {title} As Your Wish ⚙\n\n Button Status {nihaal}</b>",
+            text=f"<b><u>Sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nHᴇʏ Bᴜᴅᴅ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ",
             reply_markup=reply_markup,
             disable_web_page_preview=True,
             parse_mode="html",
