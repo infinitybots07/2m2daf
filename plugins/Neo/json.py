@@ -3,7 +3,6 @@ Syntax: .json"""
 
 import os
 from pyrogram import Client, filters
-from info import COMMAND_HAND_LER
 from plugins.helper_functions.cust_p_filters import sudo_filter
 
 
