@@ -423,7 +423,7 @@ async def settings(client, message):
         ]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_text(
-            text=f"<b><u>Sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nHᴇʏ Bᴜᴅᴅ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ",
+            text=f"<b><u>Sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ",
             reply_markup=reply_markup,
             disable_web_page_preview=True,
             parse_mode="html",
