@@ -382,7 +382,7 @@ async def settings(client, message):
 
     settings = await get_settings(grp_id)
     
-    if settings["button"] = "True"
+    if settings["button"]
         nihaal="Single"
     else:
         nihaal="Double"
