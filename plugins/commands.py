@@ -381,13 +381,11 @@ async def settings(client, message):
         return
 
     settings = await get_settings(grp_id)
-    
+    if settings is not None:
     if settings["button"]
         nihaal="Single"
     else:
         nihaal="Double"
-
-    if settings is not None:
         buttons = [
             [
                 InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
