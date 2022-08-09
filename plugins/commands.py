@@ -381,75 +381,58 @@ async def settings(client, message):
         return
 
     settings = await get_settings(grp_id)
+    
+    if settings["button"] = "True"
+        nihaal="Single"
+    else:
+        nihaal="Double"
 
     if settings is not None:
         buttons = [
             [
-                InlineKeyboardButton(
-                    '𝐅𝐈𝐋𝐓𝐄𝐑 𝐁𝐔𝐓𝐓𝐎𝐍',
-                    callback_data=f'setgs#button#{settings["button"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '𝐒𝐈𝐍𝐆𝐋𝐄' if settings["button"] else '𝐃𝐎𝐔𝐁𝐋𝐄',
-                    callback_data=f'setgs#button#{settings["button"]}#{grp_id}',
-                ),
+                InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
+                                     callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Sɪɴɢʟᴇ' if settings["button"] else 'Dᴏᴜʙʟᴇ',
+                                     callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
+            ],
+                
+            [
+                InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Pᴍ' if settings["botpm"] else 'Cʜᴀᴛ',
+                                     callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
             ],
             [
-                InlineKeyboardButton(
-                    '𝐅𝐈𝐋𝐄𝐒',
-                    callback_data=f'setgs#botpm#{settings["botpm"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '⚡ 𝐁𝐎𝐓 𝐏𝐌' if settings["botpm"] else '⚡ 𝐂𝐇𝐀𝐓',
-                    callback_data=f'setgs#botpm#{settings["botpm"]}#{grp_id}',
-                ),
+                   
+                InlineKeyboardButton('Fɪʟᴇ Sᴇᴄᴜʀᴇ',
+                                     callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Yᴇs' if settings["file_secure"] else 'Nᴏ',
+                                     callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}')
             ],
             [
-                InlineKeyboardButton(
-                    '𝐅𝐈𝐋𝐄 𝐒𝐄𝐂𝐔𝐑𝐄',
-                    callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ 𝐘𝐄𝐒' if settings["file_secure"] else '🗑️ 𝐍𝐎',
-                    callback_data=f'setgs#file_secure#{settings["file_secure"]}#{grp_id}',
-                ),
+                InlineKeyboardButton('Iᴍᴅʙ', callback_data=f'setgs#imdb#{settings["imdb"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Yᴇs' if settings["imdb"] else 'Nᴏ',
+                                     callback_data=f'setgs#imdb#{settings["imdb"]}#{str(grp_id)}')
             ],
             [
-                InlineKeyboardButton(
-                    '𝐈𝐌𝐃𝐁',
-                    callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ 𝐘𝐄𝐒' if settings["imdb"] else '🗑️ 𝐍𝐎',
-                    callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}',
-                ),
+                InlineKeyboardButton('Sᴘᴇʟʟ Cʜᴇᴄᴋ',
+                                     callback_data=f'setgs#spell_check#{settings["spell_check"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Nᴇᴡ' if settings["spell_check"] else 'Dᴇғᴀᴜʟᴛ',
+                                     callback_data=f'setgs#spell_check#{settings["spell_check"]}#{str(grp_id)}')
             ],
             [
-                InlineKeyboardButton(
-                    '𝐒𝐏𝐄𝐋𝐋 𝐂𝐇𝐄𝐂𝐊',
-                    callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ 𝐘𝐄𝐒' if settings["spell_check"] else '🗑️ 𝐍𝐎',
-                    callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}',
-                ),
+                InlineKeyboardButton('Wᴇʟᴄᴏᴍᴇ', callback_data=f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Yᴇs' if settings["welcome"] else 'Nᴏ',
+                                     callback_data=f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}')
             ],
             [
-                InlineKeyboardButton(
-                    '𝐖𝐄𝐋𝐂𝐎𝐌𝐄',
-                    callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',
-                ),
-                InlineKeyboardButton(
-                    '✅ 𝐘𝐄𝐒' if settings["welcome"] else '🗑️ 𝐍𝐎',
-                    callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}',
-                ),
-            ],
+                InlineKeyboardButton('Cʟᴏsᴇ Sᴇᴛᴛɪɴɢs', callback_data='close_data')
+            ]
         ]
 
         reply_markup = InlineKeyboardMarkup(buttons)
 
         await message.reply_text(
-            text=f"<b>Change Your Settings for {title} As Your Wish ⚙</b>",
+            text=f"<b>Change Your Settings for {title} As Your Wish ⚙\n\n Button Status {nihaal}</b>",
             reply_markup=reply_markup,
             disable_web_page_preview=True,
             parse_mode="html",
