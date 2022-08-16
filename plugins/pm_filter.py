@@ -545,6 +545,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         await query.message.edit_text(text="<b><u>Hᴇʟᴘ Fᴏʀ Fɪʟᴛᴇʀs</b></u>\n\nHᴇʏ Bᴜᴅᴅʏ Cʜᴏᴏsᴇ A Fɪʟᴛᴇʀ Tʏᴘᴇ", reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
             
+    elif query.data == "filestore":
+        await query.answer("Page Does Not Exist ):")
+        
     elif query.data == "coct":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data="help")
