@@ -103,7 +103,7 @@ async def next_page(bot, query):
     if n_offset == 0:
         btn.append(
             [InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
-             InlineKeyboardButton(f"{round(int(offset) / 10) + 1} / {round(total / 10)}",
+             InlineKeyboardButton(f"{round(int(offset) / 10) + 1} - {round(total / 10)}",
                                   callback_data="pages"),
              InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}")]
         )
@@ -112,7 +112,7 @@ async def next_page(bot, query):
         btn.append(
             [
                 InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
-                InlineKeyboardButton(f"{round(int(offset) / 10) + 1}-{round(total / 10)}", callback_data="pages"),
+                InlineKeyboardButton(f"{round(int(offset) / 10) + 1} - {round(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
         
@@ -120,7 +120,7 @@ async def next_page(bot, query):
         btn.append(
             [
                 InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}"),
-                InlineKeyboardButton(f"{round(int(offset) / 10) + 1}-{round(total / 10)}", callback_data="pages"),
+                InlineKeyboardButton(f"{round(int(offset) / 10) + 1} - {round(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
         
@@ -130,7 +130,7 @@ async def next_page(bot, query):
         )
     except MessageNotModified:
         pass
-    await query.answer(f'ᴘᴀɢᴇ ɴᴏ : {round(int(offset) / 10) + 1}\nTᴏᴛᴀʟ Rᴇsᴜʟᴛs : {len(files)}')
+    await query.answer(f'Pᴀɢᴇ Nᴏ : {round(int(offset) / 10) + 1}\nTᴏᴛᴀʟ Rᴇsᴜʟᴛs : {len(files)}')
 
 
 @Client.on_callback_query(filters.regex(r"^spolling"))
@@ -465,7 +465,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             nihaal="ɢᴏᴏᴅ ɴɪɢʜᴛ"
         
         START_TXT = f"""
-<b>{nihaal} {message.from_user.mention}  ʙᴜᴅᴅʏ
+<b>{nihaal} {query.from_user.mention}  ʙᴜᴅᴅʏ
 ᴍʏ ɴᴀᴍᴇ ɪꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 𝐓ʜᴏᴍᴀs 𝐒ʜᴇʟʙʏ 』</b></a>  ɪ ᴄᴀɴ ᴘʀᴏᴠɪᴅᴇ ʏᴏᴜ ᴍᴏᴠɪᴇꜱ ᴊᴜꜱᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ꜱᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ 😈</b>
 """
         buttons = [[
@@ -532,7 +532,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('Gʀᴏᴜᴘ', url='t.me/cinema_lookam'),
             InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ', url='t.me/NL_BOTxCHAT'),
-            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start')
+            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
         await query.message.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
 
@@ -546,7 +546,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(text="<b><u>Hᴇʟᴘ Fᴏʀ Fɪʟᴛᴇʀs</b></u>\n\nHᴇʏ Bᴜᴅᴅʏ Cʜᴏᴏsᴇ A Fɪʟᴛᴇʀ Tʏᴘᴇ", reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
             
     elif query.data == "fstore":
-        await query.answer("Page Does Not Exist ):")
+        await query.answer("Page Does Not Exist ):", show_alert=True)
         
     elif query.data == "coct":
         buttons = [[
