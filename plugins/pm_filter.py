@@ -103,7 +103,7 @@ async def next_page(bot, query):
     if n_offset == 0:
         btn.append(
             [InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
-             InlineKeyboardButton(f"{round(int(offset) / 10) + 1} / {round(total / 10)}",
+             InlineKeyboardButton(f"{round(int(offset) / 10) + 1} - {round(total / 10)}",
                                   callback_data="pages"),
              InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}")]
         )
@@ -112,7 +112,7 @@ async def next_page(bot, query):
         btn.append(
             [
                 InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
-                InlineKeyboardButton(f"{round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
+                InlineKeyboardButton(f"{round(int(offset) / 10) + 1} - {round(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
         
@@ -120,7 +120,7 @@ async def next_page(bot, query):
         btn.append(
             [
                 InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}"),
-                InlineKeyboardButton(f"{round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
+                InlineKeyboardButton(f"{round(int(offset) / 10) + 1} - {round(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
         
@@ -130,7 +130,7 @@ async def next_page(bot, query):
         )
     except MessageNotModified:
         pass
-    await query.answer()
+    await query.answer(f'ᴘᴀɢᴇ ɴᴏ : {round(int(offset) / 10) + 1}')
 
 
 @Client.on_callback_query(filters.regex(r"^spolling"))
@@ -752,7 +752,7 @@ async def auto_filter(client, msg, spoll=False):
         req = message.from_user.id if message.from_user else 0
         btn.append(
             [InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
-             InlineKeyboardButton(text=f"1/{round(int(total_results) / 10)}", callback_data="pages"),
+             InlineKeyboardButton(text=f"1 - {round(int(total_results) / 10)}", callback_data="pages"),
              InlineKeyboardButton(text="Nᴇxᴛ", callback_data=f"next_{req}_{key}_{offset}")]
         )
         
