@@ -103,7 +103,7 @@ async def next_page(bot, query):
     if n_offset == 0:
         btn.append(
             [InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
-             InlineKeyboardButton(f"{round(int(offset) / 10) + 1} - {round(total / 10)}",
+             InlineKeyboardButton(f"{round(int(offset) / 10) + 1} / {round(total / 10)}",
                                   callback_data="pages"),
              InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}")]
         )
@@ -112,7 +112,7 @@ async def next_page(bot, query):
         btn.append(
             [
                 InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
-                InlineKeyboardButton(f"{round(int(offset) / 10) + 1} - {round(total / 10)}", callback_data="pages"),
+                InlineKeyboardButton(f"{round(int(offset) / 10) + 1}-{round(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
         
@@ -120,7 +120,7 @@ async def next_page(bot, query):
         btn.append(
             [
                 InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}"),
-                InlineKeyboardButton(f"{round(int(offset) / 10) + 1} - {round(total / 10)}", callback_data="pages"),
+                InlineKeyboardButton(f"{round(int(offset) / 10) + 1}-{round(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
         
@@ -130,7 +130,7 @@ async def next_page(bot, query):
         )
     except MessageNotModified:
         pass
-    await query.answer(f'ᴘᴀɢᴇ ɴᴏ : {round(int(offset) / 10) + 1}')
+    await query.answer(f'ᴘᴀɢᴇ ɴᴏ : {round(int(offset) / 10) + 1}\nTᴏᴛᴀʟ Rᴇsᴜʟᴛs : {len(files)}')
 
 
 @Client.on_callback_query(filters.regex(r"^spolling"))
@@ -514,7 +514,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Cᴏɴɴᴇᴄᴛɪᴏɴ', callback_data='coct')
         ],[
             InlineKeyboardButton('Aᴅᴍɪɴ', callback_data='admin'),
-            InlineKeyboardButton('Fɪʟᴇ Sᴛᴏʀᴇ', callback_data='filestore')
+            InlineKeyboardButton('Fɪʟᴇ Sᴛᴏʀᴇ', callback_data='fstore')
         ],[ 
             InlineKeyboardButton('Jsᴏɴ', callback_data='json'),
             InlineKeyboardButton('Sᴛᴀᴛᴜs', callback_data='stats')
@@ -545,7 +545,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         await query.message.edit_text(text="<b><u>Hᴇʟᴘ Fᴏʀ Fɪʟᴛᴇʀs</b></u>\n\nHᴇʏ Bᴜᴅᴅʏ Cʜᴏᴏsᴇ A Fɪʟᴛᴇʀ Tʏᴘᴇ", reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
             
-    elif query.data == "filestore":
+    elif query.data == "fstore":
         await query.answer("Page Does Not Exist ):")
         
     elif query.data == "coct":
