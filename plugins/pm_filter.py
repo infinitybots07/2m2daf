@@ -631,8 +631,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         grpid = await active_connection(str(query.from_user.id))
 
         if str(grp_id) != str(grpid):
-            await query.message.edit("Your Active Connection Has Been Changed. Go To /settings.")
-            return await query.answer('Okda')
+            await query.message.edit("⚠️ Sᴏʀʀʏ Bᴜᴅᴅʏ I Cᴀɴɴᴏᴛ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs Pʟᴇᴀsᴇ Tʀʏ Iɴ Pᴍ ⚠️")
+            return await query.answer('Hᴇʏ Nᴀᴜɢʜᴛʏ Bᴏʏ Tʜᴀᴛs Nᴏᴛ Fᴏʀ Yᴏᴜ')
 
         if status == "True":
             await save_group_settings(grpid, set_type, False)
@@ -793,7 +793,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b><i>🎬 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : {search}\n👩🏻‍💻 ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ : {message.from_user.mention}\n🚀 ɢʀᴏᴜᴘ : {message.chat.title}</i></b>"
+        cap = f"<b><i>🎬 Mᴏᴠɪᴇ ɴᴀᴍᴇ : {search}\n👩🏻‍💻 Rᴇǫᴜᴇsᴛᴇᴅ ʙʏ : {message.from_user.mention}n🚀 Gʀᴏᴜᴘ : {message.chat.title}</i></b>"
     if imdb and imdb.get('poster'):
         try:
             fmsg = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
