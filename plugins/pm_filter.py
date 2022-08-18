@@ -545,7 +545,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(text="<b><u>Hᴇʟᴘ Fᴏʀ Fɪʟᴛᴇʀs</b></u>\n\nHᴇʏ Bᴜᴅᴅʏ Cʜᴏᴏsᴇ A Fɪʟᴛᴇʀ Tʏᴘᴇ", reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
             
     elif query.data == "fstore":
-        await query.answer("Page Does Not Exist ):", show_alert=True)
+        await query.message.reply_document("BQACAgUAAx0CZZGNpQACL1hi3CN2O74NiV6WSnH2AAFKJNvCskkAAuQFAAIm24hWUdaBPW3BwW4eBA")
         
     elif query.data == "coct":
         buttons = [[
