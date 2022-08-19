@@ -353,6 +353,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         title = files.file_name
         size = get_size(files.file_size)
         f_caption = files.caption
+        mention = {query.from_user.mention}
         settings = await get_settings(query.message.chat.id)
         if CUSTOM_FILE_CAPTION:
             try:
