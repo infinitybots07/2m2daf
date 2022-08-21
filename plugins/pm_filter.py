@@ -887,7 +887,7 @@ async def advantage_spell_check_1_(msg):
         await asyncio.sleep(259200)
         await msg.delete()
         await ms.delete()
-    if not ms:
+    if not imdb.get('poster'):
         ni = await msg.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), reply_markup=reply_markup)
         await asyncio.sleep(259200)
         await msg.delete()
