@@ -381,7 +381,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
             else:
-                ms = await client.send_doccument(
+                ms = await client.send_document(
                     chat_id=CH_FILTER,
                     file_id=file_id,
                     thumb="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg",
