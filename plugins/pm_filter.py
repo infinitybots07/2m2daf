@@ -143,7 +143,7 @@ async def advantage_spoll_choker(bot, query):
     if not movies:
         return await query.answer("Aʜʜ Bᴜᴛᴛᴏɴ Exᴘɪʀᴇᴅ 😒", show_alert=True)
     movie = movies[(int(movie_))]
-    await query.answer('sᴇᴀʀᴄʜɪɴɢ ʏᴏᴜʀ ᴍᴏᴠɪᴇ')
+    await query.answer()
     k = await manual_filters(bot, query.message, text=movie)
     if k == False:
         files, offset, total_results = await get_search_results(movie, offset=0, filter=True)
@@ -151,6 +151,36 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
+            await query.message.edit_text(
+                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▱▱▱▱▱▱▱▱▱ 10%"
+            )
+            await query.message.edit_text(
+                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▱▱▱▱▱▱▱▱ 20%"
+            )
+            await query.message.edit_text(
+                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▱▱▱▱▱▱▱ 30%"
+            )
+            await query.message.edit_text(
+                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▱▱▱▱▱▱ 40%"
+            )
+            await query.message.edit_text(
+                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▱▱▱▱▱ 50%"
+            )
+            await query.message.edit_text(
+                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▰▱▱▱▱ 60%"
+            )
+            await query.message.edit_text(
+                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▰▰▱▱▱ 70%"
+            )
+            await query.message.edit_text(
+                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▰▰▰▱▱ 80%"
+            )
+            await query.message.edit_text(
+                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▰▰▰▰▱ 90%"
+            )
+            await query.message.edit_text(
+                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▰▰▰▰▰ 100%"
+            )
             k = await query.message.edit("<b>💌 ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ 💌</b>\n› <a href=https://t.me/CL_UPDATE><b>ɴᴇᴡ ᴜᴘᴅᴀᴛᴇs</b></a>", disable_web_page_preview=True)            
             await asyncio.sleep(14)
             await k.delete()
