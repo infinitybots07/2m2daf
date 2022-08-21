@@ -381,10 +381,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
             else:
-                ms = await client.send_document(
+                ms = await client.send_cached_media(
                     chat_id=CH_FILTER,
                     file_id=file_id,
-                    thumb="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg",
                     caption=f'<b>ʜᴇʏ 👋 {query.from_user.mention} 😊</b>\n\n<b>📁 Fᴀᴍᴇ Nᴀᴍᴇ : <code>[CL] {title}</code></b>\n\n<b>⚙️ sɪᴢᴇ : {size}</b>\n\n<b><u>Nᴏᴛᴇ :</u></b>\n\n<b>⚠️ Tʜɪs Fɪʟᴇ Wɪʟʟ Aᴜᴛɪ Dᴇʟᴇᴛᴇ Iɴ 10 Mɪɴᴜᴛᴇs Sᴏ Fᴏʀᴡᴀʀᴅ Tʜɪs Mᴇssᴀɢᴇʙ Tᴏ Sᴏᴍᴇᴡʜᴇʀᴇ Eʟsᴇ ᴀɴᴅ Dᴏᴡɴʟᴏᴀᴅ Fʀᴏᴍ Tʜᴇʀᴇ.. ⚠️</b>\n\n<b>🚀 Pᴏᴡᴇʀᴇᴅ Bʏ : {query.message.chat.title}</b>',
                     reply_markup = InlineKeyboardMarkup(buttons),
                     protect_content=True if ident == "filep" else False 
