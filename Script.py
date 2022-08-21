@@ -3,26 +3,26 @@ class script(object):
     
 <i>Aᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴛᴏ sᴇᴇ ᴛʜᴇ ᴍᴀɢɪᴄ ᴏʀ ʀᴇᴀᴅ ᴍᴏʀᴇ ғʀᴏᴍ ᴛʜᴇ ᴍᴇɴᴜ ʙᴇʟᴏᴡ</i>"""
     ABOUT_TXT = """<b>○ Mʏ Nᴀᴍᴇ : <a href=https://t.me/CL_FILTER_BOT><b>Tʜᴏᴍᴀs Sʜᴇʟʙʏ</b></a>
-○ Cʀᴇᴀᴛᴏʀ : <a href=https://t.me/NL_MP4><b>ɴɪʜᴀᴀʟ 🇮🇳</b></a>
+○ Cʀᴇᴀᴛᴏʀ : <a href=https://t.me/NL_MP4_BOT><b>ɴɪʜᴀᴀʟ 🇮🇳</b></a>
 ○ Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ 𝟥 
 ○ Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ Asʏɴᴄɪᴏ 𝟢.𝟣𝟩.𝟣 
 ○ Sᴇʀᴠᴇʀ : Hᴇʀᴏᴋᴜ
 ○ Dᴀᴛᴀʙᴀsᴇ : <a href=www.mangodb.com><b>MᴀɴɢᴏDB</b></a>
-○ Bᴜɪʟᴅ sᴛᴀᴛᴜs : V9.8 [Kɪʟʟᴀᴅɪ]</b>"""
+○ Bᴜɪʟᴅ sᴛᴀᴛᴜs : V9.8 [ Kɪʟʟᴀᴅɪ ]</b>"""
 
     HELP_TXT = """Hᴇʏ {} Wᴇʟᴄᴏᴍᴇ Tᴏ Mʏ Hᴇʟᴘ Iғ Yᴏᴜ Sᴇᴇᴍ Lᴏsᴛ Oʀ Hᴀᴠᴇ A Dᴏᴜʙᴛ Usᴇ Tʜᴇ Bᴜᴛᴛᴏɴs Bᴇʟᴏᴡ Tᴏ Nᴀᴠɪɢᴀᴛᴇ Tʜʀᴏᴜɢʜ Iᴛ !"""
     
     
     IMDB_MOVIE_2 = """<b>
 🧿 ᴛɪᴛᴛʟᴇ :  [{title}]({url})
-🌟 ʀᴀᴛɪɴɢ : <code>{rating}</code>
+🌟 ʀᴀᴛɪɴɢ : <code>{rating} / 10</code>
 🎭 ɢᴇɴʀᴇ : <code>{genres}</code>
 
 📆 ʀᴇʟᴇᴀsᴇ : <code>{year}</code>
-⏰ ᴅᴜʀᴀᴛɪᴏɴ : <code>{runtime} M</code>
+⏰ ᴅᴜʀᴀᴛɪᴏɴ : <code>{runtime} Mɪɴᴜᴛᴇs</code>
 🎙️ ʟᴀɴɢᴜᴀɢᴇ : <code>{language}</code>
 
-🔖 sʜᴏʀᴛ : <code>{short}</code>
+🔖 sʜᴏʀᴛ Sᴛᴏʀʏ : <code>{short}</code>
 
 <i>★ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : {group}</i>
 </b>"""
