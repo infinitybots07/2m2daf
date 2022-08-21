@@ -816,6 +816,8 @@ async def auto_filter(client, msg, spoll=False):
 ##-------------------------------------[ 1st Spell Check Message ]-------------------------------------------##
 
 async def advantage_spell_check_1_(msg):
+    imdb=await get_poster(search)
+        
     search = msg.text
     query = re.sub(
         r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|br((o|u)h?)*|^h(e|a)?(l)*(o)*|mal(ayalam)?|t(h)?amil|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|thar(u)?(o)*w?|kittum(o)*|aya(k)*(um(o)*)?|full\smovie|any(one)|with\ssubtitle(s)?)",
@@ -888,12 +890,11 @@ async def advantage_spell_check_1_(msg):
         await msg.delete()
         await ms.delete()
     if not imdb:
-        imdb=await get_poster(search)
-        if imdb and imdb.get('poster')
-            ni = await msg.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), reply_markup=reply_markup)
-                await asyncio.sleep(259200)
-                await msg.delete()
-                await ni.delete()
+    if imdb and imdb.get('poster')
+        ni = await msg.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), reply_markup=reply_markup)
+            await asyncio.sleep(259200)
+            await msg.delete()
+            await ni.delete()
     else:
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
