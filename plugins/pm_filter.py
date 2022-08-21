@@ -384,7 +384,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ms = await client.send_cached_media(
                     chat_id=CH_FILTER,
                     file_id=file_id,
-                    caption=f'<b>ʜᴇʏ 👋 {query.from_user.mention} 😊</b>\n\n<b>📁 Fᴀᴍᴇ Nᴀᴍᴇ : <code>[CL] {title}</code></b>\n\n<b>⚙️ sɪᴢᴇ : {size}</b>\n\n<b><u>Nᴏᴛᴇ :</u></b>\n\n<b><i>⚠️ Tʜɪs Fɪʟᴇ EɪʟAᴜᴛɪ ᴅᴇʟᴇᴛᴇ Iɴ 10 Sᴏ Fᴏʀᴡᴀʀᴅ Tʜɪs Mᴇssᴀɢᴇʙ Tᴏ Sᴏᴍᴇᴡʜᴇʀᴇ Eʟsᴇ ᴀɴᴅ Fʀᴏᴍ Tʜᴇʀᴇ.. ⚠️</i></b>\n\n<b>🚀 Pᴏᴡᴇʀᴇᴅ Bʏ : {query.message.chat.title}</b>',
+                    thump_url = "https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg"
+                    caption=f'<b>ʜᴇʏ 👋 {query.from_user.mention} 😊</b>\n\n<b>📁 Fᴀᴍᴇ Nᴀᴍᴇ : <code>[CL] {title}</code></b>\n\n<b>⚙️ sɪᴢᴇ : {size}</b>\n\n<b><u>Nᴏᴛᴇ :</u></b>\n\n<b>⚠️ Tʜɪs Fɪʟᴇ Wɪʟʟ Aᴜᴛɪ Dᴇʟᴇᴛᴇ Iɴ 10 Mɪɴᴜᴛᴇs Sᴏ Fᴏʀᴡᴀʀᴅ Tʜɪs Mᴇssᴀɢᴇʙ Tᴏ Sᴏᴍᴇᴡʜᴇʀᴇ Eʟsᴇ ᴀɴᴅ Dᴏᴡɴʟᴏᴀᴅ Fʀᴏᴍ Tʜᴇʀᴇ.. ⚠️</b>\n\n<b>🚀 Pᴏᴡᴇʀᴇᴅ Bʏ : {query.message.chat.title}</b>',
                     reply_markup = InlineKeyboardMarkup(buttons),
                     protect_content=True if ident == "filep" else False 
                 )
