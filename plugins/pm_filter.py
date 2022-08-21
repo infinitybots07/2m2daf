@@ -890,10 +890,13 @@ async def advantage_spell_check_1_(msg):
         await msg.delete()
         await ms.delete()
     if not imdb:
-        ni = await msg.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb['title'], rating=imdb['rating'], genres=imdb['genres'], year=imdb['year'], runtime=imdb['runtime'], language=imdb['languages'], group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), reply_markup=reply_markup)
-            await asyncio.sleep(259200)
-            await msg.delete()
-            await ni.delete()
+        ni = await msg.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", 
+            caption=script.IMDB_MOVIE_2.format(query=search, title=imdb['title'], rating=imdb['rating'], genres=imdb['genres'], year=imdb['year'], runtime=imdb['runtime'], language=imdb['languages'], group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), 
+            reply_markup=reply_markup
+        )
+        await asyncio.sleep(259200)
+        await msg.delete()
+        await ni.delete()
     else:
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
