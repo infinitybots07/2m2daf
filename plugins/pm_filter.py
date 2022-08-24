@@ -757,7 +757,7 @@ async def auto_filter(client, msg, spoll=False):
 
     btn.insert(0, 
         [
-            InlineKeyboardButton(f'Fɪʟᴇs: {total_result}', 'dupe'),
+            InlineKeyboardButton(f'Fɪʟᴇs: {total_results}', 'dupe'),
             InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'reason'),
             InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'reason')
         ]
@@ -911,15 +911,7 @@ async def advantage_spell_check_1_(msg):
         await asyncio.sleep(259200)
         await msg.delete()
         await ms.delete()
-    else:
-        buttons = [[
-            InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
-            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f'https://google.com/search?q={reply}')
-        ]]
-        a3 = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.mention}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
-        await asyncio.sleep(100)
-        await msg.delete()
-        await a3.delete()
+    
         return
     
 ##--------------------------------[ 2nd Spell Check Message ]-------------------------------##
