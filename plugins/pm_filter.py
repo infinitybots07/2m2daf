@@ -88,8 +88,8 @@ async def next_page(bot, query):
     btn.insert(0, 
         [
             InlineKeyboardButton(f'Fɪʟᴇs: {len(files)}', 'dupe'),
-            InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'movss'),
-            InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'moviis')
+            InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'reason'),
+            InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'reason')
         ]
     )
    
@@ -414,7 +414,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ms = await client.send_cached_media(
                     chat_id=CH_FILTER,
                     file_id=file_id,
-                    caption=f'<b>ʜᴇʏ 👋 {query.from_user.mention} 😊</b>\n\n<b>📁 Fᴀᴍᴇ Nᴀᴍᴇ : <code>[CL] {title}</code></b>\n\n<b>⚙️ sɪᴢᴇ : {size}</b>\n\n<b><u>Nᴏᴛᴇ :</u></b>\n\n<b>⚠️ Tʜɪs Fɪʟᴇ Wɪʟʟ Aᴜᴛɪ Dᴇʟᴇᴛᴇ Iɴ 10 Mɪɴᴜᴛᴇs Sᴏ Fᴏʀᴡᴀʀᴅ Tʜɪs Mᴇssᴀɢᴇʙ Tᴏ Sᴏᴍᴇᴡʜᴇʀᴇ Eʟsᴇ ᴀɴᴅ Dᴏᴡɴʟᴏᴀᴅ Fʀᴏᴍ Tʜᴇʀᴇ.. ⚠️</b>\n\n<b>🚀 Pᴏᴡᴇʀᴇᴅ Bʏ : {query.message.chat.title}</b>',
+                    caption=f'<b>ʜᴇʏ 👋 {query.from_user.mention} 😊</b>\n\n<b>📁 Fᴀᴍᴇ Nᴀᴍᴇ : <code>[CL] {title}</code></b>\n\n<b>⚙️ sɪᴢᴇ : {size}</b>\n\n<b><u>Nᴏᴛᴇ :</u></b>\n\n<b>⚠️ Tʜɪs Fɪʟᴇ Wɪʟʟ Aᴜᴛᴏ Dᴇʟᴇᴛᴇ Iɴ 10 Mɪɴᴜᴛᴇs Sᴏ Fᴏʀᴡᴀʀᴅ Tʜɪs Mᴇssᴀɢᴇʙ Tᴏ Sᴏᴍᴇᴡʜᴇʀᴇ Eʟsᴇ ᴀɴᴅ Dᴏᴡɴʟᴏᴀᴅ Fʀᴏᴍ Tʜᴇʀᴇ.. ⚠️</b>\n\n<b>🚀 Pᴏᴡᴇʀᴇᴅ Bʏ : {query.message.chat.title}</b>',
                     reply_markup = InlineKeyboardMarkup(buttons),
                     protect_content=True if ident == "filep" else False 
                 )
@@ -646,14 +646,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-    elif query.data == "movss":
-        await query.answer("⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\nᴍᴏᴠɪᴇ ʀᴇǫᴜᴇꜱᴛ ꜰᴏʀᴍᴀᴛ\n⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\n\nɢᴏ ᴛᴏ ɢᴏᴏɢʟᴇ ⪼ ᴛʏᴘᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ⪼ ᴄᴏᴘʏ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ⪼ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ\n\nᴇxᴀᴍᴘʟᴇ : ᴋɢꜰ ᴄʜᴀᴘᴛᴇʀ 2  2022\n\n✘ ᴅᴏɴᴛ ᴜꜱᴇ ➠ ':(!,./)\n\n© Tʜᴏᴍᴀs Sʜᴇʟʙʏ", show_alert=True)
-
     
-    elif query.data == "moviis":  
-        await query.answer("⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\nꜱᴇʀɪᴇꜱ ʀᴇǫᴜᴇꜱᴛ ꜰᴏʀᴍᴀᴛ\n⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\n\nɢᴏ ᴛᴏ ɢᴏᴏɢʟᴇ ⪼ ᴛʏᴘᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ⪼ ᴄᴏᴘʏ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ⪼ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ\n\nᴇxᴀᴍᴘʟᴇ : ʟᴏᴋɪ S01 E01\n\n✘ ᴅᴏɴᴛ ᴜꜱᴇ ➠ ':(!,./)\n\n© Tʜᴏᴍᴀs Sʜᴇʟʙʏ", show_alert=True)   
-    
- 
     elif query.data == "reason":
         await query.answer("✯ 𝖢𝗁𝖾𝖼𝗄 𝖮𝖳𝖳 𝖱𝖾𝗅𝖾𝖺𝗌𝖾 ᴏʀ 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖳𝗁𝖾 𝗌𝗉𝖾𝗅𝗅𝗂𝗇𝗀\n\n✯ 𝖣𝗈𝗇𝗍 𝖴𝗌𝖾 𝖲𝗒𝗆𝖻𝗈𝗅𝗌 𝖶𝗁𝗂𝗅𝖾 𝖱𝖾𝗊𝗎𝖾𝗌𝗍 (,:'?!* 𝖾𝗍𝖼..)\n\n✯ [𝖬𝗈𝗏𝗂𝖾 𝖭𝖺𝗆𝖾 ,𝖸𝖾𝖺𝗋 ,𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾] 𝖠𝗌𝗄 𝖳𝗁𝗂𝗌 𝖶𝖺𝗒", show_alert=True)        
         
@@ -764,9 +757,9 @@ async def auto_filter(client, msg, spoll=False):
 
     btn.insert(0, 
         [
-            InlineKeyboardButton(f'Fɪʟᴇs: {len(files)}', 'dupe'),
-            InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'movss'),
-            InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'moviis')
+            InlineKeyboardButton(f'Fɪʟᴇs: {total_result}', 'dupe'),
+            InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'reason'),
+            InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'reason')
         ]
     )
     
@@ -859,7 +852,7 @@ async def advantage_spell_check_1_(msg):
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason"),
         ]]
-        a = await msg.reply(f"<b><u>Hᴇʟʟᴏ Bᴜᴅᴅʏ</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a = await msg.reply(f"<b><u>Hᴇʟʟᴏ Bᴜᴅᴅʏ</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Fᴏ Yᴏᴜʀ Sᴇᴀʀᴄʜ {search}\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a.delete()
