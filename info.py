@@ -31,7 +31,7 @@ auth_channel = environ.get('AUTH_CHANNEL')
 auth_grp = environ.get('AUTH_GROUP')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
-
+ch_filter = environ.get('CH_FILTER')
 # MongoDB information
 DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
@@ -56,7 +56,7 @@ PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
 DELETE_TIME = int(environ.get('DELETE_TIME', 180000))
 CH_LINK = environ.get('CH_LINK', "")
-CH_FILTER = int(environ.get('CH_FILTER', 0))
+CH_FILTER = int(ch_filter) if ch_filter and id_pattern.search(ch_filter) else None
 
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
