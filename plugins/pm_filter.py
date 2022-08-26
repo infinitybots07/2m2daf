@@ -809,8 +809,6 @@ async def auto_filter(client, msg, spoll=False):
 ##-------------------------------------[ 1st Spell Check Message ]-------------------------------------------##
 
 async def advantage_spell_check_1_(msg):
-  
-    search = msg.text
     query = re.sub(
         r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|br((o|u)h?)*|^h(e|a)?(l)*(o)*|mal(ayalam)?|t(h)?amil|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|thar(u)?(o)*w?|kittum(o)*|aya(k)*(um(o)*)?|full\smovie|any(one)|with\ssubtitle(s)?)",
         "", msg.text, flags=re.IGNORECASE)  # plis contribute some common words
@@ -863,15 +861,13 @@ async def advantage_spell_check_1_(msg):
         await k.delete()
         return
     SPELL_CHECK[msg.message_id] = movielist
-    reply = search.replace(" ", "+")
-    
-    buttons = [[
+    btn = [[
         InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}")
     ],[
         InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
-        InlineKeyboardButton("🌀 Tʀʏ Aɢᴀɪɴ", callback_data=f"spolling#{user}#{k}")
+        InlineKeyboardButton("🌀 Tʀʏ Aɢᴀɪɴ", callback_data=f"spolling#{user}#{k}",
+        )
     ] for k, movie in enumerate(movielist)]
-    
     imdb=await get_poster(search)
     if imdb and imdb.get('poster'):
         ms = await msg.reply_photo(
@@ -882,17 +878,6 @@ async def advantage_spell_check_1_(msg):
         await asyncio.sleep(259200)
         await msg.delete()
         await ms.delete()
-    else:
-        buttons = [[
-            InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
-            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f'https://google.com/search?q={reply}')
-        ]]
-        a3 = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.mention}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
-        await asyncio.sleep(100)
-        await msg.delete()
-        await k.delete()
-        return
-    
 ##--------------------------------[ 2nd Spell Check Message ]-------------------------------##
 
 async def advantage_spell_check_2_(msg):
