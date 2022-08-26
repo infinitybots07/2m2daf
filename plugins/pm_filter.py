@@ -407,15 +407,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
                             [
                                 InlineKeyboardButton("⚠️ Cᴀɴɴᴏᴛ Aᴄᴄᴇss ❓ Cʟɪᴄᴋ Hᴇʀᴇ ⚠️", url = f"{CH_LINK}")
                             ]
-                        ]
-                    )
-                )
-                await query.answer("Hᴇʏ Mʏ Bᴏᴛ Cʜᴇᴄᴋ Oᴜᴛ Cʜᴀᴛ")
-                await asyncio.sleep(600)
-                await message.delete()
-                await ms.delete()
-            except Exception as e:
-                logger.exception(e, exc_info=True)
+                      ]
+                 )
+            )
+            await query.answer("Hᴇʏ Mʏ Bᴏᴛ Cʜᴇᴄᴋ Oᴜᴛ Cʜᴀᴛ")
+            await asyncio.sleep(600)
+            await message.delete()
+            await ms.delete()
+        except Exception as e:
+            logger.exception(e, exc_info=True)
         
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
