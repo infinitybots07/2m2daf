@@ -66,7 +66,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'files#{file.file_id}#{query.from_user.id}'
                 ),
             ]
             for file in files
@@ -75,11 +75,11 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"{file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"{file.file_name}", callback_data=f'files#{file.file_id}#{query.from_user.id}'
                 ),
                 InlineKeyboardButton(
                     text=f"{get_size(file.file_size)}",
-                    callback_data=f'files_#{file.file_id}',
+                    callback_data=f'files_#{file.file_id}#{query.from_user.id}',
                 ),
             ]
             for file in files
@@ -151,9 +151,8 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            k = await query.answer(f"Hᴇʏ {message.from_user.mention} Bᴜᴅᴅʏ ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ", disable_web_page_preview=True)            
-            await asyncio.sleep(14)
-            await k.delete()
+            k = await query.answer(f"Hᴇʏ {message.from_user.mention} Bᴜᴅᴅʏ ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ", True)            
+            
 
 
 @Client.on_callback_query()
@@ -345,7 +344,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             alert = alert.replace("\\n", "\n").replace("\\t", "\t")
             await query.answer(alert, show_alert=True)
     if query.data.startswith("file"):
-        ident, file_id = query.data.split("#")
+        ident, file_id, rid = query.data.split("#")
+        
+        if int(rid) not in [query.from_user.id, 0]:
+            return await query.answer("loading...", show_alert=True)
+
       
         files_ = await get_file_details(file_id)
         if not files_:
@@ -714,7 +717,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'{pre}#{file.file_id}'
+                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
                 ),
             ]
             for file in files
@@ -724,11 +727,11 @@ async def auto_filter(client, msg, spoll=False):
             [
                 InlineKeyboardButton(
                     text=f"{file.file_name}",
-                    callback_data=f'{pre}#{file.file_id}',
+                    callback_data=f'{pre}#{file.file_id}#{message.from_user.id}',
                 ),
                 InlineKeyboardButton(
                     text=f"{get_size(file.file_size)}",
-                    callback_data=f'{pre}#{file.file_id}',
+                    callback_data=f'{pre}#{file.file_id}#{message.from_user.id}',
                 ),
             ]
             for file in files
