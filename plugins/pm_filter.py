@@ -809,8 +809,7 @@ async def auto_filter(client, msg, spoll=False):
 ##-------------------------------------[ 1st Spell Check Message ]-------------------------------------------##
 
 async def advantage_spell_check_1_(msg):
-    search = msg.text
-    reply = search.replace(" ", "+")
+    reply = msg.text.replace(" ", "+")
     query = re.sub(
         r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|br((o|u)h?)*|^h(e|a)?(l)*(o)*|mal(ayalam)?|t(h)?amil|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|thar(u)?(o)*w?|kittum(o)*|aya(k)*(um(o)*)?|full\smovie|any(one)|with\ssubtitle(s)?)",
         "", msg.text, flags=re.IGNORECASE)  # plis contribute some common words
@@ -822,10 +821,10 @@ async def advantage_spell_check_1_(msg):
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason"),
         ]]
-        k = await msg.reply(f"<b><u>Hᴇʟʟᴏ Bᴜᴅᴅʏ</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Fᴏ Yᴏᴜʀ Sᴇᴀʀᴄʜ {search}\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a = await msg.reply(f"<b><u>Hᴇʟʟᴏ Bᴜᴅᴅʏ</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
-        await k.delete()
+        await a.delete()
         return
     regex = re.compile(r".*(imdb|wikipedia).*", re.IGNORECASE)  # look for imdb / wiki results
     gs = list(filter(regex.match, g_s))
@@ -852,36 +851,43 @@ async def advantage_spell_check_1_(msg):
     movielist += [(re.sub(r'(\-|\(|\)|_)', '', i, flags=re.IGNORECASE)).strip() for i in gs_parsed]
     movielist = list(dict.fromkeys(movielist))  # removing duplicates
     if not movielist:
-        reply = search.replace(" ", "+")
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
             InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f'https://google.com/search?q={reply}')
         ]]
-        k = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.mention}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a2 = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.mention}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
-        await k.delete()
+        await a2.delete()
         return
     SPELL_CHECK[msg.message_id] = movielist
     btn = [[
-        InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}"
-        )
-    ],[
-        InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"
-        ),
-        InlineKeyboardButton("🌀 Tʀʏ Aɢᴀɪɴ", callback_data=f"reason",
-        )
-    ]]
+     InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}")
+     ],[
+     InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
+     InlineKeyboardButton("🎭 Gᴏᴏɢʟᴇ", url=f"https://google.com/search?q={reply}")
+     ]]    
     imdb=await get_poster(search)
     if imdb and imdb.get('poster'):
         ms = await msg.reply_photo(
-            photo=imdb.get('poster') if imdb.get('poster') else "https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg",
+            photo=imdb.get('poster') else "https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg",
             caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), 
-            reply_markup=InlineKeyboardMarkup(btn)
+            reply_markup=InlineKeybaordMarkup(btn)
         ) 
         await asyncio.sleep(259200)
         await msg.delete()
         await ms.delete()
+    else:
+        buttons = [[
+            InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
+            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f'https://google.com/search?q={reply}')
+        ]]
+        a3 = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.mention}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        await asyncio.sleep(100)
+        await msg.delete()
+        await a3.delete()
+        return
+    
 ##--------------------------------[ 2nd Spell Check Message ]-------------------------------##
 
 async def advantage_spell_check_2_(msg):
