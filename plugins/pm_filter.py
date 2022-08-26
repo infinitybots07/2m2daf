@@ -414,7 +414,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await asyncio.sleep(600)
                 await message.delete()
                 await ms.delete()
-           except Exception as e:
+            except Exception as e:
                 logger.exception(e, exc_info=True)
         
         except UserIsBlocked:
