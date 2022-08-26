@@ -869,7 +869,7 @@ async def advantage_spell_check_1_(msg):
      ],[
      InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
      InlineKeyboardButton("🌀 Tʀʏ Aɢᴀɪɴ", callback_data=f"spolling#{user}#{k}")
-     ]for k, movie in enumerate(movielist)]
+     ]]
     )    
     imdb=await get_poster(search)
     if imdb and imdb.get('poster'):
