@@ -864,19 +864,20 @@ async def advantage_spell_check_1_(msg):
         return
     SPELL_CHECK[msg.message_id] = movielist
     reply = search.replace(" ", "+")
-    reply_markup = InlineKeyboardMarkup([[
-     InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}")
-     ],[
-     InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
-     InlineKeyboardButton("🌀 Tʀʏ Aɢᴀɪɴ", callback_data=f"spolling#{user}#{k}")
-     ]]
-    )    
+    
+    buttons = [[
+        InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}")
+    ],[
+        InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
+        InlineKeyboardButton("🌀 Tʀʏ Aɢᴀɪɴ", callback_data=f"spolling#{user}#{k}")
+    ] for k, movie in enumerate(movielist)]
+    
     imdb=await get_poster(search)
     if imdb and imdb.get('poster'):
         ms = await msg.reply_photo(
             photo=imdb.get('poster') if imdb.get('poster') else "https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg",
             caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), 
-            reply_markup=reply_markup
+            reply_markup=InlineKryboardMarkup(buttons)
         ) 
         await asyncio.sleep(259200)
         await msg.delete()
