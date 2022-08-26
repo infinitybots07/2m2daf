@@ -864,10 +864,12 @@ async def advantage_spell_check_1_(msg):
         return
     SPELL_CHECK[msg.message_id] = movielist
     btn = [[
-        InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}")
+        InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}"
+        )
     ],[
-        InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
-        InlineKeyboardButton("🌀 Tʀʏ Aɢᴀɪɴ", callback_data=f"spolling#{user}#{k}",
+        InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"
+        ),
+        InlineKeyboardButton("🌀 Tʀʏ Aɢᴀɪɴ", callback_data=f"reason",
         )
     ]]
     imdb=await get_poster(search)
