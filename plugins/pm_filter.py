@@ -151,37 +151,7 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            await query.message.edit_text(
-                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▱▱▱▱▱▱▱▱▱ 10%"
-            )
-            await query.message.edit_text(
-                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▱▱▱▱▱▱▱▱ 20%"
-            )
-            await query.message.edit_text(
-                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▱▱▱▱▱▱▱ 30%"
-            )
-            await query.message.edit_text(
-                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▱▱▱▱▱▱ 40%"
-            )
-            await query.message.edit_text(
-                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▱▱▱▱▱ 50%"
-            )
-            await query.message.edit_text(
-                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▰▱▱▱▱ 60%"
-            )
-            await query.message.edit_text(
-                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▰▰▱▱▱ 70%"
-            )
-            await query.message.edit_text(
-                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▰▰▰▱▱ 80%"
-            )
-            await query.message.edit_text(
-                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▰▰▰▰▱ 90%"
-            )
-            await query.message.edit_text(
-                text="<u><b>Sᴇʀᴄʜɪɴɢ :</b></u>\n\n▰▰▰▰▰▰▰▰▰▰ 100%"
-            )
-            k = await query.message.edit("<b>💌 ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ 💌</b>\n› <a href=https://t.me/CL_UPDATE><b>ɴᴇᴡ ᴜᴘᴅᴀᴛᴇs</b></a>", disable_web_page_preview=True)            
+            k = await query.answer(f"Hᴇʏ {message.from_user.mention} Bᴜᴅᴅʏ ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ", disable_web_page_preview=True)            
             await asyncio.sleep(14)
             await k.delete()
 
@@ -898,7 +868,7 @@ async def advantage_spell_check_1_(msg):
      InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}")
      ],[
      InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
-     InlineKeyboardButton("🎭 Gᴏᴏɢʟᴇ", url=f"https://google.com/search?q={reply}")
+     InlineKeyboardButton("🌀 Tʀʏ Aɢᴀɪɴ", callback_data=f"spolling#{user}#{k}")
      ]]
     )    
     imdb=await get_poster(search)
