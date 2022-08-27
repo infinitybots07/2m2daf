@@ -869,18 +869,19 @@ async def advantage_spell_check_1_(msg):
         await a2.delete()
         return
     SPELL_CHECK[msg.message_id] = movielist
-    btn = [[
-     InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}")
+    reply_markup=InlineKeyboardMarkup([[
+    InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}")
      ],[
      InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
      InlineKeyboardButton("🎭 Gᴏᴏɢʟᴇ", url=f"https://google.com/search?q={reply}")
-     ]]    
+     ]]
+    )    
     imdb=await get_poster(search)
     if imdb and imdb.get('poster'):
         ms = await msg.reply_photo(
             photo=imdb.get('poster') if imdb.get('poster') else "https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg",
             caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), 
-            reply_markup=InlineKeybaordMarkup(btn)
+            reply_markup=reply_markup
         ) 
         await asyncio.sleep(259200)
         await msg.delete()
