@@ -866,7 +866,7 @@ async def advantage_spell_check_1_(msg):
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
             InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f'https://google.com/search?q={reply}')
         ]]
-        a2 = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.mention}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a2 = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.first_name}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a2.delete()
