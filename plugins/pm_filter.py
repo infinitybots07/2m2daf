@@ -410,6 +410,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await asyncio.sleep(600)
             await msg1.delete()
             await ms.delete()
+            del msg1, ms
         except Exception as e:
             logger.exception(e, exc_info=True)
         
@@ -834,6 +835,7 @@ async def advantage_spell_check_1_(msg):
         await asyncio.sleep(100)
         await msg.delete()
         await a.delete()
+        del msg, a
         return
     regex = re.compile(r".*(imdb|wikipedia).*", re.IGNORECASE)  # look for imdb / wiki results
     gs = list(filter(regex.match, g_s))
@@ -868,6 +870,7 @@ async def advantage_spell_check_1_(msg):
         await asyncio.sleep(100)
         await msg.delete()
         await a2.delete()
+        del msg, a2
         return
     SPELL_CHECK[msg.message_id] = movielist
     reply_markup=InlineKeyboardMarkup([[
@@ -879,13 +882,8 @@ async def advantage_spell_check_1_(msg):
     )    
     imdb=await get_poster(search)
     if imdb and imdb.get('poster'):
-        ms = await msg.reply_photo(
-            photo=imdb.get('poster') if imdb.get('poster') else "https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg",
-            caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), 
-            reply_markup=reply_markup
-        ) 
+        ms = await msg.reply_photo(photo=imdb.get('poster') if imdb.get('poster') else "https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), reply_markup=reply_markup) 
         await asyncio.sleep(259200)
-        await msg.delete()
         await ms.delete()
     else:
         buttons = [[
@@ -896,6 +894,7 @@ async def advantage_spell_check_1_(msg):
         await asyncio.sleep(100)
         await msg.delete()
         await a3.delete()
+        del msg, a3
         return
     
 ##--------------------------------[ 2nd Spell Check Message ]-------------------------------##
