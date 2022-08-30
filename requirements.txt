@@ -11,4 +11,4 @@ heroku3
 datetime
 pynewtonmath
 pytz
-
+psutil
