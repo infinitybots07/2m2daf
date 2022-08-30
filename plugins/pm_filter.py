@@ -588,7 +588,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         await query.message.edit_text(text=script.MANUALFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode='html')
         
-    elif query.daat == "cpu":
+    elif query.data == "cpu":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='stats'),
             InlineKeyboardButton('Rᴇғʀᴇsʜ', callback_data='cpu2')
@@ -602,7 +602,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode='html'
         )
         
-    elif query.daat == "cpu2":
+    elif query.data == "cpu2":
         await query.answer("ᴜᴘᴅᴀᴛɪɴɢ ᴍʏ ᴅʙ ᴅᴇᴛᴀɪʟs")
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='stats')
