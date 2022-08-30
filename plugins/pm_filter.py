@@ -403,10 +403,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                             [
                                 InlineKeyboardButton("⚠️ Cᴀɴɴᴏᴛ Aᴄᴄᴇss ❓ Cʟɪᴄᴋ Hᴇʀᴇ ⚠️", url = f"{CH_LINK}")
                             ]
-                      ]
-                 )
+                        ]
+                   )
             )
-            await query.answer("Hᴇʏ Mʏ Bᴏʏ Cʜᴇᴄᴋ Oᴜᴛ Cʜᴀᴛ")
+            await query.answer()
             await asyncio.sleep(600)
             await msg1.delete()
             await ms.delete()
