@@ -591,7 +591,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.daat == "cpu":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='stats'),
-            InlineKeyboardButton('Rᴇғʀᴇsʜ' callback_data='cpu2')
+            InlineKeyboardButton('Rᴇғʀᴇsʜ', callback_data='cpu2')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         cpu = psutil.cpu_percent()
