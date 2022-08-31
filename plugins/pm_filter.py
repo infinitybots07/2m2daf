@@ -739,6 +739,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('Auto Filter', callback_data=f'setgs#auto#{settings["auto"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Pᴍ' if settings["auto"] else 'Cʜᴀᴛ',
                                          callback_data=f'setgs#auto#{settings["auto"]}#{str(grp_id)}')
+                ],
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Pᴍ' if settings["botpm"] else 'Cʜᴀᴛ',
