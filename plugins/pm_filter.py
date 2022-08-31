@@ -586,13 +586,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         await query.message.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
     
-    settings = await get_settings(query.message.chat.id)
-    elif settings['auto']:
-        FILTER_MODE[str(message.chat.id)] = "True" 
-      
-    else:
-        FILTER_MODE[str(message.chat.id)] = "false" 
-
+    
     elif query.data == "filter":
         buttons = [[
             InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ', callback_data='auto'),
@@ -733,11 +727,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('Sɪɴɢʟᴇ' if settings["button"] else 'Dᴏᴜʙʟᴇ',
                                          callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
                 ],
-                [
-                    InlineKeyboardButton('Auto Filter', callback_data=f'setgs#auto#{settings["auto"]}#{str(grp_id)}'),
-                    InlineKeyboardButton('Pᴍ' if settings["auto"] else 'Cʜᴀᴛ',
-                                         callback_data=f'setgs#auto#{settings["auto"]}#{str(grp_id)}')
-                ],
+               
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Pᴍ' if settings["botpm"] else 'Cʜᴀᴛ',
