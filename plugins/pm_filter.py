@@ -31,16 +31,7 @@ logger.setLevel(logging.ERROR)
 BUTTONS = {}
 SPELL_CHECK = {}
 FILTER_MODE = {}
-
-@Client.on_message(filters.command('autofilter'))
-async def fil_mod(client, message): 
-      settings = await get_settings(message.chat.id)
-      if settings['auto']:
-          FILTER_MODE[str(message.chat.id)] = "True" 
-      
-      else:
-          FILTER_MODE[str(message.chat.id)] = "false" 
-
+    
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client,message):
     group_id = message.chat.id
@@ -594,6 +585,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
         await query.message.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
+    
+    settings = await get_settings(query.message.chat.id)
+    elif settings['auto']:
+        FILTER_MODE[str(message.chat.id)] = "True" 
+      
+    else:
+        FILTER_MODE[str(message.chat.id)] = "false" 
 
     elif query.data == "filter":
         buttons = [[
