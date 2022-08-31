@@ -824,7 +824,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = script.IMDB_MOVIE_2.format(query=search, title=imdb('title'), rating=imdb('rating'), genres=imdb('genres'), year=imdb('year'), runtime=imdb('runtime'), language=imdb('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot'])
+        cap = script.IMDB_MOVIE_2.format(query=search, title=imdb['title'], rating=imdb['rating'], genres=imdb['genres'], year=imdb['year'], runtime=imdb['runtime'], language=imdb['languages'], group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot'])
     if imdb and imdb.get('poster'):
         try:
             fmsg = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
