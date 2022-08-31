@@ -824,7 +824,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b><i>🎬 Mᴏᴠɪᴇ ɴᴀᴍᴇ : {search}\n👩🏻‍💻 Rᴇǫᴜᴇsᴛᴇᴅ ʙʏ : {message.from_user.mention}\n🚀 Gʀᴏᴜᴘ : {message.chat.title}</i></b>"
+        cap = script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot'])
     if imdb and imdb.get('poster'):
         try:
             fmsg = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
@@ -837,7 +837,7 @@ async def auto_filter(client, msg, spoll=False):
             logger.exception(e)
             fmsg = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
     else:
-        fmsg = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
+        fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap, reply_markup=InlineKeyboardMarkup(btn))
     
     await asyncio.sleep(DELETE_TIME)
     await message.delete()
@@ -911,10 +911,11 @@ async def advantage_spell_check_1_(msg):
      InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
      InlineKeyboardButton("🎭 Gᴏᴏɢʟᴇ", url=f"https://google.com/search?q={reply}")
      ]]
-    )    
+    )     
     imdb=await get_poster(search)
     if imdb and imdb.get('poster'):
         ms = await msg.reply_photo(photo=imdb.get('poster') if settings["imdb"] else "https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), reply_markup=reply_markup) 
+        
         await asyncio.sleep(259200)
         await ms.delete()
     else:
