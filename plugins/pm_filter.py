@@ -11,7 +11,7 @@ import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
 from info import ADMINS, PICS_RT, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, \
-    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, DELETE_TIME, CH_FILTER, CH_LINK
+    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, DELETE_TIME, CH_FILTER, CH_LINK, UNAUTHORIZED_CALLBACK_TEXT
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
@@ -419,9 +419,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
             elif settings['botpm']:
-                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
-                return
-            else:
                 ms = await client.send_cached_media(
                     chat_id=CH_FILTER,
                     file_id=file_id,
@@ -445,15 +442,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                 InlineKeyboardButton("⚠️ Cᴀɴɴᴏᴛ Aᴄᴄᴇss ❓ Cʟɪᴄᴋ Hᴇʀᴇ ⚠️", url = f"{CH_LINK}")
                             ]
                         ]
-                   )
-            )
-            await query.answer()
-            await asyncio.sleep(600)
-            await msg1.delete()
-            await ms.delete()
-            del msg1, ms
-        except Exception as e:
-            logger.exception(e, exc_info=True)
+                    )
+                )
+                await query.answer()
+                await asyncio.sleep(600)
+                await msg1.delete()
+                await ms.delete()
+                del msg1, ms
+                return
+            else:
+                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+                
         
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
