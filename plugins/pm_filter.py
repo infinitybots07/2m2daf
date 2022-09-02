@@ -868,9 +868,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        imdb=await get_poster(search)
         cap = script.IMDB_MOVIE_2.format(query=search, title=imdb['title'], rating=imdb['rating'], genres=imdb['genres'], year=imdb['year'], runtime=imdb['runtime'], language=imdb['languages'], group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot'])
-    
     if imdb and imdb.get('poster'):
         try:
             fmsg = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
@@ -878,7 +876,7 @@ async def auto_filter(client, msg, spoll=False):
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
-            fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg" , caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
+            fmsg = await message.reply_photo(photo=poster, caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except Exception as e:
             logger.exception(e)
             fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap, reply_markup=InlineKeyboardMarkup(btn))
