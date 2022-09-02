@@ -422,7 +422,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ms = await client.send_cached_media(
                     chat_id=CH_FILTER,
                     file_id=file_id,
-                    caption=f'<b>ʜᴇʏ 👋 {query.from_user.mention} 😊</b>\n\n<b>📁 Fɪʟᴇ Nᴀᴍᴇ : <code>[CL] {title}</code></b>\n\n<b>⚙️ sɪᴢᴇ : {size}</b>\n\n<b><u>Nᴏᴛᴇ :</u></b>\n\n<b>⚠️ Tʜɪs Fɪʟᴇ Wɪʟʟ Aᴜᴛᴏ Dᴇʟᴇᴛᴇ Iɴ 10 Mɪɴᴜᴛᴇs Sᴏ Fᴏʀᴡᴀʀᴅ Tʜɪs Mᴇssᴀɢᴇ Tᴏ Sᴏᴍᴇᴡʜᴇʀᴇ Eʟsᴇ ᴀɴᴅ Dᴏᴡɴʟᴏᴀᴅ Fʀᴏᴍ Tʜᴇʀᴇ.. ⚠️</b>\n\n<b>🚀 Pᴏᴡᴇʀᴇᴅ Bʏ : {query.message.chat.title}</b>',
+                    caption=f'<b>ʜᴇʏ 👋 {query.from_user.mention} 😍</b>\n\n<b>📁 Fɪʟᴇ Nᴀᴍᴇ : <code>[CL] {title}</code></b>\n\n<b>⚙️ sɪᴢᴇ : {size}</b>\n\n<b><u>Nᴏᴛᴇ :</u></b>\n\n<b>⚠️ Tʜɪs Fɪʟᴇ Wɪʟʟ Aᴜᴛᴏ Dᴇʟᴇᴛᴇ Iɴ 10 Mɪɴᴜᴛᴇs Sᴏ Fᴏʀᴡᴀʀᴅ Tʜɪs Mᴇssᴀɢᴇ Tᴏ Sᴏᴍᴇᴡʜᴇʀᴇ Eʟsᴇ Aɴᴅ Dᴏᴡɴʟᴏᴀᴅ Fʀᴏᴍ Tʜᴇʀᴇ.. ⚠️</b>\n\n<b>🚀 Pᴏᴡᴇʀᴇᴅ Bʏ : {query.message.chat.title}</b>',
                     reply_markup = InlineKeyboardMarkup(buttons),
                     protect_content=True if ident == "filep" else False 
                 )
@@ -727,7 +727,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
-                    InlineKeyboardButton('Pᴍ' if settings["botpm"] else 'Cʜᴀᴛ',
+                    InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
                                          callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
                 ],
                 [
