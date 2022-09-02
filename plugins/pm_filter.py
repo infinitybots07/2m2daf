@@ -866,7 +866,8 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = TEMPLATE.format(query=search, title=imdb['title'], rating=imdb['rating'], genres=imdb['genres'], year=imdb['year'], runtime=imdb['runtime'], languages=imdb['languages'], plot=imdb['plot'])
+        imdb = await get_poster(search)
+        cap2 = TEMPLATE.format(query=search, title=imdb['title'], rating=imdb['rating'], genres=imdb['genres'], year=imdb['year'], runtime=imdb['runtime'], languages=imdb['languages'], plot=imdb['plot'])
     if imdb and imdb.get('poster'):
         try:
             fmsg = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
@@ -877,9 +878,9 @@ async def auto_filter(client, msg, spoll=False):
             fmsg = await message.reply_photo(photo=poster, caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except Exception as e:
             logger.exception(e)
-            fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap, reply_markup=InlineKeyboardMarkup(btn))
+            fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap2, reply_markup=InlineKeyboardMarkup(btn))
     else:
-        fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap, reply_markup=InlineKeyboardMarkup(btn))
+        fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap2, reply_markup=InlineKeyboardMarkup(btn))
        
     await asyncio.sleep(DELETE_TIME)
     await message.delete()
