@@ -387,14 +387,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
             alert = alert.replace("\\n", "\n").replace("\\t", "\t")
             await query.answer(alert, show_alert=True)
     if query.data.startswith("file"):
-        ident, file_id = query.data.split("#")
+        ident, file_id, rid = query.data.split("#")
+
+        if int(rid) not in [query.from_user.id, 0]:
+            return await query.answer(UNAUTHORIZED_CALLBACK_TEXT, show_alert=True)
+
         files_ = await get_file_details(file_id)
         if not files_:
             return await query.answer('No such file exist.')
         files = files_[0]
         title = files.file_name
         size = get_size(files.file_size)
-        type = files.file_type
         mention = query.from_user.mention
         f_caption = files.caption
         settings = await get_settings(query.message.chat.id)
@@ -402,17 +405,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             try:
                 f_caption = CUSTOM_FILE_CAPTION.format(file_name='' if title is None else title,
                                                        file_size='' if size is None else size,
-                                                       file_caption='' if f_caption is None else f_caption)
-                                                       
+                                                       file_caption='' if f_caption is None else f_caption)                                                      
             except Exception as e:
                 logger.exception(e)
             f_caption = f_caption
-            size = size
-            mention = mention
         if f_caption is None:
             f_caption = f"{files.file_name}"
-            size = f"{files.file_size}"
-            mention = f"{query.from_user.mention}"
         buttons = [[
             InlineKeyboardButton('➕ ᴀᴅᴅ ʙᴏᴛ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕', url=f'http://t.me/CL_FILTER_BOT?startgroup=true')
         ]]
@@ -868,7 +866,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = script.IMDB_MOVIE_2.format(query=search, title=imdb['title'], rating=imdb['rating'], genres=imdb['genres'], year=imdb['year'], runtime=imdb['runtime'], language=imdb['languages'], group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot'])
+        cap = script.TEMPLATE.format(query=search, title=imdb['title'], rating=imdb['rating'], genres=imdb['genres'], year=imdb['year'], runtime=imdb['runtime'], languages=imdb['languages'], plot=imdb['plot'])
     if imdb and imdb.get('poster'):
         try:
             fmsg = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
