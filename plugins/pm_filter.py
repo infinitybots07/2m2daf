@@ -418,7 +418,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             if AUTH_CHANNEL and not await is_subscribed(client, query):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
-            elif settings['botpm']:
+            elif settings['redierct_to']:
                 ms = await client.send_cached_media(
                     chat_id=CH_FILTER,
                     file_id=file_id,
@@ -726,9 +726,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ],
                
                 [
-                    InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
-                    InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
-                                         callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
+                    InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#redierct_to#{settings["redierct_to"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('Cʜᴀᴛ' if settings["redierct_to"] else 'Pᴍ',
+                                         callback_data=f'setgs#redierct_to#{settings["redierct_to"]}#{str(grp_id)}')
                 ],
                 [
                     InlineKeyboardButton('Fɪʟᴇ Sᴇᴄᴜʀᴇ',
