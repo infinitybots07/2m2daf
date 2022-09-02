@@ -866,7 +866,7 @@ async def auto_filter(client, msg, spoll=False):
         )
     else:
         imdb2 = await get_poster(search)
-        cap2 = script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['year'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"Mᴏᴠɪᴇ Nᴀᴍᴇ : {search}"
+        cap2 = script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['year'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"<b><i>📁 Mᴏᴠɪᴇ Nᴀᴍᴇ : {search}\n📩 Uᴘʟᴏᴀᴅᴇᴅ Bʏ : {message.chat.title}\n🗣️ Rᴇǫᴜᴇsᴛᴇᴅ Bʏ : {message.from_user.mention}</b></i>"
     if imdb and imdb.get('poster'):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
         try:
             fmsg = await message.reply_photo(photo=imdb.get('poster'), caption=cap1[:1024],
