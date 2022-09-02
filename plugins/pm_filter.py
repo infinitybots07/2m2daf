@@ -866,7 +866,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = script.TEMPLATE.format(query=search, title=imdb['title'], rating=imdb['rating'], genres=imdb['genres'], year=imdb['year'], runtime=imdb['runtime'], languages=imdb['languages'], plot=imdb['plot'])
+        cap = TEMPLATE.format(query=search, title=imdb['title'], rating=imdb['rating'], genres=imdb['genres'], year=imdb['year'], runtime=imdb['runtime'], languages=imdb['languages'], plot=imdb['plot'])
     if imdb and imdb.get('poster'):
         try:
             fmsg = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
