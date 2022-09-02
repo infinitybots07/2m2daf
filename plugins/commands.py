@@ -429,8 +429,8 @@ async def settings(client, message):
                 
             [
                 InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
-                InlineKeyboardButton('Pᴍ' if settings["botpm"] else 'Cʜᴀᴛ',
-                                     callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
+                InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
+                                     callback_data=f'setgs#redierct_to#{settings["redierct_to"]}#{str(grp_id)}')
             ],
             [
                    
