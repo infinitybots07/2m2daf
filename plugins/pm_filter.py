@@ -830,7 +830,7 @@ async def auto_filter(client, msg, spoll=False):
         btn.append(
             [InlineKeyboardButton(text="sᴇʟᴇᴄᴛ ғɪʟᴇ ғʀᴏᴍ ᴀʙᴏᴠᴇ ʟɪɴᴋs", callback_data="pages")]
         )
-    imdb2 = await get_poster(search)
+    
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']
     if imdb:
@@ -866,6 +866,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
+        imdb2 = await get_poster(search)
         cap2 = script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['year'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot'])
     if imdb and imdb.get('poster'):
         try:
