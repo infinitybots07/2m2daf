@@ -461,11 +461,20 @@ async def settings(client, message):
         ]
         reply_markup = InlineKeyboardMarkup(buttons)
         if settings["button"]:
-            stats="On"
+            stats="Sɪɴɢʟᴇ"
         else:
-            stats="off"
+            stats="Dᴏᴜʙʟᴇ"
+        if settings["botpm"]:
+            stats2="Cʜᴀᴛ"
+        else:
+            stats2="Pᴍ
+        if settings["file_secure"]:
+            stats3="Yᴇs"
+        else:
+            stats3="Nᴏ
+        
         await message.reply_text(
-            text=f"<b><u>Sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ {stats} Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ",
+            text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nBᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄᴜʀᴇ : {stats3}\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ",
             reply_markup=reply_markup,
             disable_web_page_preview=True,
             parse_mode="html",
