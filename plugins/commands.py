@@ -473,7 +473,17 @@ async def settings(client, message):
         else:
             stats3="Nᴏ"
         if settings["imdb"]:
-            
+            stats4="Yᴇs
+        else:
+            stats4="Nᴏ"
+        if settings["spell_check"]:
+            stats5="Nᴇᴡ"
+        else:
+            stats5="Dᴇғᴀᴜʟᴛ"
+        if settings["welcome"]:
+            stats6="Yᴇs"
+        else:
+            stats6="Nᴏ"
         await message.reply_text(
             text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
             reply_markup=reply_markup,
