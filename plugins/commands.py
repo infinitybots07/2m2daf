@@ -471,7 +471,7 @@ async def settings(client, message):
         if settings["file_secure"]:
             stats3="Yᴇs"
         else:
-            stats3="Nᴏ
+            stats3="Nᴏ"
         
         await message.reply_text(
             text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nBᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄᴜʀᴇ : {stats3}\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ",
