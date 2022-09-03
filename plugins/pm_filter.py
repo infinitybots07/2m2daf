@@ -783,7 +783,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             else:
                 stats6="Nᴏ"
             await query.message.edit_text(
-                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
+                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {query.chat.title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
                 reply_markup=reply_markup
             )
 async def auto_filter(client, msg, spoll=False):
@@ -904,9 +904,9 @@ async def auto_filter(client, msg, spoll=False):
             fmsg = await message.reply_photo(photo=poster, caption=cap1[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except Exception as e:
             logger.exception(e)
-            fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap2 if cap2 else f"Mᴏᴠɪᴇ Nᴀᴍᴇ : {search}", reply_markup=InlineKeyboardMarkup(btn))
+            fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap2, reply_markup=InlineKeyboardMarkup(btn))
     else:
-        fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap2 if cap2 else f"Mᴏᴠɪᴇ Nᴀᴍᴇ : {search}", reply_markup=InlineKeyboardMarkup(btn))
+        fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap2, reply_markup=InlineKeyboardMarkup(btn))
        
     await asyncio.sleep(DELETE_TIME)
     await message.delete()
