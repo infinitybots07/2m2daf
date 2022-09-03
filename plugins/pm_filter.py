@@ -758,7 +758,31 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ]
             ]
             reply_markup = InlineKeyboardMarkup(buttons)
-            await query.message.edit_reply_markup(reply_markup)
+            if settings["button"]:
+                stats="Sɪɴɢʟᴇ"
+            else:
+                stats="Dᴏᴜʙʟᴇ"
+            if settings["botpm"]:
+                stats2="Cʜᴀᴛ"
+            else:
+                stats2="Pᴍ"
+            if settings["file_secure"]:
+                stats3="Yᴇs"
+            else:
+                stats3="Nᴏ"
+            if settings["imdb"]:
+                stats4="Yᴇs"
+            else:
+                stats4="Nᴏ"
+            if settings["spell_check"]:
+                stats5="Nᴇᴡ"
+            else:
+                stats5="Dᴇғᴀᴜʟᴛ"
+            if settings["welcome"]:
+                stats6="Yᴇs"
+            else:
+                stats6="Nᴏ"
+            await query.message.edit_text(
     
 async def auto_filter(client, msg, spoll=False):
     if not spoll:
