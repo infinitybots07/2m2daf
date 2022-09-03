@@ -450,9 +450,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await msg1.delete()
                 await ms.delete()
                 del msg1, ms
-            except Exception as e:
-                logger.exception(e, exc_info=True)
-                await query.answer(f"Encountering Issues", True)
                 return
             else:
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
