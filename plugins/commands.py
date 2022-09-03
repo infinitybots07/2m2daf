@@ -467,7 +467,7 @@ async def settings(client, message):
         if settings["botpm"]:
             stats2="Cʜᴀᴛ"
         else:
-            stats2="Pᴍ
+            stats2="Pᴍ"
         if settings["file_secure"]:
             stats3="Yᴇs"
         else:
