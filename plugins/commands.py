@@ -473,7 +473,7 @@ async def settings(client, message):
         else:
             stats3="Nᴏ"
         if settings["imdb"]:
-            stats4="Yᴇs
+            stats4="Yᴇs"
         else:
             stats4="Nᴏ"
         if settings["spell_check"]:
