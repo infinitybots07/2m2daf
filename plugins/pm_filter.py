@@ -105,11 +105,12 @@ async def next_page(bot, query):
     if not files:
         return
     settings = await get_settings(query.message.chat.id)
+    pre = 'filep' if settings['file_secure'] else 'file'
     if settings['button']:
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'files#{file.file_id}#{query.from_user.id}'
+                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
                 ),
             ]
             for file in files
@@ -118,11 +119,11 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"{file.file_name}", callback_data=f'files#{file.file_id}#{query.from_user.id}'
+                    text=f"{file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
                 ),
                 InlineKeyboardButton(
                     text=f"{get_size(file.file_size)}",
-                    callback_data=f'files_#{file.file_id}#{query.from_user.id}',
+                    callback_data=f'{pre}#{file.file_id}#{query.from_user.id}',
                 ),
             ]
             for file in files
@@ -449,6 +450,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await msg1.delete()
                 await ms.delete()
                 del msg1, ms
+            except Exception as e:
+                logger.exception(e, exc_info=True)
+                await query.answer(f"Encountering Issues", True)
                 return
             else:
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
