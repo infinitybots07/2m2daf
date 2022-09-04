@@ -777,7 +777,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ]
             ]
             button2 = [[
-                InlineKeyboardButton('open in chat', url="t.me/cl_filter_bot)
+                InlineKeyboardButton('open in chat', url="t.me/cl_filter_bot")
             ]]
             if settings["button"]:
                 stats="Sɪɴɢʟᴇ"
