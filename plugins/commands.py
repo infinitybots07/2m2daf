@@ -491,8 +491,8 @@ async def settings(client, message):
             parse_mode="html",
             reply_to_message_id=message.message_id
         )
-@Client.on_message(filters.command('settings') & filters.private)
-async def settings(client, message):
+@Client.on_message(filters.command('settings') & filters.group)
+async def settings2(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
         return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
