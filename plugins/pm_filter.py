@@ -701,6 +701,114 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "reason":
         await query.answer("✯ 𝖢𝗁𝖾𝖼𝗄 𝖮𝖳𝖳 𝖱𝖾𝗅𝖾𝖺𝗌𝖾 ᴏʀ 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖳𝗁𝖾 𝗌𝗉𝖾𝗅𝗅𝗂𝗇𝗀\n\n✯ 𝖣𝗈𝗇𝗍 𝖴𝗌𝖾 𝖲𝗒𝗆𝖻𝗈𝗅𝗌 𝖶𝗁𝗂𝗅𝖾 𝖱𝖾𝗊𝗎𝖾𝗌𝗍 (,:'?!* 𝖾𝗍𝖼..)\n\n✯ [𝖬𝗈𝗏𝗂𝖾 𝖭𝖺𝗆𝖾 ,𝖸𝖾𝖺𝗋 ,𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾] 𝖠𝗌𝗄 𝖳𝗁𝗂𝗌 𝖶𝖺𝗒", show_alert=True)        
         
+    elif query.data =="set2":
+        userid = message.from_user.id if message.from_user else None
+        if not userid:
+            return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
+        chat_type = message.chat.type
+
+        if chat_type == "private":
+            grpid = await active_connection(str(userid))
+            if grpid is not None:
+                grp_id = grpid
+                try:
+                    chat = await client.get_chat(grpid)
+                    title = chat.title
+                except:
+                    await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                    return
+            else:
+                await message.reply_text("I'm not connected to any groups!", quote=True)
+                return
+
+        elif chat_type in ["group", "supergroup"]:
+            grp_id = message.chat.id
+            title = message.chat.title
+
+        else:
+            return
+
+        st = await client.get_chat_member(grp_id, userid)
+        if (
+                st.status != "administrator"
+                and st.status != "creator"
+                and str(userid) not in ADMINS
+        ):
+            return
+        settings = await get_settings(grp_id)
+        if settings is not None:
+            buttons1 = [
+                [
+                    InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
+                                         callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('Sɪɴɢʟᴇ' if settings["button"] else 'Dᴏᴜʙʟᴇ',
+                                         callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
+                ],
+               
+                [
+                    InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
+                                         callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
+                ],
+                [
+                    InlineKeyboardButton('Fɪʟᴇ Sᴇᴄᴜʀᴇ',
+                                         callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('Yᴇs' if settings["file_secure"] else 'Nᴏ',
+                                         callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}')
+                ],
+                [
+                    InlineKeyboardButton('Iᴍᴅʙ', callback_data=f'setgs#imdb#{settings["imdb"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('Yᴇs' if settings["imdb"] else 'Nᴏ',
+                                         callback_data=f'setgs#imdb#{settings["imdb"]}#{str(grp_id)}')
+                ],
+                [
+                    InlineKeyboardButton('Sᴘᴇʟʟ Cʜᴇᴄᴋ',
+                                         callback_data=f'setgs#spell_check#{settings["spell_check"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('Nᴇᴡ' if settings["spell_check"] else 'Dᴇғᴀᴜʟᴛ',
+                                         callback_data=f'setgs#spell_check#{settings["spell_check"]}#{str(grp_id)}')
+                ],
+                [
+                    InlineKeyboardButton('Wᴇʟᴄᴏᴍᴇ', callback_data=f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('Yᴇs' if settings["welcome"] else 'Nᴏ',
+                                         callback_data=f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}')
+                ],
+                [
+                    InlineKeyboardButton('Cʟᴏsᴇ Sᴇᴛᴛɪɴɢs', callback_data='close_data')
+                ]
+            ]
+            button2 = [[
+                InlineKeyboardButton('open in chat', url=ms.link)
+            ]]
+            if settings["button"]:
+                stats="Sɪɴɢʟᴇ"
+            else:
+                stats="Dᴏᴜʙʟᴇ"
+            if settings["botpm"]:
+                stats2="Cʜᴀᴛ"
+            else:
+                stats2="Pᴍ"
+            if settings["file_secure"]:
+                stats3="Yᴇs"
+            else:
+                stats3="Nᴏ"
+            if settings["imdb"]:
+                stats4="Yᴇs"
+            else:
+                stats4="Nᴏ"
+            if settings["spell_check"]:
+                stats5="Nᴇᴡ"
+            else:
+                stats5="Dᴇғᴀᴜʟᴛ"
+            if settings["welcome"]:
+                stats6="Yᴇs"
+            else:
+                stats6="Nᴏ"
+            await query.megssage.edit_text(
+                text="are You sure"
+                reply_markup=InlineKeyboardMarkup(button2)
+                parse_mode='html'
+            )
+            
     elif query.data.startswith("setgs"):
         ident, set_type, status, grp_id = query.data.split("#")
         grpid = await active_connection(str(query.from_user.id))
