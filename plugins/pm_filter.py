@@ -702,10 +702,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer("✯ 𝖢𝗁𝖾𝖼𝗄 𝖮𝖳𝖳 𝖱𝖾𝗅𝖾𝖺𝗌𝖾 ᴏʀ 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖳𝗁𝖾 𝗌𝗉𝖾𝗅𝗅𝗂𝗇𝗀\n\n✯ 𝖣𝗈𝗇𝗍 𝖴𝗌𝖾 𝖲𝗒𝗆𝖻𝗈𝗅𝗌 𝖶𝗁𝗂𝗅𝖾 𝖱𝖾𝗊𝗎𝖾𝗌𝗍 (,:'?!* 𝖾𝗍𝖼..)\n\n✯ [𝖬𝗈𝗏𝗂𝖾 𝖭𝖺𝗆𝖾 ,𝖸𝖾𝖺𝗋 ,𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾] 𝖠𝗌𝗄 𝖳𝗁𝗂𝗌 𝖶𝖺𝗒", show_alert=True)        
         
     elif query.data =="set2":
-        userid = message.from_user.id if message.from_user else None
+        userid = query.from_user.id if query.from_user else None
         if not userid:
-            return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
-        chat_type = message.chat.type
+            return await query.reply(f"You are anonymous admin. Use /connect {query.chat.id} in PM")
+        chat_type = query.chat.type
 
         if chat_type == "private":
             grpid = await active_connection(str(userid))
@@ -715,15 +715,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     chat = await client.get_chat(grpid)
                     title = chat.title
                 except:
-                    await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                    await query.reply_text("Make sure I'm present in your group!!", quote=True)
                     return
             else:
-                await message.reply_text("I'm not connected to any groups!", quote=True)
+                await query.reply_text("I'm not connected to any groups!", quote=True)
                 return
 
         elif chat_type in ["group", "supergroup"]:
-            grp_id = message.chat.id
-            title = message.chat.title
+            grp_id = query.chat.id
+            title = query.chat.title
 
         else:
             return
