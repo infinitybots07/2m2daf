@@ -491,5 +491,51 @@ async def settings(client, message):
             parse_mode="html",
             reply_to_message_id=message.message_id
         )
+@Client.on_message(filters.command('settings') & filters.private)
+async def settings(client, message):
+    userid = message.from_user.id if message.from_user else None
+    if not userid:
+        return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
+    chat_type = message.chat.type
+
+    if chat_type == "private":
+        grpid = await active_connection(str(userid))
+        if grpid is not None:
+            grp_id = grpid
+            try:
+                chat = await client.get_chat(grpid)
+                title = chat.title
+            except:
+                await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                return
+        else:
+            await message.reply_text("I'm not connected to any groups!", quote=True)
+            return
+
+    elif chat_type in ["group", "supergroup"]:
+        grp_id = message.chat.id
+        title = message.chat.title
+
+    else:
+        return
+
+    st = await client.get_chat_member(grp_id, userid)
+    if (
+            st.status != "administrator"
+            and st.status != "creator"
+            and str(userid) not in ADMINS
+    ):
+        return
+    settings = await get_settings(grp_id)
+    if settings is not None:
+        buttons = [[
+            InlineKeyboardButton('Open in private chat', callback_data="set2")
+        ]]
+        reply_markup=InlineKeyboardMarkup(buttons)
+        await client.reply
+            text="LOAding..",
+            reply_markup=reply_markup,
+            parse_mode='html'
+        )
 
 
