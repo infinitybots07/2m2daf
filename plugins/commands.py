@@ -532,7 +532,7 @@ async def settings2(client, message):
             InlineKeyboardButton('Open in private chat', callback_data="set2")
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
-        await client.reply(
+        await message.reply(
             text="LOAding..",
             reply_markup=reply_markup,
             parse_mode='html'
