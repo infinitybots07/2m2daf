@@ -704,8 +704,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data =="set2":
         userid = query.from_user.id if query.from_user else None
         if not userid:
-            return await query.reply(f"You are anonymous admin. Use /connect {query.chat.id} in PM")
-        chat_type = query.chat.type
+            return await query.reply(f"You are anonymous admin. Use /connect {query.message.chat.id} in PM")
+        chat_type = query.message.chat.type
 
         if chat_type == "private":
             grpid = await active_connection(str(userid))
@@ -722,8 +722,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 return
 
         elif chat_type in ["group", "supergroup"]:
-            grp_id = query.chat.id
-            title = query.chat.title
+            grp_id = query.message.chat.id
+            title = query.message.chat.title
 
         else:
             return
