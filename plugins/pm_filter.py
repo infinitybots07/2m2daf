@@ -805,7 +805,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 stats6="Nᴏ"
             await query.megssage.edit_text(
                 text="are You sure"
-                reply_markup=InlineKeyboardMarkup(button2)
+                reply_markup=InlineKeyboardMarkup(button2),
                 parse_mode='html'
             )
             ms = await client.sent_message(
