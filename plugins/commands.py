@@ -529,11 +529,11 @@ async def settings2(client, message):
     settings = await get_settings(grp_id)
     if settings is not None:
         buttons = [[
-            InlineKeyboardButton('Open in private chat', callback_data="set2")
+            InlineKeyboardButton('🗣️ Oᴘᴇɴ Iɴ Pʀɪᴠᴀᴛᴇ Cʜᴀᴛ', callback_data="set2")
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await message.reply(
-            text="LOAding..",
+            text="Hᴇʏ Bᴜᴅᴅʏ Wʜᴇʀᴇ Dᴏ Yᴏᴜ Wᴀɴᴛ Tᴏ Oᴘᴇɴ Sᴇᴛᴛɪɴɢs ⚙️",
             reply_markup=reply_markup,
             parse_mode='html'
         )
