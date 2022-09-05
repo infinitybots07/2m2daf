@@ -776,9 +776,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('Cʟᴏsᴇ Sᴇᴛᴛɪɴɢs', callback_data='close_data')
                 ]
             ]
-            button2 = [[
-                InlineKeyboardButton('open in chat', url="t.me/cl_filter_bot")
-            ]]
+            
             if settings["button"]:
                 stats="Sɪɴɢʟᴇ"
             else:
@@ -803,17 +801,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 stats6="Yᴇs"
             else:
                 stats6="Nᴏ"
-            await query.message.edit_text(
-                text="are You sure",
-                reply_markup=InlineKeyboardMarkup(button2),
-                parse_mode='html'
-            )
-            ms = await client.sendMessage(
+            
+            ms = await Bot.send_message(
                 chat_id=query.from_user.id,
                 text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
                 reply_markup=InlineKeyboardMarkup(buttons1),
                 parse_mode="html"
-           )  
+           )
+           button2 = [[
+               InlineKeyboardButton('open in chat', url=ms.link)
+           ]]
+           await query.message.edit_text(
+                text="are You sure",
+                reply_markup=InlineKeyboardMarkup(button2),
+                parse_mode='html'
+            )
               
     elif query.data.startswith("setgs"):
         ident, set_type, status, grp_id = query.data.split("#")
