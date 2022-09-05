@@ -12,3 +12,4 @@ datetime
 pynewtonmath
 pytz
 psutil
+pyromod
