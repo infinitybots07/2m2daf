@@ -798,7 +798,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             else:
                 stats5="Dᴇғᴀᴜʟᴛ"
      
-    if settings["welcome"]:
+            if settings["welcome"]:
                 stats6="Yᴇs"
             else:
                 stats6="Nᴏ"
@@ -813,7 +813,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton('👉 Gᴏ ᴛᴏ Cʜᴀᴛ', url="t.me/CL_FILTER_BOT")
             ]]
             await query.message.edit_text(
-                text="Sᴇᴛᴛɪɴɢs Mᴇɴᴜ Wᴀs Sᴇɴᴛ Iɴ Yᴏᴜʀ Pᴍ ✔️",
+                text="<i><b>Sᴇᴛᴛɪɴɢs Mᴇɴᴜ Wᴀs Sᴇɴᴛ Iɴ Yᴏᴜʀ Pᴍ ✔️</b></i>",
                 reply_markup=InlineKeyboardMarkup(button2),
                 parse_mode='html'
             )
