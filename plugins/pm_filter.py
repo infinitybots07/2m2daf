@@ -797,7 +797,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 stats5="Nᴇᴡ"
             else:
                 stats5="Dᴇғᴀᴜʟᴛ"
-            if settings["welcome"]:
+     
+    if settings["welcome"]:
                 stats6="Yᴇs"
             else:
                 stats6="Nᴏ"
@@ -809,10 +810,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 parse_mode="html"
             )
             button2 = [[
-                InlineKeyboardButton('open in chat', url=ms.link)
+                InlineKeyboardButton('👉 Gᴏ ᴛᴏ Cʜᴀᴛ', url="t.me/CL_FILTER_BOT")
             ]]
             await query.message.edit_text(
-                text="are You sure",
+                text="Sᴇᴛᴛɪɴɢs Mᴇɴᴜ Wᴀs Sᴇɴᴛ Iɴ Yᴏᴜʀ Pᴍ ✔️",
                 reply_markup=InlineKeyboardMarkup(button2),
                 parse_mode='html'
             )
@@ -820,10 +821,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.startswith("setgs"):
         ident, set_type, status, grp_id = query.data.split("#")
         grpid = await active_connection(str(query.from_user.id))
-
-        if str(grp_id) != str(grpid):
-            await query.message.edit("⚠️ Sᴏʀʀʏ Bᴜᴅᴅʏ I Cᴀɴɴᴏᴛ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs Pʟᴇᴀsᴇ Tʀʏ Iɴ Pᴍ ⚠️")
-            return await query.answer('Hᴇʏ Nᴀᴜɢʜᴛʏ Bᴏʏ Tʜᴀᴛs Nᴏᴛ Fᴏʀ Yᴏᴜ')
 
         if status == "True":
             await save_group_settings(grpid, set_type, False)
