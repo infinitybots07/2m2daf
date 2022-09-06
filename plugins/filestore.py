@@ -5,7 +5,6 @@ from pyromod import listen
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup 
 from pyrogram import Client, filters 
 from pyrogram.errors import PeerIdInvalid, MessageIdInvalid
-from bot.helpers import encode
 
 @Client.on_message(filters.command("batch") & filters.private & ~filters.bot, group=3) 
 async def batch(bot:Client, update:Message): 
