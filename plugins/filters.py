@@ -180,14 +180,16 @@ async def get_all(client, message):
                 keyword_file.name = "keywords.txt"
                 await message.reply_document(
                     document=keyword_file,
+                    thumb="https://telegra.ph/file/e6f6f31b7540c88451140.jpg",
                     quote=True
                 )
             return
     else:
         filterlist = f"There are no active filters in **{title}**"
 
-    await message.reply_text(
-        text=filterlist,
+    await message.reply_document(
+        document=filterlist,
+        thumb="https://telegra.ph/file/e6f6f31b7540c88451140.jpg",
         quote=True,
         parse_mode="md"
     )
