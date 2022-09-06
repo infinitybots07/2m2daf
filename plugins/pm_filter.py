@@ -45,7 +45,7 @@ async def give_filter(client,message):
 
             if reply_text:
                 f2 = reply_text = reply_text.replace("\\n", "\n").replace("\\t", "\t")
-                await asyncio.sleep(12)
+                await asyncio.sleep(DELETE_TIME)
                 await message.delete()
                 await f2.delete()
                 del message, f2
@@ -54,7 +54,7 @@ async def give_filter(client,message):
                     if fileid == "None":
                         if btn == "[]":
                             f2 = await message.reply_text(reply_text, disable_web_page_preview=True)
-                            await asyncio.sleep(12)
+                            await asyncio.sleep(DELETE_TIME)
                             await message.delete()
                             await f2.delete()
                             del message, f2
@@ -65,7 +65,7 @@ async def give_filter(client,message):
                                 disable_web_page_preview=True,
                                 reply_markup=InlineKeyboardMarkup(button)
                             )
-                            await asyncio.sleep(12)
+                            await asyncio.sleep(DELETE_TIME)
                             await message.delete()
                             await f2.delete()
                             del message, f2
@@ -74,7 +74,7 @@ async def give_filter(client,message):
                             fileid,
                             caption=reply_text or ""
                         )
-                        await asyncio.sleep(12)
+                        await asyncio.sleep(DELETE_TIME)
                         await message.delete()
                         await f2.delete()
                         del message, f2
@@ -85,7 +85,7 @@ async def give_filter(client,message):
                             caption=reply_text or "",
                             reply_markup=InlineKeyboardMarkup(button)
                         )
-                        await asyncio.sleep(12)
+                        await asyncio.sleep(DELETE_TIME)
                         await message.delete()
                         await f2.delete()
                         del message, f2
@@ -1231,7 +1231,7 @@ async def manual_filters(client, message, text=False):
                             reply_markup=InlineKeyboardMarkup(button),
                             reply_to_message_id=reply_id
                         )
-                        await asyncio.sleep(12)
+                        await asyncio.sleep()
                         await fl.delete()
                         await message.delete()
                 except Exception as e:
