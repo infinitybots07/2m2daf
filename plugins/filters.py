@@ -121,7 +121,7 @@ async def addfilter(client, message):
     await add_filter(grp_id, text, reply_text, btn, fileid, alert)
 
     fil = await message.reply_text(
-        f"Filter for  `{text}`  added in  **{title}**",
+        f"Fɪʟᴛᴇʀ Fᴏʀ `{text}`  Aᴅᴇᴅᴅ Iɴ **{title}**",
         quote=True,
         parse_mode="md"
     )
@@ -180,7 +180,6 @@ async def get_all(client, message):
                 keyword_file.name = "keywords.txt"
                 await message.reply_document(
                     document=keyword_file,
-                    thumb="https://telegra.ph/file/e6f6f31b7540c88451140.jpg",
                     quote=True
                 )
             return
@@ -189,9 +188,7 @@ async def get_all(client, message):
 
     await message.reply_document(
         document=filterlist,
-        thumb="https://telegra.ph/file/e6f6f31b7540c88451140.jpg",
         quote=True,
-        parse_mode="md"
     )
         
 @Client.on_message(filters.command('del') & filters.incoming)
