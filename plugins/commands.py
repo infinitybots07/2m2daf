@@ -63,8 +63,7 @@ async def start(client, message):
             InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ Fᴏʀ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start2')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)        
-        await client.sent_message(
-            chat_id=message.from_user.id,
+        await message.reply_text(
             text=START_TXT,
             disable_web_page_preview=True,
             reply_markup=reply_markup,
@@ -115,8 +114,7 @@ async def start(client, message):
             InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ Fᴏʀ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start2')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)        
-        await client.sent_message(
-            chat_id=message.from_user.id,
+        await message.reply(
             text=START_TXT,
             disable_web_page_preview=True,
             reply_markup=reply_markup,
