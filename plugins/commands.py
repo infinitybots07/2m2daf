@@ -63,13 +63,13 @@ async def start(client, message):
             InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ Fᴏʀ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start2')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)        
-        await message.reply_text(
+        await client.sent_message(
+            chat_id=message.from_user.id,
             text=START_TXT,
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             parse_mode='html'
-        )         
-        await message.reply_chat_action("typing")
+        )        
         return
     if AUTH_CHANNEL and not await is_subscribed(client, message):
         try:
@@ -115,12 +115,13 @@ async def start(client, message):
             InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ Fᴏʀ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start2')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)        
-        await message.reply_text(
+        await client.sent_message(
+            chat_id=message.from_user.id,
             text=START_TXT,
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             parse_mode='html'
-        )         
+        )
         return
     data = message.command[1]
     try:
@@ -530,12 +531,19 @@ async def settings2(client, message):
     if settings is not None:
         buttons = [[
             InlineKeyboardButton('🗣️ Oᴘᴇɴ Iɴ Pʀɪᴠᴀᴛᴇ Cʜᴀᴛ', callback_data="set2")
+        ],
+        [
+            InlineKeyboardButton('👥 Oᴘᴇɴ Hᴇʀᴇ', callback_data='setgs')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
-        await message.reply(
-            text="Hᴇʏ Bᴜᴅᴅʏ Wʜᴇʀᴇ Dᴏ Yᴏᴜ Wᴀɴᴛ Tᴏ Oᴘᴇɴ Sᴇᴛᴛɪɴɢs ⚙️",
+        nl = await message.reply_text(
+            text="<b>Hᴇʏ Bᴜᴅᴅʏ Wʜᴇʀᴇ Dᴏ Yᴏᴜ Wᴀɴᴛ Tᴏ Oᴘᴇɴ Sᴇᴛᴛɪɴɢs ⚙️</b>",
             reply_markup=reply_markup,
             parse_mode='html'
         )
+        await asyncio.sleep(300)
+        await message.delete()
+        await nl.delete()
+        del message, nl
 
 
