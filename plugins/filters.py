@@ -40,7 +40,7 @@ async def addfilter(client, message):
             await bb.delete()
             return
 
-    elif chat_type in ["group", "supergroup"]:
+    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -49,8 +49,8 @@ async def addfilter(client, message):
 
     st = await client.get_chat_member(grp_id, userid)
     if (
-        st.status != "administrator"
-        and st.status != "creator"
+        st.status != enums.ChatMemberStatus.ADMINISTRATOR
+            and st.status != enums.ChatMemberStatus.OWNER
         and str(userid) not in ADMINS
     ):
         return
