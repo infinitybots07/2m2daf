@@ -543,7 +543,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=START_TXT,
             reply_markup=reply_markup,
             disable_web_page_preview=True,
-            parse_mode=enums.ChatType.HTML
+            parse_mode=enums.ParseMode.HTML
         )
       
     elif query.data == "start2":
@@ -563,7 +563,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.START_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
             disable_web_page_preview=True,
-            parse_mode=enums.ChatType.HTML
+            parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "owner":
         buttons = [[
@@ -572,7 +572,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
-        await query.message.edit_text(text='<u><b>Cᴏɴᴛᴀᴄᴛ Oᴡɴᴇʀ</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cᴏɴᴛᴀᴄᴛ Mʏ Oᴡɴᴇʀ', reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ChatType.HTML)
+        await query.message.edit_text(text='<u><b>Cᴏɴᴛᴀᴄᴛ Oᴡɴᴇʀ</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cᴏɴᴛᴀᴄᴛ Mʏ Oᴡɴᴇʀ', reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
 
     elif query.data == "help":
         buttons = [[
@@ -591,7 +591,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.HELP_TXT.format(query.from_user.mention), 
             reply_markup = InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True, 
-            parse_mode=enums.ChatType.HTML
+            parse_mode=enums.ParseMode.HTML
         )
 
     elif query.data == "about":
@@ -600,7 +600,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ', url='t.me/NL_BOTxCHAT'),
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
-        await query.message.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ChatType.HTML)
+        await query.message.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
     
     
     elif query.data == "filter":
@@ -610,7 +610,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
-        await query.message.edit_text(text="<b><u>Hᴇʟᴘ Fᴏʀ Fɪʟᴛᴇʀs</b></u>\n\nHᴇʏ Bᴜᴅᴅʏ Cʜᴏᴏsᴇ A Fɪʟᴛᴇʀ Tʏᴘᴇ", reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ChatType.HTML)
+        await query.message.edit_text(text="<b><u>Hᴇʟᴘ Fᴏʀ Fɪʟᴛᴇʀs</b></u>\n\nHᴇʏ Bᴜᴅᴅʏ Cʜᴏᴏsᴇ A Fɪʟᴛᴇʀ Tʏᴘᴇ", reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
             
     elif query.data == "fstore":
         await query.answer("Page Does Not Exist :(")
@@ -619,13 +619,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data="help")
         ]]
-        await query.message.edit_text(text=script.CONNECTION_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ChatType.HTML)
+        await query.message.edit_text(text=script.CONNECTION_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "admin":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
-        await query.message.edit_text(text=script.ADMIN_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ChatType.HTML)
+        await query.message.edit_text(text=script.ADMIN_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "filestore":
         await query.answer("Page Does Not Exist")
@@ -634,19 +634,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
-        await query.message.edit_text(text=script.JSON_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ChatType.HTML)
+        await query.message.edit_text(text=script.JSON_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "auto":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='filter')
         ]]
-        await query.message.edit_text(text=script.AUTOFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ChatType.HTML)
+        await query.message.edit_text(text=script.AUTOFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "manual":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='filter')
         ]]
-        await query.message.edit_text(text=script.MANUALFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ChatType.HTML)
+        await query.message.edit_text(text=script.MANUALFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "cpu":
         buttons = [[
@@ -659,7 +659,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=f'<u><b>Cᴜʀʀᴇɴᴛ Cᴘᴜ Sᴛᴀᴛᴜs</u></b>\n\nCᴘᴜ Sᴛᴀᴛᴜs : {cpu}\nRᴀᴍ Sᴛᴀᴛᴜs : {ram}',
             reply_markup=reply_markup,
-            parse_mode=enums.ChatType.HTML
+            parse_mode=enums.ParseMode.HTML
         )
         
     elif query.data == "cpu2":
@@ -673,7 +673,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=f'<u><b>Cᴜʀʀᴇɴᴛ Cᴘᴜ Sᴛᴀᴛᴜs</u></b>\n\nCᴘᴜ Sᴛᴀᴛᴜs : {cpu}\nRᴀᴍ Sᴛᴀᴛᴜs : {ram}',
             reply_markup=reply_markup,
-            parse_mode=enums.ChatType.HTML
+            parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "stats":
         buttons = [[
@@ -693,7 +693,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=script.STATUS_TXT.format(total, users, chats, monsize, free),
             reply_markup=reply_markup,
-            parse_mode=enums.ChatType.HTML
+            parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "rfrsh":
         await query.answer("ᴜᴘᴅᴀᴛɪɴɢ ᴍʏ ᴅʙ ᴅᴇᴛᴀɪʟs")
@@ -714,7 +714,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=script.STATUS_TXT.format(total, users, chats, monsize, free),
             reply_markup=reply_markup,
-            parse_mode=enums.ChatType.HTML
+            parse_mode=enums.ParseMode.HTML
         )
     
     elif query.data == "reason":
