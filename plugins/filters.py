@@ -50,7 +50,7 @@ async def addfilter(client, message):
     st = await client.get_chat_member(grp_id, userid)
     if (
         st.status != enums.ChatMemberStatus.ADMINISTRATOR
-            and st.status != enums.ChatMemberStatus.OWNER
+        and st.status != enums.ChatMemberStatus.OWNER
         and str(userid) not in ADMINS
     ):
         return
@@ -123,7 +123,7 @@ async def addfilter(client, message):
     fil = await message.reply_text(
         f"Fɪʟᴛᴇʀ Fᴏʀ `{text}`  Aᴅᴇᴅᴅ Iɴ **{title}**",
         quote=True,
-        parse_mode="md"
+        parse_mode=enums.ParseMode.MARKDOWN
     )
     await asyncio.sleep(10)
     await fil.delete()
@@ -135,7 +135,7 @@ async def get_all(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
         return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
-    if chat_type == "private":
+    if chat_type == enums.ChatType.PRIVATE:
         userid = message.from_user.id
         grpid = await active_connection(str(userid))
         if grpid is not None:
@@ -150,7 +150,7 @@ async def get_all(client, message):
             await message.reply_text("I'm not connected to any groups!", quote=True)
             return
 
-    elif chat_type in ["group", "supergroup"]:
+    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -159,8 +159,8 @@ async def get_all(client, message):
 
     st = await client.get_chat_member(grp_id, userid)
     if (
-        st.status != "administrator"
-        and st.status != "creator"
+        st.status != enums.ChatMemberStatus.ADMINISTRATOR
+        and st.status != enums.ChatMemberStatus.OWNER
         and str(userid) not in ADMINS
     ):
         return
@@ -189,7 +189,7 @@ async def get_all(client, message):
     await message.reply(
         text=filterlist,
         quote=True,
-        parse_mode='md'
+        parse_mode=enums.ChatType.MARKDOWN
     )
         
 @Client.on_message(filters.command('del') & filters.incoming)
@@ -212,7 +212,7 @@ async def deletefilter(client, message):
         else:
             await message.reply_text("I'm not connected to any groups!", quote=True)
 
-    elif chat_type in ["group", "supergroup"]:
+    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -221,8 +221,8 @@ async def deletefilter(client, message):
 
     st = await client.get_chat_member(grp_id, userid)
     if (
-        st.status != "administrator"
-        and st.status != "creator"
+        st.status != enums.ChatMemberStatus.ADMINISTRATOR
+        and st.status != enums.ChatMemberStatus.OWNER
         and str(userid) not in ADMINS
     ):
         return
@@ -250,7 +250,7 @@ async def delallconfirm(client, message):
         return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
     chat_type = message.chat.type
 
-    if chat_type == "private":
+    if chat_type == enums.ChatType.PRIVATE:
         grpid  = await active_connection(str(userid))
         if grpid is not None:
             grp_id = grpid
@@ -264,7 +264,7 @@ async def delallconfirm(client, message):
             await message.reply_text("I'm not connected to any groups!", quote=True)
             return
 
-    elif chat_type in ["group", "supergroup"]:
+    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -272,7 +272,7 @@ async def delallconfirm(client, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if (st.status == "creator") or (str(userid) in ADMINS):
+    if (st.status == enums.ChatMemberStatus.OWNER) or (str(userid) in ADMINS):
         await message.reply_text(
             f"This will delete all filters from '{title}'.\nDo you want to continue??",
             reply_markup=InlineKeyboardMarkup([
