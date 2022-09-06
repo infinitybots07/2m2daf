@@ -531,7 +531,7 @@ async def settings2(client, message):
             InlineKeyboardButton('🗣️ Oᴘᴇɴ Iɴ Pʀɪᴠᴀᴛᴇ Cʜᴀᴛ', callback_data="set2")
         ],
         [
-            InlineKeyboardButton('👥 Oᴘᴇɴ Hᴇʀᴇ', callback_data='setgs')
+            InlineKeyboardButton('👥 Oᴘᴇɴ Hᴇʀᴇ', callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         nl = await message.reply_text(
@@ -539,7 +539,7 @@ async def settings2(client, message):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-        await asyncio.sleep(300)
+        await asyncio.sleep(150)
         await message.delete()
         await nl.delete()
         del message, nl
