@@ -262,7 +262,7 @@ async def list_users(bot, message):
     except MessageTooLong:
         with open('users.txt', 'w+') as outfile:
             outfile.write(out)
-        await message.reply_document('users.txt', thumb="https://telegra.ph/file/e6f6f31b7540c88451140.jpg", caption="List Of Users")
+        await message.reply_document('users.txt', caption="List Of Users")
 
 @Client.on_message(filters.command('chats') & filters.user(ADMINS))
 async def list_chats(bot, message):
@@ -279,4 +279,4 @@ async def list_chats(bot, message):
     except MessageTooLong:
         with open('chats.txt', 'w+') as outfile:
             outfile.write(out)
-        await message.reply_document('chats.txt', thumb="https://telegra.ph/file/e6f6f31b7540c88451140.jpg", caption="List Of Chats")
+        await message.reply_document('chats.txt', caption="List Of Chats")
