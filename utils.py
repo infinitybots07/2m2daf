@@ -262,16 +262,16 @@ def last_online(from_user):
         time += "🤖 Bot :("
     elif from_user.status == enums.UserStatus.RECENTLY:
         time += "Recently"
-    elif from_user.status == 'within_week':
+    elif from_user.status == enums.UserStatus.WITHIN_WEEK:
         time += "Within the last week"
-    elif from_user.status == 'within_month':
+    elif from_user.status == enums.UserStatus.WITHIN_MONTH:
         time += "Within the last month"
     elif from_user.status == 'long_time_ago':
         time += "A long time ago :("
-    elif from_user.status == 'online':
+    elif from_user.status == enums.UserStatus.ONLINR:
         time += "Currently Online"
     elif from_user.status == 'offline':
-        time += datetime.fromtimestamp(from_user.last_online_date).strftime("%a, %d %b %Y, %H:%M:%S")
+        time += datetim)
     return time
 
 
