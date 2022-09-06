@@ -1231,7 +1231,7 @@ async def manual_filters(client, message, text=False):
                             reply_markup=InlineKeyboardMarkup(button),
                             reply_to_message_id=reply_id
                         )
-                        await asyncio.sleep()
+                        await asyncio.sleep(DELETE_TIME)
                         await fl.delete()
                         await message.delete()
                 except Exception as e:
