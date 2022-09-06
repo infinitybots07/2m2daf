@@ -264,7 +264,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
             grp_id = query.message.chat.id
             st = await client.get_chat_member(grp_id, userid)
-            if (st.status == "creator") or (str(userid) in ADMINS):
+            if (st.status == enums.ChatMemberStatus.OWNER) or (str(userid) in ADMINS):
                 await query.message.delete()
                 try:
                     await query.message.reply_to_message.delete()
@@ -298,7 +298,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             f"Gʀᴏᴜᴘ Nᴀᴍᴇ :- **{title}**\nGʀᴏᴜᴘ Iᴅ :- `{group_id}`",
             reply_markup=keyboard,
-            parse_mode="md"
+            parse_mode=enums.ParseMode.MARKDOWN
         )
         return await query.answer('Hᴀᴘᴘʏ Aʟʟᴇ Dᴀ')
     elif "connectcb" in query.data:
@@ -317,7 +317,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if mkact:
             await query.message.edit_text(
                 f"Cᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ **{title}**",
-                parse_mode="md"
+                parse_mode=enums.ParseMode.MARKDOWN
             )
         else:
             await query.message.edit_text('Some error occurred!!', parse_mode="md")
@@ -337,12 +337,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if mkinact:
             await query.message.edit_text(
                 f"Disconnected from **{title}**",
-                parse_mode="md"
+                parse_mode=enums.ParseMode.MARKDOWN
             )
         else:
             await query.message.edit_text(
                 f"Some error occurred!!",
-                parse_mode="md"
+                parse_mode=enums.ParseMode.MARKDOWN
             )
         return
     elif "deletecb" in query.data:
@@ -360,7 +360,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             await query.message.edit_text(
                 f"Some error occurred!!",
-                parse_mode="md"
+                parse_mode=enums.ParseMode.MARKDOWN
             )
         return await query.answer('𝙿𝙻𝙴𝙰𝚂𝙴 𝚂𝙷𝙰𝚁𝙴 𝙰𝙽𝙳 𝚂𝚄𝙿𝙿𝙾𝚁𝚃')
     elif query.data == "backcb":
@@ -543,7 +543,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=START_TXT,
             reply_markup=reply_markup,
             disable_web_page_preview=True,
-            parse_mode='html'
+            parse_mode=enums.ChatType.HTML
         )
       
     elif query.data == "start2":
@@ -563,7 +563,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.START_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
             disable_web_page_preview=True,
-            parse_mode='html'
+            parse_mode=enums.ChatType.HTML
         )
     elif query.data == "owner":
         buttons = [[
@@ -572,7 +572,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
-        await query.message.edit_text(text='<u><b>Cᴏɴᴛᴀᴄᴛ Oᴡɴᴇʀ</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cᴏɴᴛᴀᴄᴛ Mʏ Oᴡɴᴇʀ', reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
+        await query.message.edit_text(text='<u><b>Cᴏɴᴛᴀᴄᴛ Oᴡɴᴇʀ</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cᴏɴᴛᴀᴄᴛ Mʏ Oᴡɴᴇʀ', reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ChatType.HTML)
 
     elif query.data == "help":
         buttons = [[
@@ -591,7 +591,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.HELP_TXT.format(query.from_user.mention), 
             reply_markup = InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True, 
-            parse_mode='html'
+            parse_mode=enums.ChatType.HTML
         )
 
     elif query.data == "about":
@@ -600,7 +600,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ', url='t.me/NL_BOTxCHAT'),
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
-        await query.message.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
+        await query.message.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ChatType.HTML)
     
     
     elif query.data == "filter":
@@ -610,7 +610,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
-        await query.message.edit_text(text="<b><u>Hᴇʟᴘ Fᴏʀ Fɪʟᴛᴇʀs</b></u>\n\nHᴇʏ Bᴜᴅᴅʏ Cʜᴏᴏsᴇ A Fɪʟᴛᴇʀ Tʏᴘᴇ", reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
+        await query.message.edit_text(text="<b><u>Hᴇʟᴘ Fᴏʀ Fɪʟᴛᴇʀs</b></u>\n\nHᴇʏ Bᴜᴅᴅʏ Cʜᴏᴏsᴇ A Fɪʟᴛᴇʀ Tʏᴘᴇ", reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ChatType.HTML)
             
     elif query.data == "fstore":
         await query.answer("Page Does Not Exist :(")
@@ -619,13 +619,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data="help")
         ]]
-        await query.message.edit_text(text=script.CONNECTION_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode='html')
+        await query.message.edit_text(text=script.CONNECTION_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ChatType.HTML)
         
     elif query.data == "admin":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
-        await query.message.edit_text(text=script.ADMIN_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode='html')
+        await query.message.edit_text(text=script.ADMIN_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ChatType.HTML)
         
     elif query.data == "filestore":
         await query.answer("Page Does Not Exist")
@@ -634,19 +634,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
-        await query.message.edit_text(text=script.JSON_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode='html')
+        await query.message.edit_text(text=script.JSON_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ChatType.HTML)
         
     elif query.data == "auto":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='filter')
         ]]
-        await query.message.edit_text(text=script.AUTOFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode='html')
+        await query.message.edit_text(text=script.AUTOFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ChatType.HTML)
         
     elif query.data == "manual":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='filter')
         ]]
-        await query.message.edit_text(text=script.MANUALFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode='html')
+        await query.message.edit_text(text=script.MANUALFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ChatType.HTML)
         
     elif query.data == "cpu":
         buttons = [[
@@ -659,7 +659,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=f'<u><b>Cᴜʀʀᴇɴᴛ Cᴘᴜ Sᴛᴀᴛᴜs</u></b>\n\nCᴘᴜ Sᴛᴀᴛᴜs : {cpu}\nRᴀᴍ Sᴛᴀᴛᴜs : {ram}',
             reply_markup=reply_markup,
-            parse_mode='html'
+            parse_mode=enums.ChatType.HTML
         )
         
     elif query.data == "cpu2":
@@ -673,7 +673,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=f'<u><b>Cᴜʀʀᴇɴᴛ Cᴘᴜ Sᴛᴀᴛᴜs</u></b>\n\nCᴘᴜ Sᴛᴀᴛᴜs : {cpu}\nRᴀᴍ Sᴛᴀᴛᴜs : {ram}',
             reply_markup=reply_markup,
-            parse_mode='html'
+            parse_mode=enums.ChatType.HTML
         )
     elif query.data == "stats":
         buttons = [[
@@ -693,7 +693,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=script.STATUS_TXT.format(total, users, chats, monsize, free),
             reply_markup=reply_markup,
-            parse_mode='html'
+            parse_mode=enums.ChatType.HTML
         )
     elif query.data == "rfrsh":
         await query.answer("ᴜᴘᴅᴀᴛɪɴɢ ᴍʏ ᴅʙ ᴅᴇᴛᴀɪʟs")
@@ -714,7 +714,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=script.STATUS_TXT.format(total, users, chats, monsize, free),
             reply_markup=reply_markup,
-            parse_mode='html'
+            parse_mode=enums.ChatType.HTML
         )
     
     elif query.data == "reason":
@@ -726,7 +726,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return await query.reply(f"You are anonymous admin. Use /connect {query.message.chat.id} in PM")
         chat_type = query.message.chat.type
 
-        if chat_type == "private":
+        if chat_type == enums.ChatType.PRIVATE:
             grpid = await active_connection(str(userid))
             if grpid is not None:
                 grp_id = grpid
@@ -740,7 +740,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.reply_text("I'm not connected to any groups!", quote=True)
                 return
 
-        elif chat_type in ["group", "supergroup"]:
+        elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
             grp_id = query.message.chat.id
             title = query.message.chat.title
 
