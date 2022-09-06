@@ -1103,7 +1103,7 @@ async def advantage_spell_check_1_(msg):
         await a2.delete()
         del msg, a2
         return
-    SPELL_CHECK[msg.message_id] = movielist
+    SPELL_CHECK[msg.id] = movielist
     settings = await get_settings(msg.chat.id)
     reply_markup=InlineKeyboardMarkup([[
     InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={reply}")
@@ -1174,7 +1174,7 @@ async def advantage_spell_check_2_(msg):
         await asyncio.sleep(8)
         await k.delete()
         return
-    SPELL_CHECK[msg.message_id] = movielist
+    SPELL_CHECK[msg.id] = movielist
     btn = [[
         InlineKeyboardButton(
             text=movie.strip(),
@@ -1192,7 +1192,7 @@ async def advantage_spell_check_2_(msg):
 async def manual_filters(client, message, text=False):
     group_id = message.chat.id
     name = text or message.text
-    reply_id = message.reply_to_message.message_id if message.reply_to_message else message.message_id
+    reply_id = message.reply_to_message.id if message.reply_to_message else message.id
     keywords = await get_filters(group_id)
     for keyword in reversed(sorted(keywords, key=len)):
         pattern = r"( |^|[^\w])" + re.escape(keyword) + r"( |$|[^\w])"
