@@ -749,8 +749,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         st = await client.get_chat_member(grp_id, userid)
         if (
-                st.status != "administrator"
-                and st.status != "creator"
+                st.status != enums.ChatMemberStatus.ADMINISTRATOR
+                and st.status != enums.ChatMemberStatus.OWNER
                 and str(userid) not in ADMINS
         ):
             return
@@ -826,7 +826,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 chat_id=query.from_user.id,
                 text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
                 reply_markup=InlineKeyboardMarkup(buttons1),
-                parse_mode="html"
+                parse_mode=enums.ChatType.HTML
             )
             button2 = [[
                 InlineKeyboardButton('👉 Gᴏ ᴛᴏ Cʜᴀᴛ', url="t.me/CL_FILTER_BOT")
@@ -834,7 +834,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.edit_text(
                 text="<i><b>Sᴇᴛᴛɪɴɢs Mᴇɴᴜ Wᴀs Sᴇɴᴛ Iɴ Yᴏᴜʀ Pᴍ ✔️</b></i>",
                 reply_markup=InlineKeyboardMarkup(button2),
-                parse_mode='html'
+                parse_mode=enums.ChatType.HTML
             )
               
     elif query.data.startswith("setgs"):
