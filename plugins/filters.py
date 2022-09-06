@@ -186,9 +186,10 @@ async def get_all(client, message):
     else:
         filterlist = f"There are no active filters in **{title}**"
 
-    await message.reply_document(
-        document=filterlist,
+    await message.reply(
+        text=filterlist,
         quote=True,
+        parse_mode='md'
     )
         
 @Client.on_message(filters.command('del') & filters.incoming)
