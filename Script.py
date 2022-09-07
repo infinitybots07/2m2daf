@@ -6,15 +6,14 @@ class script(object):
 ○ Cʀᴇᴀᴛᴏʀ : <a href=https://t.me/NL_MP4_BOT><b>ɴɪʜᴀᴀʟ 🇮🇳</b></a>
 ○ Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ 𝟥 
 ○ Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ Asʏɴᴄɪᴏ 𝟢.𝟣𝟩.𝟣 
-○ Sᴇʀᴠᴇʀ : Hᴇʀᴏᴋᴜ
+○ Sᴇʀᴠᴇʀ : <a href=www.railway.app.com><b>Rᴀɪʟᴡᴀʏ</b></a>
 ○ Dᴀᴛᴀʙᴀsᴇ : <a href=www.mangodb.com><b>MᴀɴɢᴏDB</b></a>
 ○ Bᴜɪʟᴅ sᴛᴀᴛᴜs : V9.8 [ Kɪʟʟᴀᴅɪ ]</b>"""
 
     HELP_TXT = """Hᴇʏ {} Wᴇʟᴄᴏᴍᴇ Tᴏ Mʏ Hᴇʟᴘ Iғ Yᴏᴜ Sᴇᴇᴍ Lᴏsᴛ Oʀ Hᴀᴠᴇ A Dᴏᴜʙᴛ Usᴇ Tʜᴇ Bᴜᴛᴛᴏɴs Bᴇʟᴏᴡ Tᴏ Nᴀᴠɪɢᴀᴛᴇ Tʜʀᴏᴜɢʜ Iᴛ !"""
     
     
-    IMDB_MOVIE_2 = """<b>
-🧿 ᴛɪᴛᴛʟᴇ :  [{title}]({url})
+    IMDB_MOVIE_2 = """<b>🧿 ᴛɪᴛᴛʟᴇ :  [{title}]({url})
 🌟 ʀᴀᴛɪɴɢ : <code>{rating} / 10</code>
 🎭 ɢᴇɴʀᴇ : <code>{genres}</code>
 
