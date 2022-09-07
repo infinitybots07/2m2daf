@@ -929,9 +929,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 stats6="Yᴇs"
             else:
                 stats6="Nᴏ"
-            await client.edit_message_text(
+            await query.message.edit_text(
                 text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {query.message.chat.title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍᴇ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴏᴡ Bᴜᴛᴛᴏɴs</b>",
-                reply_markup=reply_markup
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML
             )
 async def auto_filter(client, msg, spoll=False):
     if not spoll:
