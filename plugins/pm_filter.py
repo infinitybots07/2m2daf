@@ -766,7 +766,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
         settings = await get_settings(grp_id)
         if settings is not None:
-            await message.answer()
+            await query.answer()
             buttons1 = [
                 [
                     InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
