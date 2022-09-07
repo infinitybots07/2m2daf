@@ -213,7 +213,7 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            await query.answer(f"Hᴇʏ {query.from_user.mention} Bᴜᴅᴅʏ ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ", show_alert=True)            
+            await query.reply(f"Hᴇʏ {query.from_user.mention} Bᴜᴅᴅʏ ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ")            
             
 
 
@@ -249,7 +249,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
 
         st = await client.get_chat_member(grp_id, userid)
-        if (st.status == "creator") or (str(userid) in ADMINS):
+        if (st.status == enums.ChatMemberStatus.OWNER) or (str(userid) in ADMINS):
             await del_all(query.message, grp_id, title)
         else:
             await query.answer("You need to be Group Owner or an Auth User to do that!", show_alert=True)
@@ -559,6 +559,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('🔙 ʙᴀᴄᴋ ᴛᴏ sᴛᴀʀᴛ 🔙', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
+        await query.answer()
         await query.message.edit_text(
             text=script.START_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
@@ -572,6 +573,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
+        await query.answer()
         await query.message.edit_text(text='<u><b>Cᴏɴᴛᴀᴄᴛ Oᴡɴᴇʀ</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cᴏɴᴛᴀᴄᴛ Mʏ Oᴡɴᴇʀ', reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
 
     elif query.data == "help":
@@ -587,6 +589,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
+        await query.answer()
         await query.message.edit_text(
             text=script.HELP_TXT.format(query.from_user.mention), 
             reply_markup = InlineKeyboardMarkup(buttons),
@@ -600,6 +603,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ', url='t.me/NL_BOTxCHAT'),
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
+        await query.answer()
         await query.message.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
     
     
@@ -610,42 +614,45 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
+        await query.answer()
         await query.message.edit_text(text="<b><u>Hᴇʟᴘ Fᴏʀ Fɪʟᴛᴇʀs</b></u>\n\nHᴇʏ Bᴜᴅᴅʏ Cʜᴏᴏsᴇ A Fɪʟᴛᴇʀ Tʏᴘᴇ", reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
             
     elif query.data == "fstore":
-        await query.answer("Page Does Not Exist :(")
+        await query.answer("Page Does Not Exist :(", show_alert=True)
         
     elif query.data == "coct":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data="help")
         ]]
+        await query.answer()
         await query.message.edit_text(text=script.CONNECTION_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "admin":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
+        await query.answer()
         await query.message.edit_text(text=script.ADMIN_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
-        
-    elif query.data == "filestore":
-        await query.answer("Page Does Not Exist")
-     
+       
     elif query.data == "json":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
+        await query.answer()
         await query.message.edit_text(text=script.JSON_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "auto":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='filter')
         ]]
+        await query.answer()
         await query.message.edit_text(text=script.AUTOFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "manual":
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='filter')
         ]]
+        await query.answer()
         await query.message.edit_text(text=script.MANUALFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "cpu":
@@ -653,6 +660,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='stats'),
             InlineKeyboardButton('Rᴇғʀᴇsʜ', callback_data='cpu2')
         ]]
+        await query.answer()
         reply_markup=InlineKeyboardMarkup(buttons)
         cpu = psutil.cpu_percent()
         ram = psutil.virtual_memory().percent
@@ -676,6 +684,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "stats":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Cᴘᴜ Sᴛᴀᴛᴜs', callback_data='cpu'),
             InlineKeyboardButton('ʀᴇғʀᴇsʜ', callback_data='rfrsh')
@@ -696,6 +705,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "rfrsh":
+        
         await query.answer("ᴜᴘᴅᴀᴛɪɴɢ ᴍʏ ᴅʙ ᴅᴇᴛᴀɪʟs")
         buttons = [[
             InlineKeyboardButton('Cᴘᴜ Sᴛᴀᴛᴜs', callback_data='cpu'),
@@ -756,6 +766,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
         settings = await get_settings(grp_id)
         if settings is not None:
+            await message.answer()
             buttons1 = [
                 [
                     InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
@@ -987,6 +998,7 @@ async def auto_filter(client, msg, spoll=False):
         btn.append(
             [InlineKeyboardButton(text="sᴇʟᴇᴄᴛ ғɪʟᴇ ғʀᴏᴍ ᴀʙᴏᴠᴇ ʟɪɴᴋs", callback_data="pages")]
         )
+        await message.answer()
     
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']
