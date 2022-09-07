@@ -852,19 +852,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ident, set_type, status, grp_id = query.data.split("#")
         grpid = await active_connection(str(query.from_user.id))
         
-        if chat_type == enums.ChatType.PRIVATE:
-            grpid = await active_connection(str(userid))
-            if grpid is not None:
-                grp_id = grpid
-                try:
-                    chat = await client.get_chat(grpid)
-                    title = chat.title
-                except:
-                    await query.reply_text("Make sure I'm present in your group!!", quote=True)
-                    return
-            else:
-                await query.reply_text("I'm not connected to any groups!", quote=True)
-                return
+        if str(grp_id) != str(grpid):
+            await query.message.edit("⚠️ Sᴏʀʀʏ Bʀᴏ Iᴀᴍ Nᴏᴛ CᴏɴɴᴇᴄᴛᴇᴅTᴏ Tʜɪs Cʜᴀᴛ 🤧")
+            return await query.answer()
         
         if status == "True":
             await save_group_settings(grpid, set_type, False)
