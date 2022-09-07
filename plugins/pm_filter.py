@@ -728,7 +728,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     
     elif query.data == "reason":
-        await query.answer(SPELL_TXT, show_alert=True)        
+        await query.answer(script.SPELL_TXT, show_alert=True)        
         
     elif query.data =="set2":
         userid = query.from_user.id if query.from_user else None
