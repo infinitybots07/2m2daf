@@ -150,8 +150,8 @@ async def next_page(bot, query):
     btn.insert(0, 
         [
             InlineKeyboardButton(f'Fɪʟᴇs: {len(files)}', 'dupe'),
-            InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'reason'),
-            InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'reason')
+            InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'dupe'),
+            InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'dupe')
         ]
     )
    
@@ -840,7 +840,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 parse_mode=enums.ParseMode.HTML
             )
             button2 = [[
-                InlineKeyboardButton('👉 Gᴏ ᴛᴏ Cʜᴀᴛ', url="t.me/CL_FILTER_BOT")
+                InlineKeyboardButton('🙌 Gᴏ Tᴏ Tʜᴇ Cʜᴀᴛ 🙌', url="t.me/CL_FILTER_BOT")
             ]]
             await query.message.edit_text(
                 text="<i><b>Sᴇᴛᴛɪɴɢs Mᴇɴᴜ Wᴀs Sᴇɴᴛ Iɴ Yᴏᴜʀ Pᴍ ✔️</b></i>",
@@ -864,6 +864,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         settings = await get_settings(grpid)
 
         if settings is not None:
+            await query.answer()
             buttons = [
                 [
                     InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
@@ -929,7 +930,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             else:
                 stats6="Nᴏ"
             await query.message.edit_text(
-                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {query.message.chat.title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
+                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {query.message.chat.title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍᴇ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴏᴡ Bᴜᴛᴛᴏɴs</b>",
                 reply_markup=reply_markup
             )
 async def auto_filter(client, msg, spoll=False):
@@ -982,8 +983,8 @@ async def auto_filter(client, msg, spoll=False):
     btn.insert(0, 
         [
             InlineKeyboardButton(f'Fɪʟᴇs: {total_results}', 'dupe'),
-            InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'reason'),
-            InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'reason')
+            InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'dupe'),
+            InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'dupe')
         ]
     )
     
