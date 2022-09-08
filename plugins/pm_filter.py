@@ -534,6 +534,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 <b>{nihaal} {query.from_user.mention}  ʙᴜᴅᴅʏ
 ᴍʏ ɴᴀᴍᴇ ɪꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 𝐓ʜᴏᴍᴀs 𝐒ʜᴇʟʙʏ 』</b></a>  ɪ ᴄᴀɴ ᴘʀᴏᴠɪᴅᴇ ʏᴏᴜ ᴍᴏᴠɪᴇꜱ ᴊᴜꜱᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ꜱᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ 😈</b>
 """
+        await query.answer()
         buttons = [[
       
             InlineKeyboardButton('Cʟɪᴄᴋ Hᴇʀᴇ Fᴏʀ Mᴏʀᴇ Bᴜᴛᴛᴏɴs', callback_data='start2')
@@ -547,6 +548,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
       
     elif query.data == "start2":
+        await query.answer()
         buttons = [[   
             InlineKeyboardButton('➕ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ➕', url=f'http://t.me/CL_FILTER_BOT?startgroup=true')
         ],[
@@ -559,7 +561,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('🔙 ʙᴀᴄᴋ ᴛᴏ sᴛᴀʀᴛ 🔙', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await query.answer()
         await query.message.edit_text(
             text=script.START_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
@@ -567,16 +568,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "owner":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Tᴇʟᴇɢʀᴀᴍ', url='t.me/NL_MP4_BOT'),
             InlineKeyboardButton('Iɴsᴛᴀɢʀᴀᴍ', url='https://instagram.com')
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
-        await query.answer()
         await query.message.edit_text(text='<u><b>Cᴏɴᴛᴀᴄᴛ Oᴡɴᴇʀ</u></b>\n\nHᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cᴏɴᴛᴀᴄᴛ Mʏ Oᴡɴᴇʀ', reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
 
     elif query.data == "help":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Fɪʟᴛᴇʀs', callback_data='filter'),
             InlineKeyboardButton('Cᴏɴɴᴇᴄᴛɪᴏɴ', callback_data='coct')
@@ -589,7 +591,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
-        await query.answer()
         await query.message.edit_text(
             text=script.HELP_TXT.format(query.from_user.mention), 
             reply_markup = InlineKeyboardMarkup(buttons),
@@ -598,69 +599,70 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
 
     elif query.data == "about":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Gʀᴏᴜᴘ', url='t.me/cinema_lookam'),
             InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ', url='t.me/NL_BOTxCHAT'),
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='start2')
         ]]
-        await query.answer()
         await query.message.edit_text(text=script.ABOUT_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
     
     
     elif query.data == "filter":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ', callback_data='auto'),
             InlineKeyboardButton('Mᴀɴᴜᴀʟ Fɪʟᴛᴇʀ', callback_data="manual")
         ],[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
-        await query.answer()
         await query.message.edit_text(text="<b><u>Hᴇʟᴘ Fᴏʀ Fɪʟᴛᴇʀs</b></u>\n\nHᴇʏ Bᴜᴅᴅʏ Cʜᴏᴏsᴇ A Fɪʟᴛᴇʀ Tʏᴘᴇ", reply_markup = InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
             
     elif query.data == "fstore":
         await query.answer("Page Does Not Exist :(", show_alert=True)
         
     elif query.data == "coct":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data="help")
         ]]
-        await query.answer()
         await query.message.edit_text(text=script.CONNECTION_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "admin":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
-        await query.answer()
         await query.message.edit_text(text=script.ADMIN_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
        
     elif query.data == "json":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='help')
         ]]
-        await query.answer()
+        
         await query.message.edit_text(text=script.JSON_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "auto":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='filter')
         ]]
-        await query.answer()
         await query.message.edit_text(text=script.AUTOFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "manual":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='filter')
         ]]
-        await query.answer()
         await query.message.edit_text(text=script.MANUALFILTER_TXT, reply_markup = InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         
     elif query.data == "cpu":
+        await query.answer()
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='stats'),
             InlineKeyboardButton('Rᴇғʀᴇsʜ', callback_data='cpu2')
         ]]
-        await query.answer()
         reply_markup=InlineKeyboardMarkup(buttons)
         cpu = psutil.cpu_percent()
         ram = psutil.virtual_memory().percent
