@@ -6,7 +6,7 @@ class script(object):
 ○ Cʀᴇᴀᴛᴏʀ : <a href=https://t.me/NL_MP4_BOT><b>ɴɪʜᴀᴀʟ 🇮🇳</b></a>
 ○ Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ 𝟥 
 ○ Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ Asʏɴᴄɪᴏ 𝟢.𝟣𝟩.𝟣 
-○ Sᴇʀᴠᴇʀ : <a href=www.railway.app.com><b>Rᴀɪʟᴡᴀʏ</b></a>
+○ Sᴇʀᴠᴇʀ : <a href=www.railway.app><b>Rᴀɪʟᴡᴀʏ</b></a>
 ○ Dᴀᴛᴀʙᴀsᴇ : <a href=www.mangodb.com><b>MᴀɴɢᴏDB</b></a>
 ○ Bᴜɪʟᴅ sᴛᴀᴛᴜs : V9.8 [ Kɪʟʟᴀᴅɪ ]</b>"""
 
