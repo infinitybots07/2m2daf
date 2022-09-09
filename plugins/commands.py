@@ -79,13 +79,18 @@ async def start(client, message):
         btn = [
             [
                 InlineKeyboardButton(
-                    "📧 ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 📧", url=invite_link.invite_link
+                    "📢 Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ 📢", url=invite_link.invite_link
                 )
-            ]
+            ],
+            [
+                InlineKeyboardButton(
+                    "♻️ Tʀʏ Aɢᴀɪɴ ♻️", link
+                )
+            ]   
         ]
         await client.send_message(
             chat_id=message.from_user.id,
-            text="**ᴊᴏɪɴ ᴛʜᴇ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴛʜᴇɴ ɢᴏ ʙᴀᴄᴋ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ ʟɪɴᴋ ᴀɢᴀɪɴ ғᴏʀ ғɪʟᴇs.!**",
+            text="**<u>Hᴇʏ {message.from_user.mention} Bʀᴏ</u>\n\nYᴏᴜ Wᴀɴᴛ Tᴏ Jᴏɪɴ Mʏ Cʜᴀɴɴᴇʟ Tᴏ Usᴇ Tʜɪs Bᴏʏ**",
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode=enums.ParseMode.MARKDOWN
             )
@@ -402,7 +407,7 @@ async def settings(client, message):
             await message.reply_text("I'm not connected to any groups!", quote=True)
             return
 
-    elif chat_type in ["group", "supergroup"]:
+    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         grp_id = message.chat.id
         title = message.chat.title
 
@@ -428,7 +433,7 @@ async def settings(client, message):
                 
             [
                 InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
-                InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
+                InlineKeyboardButton('Pᴍ' if settings["botpm"] else 'Cʜᴀᴛ',
                                      callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
             ],
             [
@@ -464,9 +469,9 @@ async def settings(client, message):
         else:
             stats="Dᴏᴜʙʟᴇ"
         if settings["botpm"]:
-            stats2="Cʜᴀᴛ"
-        else:
             stats2="Pᴍ"
+        else:
+            stats2="Cʜᴀᴛ"
         if settings["file_secure"]:
             stats3="Yᴇs"
         else:
@@ -535,7 +540,7 @@ async def settings2(client, message):
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         nl = await message.reply_text(
-            text="<b>Hᴇʏ Bᴜᴅᴅʏ Wʜᴇʀᴇ Dᴏ Yᴏᴜ Wᴀɴᴛ Tᴏ Oᴘᴇɴ Sᴇᴛᴛɪɴɢs ⚙️</b>",
+            text="<b><i>Hᴇʏ Bᴜᴅᴅʏ Wʜᴇʀᴇ Dᴏ Yᴏᴜ Wᴀɴᴛ Tᴏ Oᴘᴇɴ Sᴇᴛᴛɪɴɢs ⚙️</b></i>",
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
