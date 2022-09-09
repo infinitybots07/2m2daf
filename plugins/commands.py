@@ -428,7 +428,7 @@ async def settings(client, message):
                 
             [
                 InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
-                InlineKeyboardButton('Pᴍ' if settings["botpm"] else 'Cʜᴀᴛ',
+                InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
                                      callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
             ],
             [
@@ -464,9 +464,9 @@ async def settings(client, message):
         else:
             stats="Dᴏᴜʙʟᴇ"
         if settings["botpm"]:
-            stats2="Pᴍ"
-        else:
             stats2="Cʜᴀᴛ"
+        else:
+            stats2="Pᴍ"
         if settings["file_secure"]:
             stats3="Yᴇs"
         else:
