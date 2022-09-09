@@ -1,6 +1,6 @@
 import io
 import asyncio
-from pyrogram import filters, Client
+from pyrogram import filters, Client, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.filters_mdb import(
    add_filter,
@@ -189,7 +189,7 @@ async def get_all(client, message):
     await message.reply(
         text=filterlist,
         quote=True,
-        parse_mode=enums.ChatType.MARKDOWN
+        parse_mode=enums.ParseMode.MARKDOWN
     )
         
 @Client.on_message(filters.command('del') & filters.incoming)
@@ -199,7 +199,7 @@ async def deletefilter(client, message):
         return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
     chat_type = message.chat.type
 
-    if chat_type == "private":
+    if chat_type == enums.ChatType.PRIVATE:
         grpid  = await active_connection(str(userid))
         if grpid is not None:
             grp_id = grpid
