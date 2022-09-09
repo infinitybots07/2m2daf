@@ -473,7 +473,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             del msg1, ms
         except Exception as e:
             logger.exception(e, exc_info=True)
-            await query.answer(f"Encountering Issues", True)
+         
             
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
