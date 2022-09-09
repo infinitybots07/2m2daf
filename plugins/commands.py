@@ -79,13 +79,13 @@ async def start(client, message):
         btn = [
             [
                 InlineKeyboardButton(
-                    "📢 Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ 📢", url=invite_link.invite_link
+                    "📣 Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ 📢", url=invite_link.invite_link
                 )
             ],   
         ]
         await client.send_message(
             chat_id=message.from_user.id,
-            text="**<u>Hᴇʏ {message.from_user.mention} Bʀᴏ</u>\n\nYᴏᴜ Wᴀɴᴛ Tᴏ Jᴏɪɴ Mʏ Cʜᴀɴɴᴇʟ Tᴏ Usᴇ Tʜɪs Bᴏʏ**",
+            text=f"<b><u>Hᴇʏ {message.from_user.mention} Bʀᴏ</u>\n\nYᴏᴜ Wᴀɴᴛ Tᴏ Jᴏɪɴ Mʏ Cʜᴀɴɴᴇʟ Tᴏ Usᴇ Tʜɪs Bᴏʏ</b>",
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode=enums.ParseMode.MARKDOWN
             )
