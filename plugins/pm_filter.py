@@ -438,6 +438,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
             elif settings['botpm']:
+                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+                return
+            else:
                 ms = await client.send_cached_media(
                     chat_id=CH_FILTER,
                     file_id=file_id,
@@ -468,10 +471,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await msg1.delete()
                 await ms.delete()
                 del msg1, ms
-          
-            else:
-                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
-                
         
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
@@ -558,7 +557,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('❗ Hᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('🕵️‍♂️ Aʙᴏᴜᴛ', callback_data='about')
         ],[
-            InlineKeyboardButton('🔙 ʙᴀᴄᴋ ᴛᴏ sᴛᴀʀᴛ 🔙', callback_data='start')
+            InlineKeyboardButton('🗑️ ʙᴀᴄᴋ ᴛᴏ sᴛᴀʀᴛ 🗑️', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
