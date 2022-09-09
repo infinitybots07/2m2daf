@@ -438,9 +438,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
             elif settings['botpm']:
-                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
-                return
-            else:
                 ms = await client.send_cached_media(
                     chat_id=CH_FILTER,
                     file_id=file_id,
@@ -453,7 +450,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f'<b>📂 Fɪʟᴇ Nᴀᴍᴇ</b> : <code>[CL] {title}</code>\n\n'              
                     f'<b>⚙️ Fɪʟᴇ Sɪᴢᴇ</b> : <b>{size}</b>',
                     True,
-                    'html',
+                    parse_mode=enums.ParseMode.HTML,
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup(
                         [
@@ -464,15 +461,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                 InlineKeyboardButton("⚠️ Cᴀɴɴᴏᴛ Aᴄᴄᴇss ❓ Cʟɪᴄᴋ Hᴇʀᴇ ⚠️", url = f"{CH_LINK}")
                             ]
                         ]
-                  )
-            )
-            await query.answer()
-            await asyncio.sleep(600)
-            await msg1.delete()
-            await ms.delete()
-            del msg1, ms
-        except Exception as e:
-            logger.exception(e, exc_info=True)
+                    )
+                )
+                await query.answer()
+                await asyncio.sleep(600)
+                await msg1.delete()
+                await ms.delete()
+                del msg1, ms
+                return
+            else:
+                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+              
+            
          
             
         except UserIsBlocked:
@@ -781,7 +781,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
-                    InlineKeyboardButton('Pᴍ' if settings["botpm"] else 'Cʜᴀᴛ',
+                    InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
                                          callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
                 ],
                 [
@@ -816,9 +816,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             else:
                 stats="Dᴏᴜʙʟᴇ"
             if settings["botpm"]:
-                stats2="Pᴍ"
-            else:
                 stats2="Cʜᴀᴛ"
+            else:
+                stats2="Pᴍ"
             if settings["file_secure"]:
                 stats3="Yᴇs"
             else:
@@ -879,7 +879,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
-                    InlineKeyboardButton('Pᴍ' if settings["botpm"] else 'Cʜᴀᴛ',
+                    InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
                                          callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
                 ],
                 [
@@ -914,9 +914,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             else:
                 stats="Dᴏᴜʙʟᴇ"
             if settings["botpm"]:
-                stats2="Pᴍ"
-            else:
                 stats2="Cʜᴀᴛ"
+            else:
+                stats2="Pᴍ"
             if settings["file_secure"]:
                 stats3="Yᴇs"
             else:
