@@ -81,12 +81,7 @@ async def start(client, message):
                 InlineKeyboardButton(
                     "📢 Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ 📢", url=invite_link.invite_link
                 )
-            ],
-            [
-                InlineKeyboardButton(
-                    "♻️ Tʀʏ Aɢᴀɪɴ ♻️", link
-                )
-            ]   
+            ],   
         ]
         await client.send_message(
             chat_id=message.from_user.id,
