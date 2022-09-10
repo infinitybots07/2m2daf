@@ -4,8 +4,8 @@ class script(object):
 <i>Aᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴛᴏ sᴇᴇ ᴛʜᴇ ᴍᴀɢɪᴄ ᴏʀ ʀᴇᴀᴅ ᴍᴏʀᴇ ғʀᴏᴍ ᴛʜᴇ ᴍᴇɴᴜ ʙᴇʟᴏᴡ</i>"""
     ABOUT_TXT = """<b>○ Mʏ Nᴀᴍᴇ : <a href=https://t.me/CL_FILTER_BOT><b>Tʜᴏᴍᴀs Sʜᴇʟʙʏ</b></a>
 ○ Cʀᴇᴀᴛᴏʀ : <a href=https://t.me/NL_MP4_BOT><b>ɴɪʜᴀᴀʟ 🇮🇳</b></a>
-○ Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ 𝟥 
-○ Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ Asʏɴᴄɪᴏ 𝟢.𝟣𝟩.𝟣 
+○ Lᴀɴɢᴜᴀɢᴇ : <a href=https://python.com>Pʏᴛʜᴏɴ</a>
+○ Lɪʙʀᴀʀʏ : <a href=https://pyrogram.com>Pʏʀᴏɢʀᴀᴍ Asʏɴᴄɪᴏ 𝟢.𝟣𝟩.𝟣</a>
 ○ Sᴇʀᴠᴇʀ : <a href=www.railway.app><b>Rᴀɪʟᴡᴀʏ</b></a>
 ○ Dᴀᴛᴀʙᴀsᴇ : <a href=www.mangodb.com><b>MᴀɴɢᴏDB</b></a>
 ○ Bᴜɪʟᴅ sᴛᴀᴛᴜs : V9.8 [ Kɪʟʟᴀᴅɪ ]</b>"""
@@ -34,6 +34,7 @@ class script(object):
 
 /filter "keyword" text or
 Rᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ->/filter "keyword"
+
 Usᴀɢᴇ
 /filter "hi" hello
 [hello] -> Reply -> /filter hi
@@ -42,6 +43,7 @@ Usᴀɢᴇ
 
 Fᴏʀᴍᴀᴛ
 /stop "keyword"
+
 Usᴀɢᴇ
 /stop "hi"
 
@@ -49,7 +51,9 @@ Usᴀɢᴇ
 
 /filters"""
     
-    FORCE_TXT = "<b><u>Hᴇʏ {} Bᴜᴅᴅʏ</u>\n\nYᴏᴜ Wɴᴀᴛ Tᴏ Jᴏɪɴ Mʏ Cʜᴀɴɴᴇʟ Tᴏ Usᴇ Tʜɪs Bᴏᴛ 🤧</b>"
+    FORCE_TXT = """**Hᴇʏ Bᴜᴅᴅʏ
+    
+Yᴏᴜ Wᴀɴᴛ Tᴏ Jᴏɪɴ Mʏ Cʜᴀɴɴᴇʟ Tᴏ Usᴇ Tʜɪs Bᴏᴛ 🤧**"""
     SPELL_TXT = "✯ 𝖢𝗁𝖾𝖼𝗄 𝖮𝖳𝖳 𝖱𝖾𝗅𝖾𝖺𝗌𝖾 ᴏʀ 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖳𝗁𝖾 𝗌𝗉𝖾𝗅𝗅𝗂𝗇𝗀\n\n✯ 𝖣𝗈𝗇𝗍 𝖴𝗌𝖾 𝖲𝗒𝗆𝖻𝗈𝗅𝗌 𝖶𝗁𝗂𝗅𝖾 𝖱𝖾𝗊𝗎𝖾𝗌𝗍 (,:'?!* 𝖾𝗍𝖼..)\n\n✯ [𝖬𝗈𝗏𝗂𝖾 𝖭𝖺𝗆𝖾 ,𝖸𝖾𝖺𝗋 ,𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾] 𝖠𝗌𝗄 𝖳𝗁𝗂𝗌 𝖶𝖺𝗒"     
         
     BUTTON_TXT = """<u><b>Hᴇʟᴘ: Bᴜᴛᴛᴏɴs</b></u> 
