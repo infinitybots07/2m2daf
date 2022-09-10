@@ -1047,6 +1047,7 @@ async def auto_filter(client, msg, spoll=False):
     else:
         imdb2 = await get_poster(search)
         cap2 = script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['year'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"<b><i>📁 Mᴏᴠɪᴇ Nᴀᴍᴇ : {search}\n📩 Uᴘʟᴏᴀᴅᴇᴅ Bʏ : {message.chat.title}\n🗣️ Rᴇǫᴜᴇsᴛᴇᴅ Bʏ : {message.from_user.mention}</b></i>"
+    
     if imdb and imdb.get('poster'):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
         try:
             fmsg = await message.reply_photo(photo=imdb.get('poster'), caption=cap1[:1024],
@@ -1059,7 +1060,8 @@ async def auto_filter(client, msg, spoll=False):
             logger.exception(e)
             fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap2, reply_markup=InlineKeyboardMarkup(btn))
     else:
-        fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap2, reply_markup=InlineKeyboardMarkup(btn))
+        imdb2 = await get_poster(search)
+        fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['year'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"<b><i>📁 Mᴏᴠɪᴇ Nᴀᴍᴇ : {search}\n📩 Uᴘʟᴏᴀᴅᴇᴅ Bʏ : {message.chat.title}\n🗣️ Rᴇǫᴜᴇsᴛᴇᴅ Bʏ : {message.from_user.mention}</b></i>", reply_markup=InlineKeyboardMarkup(btn))
        
     await asyncio.sleep(DELETE_TIME)
     await message.delete()
