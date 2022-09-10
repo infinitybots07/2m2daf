@@ -79,13 +79,13 @@ async def start(client, message):
         btn = [
             [
                 InlineKeyboardButton(
-                    "📣 Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ 📢", url=invite_link.invite_link
+                    "📢 Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ 📢", url=invite_link.invite_link
                 )
-            ],   
+            ]
         ]
         await client.send_message(
             chat_id=message.from_user.id,
-            text=f"<b><u>Hᴇʏ {message.from_user.mention} Bʀᴏ</u>\n\nYᴏᴜ Wᴀɴᴛ Tᴏ Jᴏɪɴ Mʏ Cʜᴀɴɴᴇʟ Tᴏ Usᴇ Tʜɪs Bᴏʏ</b>",
+            text=script.FORCE_TXT.format(message.from_user.mention),
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode=enums.ParseMode.MARKDOWN
             )
@@ -258,10 +258,18 @@ async def start(client, message):
             f_caption=f_caption
     if f_caption is None:
         f_caption = f"{files.file_name}"
+    btn = [
+        [
+            InlineKeyboardButton(
+                '➕ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ➕', url='http://t.me/CL_FILTER_BOT?startgroup=true'
+            )
+        ]
+    ]
     await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
         caption=f_caption,
+        reply_markup=InlineKeyboardMarkup(btn),
         protect_content=True if pre == 'filep' else False,
         )
                     
