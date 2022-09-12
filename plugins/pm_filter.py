@@ -463,7 +463,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         ]
                     )
                 )
-                await query.answer()
                 await asyncio.sleep(600)
                 await msg1.delete()
                 await ms.delete()
@@ -844,7 +843,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 parse_mode=enums.ParseMode.HTML
             )
             button2 = [[
-                InlineKeyboardButton('📣 Gᴏ Tᴏ Tʜᴇ Cʜᴀᴛ 📢', url="t.me/CL_FILTER_BOT")
+                InlineKeyboardButton('📢 Gᴏ Tᴏ Tʜᴇ Cʜᴀᴛ 📢', url="t.me/CL_FILTER_BOT")
             ]]
             await query.message.edit_text(
                 text="<i><b>Sᴇᴛᴛɪɴɢs Mᴇɴᴜ Wᴀs Sᴇɴᴛ Iɴ Yᴏᴜʀ Pᴍ ✔️</b></i>",
@@ -857,7 +856,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         grpid = await active_connection(str(query.from_user.id))
         
         if str(grp_id) != str(grpid):
-            await query.message.edit("⚠️ Sᴏʀʀʏ Bʀᴏ Iᴀᴍ Nᴏᴛ CᴏɴɴᴇᴄᴛᴇᴅTᴏ Tʜɪs Cʜᴀᴛ 🤧")
+            await query.message.edit_text("⚠️ Sᴏʀʀʏ Bʀᴏ Iᴀᴍ Nᴏᴛ CᴏɴɴᴇᴄᴛᴇᴅTᴏ Tʜɪs Cʜᴀᴛ 🤧", parse_mode=enums.ParseMode.HTML)
             return await query.answer()
         
         if status == "True":
