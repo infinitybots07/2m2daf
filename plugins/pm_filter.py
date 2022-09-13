@@ -156,12 +156,12 @@ async def next_page(bot, query):
     )
    
 
-    if 0 < offset <= 10:
+    if 0 < offset <= 6:
         off_set = 0
     elif offset == 0:
         off_set = None
     else:
-        off_set = offset - 10
+        off_set = offset - 6
     if n_offset == 0:
         btn.append(
             [InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
@@ -380,11 +380,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ttl = await client.get_chat(int(groupid))
                 title = ttl.title
                 active = await if_active(str(userid), str(groupid))
-                act = " - ACTIVE" if active else ""
+                act = "✅" if active else ""
                 buttons.append(
                     [
                         InlineKeyboardButton(
-                            text=f"{title}{act}", callback_data=f"groupcb:{groupid}:{act}"
+                            text=f"{title} {act}", callback_data=f"groupcb:{groupid}:{act}"
                         )
                     ]
                 )
@@ -676,7 +676,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "cpu2":
         await query.answer("ᴜᴘᴅᴀᴛɪɴɢ ᴍʏ ᴅʙ ᴅᴇᴛᴀɪʟs")
         buttons = [[
-            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='stats')
+            InlineKeyboardButton('Bᴀᴄᴋ', callback_data='stats'),
+            InlineKeyboardButtob('Rᴇғʀᴇsʜ', callback_data='cpu2')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         cpu = psutil.cpu_percent()
