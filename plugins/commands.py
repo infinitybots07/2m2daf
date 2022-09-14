@@ -81,6 +81,10 @@ async def start(client, message):
                 InlineKeyboardButton(
                     "📢 Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ 📢", url=invite_link.invite_link
                 )
+            ],
+            [
+                InlineKeyboardButton(
+                    "♻️ Tʀʏ Aɢᴀɪɴ ♻️", url=f'https://t.me/{temp.U_NAME}?start={file_id}'
             ]
         ]
         await client.send_message(
