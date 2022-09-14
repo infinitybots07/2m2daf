@@ -84,7 +84,8 @@ async def start(client, message):
             ],
             [
                 InlineKeyboardButton(
-                    "♻️ Tʀʏ Aɢᴀɪɴ ♻️", url=f'https://t.me/{temp.U_NAME}?start={file_id}'
+                    "♻️ Tʀʏ Aɢᴀɪɴ ♻️", url=f'https://t.me/{temp.U_NAME}?start={file.file_id}'
+                )
             ]
         ]
         await client.send_message(
