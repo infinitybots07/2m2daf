@@ -14,7 +14,6 @@ class script(object):
     
     
     IMDB_MOVIE_2 = """<b>🧿 ᴛɪᴛᴛʟᴇ :  [{title}]({url})
-<code>Also Known As {known_as}</code>
 🌟 ʀᴀᴛɪɴɢ : <code>{rating} / 10</code>
 🎭 ɢᴇɴʀᴇ : <code>{genres}</code>
 
