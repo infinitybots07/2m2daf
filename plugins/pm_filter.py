@@ -105,7 +105,7 @@ async def give_filter(client,message):
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("⚠️ Hᴇʏ Bᴜᴅᴅʏ Sᴇᴀʀᴄʜ Yᴏᴜʀ Oᴡɴ 🤧", show_alert=True)
+        return await query.answer("⚠️ Hᴇʏ Bᴜᴅᴅʏ Sᴇᴀʀᴄʜ Yᴏᴜʀ Oᴡɴ BUᴅᴅʏ 🤧", show_alert=True)
     try:
         offset = int(offset)
     except:
@@ -692,7 +692,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer("ᴜᴘᴅᴀᴛɪɴɢ ᴍʏ ᴅʙ ᴅᴇᴛᴀɪʟs")
         buttons = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data='stats'),
-            InlineKeyboardButtob('Rᴇғʀᴇsʜ', callback_data='cpu2')
+            InlineKeyboardButton('Rᴇғʀᴇsʜ', callback_data='cpu2')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         cpu = psutil.cpu_percent()
@@ -1156,7 +1156,7 @@ async def advantage_spell_check_1_(msg):
     )     
     imdb=await get_poster(search)
     if imdb and imdb.get('poster'):
-        ms = await msg.reply_photo(photo=imdb.get('poster') if settings["imdb"] else "https://telegra.ph/file/b2fc4c74ffda76cde2297.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), known_as=imdb.get('localized_title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb.get('plot')), reply_markup=reply_markup) 
+        ms = await msg.reply_photo(photo=imdb.get('poster') if settings["imdb"] else "https://telegra.ph/file/b2fc4c74ffda76cde2297.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb.get('plot')), reply_markup=reply_markup) 
         await asyncio.sleep(259200)
         await ms.delete()
     else:
