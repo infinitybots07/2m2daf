@@ -213,7 +213,22 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            await query.reply(f"Hᴇʏ {query.from_user.mention} Bᴜᴅᴅʏ ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ")            
+            btn = [
+                [
+                    InlineKeyboardButton(
+                        '➕ ᴀᴅᴅ ʙᴏᴛ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕', url=f'http://t.me/CL_FILTER_BOT?startgroup=true'
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🗣️ Rᴇǫᴜᴇsᴛ Hᴇʀᴇ", url="t.me/cinema_lookam"
+                    ),
+                    InlineKeyboardButton(
+                        "📣 Mᴏᴠɪᴇ Uᴘᴅᴀᴛᴇ", url="t.me/CL_UPDATE"
+                    )
+                ]
+            ]
+            await query.message.edit_text(f"Hᴇʏ {query.from_user.mention} Bᴜᴅᴅʏ ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀs", reply_markup=InlineKeyboardMarkup(btn))            
             
 
 
@@ -409,7 +424,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ident, file_id, rid = query.data.split("#")
 
         if int(rid) not in [query.from_user.id, 0]:
-            return await query.answer(UNAUTHORIZED_CALLBACK_TEXT, show_alert=True)
+            return await query.answer("⚠️ Hᴇʏ Mᴀɴ Dᴏɴᴏᴛ Rᴇǫᴜᴇsᴛ Oᴛʜᴇʀs 😒, show_alert=True)
 
         files_ = await get_file_details(file_id)
         if not files_:
@@ -1058,11 +1073,10 @@ async def auto_filter(client, msg, spoll=False):
             fmsg = await message.reply_photo(photo=poster, caption=cap1[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except Exception as e:
             logger.exception(e)
-            fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=cap2, reply_markup=InlineKeyboardMarkup(btn))
+            fmsg = await message.reply_photo(photo="https://telegra.ph/file/b2fc4c74ffda76cde2297.jpg", caption=cap2, reply_markup=InlineKeyboardMarkup(btn))
     else:
         imdb2 = await get_poster(search)
-        fmsg = await message.reply_photo(photo="https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['year'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"<b><i>📁 Mᴏᴠɪᴇ Nᴀᴍᴇ : {search}\n📩 Uᴘʟᴏᴀᴅᴇᴅ Bʏ : {message.chat.title}\n🗣️ Rᴇǫᴜᴇsᴛᴇᴅ Bʏ : {message.from_user.mention}</b></i>", reply_markup=InlineKeyboardMarkup(btn))
-       
+        fmsg = await message.reply_photo(photo="https://telegra.ph/file/b2fc4c74ffda76cde2297.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['year'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"<b><i>📁 Mᴏᴠɪᴇ Nᴀᴍᴇ : {search}\n📩 Uᴘʟᴏᴀᴅᴇᴅ Bʏ : {message.chat.title}\n🗣️ Rᴇǫᴜᴇsᴛᴇᴅ Bʏ : {message.from_user.mention}</b></i>", reply_markup=InlineKeyboardMarkup(btn))
     await asyncio.sleep(DELETE_TIME)
     await message.delete()
     await fmsg.delete()
@@ -1073,8 +1087,12 @@ async def auto_filter(client, msg, spoll=False):
 ##-------------------------------------[ 1st Spell Check Message ]-------------------------------------------##
 
 async def advantage_spell_check_1_(msg):
-    reply = msg.text.replace(" ", "+")
+    
     search = msg.text
+    reply = search.replace(
+        " ",
+        "+"
+    )
     query = re.sub(
         r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|br((o|u)h?)*|^h(e|a)?(l)*(o)*|mal(ayalam)?|t(h)?amil|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|thar(u)?(o)*w?|kittum(o)*|aya(k)*(um(o)*)?|full\smovie|any(one)|with\ssubtitle(s)?)",
         "", msg.text, flags=re.IGNORECASE)  # plis contribute some common words
@@ -1119,9 +1137,9 @@ async def advantage_spell_check_1_(msg):
     if not movielist:
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
-            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f'https://google.com/search?q={reply}')
+            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={reply}")
         ]]
-        a2 = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.first_name}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a2 = await msg.reply(f"<b><u>Sᴏʀʀʏ Bʀᴏ 😔</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a2.delete()
@@ -1138,15 +1156,15 @@ async def advantage_spell_check_1_(msg):
     )     
     imdb=await get_poster(search)
     if imdb and imdb.get('poster'):
-        ms = await msg.reply_photo(photo=imdb.get('poster') if settings["imdb"] else "https://telegra.ph/file/90049c7aa5b86b101a8d7.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), known_as=imdb['localized_title'], rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb['plot']), reply_markup=reply_markup) 
+        ms = await msg.reply_photo(photo=imdb.get('poster') if settings["imdb"] else "https://telegra.ph/file/b2fc4c74ffda76cde2297.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), known_as=imdb.get('localized_title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb.get('plot')), reply_markup=reply_markup) 
         await asyncio.sleep(259200)
         await ms.delete()
     else:
         buttons = [[
-            InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
-            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f'https://google.com/search?q={reply}')
+            InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason"),
+            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={reply}")
         ]]
-        a3 = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.first_name}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a3 = await msg.reply(f"<b><u>Sᴏʀʀʏ Bʀᴏ 😔</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a3.delete()
