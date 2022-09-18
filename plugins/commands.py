@@ -568,7 +568,7 @@ async def help_message(client, msg):
         photo=random.choice(PICS),
         caption=script.HELP_TXT.format(temp.B_NAME),
         parse_mode=enums.ParseMode.HTML,
-        reply_markup=reply_markup(
+        reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
