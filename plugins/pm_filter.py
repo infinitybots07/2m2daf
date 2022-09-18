@@ -461,7 +461,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     chat_id=CH_FILTER,
                     file_id=file_id,
                     caption=f'<b>ʜᴇʏ 👋 {query.from_user.mention} 😍</b>\n\n<b>📁 Fɪʟᴇ Nᴀᴍᴇ : <code>[CL] {title}</code></b>\n\n<b>⚙️ sɪᴢᴇ : {size}</b>\n\n<b><u>Nᴏᴛᴇ :</u></b>\n\n<b>⚠️ Tʜɪs Fɪʟᴇ Wɪʟʟ Aᴜᴛᴏ Dᴇʟᴇᴛᴇ Iɴ 10 Mɪɴᴜᴛᴇs Sᴏ Fᴏʀᴡᴀʀᴅ Tʜɪs Mᴇssᴀɢᴇ Tᴏ Sᴏᴍᴇᴡʜᴇʀᴇ Eʟsᴇ Aɴᴅ Dᴏᴡɴʟᴏᴀᴅ Fʀᴏᴍ Tʜᴇʀᴇ.. ⚠️</b>\n\n<b>🚀 Pᴏᴡᴇʀᴇᴅ Bʏ : {query.message.chat.title}</b>',
-                    reply_markup = InlineKeyboardMarkup(buttons),
+                    reply_markup = InlineKeyboardMarkup(btn),
                     protect_content=True if ident == "filep" else False 
                 )
                 msg1 = await query.message.reply(
@@ -523,21 +523,27 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f_caption = f_caption
         if f_caption is None:
             f_caption = f"{title}"
-        buttons = [
-       
-            InlineKeyboardButton('➕ ᴀᴅᴅ ʙᴏᴛ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕', url=f'http://t.me/CL_FILTER_BOT?startgroup=true')
-        ]] 
+        btn = [
+            [
+                InlineKeyboardButton(
+                    '➕ ᴀᴅᴅ ʙᴏᴛ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕', url=f'http://t.me/CL_FILTER_BOT?startgroup=true'
+                )
+            ] 
+        ]
         await query.answer()
         ms = await client.send_cached_media(
             chat_id=query.from_user.id,
             file_id=file_id,
             caption=f_caption,
-            reply_markup=InlineKeyboardMarkup(buttons),
+            reply_markup=InlineKeyboardMarkup(btn),
             protect_content=True if ident == 'checksubp' else False
         )
     elif query.data == "pages":
-        await query.answer()
+        
+        await query.answer('Eɴᴛʜᴀᴅᴀ Mᴡᴏɴᴇ Nᴏᴋᴜɴɴᴀ 🙌')
+        
     elif query.data == "start":
+        
         m = datetime.datetime.now(pytz.timezone("Asia/Kolkata"))
 
         Time = m.hour
