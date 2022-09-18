@@ -574,13 +574,16 @@ async def help_message(client, msg):
             [
                 [
                     InlineKeyboardButton(
-                        "Fɪʟᴛᴇʀs", callback_data='filters'
+                        "Fɪʟᴛᴇʀs", callback_data='filter'
                     ),
                     InlineKeyboardButton(
-                        "Sᴜᴘᴘᴏʀᴛ", url='t.me/NL_BOTxCHAT'
-                    ),
+                        'Cᴏɴɴᴇᴄᴛɪᴏɴ', callback_data='coct'
+                    )
+                ],
+                [
+
                     InlineKeyboardButton(
-                        "Uᴘᴅᴀᴛᴇ", url='t.me/CL_UPDATE'
+                        'Aᴅᴍɪɴ', callback_data='admin'
                     )
                 ]
             ]
