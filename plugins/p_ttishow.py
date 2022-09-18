@@ -40,7 +40,7 @@ async def save_group(bot, message):
         buttons = [
             [
                 InlineKeyboardButton('📣 Uᴘᴅᴀᴛᴇ', url=f"https://t.me/NL_BOTxCHAT"),
-                InlineKeyboardButton('🙌 Mʏ Fᴇᴀᴛᴜʀᴇs', url=f"https://t.me/{temp.U_NAME}?start=help")
+                InlineKeyboardButton('🙌 Mʏ Fᴇᴀᴛᴜʀᴇs', url=f"https://t.me/CL_FILTER_BOT?start=help")
             ]
             ]
         reply_markup=InlineKeyboardMarkup(buttons)
