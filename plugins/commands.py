@@ -560,5 +560,24 @@ async def settings2(client, message):
         await message.delete()
         await nl.delete()
         del message, nl
-
+        
+@Client.on_message(filters.command(['help']) & filters.private)
+async def help_message(client, msg):
+    await msg.reply_photo(
+        photo=random.choice(PICS),
+        caption=script.HELP_TXT.format(temp.B_NAME)
+        reply_markup=reply_markup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "Gʀᴏᴜᴘ", url='t.me/cinema_lookam'
+                    ),
+                    InlineKeyboardButton(
+                        "Sᴜᴘᴘᴏʀᴛ", url='t.me/NL_BOTxCHAT'
+                    ),
+                    InlineKeyboardButton(
+                        "Uᴘᴅᴀᴛᴇ", url='t.me/CL_UPDATE'
+                    )
+                ]
+           ]
 
