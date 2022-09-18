@@ -586,15 +586,15 @@ async def help_message(client, msg):
                         'Aᴅᴍɪɴ', callback_data='admin'
                     ),
                     InlineKeyboardButton(
-                        
+                        'Fɪʟᴇ Sᴛᴏʀᴇ', callback_data='fstore'
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        
+                        'Jsᴏɴ', callback_data='json'
                     ),
                     InlineKeyboardButton(
-                        
+                        'Sᴛᴀᴛᴜs', callback_data='stats'
                     )
                 ],
                 [
