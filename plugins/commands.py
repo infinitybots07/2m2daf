@@ -584,6 +584,22 @@ async def help_message(client, msg):
 
                     InlineKeyboardButton(
                         'Aᴅᴍɪɴ', callback_data='admin'
+                    ),
+                    InlineKeyboardButton(
+                        
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        
+                    ),
+                    InlineKeyboardButton(
+                        
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "❌ Cʟᴏsᴇ", callback_data='close_data'
                     )
                 ]
             ]
