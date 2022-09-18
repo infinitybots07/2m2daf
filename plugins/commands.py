@@ -583,3 +583,4 @@ async def help_message(client, msg):
                 ]
             ]
         )
+    )
