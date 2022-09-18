@@ -58,7 +58,7 @@ async def save_group(bot, message):
                     except:
                         pass
                 temp.MELCOW['welcome'] = await message.reply_text(
-                text=f"<b>🙌 Hᴇʏ {u.mention} ʙʀᴏ </b><b> Wᴇʟᴄᴏᴍᴇ Tᴏ </b><b>{message.chat.title}</b>")
+                text=f"<b>🙌 Hᴇʏ {u.mention} Bʀᴏ </b><b> Wᴇʟᴄᴏᴍᴇ Tᴏ </b><b>{message.chat.title}</b>")
                 await asyncio.sleep(200)
                 await (temp.MELCOW['welcome']).delete()
 
@@ -75,15 +75,17 @@ async def leave_a_chat(bot, message):
         chat = chat
     try:
         buttons = [[
-            InlineKeyboardButton('Support', url=f'https://t.me/{SUPPORT_CHAT}')
+            InlineKeyboardButton('📣 Sᴜᴘᴘᴏʀᴛ', url=f'https://t.me/{SUPPORT_CHAT}')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
-        await bot.send_message(
+        msg = await bot.send_message(
             chat_id=chat,
             text='<b>Hello Friends, \nMy admin has told me to leave from group so i go! If you wanna add me again contact my support group.</b>',
             reply_markup=reply_markup,
         )
-
+        await asyncio.sleep(500)
+        await msg.delete()
+        
         await bot.leave_chat(chat)
         await message.reply(f"left the chat `{chat}`")
     except Exception as e:
@@ -114,7 +116,7 @@ async def disable_chat(bot, message):
     await message.reply('Chat Successfully Disabled')
     try:
         buttons = [[
-            InlineKeyboardButton('Support', url=f'https://t.me/{SUPPORT_CHAT}')
+            InlineKeyboardButton('📣 Sᴜᴘᴘᴏʀᴛ', url=f'https://t.me/{SUPPORT_CHAT}')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
@@ -160,7 +162,7 @@ async def get_ststs(bot, message):
 
 # a function for trespassing into others groups, Inspired by a Vazha
 # Not to be used , But Just to showcase his vazhatharam.
-# @Client.on_message(filters.command('invite') & filters.user(ADMINS))
+
 @Client.on_message(filters.command('invite'))
 async def gen_invite(bot, message):
     if len(message.command) == 1:
