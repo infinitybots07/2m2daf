@@ -568,7 +568,7 @@ async def help_message(client, msg):
         photo=random.choice(PICS)
     )
     await msg.reply_text(
-        text=script.HELP_TXT.format(temp.B_NAME),
+        text=script.HELP_TXT.format(msg.from_user.mention),
         parse_mode=enums.ParseMode.HTML,
         reply_markup=InlineKeyboardMarkup(
             [
