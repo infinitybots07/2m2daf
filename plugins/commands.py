@@ -563,9 +563,11 @@ async def settings2(client, message):
         
 @Client.on_message(filters.command(['help']) & filters.private)
 async def help_message(client, msg):
+    
     await msg.reply_photo(
         photo=random.choice(PICS),
-        caption=script.HELP_TXT.format(temp.B_NAME)
+        caption=script.HELP_TXT.format(temp.B_NAME),
+        parse_mode=enums.ParseMode.HTML,
         reply_markup=reply_markup(
             [
                 [
@@ -579,5 +581,6 @@ async def help_message(client, msg):
                         "Uᴘᴅᴀᴛᴇ", url='t.me/CL_UPDATE'
                     )
                 ]
-           ]
+            ]
+        )
 
