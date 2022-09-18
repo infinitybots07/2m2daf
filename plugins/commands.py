@@ -565,14 +565,16 @@ async def settings2(client, message):
 async def help_message(client, msg):
     
     await msg.reply_photo(
-        photo=random.choice(PICS),
-        caption=script.HELP_TXT.format(temp.B_NAME),
+        photo=random.choice(PICS)
+    )
+    await msg.reply_text(
+        text=script.HELP_TXT.format(temp.B_NAME),
         parse_mode=enums.ParseMode.HTML,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "Gʀᴏᴜᴘ", url='t.me/cinema_lookam'
+                        "Fɪʟᴛᴇʀs", callback_data='filters'
                     ),
                     InlineKeyboardButton(
                         "Sᴜᴘᴘᴏʀᴛ", url='t.me/NL_BOTxCHAT'
