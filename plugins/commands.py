@@ -433,7 +433,7 @@ async def settings(client, message):
         return
     settings = await get_settings(grp_id)
     if settings is not None:
-        await message.answer()
+
         buttons = [
             [
                 InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
@@ -543,7 +543,7 @@ async def settings2(client, message):
         return
     settings = await get_settings(grp_id)
     if settings is not None:
-        await message.answer()
+
         buttons = [[
             InlineKeyboardButton('🗣️ Oᴘᴇɴ Iɴ Pʀɪᴠᴀᴛᴇ Cʜᴀᴛ', callback_data="set2")
         ],
