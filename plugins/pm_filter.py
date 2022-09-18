@@ -445,9 +445,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f_caption
         if f_caption is None:
             f_caption = f"{files.file_name}"
-        buttons = [[
-            InlineKeyboardButton('➕ ᴀᴅᴅ ʙᴏᴛ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕', url=f'http://t.me/CL_FILTER_BOT?startgroup=true')
-        ]]
+        btn = [
+            [
+                InlineKeyboardButton(
+                    '➕ ᴀᴅᴅ ʙᴏᴛ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕', url=f'http://t.me/CL_FILTER_BOT?startgroup=true'
+                )
+            ]
+        ]
         try:
             if AUTH_CHANNEL and not await is_subscribed(client, query):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
@@ -519,7 +523,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f_caption = f_caption
         if f_caption is None:
             f_caption = f"{title}"
-        buttons = [[
+        buttons = [
+       
             InlineKeyboardButton('➕ ᴀᴅᴅ ʙᴏᴛ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕', url=f'http://t.me/CL_FILTER_BOT?startgroup=true')
         ]] 
         await query.answer()
@@ -786,7 +791,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         settings = await get_settings(grp_id)
         if settings is not None:
             await query.answer()
-            buttons1 = [
+            buttons = [
                 [
                     InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
                                          callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}'),
@@ -852,18 +857,22 @@ async def cb_handler(client: Client, query: CallbackQuery):
             else:
                 stats6="Nᴏ"
             
-            ms = await client.send_message(
+            await client.send_message(
                 chat_id=query.from_user.id,
                 text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
-                reply_markup=InlineKeyboardMarkup(buttons1),
+                reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=enums.ParseMode.HTML
             )
-            button2 = [[
-                InlineKeyboardButton('📢 Gᴏ Tᴏ Tʜᴇ Cʜᴀᴛ 📢', url="t.me/CL_FILTER_BOT")
-            ]]
+            btn = [
+                [
+                    InlineKeyboardButton(
+                        '📢 Gᴏ Tᴏ Tʜᴇ Cʜᴀᴛ 📢', url="t.me/CL_FILTER_BOT"
+                    )
+                ]
+            ]
             await query.message.edit_text(
-                text="<i><b>Sᴇᴛᴛɪɴɢs Mᴇɴᴜ Wᴀs Sᴇɴᴛ Iɴ Yᴏᴜʀ Pᴍ ✔️</b></i>",
-                reply_markup=InlineKeyboardMarkup(button2),
+                text="<i><b>Sᴇᴛᴛɪɴɢs Mᴇɴᴜ Wᴀs Sᴇɴᴛ Iɴ Yᴏᴜʀ Pᴍ ✅</b></i>",
+                reply_markup=InlineKeyboardMarkup(btn),
                 parse_mode=enums.ParseMode.HTML
             )
               
