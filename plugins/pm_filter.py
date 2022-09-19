@@ -30,76 +30,12 @@ logger.setLevel(logging.ERROR)
 
 BUTTONS = {}
 SPELL_CHECK = {}
-FILTER_MODE = {}
-    
+
 @Client.on_message(filters.group & filters.text & filters.incoming)
-async def give_filter(client,message):
-    group_id = message.chat.id
-    name = message.text
-
-    keywords = await get_filters(group_id)
-    for keyword in reversed(sorted(keywords, key=len)):
-        pattern = r"( |^|[^\w])" + re.escape(keyword) + r"( |$|[^\w])"
-        if re.search(pattern, name, flags=re.IGNORECASE):
-            reply_text, btn, alert, fileid = await find_filter(group_id, keyword)
-
-            if reply_text:
-                f2 = reply_text = reply_text.replace("\\n", "\n").replace("\\t", "\t")
-                await asyncio.sleep(DELETE_TIME)
-                await message.delete()
-                await f2.delete()
-                del message, f2
-            if btn is not None:
-                try:
-                    if fileid == "None":
-                        if btn == "[]":
-                            f2 = await message.reply_text(reply_text, disable_web_page_preview=True)
-                            await asyncio.sleep(DELETE_TIME)
-                            await message.delete()
-                            await f2.delete()
-                            del message, f2
-                        else:
-                            button = eval(btn)
-                            f2 = await message.reply_text(
-                                reply_text,
-                                disable_web_page_preview=True,
-                                reply_markup=InlineKeyboardMarkup(button)
-                            )
-                            await asyncio.sleep(DELETE_TIME)
-                            await message.delete()
-                            await f2.delete()
-                            del message, f2
-                    elif btn == "[]":
-                        f2 = await message.reply_cached_media(
-                            fileid,
-                            caption=reply_text or ""
-                        )
-                        await asyncio.sleep(DELETE_TIME)
-                        await message.delete()
-                        await f2.delete()
-                        del message, f2
-                    else:
-                        button = eval(btn) 
-                        f2 = await message.reply_cached_media(
-                            fileid,
-                            caption=reply_text or "",
-                            reply_markup=InlineKeyboardMarkup(button)
-                        )
-                        await asyncio.sleep(DELETE_TIME)
-                        await message.delete()
-                        await f2.delete()
-                        del message, f2
-                except Exception as e:
-                    print(e)
-                break 
-
-    else:
-        if FILTER_MODE.get(str(message.chat.id)) == "False":
-            return
-        else:
-            await auto_filter(client, message)   
-
-
+async def give_filter(client, message):
+    k = await manual_filters(client, message)
+    if k == False:
+        await auto_filter(client, message)
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
