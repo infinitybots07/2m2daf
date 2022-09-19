@@ -809,7 +809,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             btn = [
                 [
                     InlineKeyboardButton(
-                        '📢 Gᴏ Tᴏ Tʜᴇ Cʜᴀᴛ 📢', url="t.me/CL_FILTER_BOT"
+                        '📮 Gᴏ Tᴏ Tʜᴇ Cʜᴀᴛ 📮', url="t.me/CL_FILTER_BOT"
                     )
                 ]
             ]
@@ -1056,7 +1056,7 @@ async def advantage_spell_check_1_(msg):
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason"),
         ]]
-        a = await msg.reply(f"<b><u>Hᴇʟʟᴏ Bᴜᴅᴅʏ</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.mention if msg.from_user else "Aɴᴏɴʏᴍᴏᴜs"}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a.delete()
@@ -1091,7 +1091,7 @@ async def advantage_spell_check_1_(msg):
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
             InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.text.replace(" ", "+")}")
         ]]
-        a2 = await msg.reply(f"<b><u>Sᴏʀʀʏ Bʀᴏ 😔</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a2 = await msg.reply(f"<b><u>Sᴏʀʀʏ {msg.from_user.mention if msg.from_user else "Aɴᴏɴʏᴍᴏᴜs"}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a2.delete()
@@ -1116,7 +1116,7 @@ async def advantage_spell_check_1_(msg):
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason"),
             InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.text.replace("+", " ")}")
         ]]
-        a3 = await msg.reply(f"<b><u>Sᴏʀʀʏ {msg.from_user.mention}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a3 = await msg.reply(f"<b><u>Sᴏʀʀʏ {msg.from_user.mention if msg.from_user else "Aɴᴏɴʏᴍᴏᴜs"}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a3.delete()
@@ -1186,7 +1186,7 @@ async def advantage_spell_check_2_(msg):
     btn.insert(0,
         [InlineKeyboardButton('📕 ɪɴsᴛʀᴜᴄᴛɪᴏɴ 📕', callback_data='reason')]
     )
-    k=await msg.reply("<b>✯ നിങ്ങൾ ഉദ്ദേശിച്ച മൂവി താഴെ കാണുന്ന വല്ലതും ആണ് എങ്കിൽ.അതിൽ ക്ലിക്ക് ചെയ്യുക</b>\n\n<b>✯ ɪ ᴄᴏᴜʟᴅɴ'ᴛ ꜰɪɴᴅ ᴀɴʏᴛʜɪɴɢ ʀᴇʟᴀᴛᴇᴅ ᴛᴏ ᴛʜᴀᴛ ᴅɪᴅ ʏᴏᴜ ᴍᴇᴀɴ ᴀɴʏ ᴏɴᴇ ᴏꜰ ᴛʜᴇꜱᴇ?\n\n📯 ɴʙ:ᴄʟɪᴄᴋ ᴛʜᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ᴏɴʟʏ ᴅᴏɴᴛ ᴜꜱᴇ ʏᴇᴀʀ ʙᴜᴛᴛᴏɴ </b>",
+    k=await msg.reply("<b>✯ നിങ്ങൾ ഉദ്ദേശിച്ച മൂവി താഴെ കാണുന്ന വല്ലതും ആണ് എങ്കിൽ.അതിൽ ക്ലിക്ക് ചെയ്യുക</b>\n\n➖➖➖➖➖➖➖➖➖➖➖➖➖➖\n\n<b>✯ ɪ ᴄᴏᴜʟᴅɴ'ᴛ ꜰɪɴᴅ ᴀɴʏᴛʜɪɴɢ ʀᴇʟᴀᴛᴇᴅ ᴛᴏ ᴛʜᴀᴛ ᴅɪᴅ ʏᴏᴜ ᴍᴇᴀɴ ᴀɴʏ ᴏɴᴇ ᴏꜰ ᴛʜᴇꜱᴇ?\n\n📯 ɴʙ: ᴄʟɪᴄᴋ ᴛʜᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ᴏɴʟʏ ᴅᴏɴᴛ ᴜꜱᴇ ʏᴇᴀʀ ʙᴜᴛᴛᴏɴ </b>",
                       reply_markup=InlineKeyboardMarkup(btn))
     await asyncio.sleep(60)
     await k.delete()
