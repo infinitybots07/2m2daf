@@ -5,6 +5,7 @@ import ast
 import random
 import datetime
 import pytz
+import math
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
@@ -101,7 +102,7 @@ async def next_page(bot, query):
     if n_offset == 0:
         btn.append(
             [InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
-             InlineKeyboardButton(text=f"{round(int(offset)/10)+1} - {round(total/10)}", callback_data="pages"),
+             InlineKeyboardButton(text=f"{math.ceil(int(offset) / 10) + 1} - {math.ceil(total / 10)}", callback_data="pages"),
              InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}")]
         )
        
@@ -109,7 +110,7 @@ async def next_page(bot, query):
         btn.append(
             [
                 InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
-                InlineKeyboardButton(text=f"{round(int(offset)/10)+1} - {round(total/10)}", callback_data="pages"),
+                InlineKeyboardButton(text=f"{math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
         
@@ -117,7 +118,7 @@ async def next_page(bot, query):
         btn.append(
             [
                 InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}"),
-                InlineKeyboardButton(text=f"{round(int(offset)/10)+1} - {round(total/10)}", callback_data="pages"),
+                InlineKeyboardButton(text=f"{math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
         
@@ -127,7 +128,7 @@ async def next_page(bot, query):
         )
     except MessageNotModified:
         pass
-    await query.answer(f'⍟ Pᴀɢᴇ Nᴏ : {round(int(offset) / 10) + 1} / {round(total/10)} ⍟ Tᴏᴛᴀʟ Rᴇsᴜʟᴛs : {len(files)}')
+    await query.answer(f'⍟ Pᴀɢᴇ Nᴏ : {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)} ⍟ Tᴏᴛᴀʟ Rᴇsᴜʟᴛs : {len(files)}')
 
 
 @Client.on_callback_query(filters.regex(r"^spolling"))
@@ -966,7 +967,7 @@ async def auto_filter(client, msg, spoll=False):
         req = message.from_user.id if message.from_user else 0
         btn.append(
             [InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
-             InlineKeyboardButton(text=f"1 - {round(int(total_results) / 10)}", callback_data="pages"),
+             InlineKeyboardButton(text=f"1 - {", callback_data="pages"),
              InlineKeyboardButton(text="Nᴇxᴛ", callback_data=f"next_{req}_{key}_{offset}")]
         )
         
@@ -1088,7 +1089,7 @@ async def advantage_spell_check_1_(msg):
     if not movielist:
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
-            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={reply}")
+            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.replace(" ", "+")}")
         ]]
         a2 = await msg.reply(f"<b><u>Sᴏʀʀʏ Bʀᴏ 😔</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
@@ -1113,7 +1114,7 @@ async def advantage_spell_check_1_(msg):
     else:
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason"),
-            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={reply}")
+            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.replace(" ", "+")}")
         ]]
         a3 = await msg.reply(f"<b><u>Sᴏʀʀʏ Bʀᴏ 😔</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
