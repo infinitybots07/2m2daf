@@ -1089,7 +1089,7 @@ async def advantage_spell_check_1_(msg):
     if not movielist:
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
-            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.replace(" ", "+")}")
+            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={reply}")
         ]]
         a2 = await msg.reply(f"<b><u>Sᴏʀʀʏ Bʀᴏ 😔</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
@@ -1114,7 +1114,7 @@ async def advantage_spell_check_1_(msg):
     else:
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason"),
-            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.replace(" ", "+")}")
+            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={reply}")
         ]]
         a3 = await msg.reply(f"<b><u>Sᴏʀʀʏ Bʀᴏ 😔</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
