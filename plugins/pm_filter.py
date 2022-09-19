@@ -1054,9 +1054,9 @@ async def advantage_spell_check_1_(msg):
     gs_parsed = []
     if not g_s:
         buttons = [[
-            InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason"),
+            InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason")
         ]]
-        a = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.mention if msg.from_user else "Aɴᴏɴʏᴍᴏᴜs"}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.first_name}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a.delete()
