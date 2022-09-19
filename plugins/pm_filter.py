@@ -1056,7 +1056,7 @@ async def advantage_spell_check_1_(msg):
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason")
         ]]
-        a = await msg.reply(f"<b><u>Hᴇʟʟᴏ {msg.from_user.mention if msg.from_user is not None else "Anounymous"}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a = await msg.reply(f"<b><u>Hᴇʟʟᴏ </b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a.delete()
@@ -1091,7 +1091,7 @@ async def advantage_spell_check_1_(msg):
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
             InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.text.replace(" ", "+")}")
         ]]
-        a2 = await msg.reply(f"<b><u>Sᴏʀʀʏ {msg.from_user.mention if msg.from_user is not None else "Aɴᴏɴʏᴍᴏᴜs"}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a2 = await msg.reply(f"<b><u>Sᴏʀʀʏ </b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a2.delete()
@@ -1116,7 +1116,7 @@ async def advantage_spell_check_1_(msg):
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason"),
             InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.text.replace("+", " ")}")
         ]]
-        a3 = await msg.reply(f"<b><u>Sᴏʀʀʏ {msg.from_user.mention if msg.from_user is not None else "Aɴᴏɴʏᴍᴏᴜs"}</b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
+        a3 = await msg.reply(f"<b><u>Sᴏʀʀʏ </b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
         await msg.delete()
         await a3.delete()
