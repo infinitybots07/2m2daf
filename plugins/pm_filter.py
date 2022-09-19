@@ -1089,7 +1089,7 @@ async def advantage_spell_check_1_(msg):
     if not movielist:
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', "reason"),
-            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.text.replace(" ", "+")}")
+            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.text}")
         ]]
         a2 = await msg.reply(f"<b><u>Sᴏʀʀʏ </b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
@@ -1100,10 +1100,10 @@ async def advantage_spell_check_1_(msg):
     SPELL_CHECK[msg.id] = movielist
     settings = await get_settings(msg.chat.id)
     reply_markup=InlineKeyboardMarkup([[
-    InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={msg.text.replace("+", " ")}")
+    InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f"https://imdb.com/find?q={msg.text}")
      ],[
      InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
-     InlineKeyboardButton("🎭 Gᴏᴏɢʟᴇ", url=f"https://google.com/search?q={msg.text.replace("+", " ")}")
+     InlineKeyboardButton("🎭 Gᴏᴏɢʟᴇ", url=f"https://google.com/search?q={msg.text}")
      ]]
     )     
     imdb=await get_poster(search)
@@ -1114,7 +1114,7 @@ async def advantage_spell_check_1_(msg):
     else:
         buttons = [[
             InlineKeyboardButton('🍁 Rᴇᴀsᴏɴ', callback_data="reason"),
-            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.text.replace("+", " ")}")
+            InlineKeyboardButton('🔎 Sᴇᴀʀᴄʜ', url=f"https://google.com/search?q={msg.text}")
         ]]
         a3 = await msg.reply(f"<b><u>Sᴏʀʀʏ </b></u>\n\nI Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏᴛʜɪɴɢ Rᴇʟᴀᴛᴇᴅ Tᴏ Tʜᴀᴛ\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴘᴇʟʟɪɴɢ 🤧", reply_markup = InlineKeyboardMarkup(buttons))
         await asyncio.sleep(100)
@@ -1137,7 +1137,7 @@ async def advantage_spell_check_2_(msg):
         btn = [[
             InlineKeyboardButton('📕 ɪɴsᴛʀᴜᴄᴛɪᴏɴ 📕', callback_data='reason')
             ],[   
-            InlineKeyboardButton('🔍 ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ 🔍', url=f'https://google.com/search?q={msg.text.replace(" ", "+")}')
+            InlineKeyboardButton('🔍 ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ 🔍', url=f'https://google.com/search?q={msg.text')
         ]]        
         k=await msg.reply("<b>𝖲ᴏʀʀʏ 𝖭ᴏ 𝖥ɪʟᴇ𝗌 𝖶ᴇʀᴇ 𝖥ᴏᴜɴᴅ.\n\n𝖢ʜᴇᴄᴋ 𝖸ᴏᴜʀ 𝖲ᴘᴇʟʟɪɴɢ ɪɴ 𝖦ᴏᴏɢʟᴇ ᴀɴᴅ 𝖳ʀʏ 𝖠ɢᴀɪɴ. ♻️\n\n𝖱ᴇᴀᴅ 𝖨ɴ𝗌ᴛʀᴜᴄᴛɪᴏɴ𝗌 ғᴏʀ ʙᴇᴛᴛᴇʀ 𝖱ᴇ𝗌ᴜʟᴛ𝗌 👇🏻</b>", reply_markup=InlineKeyboardMarkup(btn))    
         await asyncio.sleep(20)
