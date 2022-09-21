@@ -12,7 +12,7 @@ import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
 from info import ADMINS, PICS_RT, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, \
-    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, DELETE_TIME, CH_FILTER, CH_LINK, UNAUTHORIZED_CALLBACK_TEXT
+    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, DELETE_TIME, CH_FILTER, CH_LINK, UNAUTHORIZED_CALLBACK_TEXT, REQ_PIC
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
@@ -695,7 +695,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
         
     elif query.data == "moviis":  
-        await query.answer("⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\nꜱᴇʀɪᴇꜱ ʀᴇǫᴜᴇꜱᴛ ꜰᴏʀᴍᴀᴛ\n⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\n\nɢᴏ ᴛᴏ ɢᴏᴏɢʟᴇ ➠ ᴛʏᴘᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ➠ ᴄᴏᴘʏ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ➠ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ\n\nᴇxᴀᴍᴘʟᴇ : ʟᴏᴋɪ S01 E01\n\n🚯 ᴅᴏɴᴛ ᴜꜱᴇ ➠ ':(!,./)\n\n© ᴜʀᴠᴀꜱʜɪ ᴛʜᴇᴀᴛᴇʀꜱ", show_alert=True)   
+        await query.answer("⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\nʀᴇǫᴜᴇꜱᴛ ꜰᴏʀᴍᴀᴛ\n⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\n\nɢᴏ ᴛᴏ ɢᴏᴏɢʟᴇ ➠ ᴛʏᴘᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ➠ ᴄᴏᴘʏ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ➠ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ\n\nᴇxᴀᴍᴘʟᴇ : ʟᴏᴋɪ S01 E01\n\n🚯 ᴅᴏɴᴛ ᴜꜱᴇ ➠ ':(!,./)\n\n© Tʜᴏᴍᴀs Sʜᴇʟʙʏ ™️", show_alert=True)   
                            
     elif query.data == "reason":
         await query.answer(script.SPELL_TXT, show_alert=True)        
@@ -1028,10 +1028,10 @@ async def auto_filter(client, msg, spoll=False):
             fmsg = await message.reply_photo(photo=poster, caption=cap1[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except Exception as e:
             logger.exception(e)
-            fmsg = await message.reply_photo(photo="https://telegra.ph/file/b2fc4c74ffda76cde2297.jpg", caption=cap2, reply_markup=InlineKeyboardMarkup(btn))
+            fmsg = await message.reply_photo(photo=random.choice(REQ_PIC), caption=cap2, reply_markup=InlineKeyboardMarkup(btn))
     else:
         imdb2 = await get_poster(search)
-        fmsg = await message.reply_photo(photo="https://telegra.ph/file/b2fc4c74ffda76cde2297.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['year'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"<b><i>📁 Mᴏᴠɪᴇ Nᴀᴍᴇ : {search}\n📩 Uᴘʟᴏᴀᴅᴇᴅ Bʏ : {message.chat.title}\n🗣️ Rᴇǫᴜᴇsᴛᴇᴅ Bʏ : {message.from_user.mention}</b></i>", reply_markup=InlineKeyboardMarkup(btn))
+        fmsg = await message.reply_photo(photo=random.choice(REQ_PIC), caption=script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['year'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"<b><i>📁 Mᴏᴠɪᴇ Nᴀᴍᴇ : {search}\n📩 Uᴘʟᴏᴀᴅᴇᴅ Bʏ : {message.chat.title}\n🗣️ Rᴇǫᴜᴇsᴛᴇᴅ Bʏ : {message.from_user.mention}</b></i>", reply_markup=InlineKeyboardMarkup(btn))
     await asyncio.sleep(DELETE_TIME)
     await message.delete()
     await fmsg.delete()
@@ -1104,7 +1104,7 @@ async def advantage_spell_check_1_(msg):
     SPELL_CHECK[msg.id] = movielist
     settings = await get_settings(msg.chat.id)
     reply_markup=InlineKeyboardMarkup([[
-    InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f'https://imdb.com/{msg.text.replace(" ", "+")}')
+    InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f'https://imdb.com/find?q={msg.text.replace(" ", "+")}')
      ],[
      InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
      InlineKeyboardButton("🎭 Gᴏᴏɢʟᴇ", url=f'https://google.com/search?q={msg.text.replace(" ", "+")}')
@@ -1112,7 +1112,7 @@ async def advantage_spell_check_1_(msg):
     )     
     imdb=await get_poster(search)
     if imdb and imdb.get('poster'):
-        ms = await msg.reply_photo(photo=imdb.get('poster') if settings["imdb"] else "https://telegra.ph/file/b2fc4c74ffda76cde2297.jpg", caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb.get('plot')), reply_markup=reply_markup) 
+        ms = await msg.reply_photo(photo=imdb.get('poster') if settings["imdb"] else random.choice(REQ_PIC), caption=script.IMDB_MOVIE_2.format(query=search, title=imdb.get('title'), rating=imdb.get('rating'), genres=imdb.get('genres'), year=imdb.get('year'), runtime=imdb.get('runtime'), language=imdb.get('languages'), group=msg.chat.title, url="https://t.me/CL_UPDATE", short=imdb.get('plot')), reply_markup=reply_markup) 
         await asyncio.sleep(259200)
         await ms.delete()
     else:
@@ -1188,9 +1188,9 @@ async def advantage_spell_check_2_(msg):
         InlineKeyboardButton(text=movie.strip(), callback_data=f"spolling#{user}#{k}",)]for k, movie in enumerate(movielist)]
     btn.append([InlineKeyboardButton(text="✘ ᴍᴜꜱᴛ ᴄʟᴏꜱᴇ ✘", callback_data=f'spolling#{user}#close_spellcheck')])
     btn.insert(0,
-        [InlineKeyboardButton(f'{msg.chat.title}', url='t.me/cinema_lookam')]
+        [InlineKeyboardButton(f'{msg.chat.title}', 'dupe')]
     )
-    k=await msg.reply("<b>✯ നിങ്ങൾ ഉദ്ദേശിച്ച മൂവി താഴെ കാണുന്ന വല്ലതും ആണ് എങ്കിൽ.അതിൽ ക്ലിക്ക് ചെയ്യുക</b>\n\n➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\n\n<b>✯ ɪ ᴄᴏᴜʟᴅɴ'ᴛ ꜰɪɴᴅ ᴀɴʏᴛʜɪɴɢ ʀᴇʟᴀᴛᴇᴅ ᴛᴏ ᴛʜᴀᴛ ᴅɪᴅ ʏᴏᴜ ᴍᴇᴀɴ ᴀɴʏ ᴏɴᴇ ᴏꜰ ᴛʜᴇꜱᴇ?\n\n📯 ɴʙ: ᴄʟɪᴄᴋ ᴛʜᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ᴏɴʟʏ ᴅᴏɴᴛ ᴜꜱᴇ ʏᴇᴀʀ ʙᴜᴛᴛᴏɴ </b>",
+    k=await msg.reply("<b><i>✯ നിങ്ങൾ ഉദ്ദേശിച്ച മൂവി താഴെ കാണുന്ന വല്ലതും ആണ് എങ്കിൽ.അതിൽ ക്ലിക്ക് ചെയ്യുക</i></b>\n\n➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\n\n<b><i>✯ ɪ ᴄᴏᴜʟᴅɴ'ᴛ ꜰɪɴᴅ ᴀɴʏᴛʜɪɴɢ ʀᴇʟᴀᴛᴇᴅ ᴛᴏ ᴛʜᴀᴛ ᴅɪᴅ ʏᴏᴜ ᴍᴇᴀɴ ᴀɴʏ ᴏɴᴇ ᴏꜰ ᴛʜᴇꜱᴇ?\n\n<u>📯 Nᴏᴛᴇ :</u>\n\nᴄʟɪᴄᴋ ᴛʜᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ᴏɴʟʏ ᴅᴏɴᴛ ᴜꜱᴇ ʏᴇᴀʀ ʙᴜᴛᴛᴏɴ </i></b>",
                       reply_markup=InlineKeyboardMarkup(btn))
     await asyncio.sleep(60)
     await k.delete()
