@@ -1104,7 +1104,7 @@ async def advantage_spell_check_1_(msg):
     SPELL_CHECK[msg.id] = movielist
     settings = await get_settings(msg.chat.id)
     reply_markup=InlineKeyboardMarkup([[
-    InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f'https://imdb.com/find?q={msg.text.replace(" ", "+")}')
+    InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f'https://imdb.com')
      ],[
      InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
      InlineKeyboardButton("🎭 Gᴏᴏɢʟᴇ", url=f'https://google.com/search?q={msg.text.replace(" ", "+")}')
