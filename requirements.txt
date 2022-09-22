@@ -12,4 +12,3 @@ datetime==4.6
 pynewtonmath
 pytz
 psutil
-pyromod
