@@ -46,17 +46,18 @@ async def start(client, message):
         Time = m.hour
         
         if Time < 12:
-            nihaal="ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ" 
+            nihaal="Gᴏᴏᴅ Mᴏʀɴɪɴɢ" 
         elif Time < 15:
-            nihaal="ɢᴏᴏᴅ ᴀғᴛᴇʀɴᴏᴏɴ" 
+            nihaal="Gᴏᴏᴅ Aғᴛᴇʀɴᴏᴏɴ" 
         elif Time < 20:
-            nihaal="ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ"
+            nihaal="Gᴏᴏᴅ Eᴠᴇɴɪɴɢ"
         else:
-            nihaal="ɢᴏᴏᴅ ɴɪɢʜᴛ"
+            nihaal="Gᴏᴏᴅ Nɪɢʜᴛ"
         
         START_TXT = f"""
-<b>{nihaal} {message.from_user.mention}  ʙᴜᴅᴅʏ
-ᴍʏ ɴᴀᴍᴇ ɪꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 𝐓ʜᴏᴍᴀs 𝐒ʜᴇʟʙʏ 』</b></a>  ɪ ᴄᴀɴ ᴘʀᴏᴠɪᴅᴇ ʏᴏᴜ ᴍᴏᴠɪᴇꜱ ᴊᴜꜱᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ꜱᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ 😈</b>
+<b>{nihaal} {message.from_user.mention}  Bᴜᴅᴅʏ
+
+Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 Tʜᴏᴍᴀs Sʜᴇʟʙʏ 』</b></a>  I Cᴀɴ Pʀᴏᴠɪᴅᴇ Yᴏᴜ ᴍᴏᴠɪᴇꜱ ᴊᴜꜱᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ꜱᴇᴇ ᴍʏ ᴘᴏᴡᴇʀ 😈</b>
 """
         buttons = [[
       
