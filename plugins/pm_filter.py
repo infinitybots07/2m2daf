@@ -841,7 +841,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if str(grp_id) != str(grpid):
             btn = [
                 [
-                    InlinKeyboardButton(
+                    InlineKeyboardButton(
                         '❗Hᴏᴡ Tᴏ Cᴏɴɴᴇᴄᴛ A Cʜᴀᴛ❗', callback_data='connect'
                     )
                 ]
