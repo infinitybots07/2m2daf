@@ -694,7 +694,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "connect":
-        await query.answer('• Fɪʀsᴛ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Mᴀᴋᴇ Aᴅᴍɪɴ\n• 
+        await query.message.edit_text(
+            text = '<b>• Fɪʀsᴛ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Mᴀᴋᴇ Aᴅᴍɪɴ\n\n• Tʜᴇɴ Tᴀᴋᴇ Yᴏᴜʀ Gʀᴏᴜᴘ Iᴅ\n\n• Tʜᴇɴ Cᴏᴍᴇ Bᴀᴄᴋ Tᴏ Bᴏᴛ Pᴍ\n\n• Tʜᴇɴ Sᴇɴᴛ " /connect [Cʜᴀᴛ Iᴅ]\n\nEɢ : \n/connect -100*****</b>',
+            reply_markup = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton('❌ Cʟᴏsᴇ', callback_data='close_data')
+                    ]
+                ]
+            ),
+            parse_mode=enums.ParseMode.HTML
+        )
         
     elif query.data == "moviis":  
         await query.answer("⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\nʀᴇǫᴜᴇꜱᴛ ꜰᴏʀᴍᴀᴛ\n⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯\n\nɢᴏ ᴛᴏ ɢᴏᴏɢʟᴇ ➠ ᴛʏᴘᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ➠ ᴄᴏᴘʏ ᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ➠ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ\n\nᴇxᴀᴍᴘʟᴇ : ʟᴏᴋɪ S01 E01\n\n🚯 ᴅᴏɴᴛ ᴜꜱᴇ ➠ ':(!,./)\n\n© Tʜᴏᴍᴀs Sʜᴇʟʙʏ ™️", show_alert=True)   
