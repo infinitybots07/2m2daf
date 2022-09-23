@@ -74,10 +74,10 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"{file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
+                    text=f"• {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
                 ),
                 InlineKeyboardButton(
-                    text=f"{get_size(file.file_size)}",
+                    text=f"➪ {get_size(file.file_size)}",
                     callback_data=f'{pre}#{file.file_id}#{query.from_user.id}',
                 ),
             ]
@@ -86,9 +86,9 @@ async def next_page(bot, query):
 
     btn.insert(0, 
         [
-            InlineKeyboardButton(f'• Fɪʟᴇs: {len(files)}', 'dupe'),
-            InlineKeyboardButton(f'• Mᴏᴠɪᴇ', 'dupe'),
-            InlineKeyboardButton(f'• Sᴇʀɪᴇꜱ', 'dupe')
+            InlineKeyboardButton(f'Fɪʟᴇs: {len(files)}', 'dupe'),
+            InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'dupe'),
+            InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'dupe')
         ]
     )
    
@@ -103,7 +103,7 @@ async def next_page(bot, query):
         btn.append(
             [InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
              InlineKeyboardButton(text=f"{math.ceil(int(offset) / 10) + 1} - {math.ceil(total / 10)}", callback_data="pages"),
-             InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}")]
+             InlineKeyboardButton("• Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}")]
         )
        
     elif off_set is None:
@@ -117,7 +117,7 @@ async def next_page(bot, query):
     else:
         btn.append(
             [
-                InlineKeyboardButton("Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}"),
+                InlineKeyboardButton("• Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}"),
                 InlineKeyboardButton(text=f"{math.ceil(int(offset) / 10) + 1} - {math.ceil(total / 10)}", callback_data="pages"),
                 InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
@@ -846,7 +846,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     )
                 ]
             ]
-            await query.message.edit_text("⚠️ Sᴏʀʀʏ Bʀᴏ Iᴀᴍ Nᴏᴛ CᴏɴɴᴇᴄᴛᴇᴅTᴏ Tʜɪs Cʜᴀᴛ 🤧", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML)
+            await query.message.edit_text(f"<u><b>Sᴏʀʀʏ {query.from_user.mention}</u>\n\nI Cᴀɴᴛ Oᴘᴇɴ Sᴇᴛᴛɪɴɢs Lᴏᴏᴋs Lɪᴋᴇ Iᴀᴍ Nᴏᴛ Cᴏɴɴᴇᴄᴛ Tᴏ {query.message.chat.title} 🤧\n\nNʙ : Iғ Yᴏᴜ Dɪᴅɴᴏᴛ Kɴᴏᴡ Hᴏᴡ Tᴏ Cᴏɴɴᴇᴄᴛ Cʟɪᴄᴋ Bᴇʟᴏᴡ Bᴜᴛᴛᴏɴ ❗", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML)
             return await query.answer()
         
         if status == "True":
@@ -976,9 +976,9 @@ async def auto_filter(client, msg, spoll=False):
 
     btn.insert(0, 
         [
-            InlineKeyboardButton(f'• Fɪʟᴇs: {total_results}', 'dupe'),
-            InlineKeyboardButton(f'• Mᴏᴠɪᴇ', 'dupe'),
-            InlineKeyboardButton(f'• Sᴇʀɪᴇꜱ', 'dupe')
+            InlineKeyboardButton(f'Fɪʟᴇs: {total_results}', 'dupe'),
+            InlineKeyboardButton(f'Mᴏᴠɪᴇ', 'dupe'),
+            InlineKeyboardButton(f'Sᴇʀɪᴇꜱ', 'dupe')
         ]
     )
     
