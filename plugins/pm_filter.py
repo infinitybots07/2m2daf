@@ -133,13 +133,12 @@ async def next_page(bot, query):
 
 @Client.on_callback_query(filters.regex(r"^spolling"))
 async def advantage_spoll_choker(bot, query):
-    blaaa = query.message.reply_to_message_id
     _, user, movie_ = query.data.split('#')
     if int(user) != 0 and query.from_user.id != int(user):
         return await query.answer(UNAUTHORIZED_CALLBACK_TEXT, show_alert=True)
     if movie_ == "close_spellcheck":
         return await query.message.delete()
-    movies = SPELL_CHECK.get({blaaa})
+    movies = SPELL_CHECK.get(query.message.reply_to_message_id)
     if not movies:
         return await query.answer("Aʜʜ Bᴜᴛᴛᴏɴ Exᴘɪʀᴇᴅ 😒", show_alert=True)
     movie = movies[(int(movie_))]
