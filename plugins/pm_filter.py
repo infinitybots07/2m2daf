@@ -66,7 +66,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'),
+                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user else 0}'),
             ]
             for file in files
         ]
@@ -74,11 +74,11 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"• {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
+                    text=f"• {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user else 0}'
                 ),
                 InlineKeyboardButton(
                     text=f"➪ {get_size(file.file_size)}",
-                    callback_data=f'{pre}#{file.file_id}#{query.from_user.id}',
+                    callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user else 0}',
                 ),
             ]
             for file in files
@@ -111,7 +111,7 @@ async def next_page(bot, query):
             [
                 InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
                 InlineKeyboardButton(text=f"{math.ceil(int(offset) / 10) + 1} - {math.ceil(total / 10)}", callback_data="pages"),
-                InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
+                InlineKeyboardButton("Nᴇxᴛ •", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
         
     else:
@@ -119,7 +119,7 @@ async def next_page(bot, query):
             [
                 InlineKeyboardButton("• Bᴀᴄᴋ", callback_data=f"next_{req}_{key}_{off_set}"),
                 InlineKeyboardButton(text=f"{math.ceil(int(offset) / 10) + 1} - {math.ceil(total / 10)}", callback_data="pages"),
-                InlineKeyboardButton("Nᴇxᴛ", callback_data=f"next_{req}_{key}_{n_offset}")]
+                InlineKeyboardButton("Nᴇxᴛ •", callback_data=f"next_{req}_{key}_{n_offset}")]
         )
         
     try:
@@ -695,7 +695,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "connect":
         await query.message.edit_text(
-            text = '<b>• Fɪʀsᴛ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Mᴀᴋᴇ Aᴅᴍɪɴ\n\n• Tʜᴇɴ Tᴀᴋᴇ Yᴏᴜʀ Gʀᴏᴜᴘ Iᴅ\n\n• Tʜᴇɴ Cᴏᴍᴇ Bᴀᴄᴋ Tᴏ Bᴏᴛ Pᴍ\n\n• Tʜᴇɴ Sᴇɴᴛ " /connect [Cʜᴀᴛ Iᴅ]\n\nEɢ : \n/connect -100*****</b>',
+            text = '<b>• Fɪʀsᴛ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Mᴀᴋᴇ Aᴅᴍɪɴ\n\n• Tʜᴇɴ Tᴀᴋᴇ Yᴏᴜʀ Gʀᴏᴜᴘ Iᴅ\n\n• Tʜᴇɴ Cᴏᴍᴇ Bᴀᴄᴋ Tᴏ Bᴏᴛ Pᴍ\n\n• Tʜᴇɴ Sᴇɴᴛ " /connect [Cʜᴀᴛ Iᴅ]\n\nEɢ : \n/connect -100*******</b>',
             reply_markup = InlineKeyboardMarkup(
                 [
                     [
@@ -713,6 +713,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer(script.SPELL_TXT, show_alert=True)        
         
     elif query.data =="set2":
+   
         userid = query.from_user.id if query.from_user else None
         if not userid:
             return await query.reply(f"You are anonymous admin. Use /connect {query.message.chat.id} in PM")
@@ -837,7 +838,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.startswith("setgs"):
         ident, set_type, status, grp_id = query.data.split("#")
         grpid = await active_connection(str(query.from_user.id))
-        
+            
         if str(grp_id) != str(grpid):
             btn = [
                 [
@@ -990,7 +991,7 @@ async def auto_filter(client, msg, spoll=False):
         btn.append(
             [InlineKeyboardButton("Pᴀɢᴇs", callback_data="pages"),
              InlineKeyboardButton(text=f"1 - {math.ceil(int(total_results) / 10)}", callback_data="pages"),
-             InlineKeyboardButton(text="Nᴇxᴛ", callback_data=f"next_{req}_{key}_{offset}")]
+             InlineKeyboardButton(text="Nᴇxᴛ •", callback_data=f"next_{req}_{key}_{offset}")]
         )
         
     else:
