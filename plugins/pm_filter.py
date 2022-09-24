@@ -66,7 +66,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user else 0}'),
+                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user is not None else 0}'),
             ]
             for file in files
         ]
@@ -74,11 +74,11 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"• {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user else 0}'
+                    text=f"• {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user is not None else 0}'
                 ),
                 InlineKeyboardButton(
                     text=f"➪ {get_size(file.file_size)}",
-                    callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user else 0}',
+                    callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user is not None else 0}',
                 ),
             ]
             for file in files
@@ -694,6 +694,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "connect":
+        
+        rid = query.data.split("#")
+        
+        if int(rid) not in [query.from_user.id, 0]:
+            return await query.answer("Tʜᴀᴛs Nᴏᴛ Fᴏʀ Yᴏᴜ ❗", show_alert=True)
+    
         await query.message.edit_text(
             text = '<b>• Fɪʀsᴛ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Mᴀᴋᴇ Aᴅᴍɪɴ\n\n• Tʜᴇɴ Tᴀᴋᴇ Yᴏᴜʀ Gʀᴏᴜᴘ Iᴅ\n\n• Tʜᴇɴ Cᴏᴍᴇ Bᴀᴄᴋ Tᴏ Bᴏᴛ Pᴍ\n\n• Tʜᴇɴ Sᴇɴᴛ " /connect [Cʜᴀᴛ Iᴅ]\n\nEɢ : \n/connect -100*******</b>',
             reply_markup = InlineKeyboardMarkup(
@@ -843,7 +849,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             btn = [
                 [
                     InlineKeyboardButton(
-                        '❗Hᴏᴡ Tᴏ Cᴏɴɴᴇᴄᴛ A Cʜᴀᴛ❗', callback_data='connect'
+                        '❗Hᴏᴡ Tᴏ Cᴏɴɴᴇᴄᴛ A Cʜᴀᴛ❗', callback_data=f'connect#{query.from_user.id if query.from_user is not None else 0}'
                     )
                 ]
             ]
