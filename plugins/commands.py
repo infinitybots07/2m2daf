@@ -137,7 +137,7 @@ Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 Tʜᴏᴍᴀs Sʜ
         file_id = data
         pre = ""
     if data.split("-", 1)[0] == "BATCH":
-        sts = await message.reply("ᴀᴄᴄᴇssɪɴɢ ғɪʟᴇs")
+        sts = await message.reply("Please wait")
         file_id = data.split("-", 1)[1]
         msgs = BATCH_FILES.get(file_id)
         if not msgs:
@@ -169,7 +169,6 @@ Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 Tʜᴏᴍᴀs Sʜ
                     caption=f_caption,
                     protect_content=msg.get('protect', False),
                     )
-                
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 logger.warning(f"Floodwait of {e.x} sec.")
@@ -186,7 +185,7 @@ Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 Tʜᴏᴍᴀs Sʜ
         await sts.delete()
         return
     elif data.split("-", 1)[0] == "DSTORE":
-        sts = await message.reply("ᴀᴄᴄᴇssɪɴɢ ғɪʟᴇs")
+        sts = await message.reply("Please wait")
         b_string = data.split("-", 1)[1]
         decoded = (base64.urlsafe_b64decode(b_string + "=" * (-len(b_string) % 4))).decode("ascii")
         try:
@@ -205,7 +204,7 @@ Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 Tʜᴏᴍᴀs Sʜ
                         logger.exception(e)
                         f_caption = getattr(msg, 'caption', '')
                 else:
-                    media = getattr(msg, msg.media.value)
+                    media = getattr(msg, msg.media)
                     file_name = getattr(media, 'file_name', '')
                     f_caption = getattr(msg, 'caption', file_name)
                 try:
