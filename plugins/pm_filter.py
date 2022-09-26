@@ -33,21 +33,13 @@ BUTTONS = {}
 SPELL_CHECK = {}
 FILTER_MODE = {}
 
-@Client.on_message(filter.command(["filter_command"]))
-async def auto_filter2(client, message):
-    settings = await get_settings(message.chat.id)
-    if settings["filter_type"]:
-        FILTER_MODE = 'True'
-    else:
-        FILTER_MODE = "False"
-    
-    await message.reply('Go To /settings')
+
     
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client,message):
     group_id = message.chat.id
     name = message.text
-
+    settings = await get_settings(message.chat.id)
     keywords = await get_filters(group_id)
     for keyword in reversed(sorted(keywords, key=len)):
         pattern = r"( |^|[^\w])" + re.escape(keyword) + r"( |$|[^\w])"
@@ -86,11 +78,11 @@ async def give_filter(client,message):
                 break 
 
     else:
-        if FILTER_MODE.get(str(message.chat.id)) == "False":
-            return
-        else:
+        if settings["filter_type"]:
             await auto_filter(client, message)
-
+        else:
+            FILTER_MODE == "False"
+            
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
@@ -817,8 +809,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                          callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
                 ],
                 [
-                    InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
-                                         callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ', callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Yᴇs', if settings["filter_type"] else 'Nᴏ',
                                          callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}')
                 ],
