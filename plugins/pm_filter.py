@@ -33,14 +33,16 @@ BUTTONS = {}
 SPELL_CHECK = {}
 FILTER_MODE = {}
 
-@Client.on_message(filter.command(["filter_command"])
+@Client.on_message(filter.command(["filter_command"]))
 async def auto_filter2(client, message):
     settings = await get_settings(message.chat.id)
     if settings["filter_type"]:
         FILTER_MODE = 'True'
     else:
         FILTER_MODE = "False"
+    
     await message.reply('Go To /settings')
+    
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client,message):
     group_id = message.chat.id
