@@ -12,7 +12,8 @@ import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
 from info import ADMINS, PICS_RT, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, \
-    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, DELETE_TIME, CH_FILTER, CH_LINK, UNAUTHORIZED_CALLBACK_TEXT, REQ_PIC
+    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, DELETE_TIME, CH_FILTER, CH_LINK, UNAUTHORIZED_CALLBACK_TEXT, REQ_PIC, \
+    AUTO_FILTER
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
@@ -809,14 +810,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
                                          callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
                 ],
                 [
-                    InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ', callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}'),
-                    InlineKeyboardButton('Yᴇs', if settings["filter_type"] else 'Nᴏ',
-                                         callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}')
-                ],
-                [
-                    InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('Rᴇᴅɪᴇʀᴇᴄᴛ Tᴏ',
+                                         callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
                                          callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
+                ],
+                [
+                    InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ', callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('Yᴇs' if settings["filter_type"] else 'Nᴏ',
+                                         callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}')
                 ],
                 [
                     InlineKeyboardButton('Fɪʟᴇ Sᴇᴄᴜʀᴇ',
