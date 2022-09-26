@@ -442,7 +442,11 @@ async def settings(client, message):
                 InlineKeyboardButton('Sɪɴɢʟᴇ' if settings["button"] else 'Dᴏᴜʙʟᴇ',
                                      callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
             ],
-                
+            [
+                InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ', callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Yᴇs' if settings["filter_type"] else 'Nᴏ',
+                                     callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}')
+            ],
             [
                 InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
                 InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
