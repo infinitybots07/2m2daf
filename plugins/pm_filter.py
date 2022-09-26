@@ -763,7 +763,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('Sɪɴɢʟᴇ' if settings["button"] else 'Dᴏᴜʙʟᴇ',
                                          callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
                 ],
-               
+                [
+                    InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
+                                         callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}'),
+                    InlineaKeyboardButton('Yᴇs', if settings["filter_type"] else 'Nᴏ',
+                                          callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}')
+                ],
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
@@ -821,10 +826,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 stats6="Yᴇs"
             else:
                 stats6="Nᴏ"
-            
+            if settings["filter_type"]:
+                stats7="Yᴇs"
+            else:
+                stats7="Nᴏ"
             await client.send_message(
                 chat_id=query.from_user.id,
-                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
+                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nAᴜᴛᴏ Fɪʟᴛᴇʀ : {stats7}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=enums.ParseMode.HTML
             )
@@ -872,7 +880,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('Sɪɴɢʟᴇ' if settings["button"] else 'Dᴏᴜʙʟᴇ',
                                          callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
                 ],
-               
+                [
+                    InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
+                                         callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}'),
+                    InlineaKeyboardButton('Yᴇs', if settings["filter_type"] else 'Nᴏ',
+                                          callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}')
+                ],
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
@@ -929,8 +942,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 stats6="Yᴇs"
             else:
                 stats6="Nᴏ"
+            if settings["filter_type"]:
+                stats7="Yᴇs"
+            else:
+                stats7="Nᴏ"
             await query.message.edit_text(
-                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {query.message.chat.title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍᴇ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴏᴡ Bᴜᴛᴛᴏɴs</b>",
+                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {query.message.chat.title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nAᴜᴛᴏ Fɪʟᴛᴇʀ : {stats7}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍᴇ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴏᴡ Bᴜᴛᴛᴏɴs</b>",
                 reply_markup=reply_markup,
                 parse_mode=enums.ParseMode.HTML
             )
