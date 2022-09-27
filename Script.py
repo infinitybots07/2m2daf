@@ -13,17 +13,17 @@ class script(object):
     HELP_TXT = """Hᴇʏ {} Wᴇʟᴄᴏᴍᴇ Tᴏ Mʏ Hᴇʟᴘ Iғ Yᴏᴜ Sᴇᴇᴍ Lᴏsᴛ Oʀ Hᴀᴠᴇ A Dᴏᴜʙᴛ Usᴇ Tʜᴇ Bᴜᴛᴛᴏɴs Bᴇʟᴏᴡ Tᴏ Nᴀᴠɪɢᴀᴛᴇ Tʜʀᴏᴜɢʜ Iᴛ !"""
     
     
-    IMDB_MOVIE_2 = """<b>🧿 ᴛɪᴛᴛʟᴇ :  [{title}]({url})
-🌟 ʀᴀᴛɪɴɢ : <code>{rating} / 10</code>
-🎭 ɢᴇɴʀᴇ : <code>{genres}</code>
+    IMDB_MOVIE_2 = """<b>🧿 Tɪᴛᴛʟᴇ :  [{title}]({url})
+🌟 Rᴀᴛɪɴɢ : <code>{rating} / 10</code>
+🎭 Gᴇɴʀᴇ : <code>{genres}</code>
 
-📆 ʀᴇʟᴇᴀsᴇ : <code>{year}</code>
-⏰ ᴅᴜʀᴀᴛɪᴏɴ : <code>{runtime} Mɪɴᴜᴛᴇs</code>
-🎙️ ʟᴀɴɢᴜᴀɢᴇ : <code>{language}</code>
+📆 Rᴇʟᴇᴀsᴇ : <code>{year}</code>
+⏰ Dᴜʀᴀᴛɪᴏɴ : <code>{runtime} Mɪɴᴜᴛᴇs</code>
+🎙️ Lᴀɴɢᴜᴀɢᴇ : <code>{language}</code>
 
-🔖 sʜᴏʀᴛ Sᴛᴏʀʏ : <code>{short}</code>
+🔖 Sʜᴏʀᴛ Sᴛᴏʀʏ : <code>{short}</code>
 
-<i>★ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : {group}</i>
+<i>★ Pᴏᴡᴇʀᴇᴅ Bʏ : {group}</i>
 </b>"""
  
     MANUALFILTER_TXT = """<b>Mᴀɴᴜᴀʟ ғɪʟᴛᴇʀs ᴀʟʟᴏᴡ ʏᴏᴜ ᴛᴏ sᴀᴠᴇ ᴄᴜsᴛᴏᴍ ғɪʟᴛᴇʀs ᴏᴛʜᴇʀ ᴛʜᴀɴ ᴛʜᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄ ᴏɴᴇs. Fɪʟᴛᴇʀs ᴄᴀɴ ʙᴇ ᴏғ ᴛᴇxᴛ/ᴘʜᴏᴛᴏ/ᴅᴏᴄᴜᴍᴇɴᴛ/ᴀᴜᴅɪᴏ/ᴀɴɪᴍᴀᴛɪᴏɴ/ᴠɪᴅᴇᴏ</b> .
@@ -71,8 +71,7 @@ Aᴜᴛᴏғɪʟᴛᴇʀ ᴍᴏᴅᴜʟᴇ sᴇᴀʀᴄʜᴇs ɪᴍᴅʙ ғᴏʀ
 
 <b><u>Cᴏᴍᴍᴀɴᴅ Aɴᴅ Usᴀɢᴇ</b></u>
 
-Eɴᴀʙʟᴇ : <code>/autofilter on</code>
-Dɪsᴀʙʟᴇ : <code>/autofilter off</code>
+Yᴏᴜ Cᴀɴ Fᴏᴜɴᴅ Oɴ/Oғғ Fᴀᴄɪʟɪᴛᴇs Iɴ /settings
 
 Nᴏᴛᴇ :- Aᴜᴛᴏғɪʟᴛᴇʀ ɪs ᴇɴᴀʙʟᴇᴅ ʙʏ ᴅᴇғᴀᴜʟᴛ
 """ 
@@ -117,7 +116,7 @@ Tʜɪs Mᴏᴅᴜʟᴇ Oɴʟʏ Wᴏʀᴋ Fᴏʀ Aᴅᴍɪɴ :)
     
     JSON_TXT = """<u><b>Hᴇʟᴘ Fᴏʀ Jsᴏɴ </b></u>
   
-Bᴏᴛ Rᴇᴛᴜʀɴ Jsᴏɴ Tᴏ Aʟʟ Mᴇssᴀɢᴇs
+Bᴏᴛ Rᴇᴛᴜʀɴ Jsᴏɴ Tᴏ Aʟʟ Mᴇssᴀɢᴇs /json
 
 <b><u>Mᴇssᴀɢᴇ Eᴅɪᴛɪɴɢ Jsᴏɴ Oɴ :</u></b>
 
