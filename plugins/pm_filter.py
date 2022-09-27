@@ -811,9 +811,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
-                                         callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}'),
-                    InlineKeyboardButton('Yᴇs' if settings["filter_type"] else 'Nᴏ',
-                                         callback_data=f'setgs#filter_type#{settings["filter_type"]}#{str(grp_id)}')
+                                         callback_data=f"setgs#filter_type#{settings['filter_type']}#{str(grp_id)}"),
+                    InlineKeyboardButton('Yᴇs' if settings['filter_type'] else 'Nᴏ',
+                                         callback_data=f'setgs#filter_type#{settings['filter_type']}#{str(grp_id)}")
                 ],
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
@@ -928,9 +928,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
-                                         callback_data=f'setgs#filter_type#{settings['filter_type']}#{str(grp_id)}'),
+                                         callback_data=f"setgs#filter_type#{settings['filter_type']}#{str(grp_id)}"),
                     InlineKeyboardButton('Yᴇs' if settings['filter_type'] else 'Nᴏ',
-                                         callback_data=f'setgs#filter_type#{settings['filter_type']}#{str(grp_id)}')
+                                         callback_data=f"setgs#filter_type#{settings['filter_type']}#{str(grp_id)}")
                 ],
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
