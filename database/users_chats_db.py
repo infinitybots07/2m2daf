@@ -109,7 +109,7 @@ class Database:
     async def get_settings(self, id):
         default = {
             'button': SINGLE_BUTTON,
-            'autofilter': AUTO_FILTER,
+            'autofilter': SINGLE_BUTTON,
             'botpm': P_TTI_SHOW_OFF,
             'file_secure': PROTECT_CONTENT,
             'imdb': IMDB,
