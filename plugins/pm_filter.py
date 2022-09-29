@@ -741,11 +741,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "connect":
         
-        rid = query.data.split("#")
+        req = query.data.split("_")
         
-        if int(rid) not in [query.from_user.id, 0]:
-            return await query.answer("Tʜᴀᴛs Nᴏᴛ Fᴏʀ Yᴏᴜ ❗", show_alert=True)
-    
+        if int(req) not in [query.from_user.id, 0]:
+        return await query.answer(UNAUTHORIZED_CALLBACK_TEXT, show_alert=True)
+
         await query.message.edit_text(
             text = '<b>• Fɪʀsᴛ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Mᴀᴋᴇ Aᴅᴍɪɴ\n\n• Tʜᴇɴ Tᴀᴋᴇ Yᴏᴜʀ Gʀᴏᴜᴘ Iᴅ\n\n• Tʜᴇɴ Cᴏᴍᴇ Bᴀᴄᴋ Tᴏ Bᴏᴛ Pᴍ\n\n• Tʜᴇɴ Sᴇɴᴛ " /connect [Cʜᴀᴛ Iᴅ]\n\nEɢ : \n/connect -100*******</b>',
             reply_markup = InlineKeyboardMarkup(
@@ -801,7 +801,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
         settings = await get_settings(grp_id)
         if settings is not None:
-            await query.answer()
+            await query.answer('Sᴇɴᴛɪɴɢ...')
             buttons = [
                 [
                     InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
@@ -899,11 +899,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ident, set_type, status, grp_id = query.data.split("#")
         grpid = await active_connection(str(query.from_user.id))
             
+        req = query.data.split("_")
+        
+        if int(req) not in [query.from_user.id, 0]:
+        return await query.answer(UNAUTHORIZED_CALLBACK_TEXT, show_alert=True)
+
         if str(grp_id) != str(grpid):
             btn = [
                 [
                     InlineKeyboardButton(
-                        '❗Hᴏᴡ Tᴏ Cᴏɴɴᴇᴄᴛ A Cʜᴀᴛ❗', callback_data=f'connect#{query.from_user.id if query.from_user is not None else 0}'
+                        '❗Hᴏᴡ Tᴏ Cᴏɴɴᴇᴄᴛ A Cʜᴀᴛ❗', callback_data=f'connect_{req}'
                     )
                 ]
             ]
@@ -918,7 +923,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         settings = await get_settings(grpid)
 
         if settings is not None:
-            await query.answer()
+            await query.answer('Cʜᴀɴɢɪɴɢ....')
             buttons = [
                 [
                     InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
