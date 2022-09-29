@@ -79,7 +79,7 @@ async def give_filter(client,message):
                 break 
 
     else:
-        if settings['autofilter']:
+        if settings["autofilter"]:
             await auto_filter(client, message)
         else:
             FILTER_MODE == "False"
