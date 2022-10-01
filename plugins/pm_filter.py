@@ -893,17 +893,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.startswith("setgs"):
         ident, set_type, status, grp_id = query.data.split("#")
         grpid = await active_connection(str(query.from_user.id))
-            
-        req = query.data.split("_")
-        
-        if int(req) not in [query.from_user.id, 0]:
-        return await query.answer(UNAUTHORIZED_CALLBACK_TEXT, show_alert=True)
-
+           
         if str(grp_id) != str(grpid):
             btn = [
                 [
                     InlineKeyboardButton(
-                        '❗Hᴏᴡ Tᴏ Cᴏɴɴᴇᴄᴛ A Cʜᴀᴛ❗', callback_data=f'connect_{req}'
+                        '❗Hᴏᴡ Tᴏ Cᴏɴɴᴇᴄᴛ A Cʜᴀᴛ❗', callback_data=f'connect'
                     )
                 ]
             ]
