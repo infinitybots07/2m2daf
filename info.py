@@ -69,7 +69,7 @@ CH_LINK = environ.get('CH_LINK', "")
 CH_FILTER = int(ch_filter) if ch_filter and id_pattern.search(ch_filter) else None
 UNAUTHORIZED_CALLBACK_TEXT = (environ.get('UNAUTHORIZED_CALLBACK_TEXT', "Hᴇʏ Nᴀᴜɢʜᴛʏ Bᴏʏ Dᴏɴᴏᴛ Rᴇǫᴜᴇsᴛ ᴏᴛʜᴇʀs , Rᴇǫᴜᴇsᴛ ʏᴏᴜʀ ᴏɴ 😒"))[:200]
 REQ_PIC = (environ.get('REQ_PIC', "https://telegra.ph/file/986a033a35cb779e91fe4.jpg")) .split()
-AUTO_FILTER = ((environ.get("AUTO_FILTER", "True")), True)
+AUTO_FILTER = (environ.get("AUTO_FILTER", "True"))
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
