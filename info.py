@@ -9,6 +9,15 @@ def is_enabled(value, default):
         return False
     else:
         return default
+    
+    
+def autofilter_env(value):
+    if value.lower() in ["true", "yes", "1", "enable", "y"]:
+        return True
+    elif value.lower() in ["false", "no", "0", "disable", "n"]:
+        return False
+    else:
+        return "yes"
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
