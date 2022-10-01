@@ -741,11 +741,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "connect":
         
-        req = query.data.split("_")
-        
-        if int(req) not in [query.from_user.id, 0]:
-        return await query.answer(UNAUTHORIZED_CALLBACK_TEXT, show_alert=True)
-
         await query.message.edit_text(
             text = '<b>• Fɪʀsᴛ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Mᴀᴋᴇ Aᴅᴍɪɴ\n\n• Tʜᴇɴ Tᴀᴋᴇ Yᴏᴜʀ Gʀᴏᴜᴘ Iᴅ\n\n• Tʜᴇɴ Cᴏᴍᴇ Bᴀᴄᴋ Tᴏ Bᴏᴛ Pᴍ\n\n• Tʜᴇɴ Sᴇɴᴛ " /connect [Cʜᴀᴛ Iᴅ]\n\nEɢ : \n/connect -100*******</b>',
             reply_markup = InlineKeyboardMarkup(
