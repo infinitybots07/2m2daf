@@ -444,10 +444,14 @@ async def settings(client, message):
             ],
             [
                    
-                InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
-                                     callback_data=f'setgs#autofilter#{settings["autofilter"]}#{str(grp_id)}'),
-                InlineKeyboardButton('Yᴇs' if settings["autofilter"] else 'Nᴏ',
-                                     callback_data=f'setgs#autofilter#{settings["autofilter"]}#{str(grp_id)}')
+                InlineKeyboardButton(
+                    'Aᴜᴛᴏ Fɪʟᴛᴇʀ',
+                    callback_data=f'setgs#autofilter#{settings["autofilter"]}#{grp_id}'
+                ),
+                InlineKeyboardButton(
+                    'Yᴇs' if settings["autofilter"] else 'Nᴏ',
+                    callback_data=f'setgs#autofilter#{settings["autofilter"]}#{grp_id}'
+                )
             ],
             [
                 InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ',
@@ -474,7 +478,7 @@ async def settings(client, message):
                                      callback_data=f'setgs#spell_check#{settings["spell_check"]}#{str(grp_id)}')
             ],
             [
-                InlineKeyboardButton('Wᴇʟᴄᴏᴍᴇ', callback_data=f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Wᴇʟᴄᴏᴍᴇ', callback_data=f'setgs#welcome#{settings["welcome"]}#{grp_id}'),
                 InlineKeyboardButton('Yᴇs' if settings["welcome"] else 'Nᴏ',
                                      callback_data=f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}')
             ],
