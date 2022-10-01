@@ -446,11 +446,12 @@ async def settings(client, message):
                    
                 InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
                                      callback_data=f'setgs#autofilter#{settings["autofilter"]}#{str(grp_id)}'),
-                InlineKeyboardButton('Yᴇs' if settings["autofilter"] == "YES" else 'Nᴏ',
+                InlineKeyboardButton('Yᴇs' if settings["autofilter"] else 'Nᴏ',
                                      callback_data=f'setgs#autofilter#{settings["autofilter"]}#{str(grp_id)}')
             ],
             [
-                InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ',
+                                     callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
                 InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
                                      callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
             ],
