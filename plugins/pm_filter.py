@@ -79,7 +79,7 @@ async def give_filter(client,message):
                 break 
 
     else:
-        if settings["autofilter"]:
+        if settings["file_secure"]:
             await auto_filter(client, message)
         else:
             FILTER_MODE == "False"
@@ -107,12 +107,11 @@ async def next_page(bot, query):
     if not files:
         return
     settings = await get_settings(query.message.chat.id)
-    pre = 'filep' if settings['file_secure'] else 'file'
     if settings['button']:
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user is not None else 0}'),
+                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'file#{file.file_id}#{query.from_user.id if query.from_user is not None else 0}'),
             ]
             for file in files
         ]
@@ -120,11 +119,11 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"• {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user is not None else 0}'
+                    text=f"• {file.file_name}", callback_data=f'file#{file.file_id}#{query.from_user.id if query.from_user is not None else 0}'
                 ),
                 InlineKeyboardButton(
                     text=f"➪ {get_size(file.file_size)}",
-                    callback_data=f'{pre}#{file.file_id}#{query.from_user.id if query.from_user is not None else 0}',
+                    callback_data=f'file#{file.file_id}#{query.from_user.id if query.from_user is not None else 0}',
                 ),
             ]
             for file in files
@@ -804,19 +803,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('Sɪɴɢʟᴇ' if settings["button"] else 'Dᴏᴜʙʟᴇ',
                                          callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
                 ],
-                [
-                    InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
-                                         callback_data=f'setgs#autofilter#{settings["autofilter"]}#{str(grp_id)}'),
-                    InlineKeyboardButton('Yᴇs' if settings["autofilter"] else 'Nᴏ',
-                                         callback_data=f'setgs#autofilter#{settings["autofilter"]}#{str(grp_id)}')
-                ],
+                
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
                                          callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
                 ],
                 [
-                    InlineKeyboardButton('Fɪʟᴇ Sᴇᴄᴜʀᴇ',
+                    InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
                                          callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Yᴇs' if settings["file_secure"] else 'Nᴏ',
                                          callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}')
@@ -867,13 +861,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 stats6="Yᴇs"
             else:
                 stats6="Nᴏ"
-            if settings["autofilter"]:
-                stats7="Yᴇs"
-            else:
-                stats7="Nᴏ"
+            
             await client.send_message(
                 chat_id=query.from_user.id,
-                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nAᴜᴛᴏ Fɪʟᴛᴇʀ : {stats7}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
+                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nAᴜᴛᴏ Fɪʟᴛᴇʀ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=enums.ParseMode.HTML
             )
@@ -921,19 +912,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('Sɪɴɢʟᴇ' if settings["button"] else 'Dᴏᴜʙʟᴇ',
                                          callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
                 ],
-                [
-                    InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
-                                         callback_data=f'setgs#autofilter#{settings["autofilter"]}#{str(grp_id)}'),
-                    InlineKeyboardButton('Yᴇs' if settings["autofilter"] else 'Nᴏ',
-                                         callback_data=f'setgs#autofilter#{settings["autofilter"]}#{str(grp_id)}')
-                ],
+                
                 [
                     InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Cʜᴀᴛ' if settings["botpm"] else 'Pᴍ',
                                          callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}')
                 ],
                 [
-                    InlineKeyboardButton('Fɪʟᴇ Sᴇᴄᴜʀᴇ',
+                    InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
                                          callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}'),
                     InlineKeyboardButton('Yᴇs' if settings["file_secure"] else 'Nᴏ',
                                          callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}')
@@ -983,12 +969,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 stats6="Yᴇs"
             else:
                 stats6="Nᴏ"
-            if settings["autofilter"]:
-                stats7="Yᴇs"
-            else:
-                stats7="Nᴏ"
+    
             await query.message.edit_text(
-                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {query.message.chat.title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nAᴜᴛᴏ Fɪʟᴛᴇʀ : {stats7}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍᴇ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴏᴡ Bᴜᴛᴛᴏɴs</b>",
+                text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {query.message.chat.title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nAᴜᴛ Fɪʟᴛᴇʀ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍᴇ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴏᴡ Bᴜᴛᴛᴏɴs</b>",
                 reply_markup=reply_markup,
                 parse_mode=enums.ParseMode.HTML
             )
@@ -1014,12 +997,11 @@ async def auto_filter(client, msg, spoll=False):
         settings = await get_settings(msg.message.chat.id)
         message = msg.message.reply_to_message  # msg will be callback query
         search, files, offset, total_results = spoll
-    pre = 'filep' if settings['file_secure'] else 'file'
     if settings["button"]:
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
+                    text=f"⊹ {get_size(file.file_size)} ‣ {file.file_name}", callback_data=f'file#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
                 ),
             ]
             for file in files
@@ -1029,11 +1011,11 @@ async def auto_filter(client, msg, spoll=False):
             [
                 InlineKeyboardButton(
                     text=f"{file.file_name}",
-                    callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}',
+                    callback_data=f'file#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}',
                 ),
                 InlineKeyboardButton(
                     text=f"{get_size(file.file_size)}",
-                    callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}',
+                    callback_data=f'file#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}',
                 ),
             ]
             for file in files
