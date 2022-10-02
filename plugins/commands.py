@@ -442,17 +442,7 @@ async def settings(client, message):
                 InlineKeyboardButton('Sɪɴɢʟᴇ' if settings["button"] else 'Dᴏᴜʙʟᴇ',
                                      callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
             ],
-            [
-                   
-                InlineKeyboardButton(
-                    'Aᴜᴛᴏ Fɪʟᴛᴇʀ',
-                    callback_data=f'setgs#autofilter#{settings["autofilter"]}#{grp_id}'
-                ),
-                InlineKeyboardButton(
-                    'Yᴇs' if settings["autofilter"] else 'Nᴏ',
-                    callback_data=f'setgs#autofilter#{settings["autofilter"]}#{grp_id}'
-                )
-            ],
+            
             [
                 InlineKeyboardButton('Rᴇᴅɪʀᴇᴄᴛ Tᴏ',
                                      callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
@@ -461,7 +451,7 @@ async def settings(client, message):
             ],
             [
                    
-                InlineKeyboardButton('Fɪʟᴇ Sᴇᴄᴜʀᴇ',
+                InlineKeyboardButton('Aᴜᴛᴏ Fɪʟᴛᴇʀ',
                                      callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}'),
                 InlineKeyboardButton('Yᴇs' if settings["file_secure"] else 'Nᴏ',
                                      callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}')
@@ -513,7 +503,7 @@ async def settings(client, message):
             stats6="Nᴏ"
         
         await message.reply_text(
-            text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nFɪʟᴇ Sᴇᴄᴄʀᴇ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
+            text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nAᴜᴛᴏ Fɪʟᴛᴇʀ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
             reply_markup=reply_markup,
             disable_web_page_preview=True,
             parse_mode=enums.ParseMode.HTML,
