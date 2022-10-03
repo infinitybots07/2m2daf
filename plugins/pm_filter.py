@@ -1180,7 +1180,7 @@ async def advantage_spell_check_1_(msg):
     InlineKeyboardButton("🧿 Iᴍᴅʙ Iɴғᴏ", url=f'https://www.imdb.com')
      ],[
      InlineKeyboardButton("😌 Rᴇᴀsᴏɴ", callback_data="reason"),
-     InlineKeyboardButton("🎭 Gᴏᴏɢʟᴇ", url=f'https://www.google.com/search?q={msg.text.replace(" ", "+")}')
+     InlineKeyboardButton("🎭 Gᴏᴏɢʟᴇ", url=f'https://www.google.com')
      ]]
     )     
     imdb=await get_poster(search)
