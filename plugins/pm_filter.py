@@ -1089,7 +1089,7 @@ async def auto_filter(client, msg, spoll=False):
         )
     else:
         imdb2 = await get_poster(search)
-        cap2 = script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['release_date'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"<b><i> 𝖥𝗂𝗅𝗂𝗆 : {search}\n𝖸𝖾𝖺𝗋 : <code>None</code>\n𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾𝗌 : <code>None</code>\n\n𝖴𝗉𝗅𝗈𝖺𝖽𝖾𝖽 𝖡𝗒 : {message.chat.title}</b></i>"
+        cap2 = script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['release_date'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"<b>𝖥𝗂𝗅𝗂𝗆 : {search}\n𝖸𝖾𝖺𝗋 : <code>None</code>\n𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾𝗌 : <code>None</code>\n\n<i>𝖴𝗉𝗅𝗈𝖺𝖽𝖾𝖽 𝖡𝗒 : {message.chat.title}</b></i>"
     
     if imdb and imdb.get('poster'):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
         try:
