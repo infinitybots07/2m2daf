@@ -96,6 +96,30 @@ class Database:
         return False if not chat else chat.get('chat_status')
     
 
+    async def status(self, group_id: int):
+        """
+        Get the total filters, total connected
+        chats and total active chats of a chat
+        """
+        group_id = int(group_id)
+        
+        total_filter = await self.tf_count(group_id)
+        
+        chats = await self.find_chat(group_id)
+        chats = chats.get("chat_ids")
+        total_chats = len(chats) if chats is not None else 0
+        
+        achats = await self.find_active(group_id)
+        if achats not in (None, False):
+            achats = achats.get("chats")
+            if achats == None:
+                achats = []
+        else:
+            achats = []
+        total_achats = len(achats)
+        
+        return total_filter, total_chats, total_achats
+    
     async def re_enable_chat(self, id):
         chat_status=dict(
             is_disabled=False,
