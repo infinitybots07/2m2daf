@@ -104,39 +104,10 @@ class Database:
         group_id = int(group_id)
         
         total_filter = await self.tf_count(group_id)
+       
         
-        chats = await self.find_chat(group_id)
-        chats = chats.get("chat_ids")
-        total_chats = len(chats) if chats is not None else 0
-        
-        achats = await self.find_active(group_id)
-        if achats not in (None, False):
-            achats = achats.get("chats")
-            if achats == None:
-                achats = []
-        else:
-            achats = []
-        total_achats = len(achats)
-        
-        return total_filter, total_chats, total_achats
-    
-    async def find_chat(self, group_id: int):
-        """
-        A funtion to fetch a group's settings
-        """
-        connections = self.cache.get(str(group_id))
-        
-        if connections is not None:
-            return connections
-
-        connections = await self.col.find_one({'_id': group_id})
-        
-        if connections:
-            self.cache[str(group_id)] = connections
-
-            return connections
-        else: 
-            return self.new_chat(None, None, None)
+        return total_filter
+   
         
     async def re_enable_chat(self, id):
         chat_status=dict(
