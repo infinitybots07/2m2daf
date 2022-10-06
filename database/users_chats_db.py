@@ -169,4 +169,11 @@ class Database:
         return (await self.db.command("dbstats"))['dataSize']
 
 
+    async def tf_count(self, group_id: int):
+        """
+        A Funtion to count total filters of a group
+        """
+        return await self.fcol.count_documents({"group_id": group_id})
+
+    
 db = Database(DATABASE_URI, DATABASE_NAME)
