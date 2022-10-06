@@ -113,7 +113,6 @@ Tʜɪs Mᴏᴅᴜʟᴇ Oɴʟʏ Wᴏʀᴋ Fᴏʀ Aᴅᴍɪɴ :)
 👥 ɢʀᴏᴜᴘs: <code>{}</code>
 🗂️ ᴏᴄᴄᴜᴘɪᴇᴅ: <code>{}</code>
 📖 Tᴏᴛᴀʟ Fɪʟᴛᴇʀs : <code>{}</code>
-📯 Aᴄᴛɪᴠᴇ Cʜᴀᴛ : <code>{}</code>
 """
     
     JSON_TXT = """<u><b>Hᴇʟᴘ Fᴏʀ Jsᴏɴ </b></u>
