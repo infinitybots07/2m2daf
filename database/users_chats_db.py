@@ -120,6 +120,24 @@ class Database:
         
         return total_filter, total_chats, total_achats
     
+    async def find_chat(self, group_id: int):
+        """
+        A funtion to fetch a group's settings
+        """
+        connections = self.cache.get(str(group_id))
+        
+        if connections is not None:
+            return connections
+
+        connections = await self.col.find_one({'_id': group_id})
+        
+        if connections:
+            self.cache[str(group_id)] = connections
+
+            return connections
+        else: 
+            return self.new_chat(None, None, None)
+        
     async def re_enable_chat(self, id):
         chat_status=dict(
             is_disabled=False,
@@ -156,6 +174,7 @@ class Database:
         await self.grp.update_one({'id': int(chat)}, {'$set': {'chat_status': chat_status}})
     
 
+    
     async def total_chat_count(self):
         count = await self.grp.count_documents({})
         return count
