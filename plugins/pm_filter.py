@@ -704,7 +704,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('ʙᴀᴄᴋ', callback_data='help')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        total_filters, total_achats = await db.status()
+        chat_id = query.message.chat.id
+        total_filters, total_achats = await db.status(chat_id)
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
@@ -727,7 +728,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('ʙᴀᴄᴋ', callback_data='help')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        total_filters, total_achats = await db.status()
+        chat_id = query.message.chat.id
+        total_filters, total_achats = await db.status(chat_id)
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
