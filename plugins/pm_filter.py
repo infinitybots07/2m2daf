@@ -705,7 +705,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         chat_id = query.message.chat.id
-        total_filters, total_achats = await db.status(chat_id)
+        total_filters = await db.status(chat_id)
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
@@ -714,7 +714,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         monsize = get_size(monsize)
         free = get_size(free)
         await query.message.edit_text(
-            text=script.STATUS_TXT.format(total, users, chats, monsize, free, total_filters, total_achats),
+            text=script.STATUS_TXT.format(total, users, chats, monsize, free, total_filters),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -729,7 +729,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         chat_id = query.message.chat.id
-        total_filters, total_achats = await db.status(chat_id)
+        total_filters = await db.status(chat_id)
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
@@ -738,7 +738,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         monsize = get_size(monsize)
         free = get_size(free)
         await query.message.edit_text(
-            text=script.STATUS_TXT.format(total, users, chats, monsize, free, total_filters, total_achats),
+            text=script.STATUS_TXT.format(total, users, chats, monsize, free, total_filters),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
