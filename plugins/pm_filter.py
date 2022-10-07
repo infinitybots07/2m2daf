@@ -729,7 +729,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         chat_id = query.message.chat.id
-        total_filters = await db.status(chat_id)
+        totalcount = await 
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
