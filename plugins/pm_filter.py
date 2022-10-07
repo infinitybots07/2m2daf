@@ -21,6 +21,7 @@ from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_
 from database.users_chats_db import db
 from database.ia_filterdb import Media, get_file_details, get_search_results
 from database.filters_mdb import (
+    filter_stats,
     del_all,
     find_filter,
     get_filters,
@@ -705,7 +706,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         chat_id = query.message.chat.id
-        total_filters = await db.status(chat_id)
+        totalcount = await filter_stats()
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
@@ -714,7 +715,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         monsize = get_size(monsize)
         free = get_size(free)
         await query.message.edit_text(
-            text=script.STATUS_TXT.format(total, users, chats, monsize, total_filters),
+            text=script.STATUS_TXT.format(total, users, chats, monsize, totalcount),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -729,7 +730,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         chat_id = query.message.chat.id
-        totalcount = await 
+        totalcount = await filter_stats()
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
@@ -738,7 +739,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         monsize = get_size(monsize)
         free = get_size(free)
         await query.message.edit_text(
-            text=script.STATUS_TXT.format(total, users, chats, monsize, total_filters),
+            text=script.STATUS_TXT.format(total, users, chats, monsize, totalcount),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
