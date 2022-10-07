@@ -95,18 +95,6 @@ class Database:
         chat = await self.grp.find_one({'id':int(chat)})
         return False if not chat else chat.get('chat_status')
     
-
-    async def status(self, group_id: int):
-        """
-        Get the total filters, total connected
-        chats and total active chats of a chat
-        """
-        group_id = int(group_id)
-        
-        total_filter = await self.tf_count(group_id)
-       
-        
-        return total_filter
    
         
     async def re_enable_chat(self, id):
@@ -158,12 +146,4 @@ class Database:
     async def get_db_size(self):
         return (await self.db.command("dbstats"))['dataSize']
 
-
-    async def tf_count(self, group_id: int):
-        """
-        A Funtion to count total filters of a group
-        """
-        return await self.col.count_documents({"group_id": group_id})
-
-    
 db = Database(DATABASE_URI, DATABASE_NAME)
