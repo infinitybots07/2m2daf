@@ -26,7 +26,7 @@ async def start(client, message):
         await message.reply_photo(photo=random.choice(PICS))
         buttons = [[
       
-            InlineKeyboardButton('➕ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ➕', url='http://t.me/CL_FILTER_BOT?startgroup=true')
+            InlineKeyboardButton('➕ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ]]     
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_message(chat_id=message.chat.id, text=script.START_TXT.format(message.from_user.mention if message.from_user else message.chat.title, temp.U_NAME, temp.B_NAME), reply_markup=reply_markup)
@@ -269,7 +269,7 @@ Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 Tʜᴏᴍᴀs Sʜ
     btn = [
         [
             InlineKeyboardButton(
-                '➕ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ➕', url='http://t.me/CL_FILTER_BOT?startgroup=true'
+                '➕ Aᴅᴅ Bᴏᴛ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true'
             )
         ]
     ]
