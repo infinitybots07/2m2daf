@@ -129,7 +129,7 @@ class Database:
 
             return connections
         else: 
-            return self.new_group(None, None, None)
+            return self.new_group(None, None, None, None)
 
     async def add_chat(self, chat, title):
         chat = self.new_group(chat, title)
