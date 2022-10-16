@@ -9,6 +9,9 @@ class Database:
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
         self.col = self.db.users
+        self.fcol = 
+        
+        
         self.grp = self.db.groups
 
 
@@ -32,6 +35,30 @@ class Database:
                 reason="",
             ),
         )
+    
+    async def status(self, group_id: int):
+        """
+        Get the total filters, total connected
+        chats and total active chats of a chat
+        """
+        group_id = int(group_id)
+        
+        total_filter = await self.tf_count(group_id)
+        
+        chats = await self.find_chat(group_id)
+        chats = chats.get("chat_ids")
+        total_chats = len(chats) if chats is not None else 0
+        
+        achats = await self.find_active(group_id)
+        if achats not in (None, False):
+            achats = achats.get("chats")
+            if achats == None:
+                achats = []
+        else:
+            achats = []
+        total_achats = len(achats)
+        
+        return total_filter, total_chats, total_achats
     
     async def add_user(self, id, name):
         user = self.new_user(id, name)
