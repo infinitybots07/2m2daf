@@ -57,7 +57,7 @@ async def start(client, message):
         START_TXT = f"""
 <b>{nihaal} {message.from_user.mention}  Bᴜᴅᴅʏ
 
-Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 Tʜᴏᴍᴀs Sʜᴇʟʙʏ 』</b></a>  I Cᴀɴ Pʀᴏᴠɪᴅᴇ Yᴏᴜ Mᴏᴠɪᴇꜱ Jᴜꜱᴛ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Sᴇᴇ Mʏ Pᴏᴡᴇʀ 😈</b>
+Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/Shelby_Filter_Bot><b>『 Tʜᴏᴍᴀs Sʜᴇʟʙʏ 』</b></a>  I Cᴀɴ Pʀᴏᴠɪᴅᴇ Yᴏᴜ Mᴏᴠɪᴇꜱ Jᴜꜱᴛ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Sᴇᴇ Mʏ Pᴏᴡᴇʀ 😈</b>
 """
         buttons = [[
       
@@ -117,7 +117,7 @@ Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 Tʜᴏᴍᴀs Sʜ
         START_TXT = f"""
 <b>{nihaal} {message.from_user.mention}  Bᴜᴅᴅʏ
 
-Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/CL_FILTER_BOT><b>『 Tʜᴏᴍᴀs Sʜᴇʟʙʏ 』</b></a>  I Cᴀɴ Pʀᴏᴠɪᴅᴇ Yᴏᴜ Mᴏᴠɪᴇꜱ Jᴜꜱᴛ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Sᴇᴇ Mʏ Pᴏᴡᴇʀ 😈</b>
+Mʏ Nᴀᴍᴇ Iꜱ  <a href=https://t.me/Shelby_Filter_Bot><b>『 Tʜᴏᴍᴀs Sʜᴇʟʙʏ 』</b></a>  I Cᴀɴ Pʀᴏᴠɪᴅᴇ Yᴏᴜ Mᴏᴠɪᴇꜱ Jᴜꜱᴛ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Sᴇᴇ Mʏ Pᴏᴡᴇʀ 😈</b>
 """
         buttons = [[
             InlineKeyboardButton('Cʟɪᴄᴋ ʜᴇʀᴇ Fᴏʀ Mᴏʀᴇ ʙᴜᴛᴛᴏɴ', callback_data='start2')
