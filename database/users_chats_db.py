@@ -11,7 +11,7 @@ class Database:
         self.col = self.db.users
         self.fcol = self.db["filters_collection"]
         
-        
+        self.achats
         self.grp = self.db.groups
 
 
@@ -159,7 +159,19 @@ class Database:
             )
         await self.grp.update_one({'id': int(chat)}, {'$set': {'chat_status': chat_status}})
     
+    async def find_active(self, group_id: int):
+        """
+        A Funtion to find all active chats of
+        a group from db
+        """
+        if self.acache.get(str(group_id)):
+            self.acache.get(str(group_id))
+        
+        connection = await self.acol.find_one({"_id": group_id})
 
+        if connection:
+            return connection
+        return False
     
     async def total_chat_count(self):
         count = await self.grp.count_documents({})
