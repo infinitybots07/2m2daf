@@ -9,7 +9,7 @@ class Database:
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
         self.col = self.db.users
-        self.fcol = 
+        self.fcol = self.db["filters_collection"]
         
         
         self.grp = self.db.groups
@@ -169,6 +169,11 @@ class Database:
     async def get_all_chats(self):
         return self.grp.find({})
 
+    async def tf_count(self, group_id: int):
+        """
+        A Funtion to count total filters of a group
+        """
+        return await self.fcol.count_documents({"group_id": group_id})
 
     async def get_db_size(self):
         return (await self.db.command("dbstats"))['dataSize']
