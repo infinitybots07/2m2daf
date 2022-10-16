@@ -9,11 +9,9 @@ class Database:
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
         self.col = self.db.users
-        self.acol = self.db["Active_Chats"]
+  
         self.fcol = self.db["Filter_Collection"]
         self.grp = self.db.groups
-        self.cache = {}
-        self.acache = {}
         
 
 
@@ -47,20 +45,8 @@ class Database:
         
         total_filter = await self.tf_count(group_id)
         
-        chats = await self.find_chat(group_id)
-        chats = chats.get("chat_ids")
-        total_chats = len(chats) if chats is not None else 0
         
-        achats = await self.find_active(group_id)
-        if achats not in (None, False):
-            achats = achats.get("chats")
-            if achats == None:
-                achats = []
-        else:
-            achats = []
-        total_achats = len(achats)
-        
-        return total_filter, total_chats, total_achats
+        return total_filter
     
     async def add_user(self, id, name):
         user = self.new_user(id, name)
@@ -113,23 +99,7 @@ class Database:
         b_users = [user['id'] async for user in users]
         return b_users, b_chats
     
-    async def find_chat(self, group_id: int):
-        """
-        A funtion to fetch a group's settings
-        """
-        connections = self.cache.get(str(group_id))
-        
-        if connections is not None:
-            return connections
-
-        connections = await self.col.find_one({'_id': group_id})
-        
-        if connections:
-            self.cache[str(group_id)] = connections
-
-            return connections
-        else: 
-            return self.new_group(None, None)
+    
 
     async def add_chat(self, chat, title):
         chat = self.new_group(chat, title)
@@ -177,19 +147,7 @@ class Database:
             )
         await self.grp.update_one({'id': int(chat)}, {'$set': {'chat_status': chat_status}})
     
-    async def find_active(self, group_id: int):
-        """
-        A Funtion to find all active chats of
-        a group from db
-        """
-        if self.acache.get(str(group_id)):
-            self.acache.get(str(group_id))
-        
-        connection = await self.acol.find_one({"_id": group_id})
-
-        if connection:
-            return connection
-        return False
+    
     
     async def total_chat_count(self):
         count = await self.grp.count_documents({})
