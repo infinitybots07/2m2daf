@@ -706,7 +706,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         chat_id = query.message.chat.id
-        totalcollections, totalcount = await filter_stats()
+        total_achats, total_filter = await db.status(chat_id)
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
@@ -715,7 +715,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         monsize = get_size(monsize)
         free = get_size(free)
         await query.message.edit_text(
-            text=script.STATUS_TXT.format(total, users, chats, monsize, totalcollections, totalcount),
+            text=script.STATUS_TXT.format(total, users, chats, monsize, total_achats, total_filter),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -730,7 +730,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         chat_id = query.message.chat.id
-        totalcollections, totalcount = await filter_stats()
+        total_achats, total_filter = await db.status(chat_id)
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
@@ -739,7 +739,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         monsize = get_size(monsize)
         free = get_size(free)
         await query.message.edit_text(
-            text=script.STATUS_TXT.format(total, users, chats, monsize, totalcollections, totalcount),
+            text=script.STATUS_TXT.format(total, users, chats, monsize, total_achats, total_filter),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -806,7 +806,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
         settings = await get_settings(grp_id)
         if settings is not None:
-            await query.answer('Sᴇɴᴛɪɴɢ...')
+            await query.answer('Sᴇɴᴛᴇᴅ ✅')
             buttons = [
                 [
                     InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
@@ -1094,7 +1094,7 @@ async def auto_filter(client, msg, spoll=False):
         )
     else:
         imdb2 = await get_poster(search)
-        cap2 = script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['release_date'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"𝗙𝗶𝗹𝗺 : <b>{search}</b>\n𝗬𝗲𝗮𝗿 : <code>N/A</code>\n𝗥𝗮𝘁𝗶𝗻𝗴 : <code>N/A</code>\n𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲 : <code>N/A</code>\n\n©️ 𝗧𝗲𝗮𝗺 <a href=https://t.me/cinema_lookam><b>{message.chat.title}</b></a>™️"
+        cap2 = script.IMDB_MOVIE_2.format(query=search, title=imdb2['title'], rating=imdb2['rating'], genres=imdb2['genres'], year=imdb2['release_date'], runtime=imdb2['runtime'], language=imdb2['languages'], group=message.chat.title, url="https://t.me/cinema_lookam", short=imdb2['plot']) if imdb2 else f"𝗙𝗶𝗹𝗺 : <b>{search}</b>\n𝗬𝗲𝗮𝗿 : <code>N/A</code>\n𝗥𝗮𝘁𝗶𝗻𝗴 : <code>N/A</code>\n𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲 : <code>N/A</code>\n\n©️ 𝗧𝗲𝗮𝗺 <a href=https://t.me/cinema_lookam><b>{message.chat.title}</b></a> ™️"
     
     if imdb and imdb.get('poster'):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
         try:
@@ -1266,7 +1266,7 @@ async def advantage_spell_check_2_(msg):
         InlineKeyboardButton(text=movie.strip(), callback_data=f"spolling#{user}#{k}",)]for k, movie in enumerate(movielist)]
     btn.append([InlineKeyboardButton(text="✘ ᴍᴜꜱᴛ ᴄʟᴏꜱᴇ ✘", callback_data=f'spolling#{user}#close_spellcheck')])
     btn.insert(0,
-        [InlineKeyboardButton(f'• {msg.chat.title} •', 'dupe')]
+        [InlineKeyboardButton(f'⚠︎ {msg.chat.title} ⚠︎', 'dupe')]
     )
     k=await msg.reply("<b><i>✯ നിങ്ങൾ ഉദ്ദേശിച്ച മൂവി താഴെ കാണുന്ന വല്ലതും ആണ് എങ്കിൽ.അതിൽ ക്ലിക്ക് ചെയ്യുക</i></b>\n\n➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\n\n<b><i>✯ ɪ ᴄᴏᴜʟᴅɴ'ᴛ ꜰɪɴᴅ ᴀɴʏᴛʜɪɴɢ ʀᴇʟᴀᴛᴇᴅ ᴛᴏ ᴛʜᴀᴛ ᴅɪᴅ ʏᴏᴜ ᴍᴇᴀɴ ᴀɴʏ ᴏɴᴇ ᴏꜰ ᴛʜᴇꜱᴇ?\n\n<u>📯 Nᴏᴛᴇ :</u>\n\nᴄʟɪᴄᴋ ᴛʜᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ᴏɴʟʏ ᴅᴏɴᴛ ᴜꜱᴇ ʏᴇᴀʀ ʙᴜᴛᴛᴏɴ </i></b>",
                       reply_markup=InlineKeyboardMarkup(btn))
