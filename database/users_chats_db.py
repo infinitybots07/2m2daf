@@ -9,10 +9,12 @@ class Database:
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
         self.col = self.db.users
-        self.fcol = self.db["filters_collection"]
-        
-        self.achats
+        self.acol = self.db["Active_Chats"]
+        self.fcol = self.db["Filter_Collection"]
         self.grp = self.db.groups
+      
+        self.acache = {}
+        
 
 
     def new_user(self, id, name):
