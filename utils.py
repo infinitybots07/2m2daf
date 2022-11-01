@@ -41,6 +41,27 @@ class temp(object):
     B_NAME = None
     SETTINGS = {}
 
+async def get_text_content(message):
+    """Returns the text content of a message."""
+    if message.reply_to_msg_id:
+        reply = await message.get_reply_message()
+        if reply.media:
+            if reply.document:
+                doc = await reply.download_media()
+                with open(doc, "r", errors="ignore") as f:
+                    u = f.read()
+                os.remove(doc)
+                return u
+            else:
+                return None
+        else:
+            return reply.text
+    else:
+        try:
+            return message.text.split(" ", 1)[1]
+        except:
+            return None
+
 async def is_subscribed(bot, query):
     try:
         user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
