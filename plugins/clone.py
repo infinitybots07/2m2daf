@@ -1,9 +1,9 @@
 
 from telethon import events
-
+from telethon import TelegramClient as client
 from info import API_HASH, API_ID
 from pyrogram import filters, Client
-from pyrogram import Client as client
+
 from utils import get_text_content
 
 clients = []
