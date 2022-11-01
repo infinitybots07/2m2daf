@@ -31,7 +31,7 @@ async def addBot(token):
 
 
 
-@Client.on_message(filters.command('clone'))
+@Client.on_message("clone")
 async def addbt(e):
     tok = await get_text_content(e)
     if not tok:
