@@ -15,11 +15,9 @@ from pyrogram.types import InlineKeyboardButton
 from database.users_chats_db import db
 from bs4 import BeautifulSoup
 import requests
-from telethon import errors, events, TelegramClient
 
-bot = TelegramClient(
-    None, api_id=API_ID, api_hash=API_HASH, device_model="iPhone XS", lang_code="en"
-)
+
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -46,48 +44,7 @@ class temp(object):
     B_NAME = None
     SETTINGS = {}
 
-def newMsg(**args):
 
-    """
-
-    Decorator for handling new messages.
-
-    """
-
-    args["pattern"] = "(?i)^[!/-]" + args["pattern"] + "(?: |$|@MissValeri_Bot)(.*)"
-
-    def decorator(func):
-
-        async def wrapper(event):
-
-            await func(event)
-
-        bot.add_event_handler(wrapper, events.NewMessage(**args))
-
-        return func
-
-    return decorator
-    
-async def get_text_content(message):
-    """Returns the text content of a message."""
-    if message.reply_to_msg_id:
-        reply = await message.get_reply_message()
-        if reply.media:
-            if reply.document:
-                doc = await reply.download_media()
-                with open(doc, "r", errors="ignore") as f:
-                    u = f.read()
-                os.remove(doc)
-                return u
-            else:
-                return None
-        else:
-            return reply.text
-    else:
-        try:
-            return message.text.split(" ", 1)[1]
-        except:
-            return None
 
 async def is_subscribed(bot, query):
     try:
