@@ -14,7 +14,7 @@ from pyrogram.types import InlineKeyboardButton
 from database.users_chats_db import db
 from bs4 import BeautifulSoup
 import requests
-from telethon import errors
+from telethon import errors, events
 
 
 logger = logging.getLogger(__name__)
@@ -43,6 +43,28 @@ class temp(object):
     B_NAME = None
     SETTINGS = {}
 
+async def newMsg(**args):
+
+    """
+
+    Decorator for handling new messages.
+
+    """
+
+    args["pattern"] = "(?i)^[!/-]" + args["pattern"] + "(?: |$|@MissValeri_Bot)(.*)"
+
+    def decorator(func):
+
+        async def wrapper(event):
+
+            await func(event)
+
+        bot.add_event_handler(wrapper, events.NewMessage(**args))
+
+        return func
+
+    return decorator
+    
 async def get_text_content(message):
     """Returns the text content of a message."""
     if message.reply_to_msg_id:
