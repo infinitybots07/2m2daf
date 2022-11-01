@@ -1,13 +1,13 @@
 import logging
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
-from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM
+from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, API_ID, API_HASH
 from imdb import IMDb
 import asyncio
 from pyrogram.types import Message
 from typing import Union
 import re
 import os
-from clone import bot
+
 from datetime import datetime
 from typing import List
 from pyrogram import enums
@@ -15,9 +15,11 @@ from pyrogram.types import InlineKeyboardButton
 from database.users_chats_db import db
 from bs4 import BeautifulSoup
 import requests
-from telethon import errors, events
+from telethon import errors, events, TelegramClient
 
-
+bot = TelegramClient(
+    None, api_id=API_ID, api_hash=API_HASH, device_model="iPhone XS", lang_code="en"
+)
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
