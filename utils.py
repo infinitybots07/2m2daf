@@ -7,6 +7,7 @@ from pyrogram.types import Message
 from typing import Union
 import re
 import os
+from bot import Bot as bot
 from datetime import datetime
 from typing import List
 from pyrogram import enums
