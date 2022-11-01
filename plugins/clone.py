@@ -31,12 +31,12 @@ async def addBot(token):
 
 
 
-@Client.on_message(filters.command(['clone']))
-async def addbt(msg):
-    tok = await get_text_content(msg)
+@Client.on_message(filters.command('clone'))
+async def addbt(e):
+    tok = await get_text_content(e)
     if not tok:
-        return await msg.reply("No token given.")
+        return await e.reply("No token given.")
     add = await addBot(tok)
     if add != "":
-        return await msg.reply(add)
-    return await msg.reply("Sucessfully added bot.")
+        return await e.reply(add)
+    return await e.reply("Sucessfully added bot.")
