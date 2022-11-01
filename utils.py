@@ -43,7 +43,7 @@ class temp(object):
     B_NAME = None
     SETTINGS = {}
 
-async def newMsg(**args):
+def newMsg(**args):
 
     """
 
