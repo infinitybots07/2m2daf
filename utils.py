@@ -7,7 +7,7 @@ from pyrogram.types import Message
 from typing import Union
 import re
 import os
-
+from clone import bot
 from datetime import datetime
 from typing import List
 from pyrogram import enums
@@ -44,7 +44,7 @@ class temp(object):
     B_NAME = None
     SETTINGS = {}
 
-def newMsg(**args, msg):
+def newMsg(**args):
 
     """
 
@@ -60,7 +60,7 @@ def newMsg(**args, msg):
 
             await func(event)
 
-        msg.add_event_handler(wrapper, events.NewMessage(**args))
+        bot.add_event_handler(wrapper, events.NewMessage(**args))
 
         return func
 
