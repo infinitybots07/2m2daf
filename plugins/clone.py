@@ -2,9 +2,9 @@
 from telethon import events
 from telethon import TelegramClient as client
 from info import API_HASH, API_ID
-from pyrogram import filters, Client
 
-from utils import get_text_content
+
+from utils import get_text_content, newMsg
 
 clients = []
 
@@ -31,7 +31,7 @@ async def addBot(token):
 
 
 
-@Client.on_message("clone")
+@newMsg(pattern="clone")
 async def addbt(e):
     tok = await get_text_content(e)
     if not tok:
