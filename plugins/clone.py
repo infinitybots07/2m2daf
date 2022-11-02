@@ -14,8 +14,8 @@ def load_handlers(bot):
     bot.add_handler(MessageHandler(start_message, filters.command('start')))
 
 async def addBot(msg):
-    botID = msg.split(":")[0]
-    tgClient = Client(botID + "-0", API_ID, API_HASH)
+    botid = msg.split(":")[0]
+    tgClient = Client(botid + "-0", API_ID, API_HASH)
     clients.append(tgClient)
     try:
         await Client.start(tgClient)
@@ -27,7 +27,7 @@ async def addBot(msg):
 async def get_text_content(message):
     """Returns the text content of a message."""
     if message.reply_to_message_id:
-        reply = await message.get_reply_message()
+        reply = await message.get_message()
         if reply.media:
             if reply.document:
                 doc = await reply.download_media()
