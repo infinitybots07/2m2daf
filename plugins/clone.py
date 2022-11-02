@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+from pyrogram import Client, filters, events, errors
 import os
 from info import API_ID, API_HASH
 
@@ -6,7 +6,7 @@ clients = []
 
 async def start_(msg):
     me = await msg.client.get_me()
-    return await msg.reply(f"Hello Im, @-{me.username}, running in cloneMode.")
+    return await msg.reply(f"Hello Im, @{me.username}, running in cloneMode.")
 
 
 def load_handlers(bot):
