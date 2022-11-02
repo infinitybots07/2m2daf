@@ -11,7 +11,7 @@ async def start_(msg):
 
 
 def load_handlers(bot):
-    bot.add_handler(MessageHandler(start_, filters.command('start')))
+    
 
 async def addBot(msg):
     botID = msg.split(":")[0]
