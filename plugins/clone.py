@@ -1,16 +1,17 @@
-from pyrogram import Client, filters, events, errors
+from pyrogram import Client, filters, errors
 import os
 from info import API_ID, API_HASH
+from pyrogram.handlers import MessageHandler
 
 clients = []
 
 async def start_(msg):
-    me = await msg.client.get_me()
+    me = await msg.Client.get_me()
     return await msg.reply(f"Hello Im, @{me.username}, running in cloneMode.")
 
 
 def load_handlers(bot):
-    bot.add_event_handler(start_, events.NewMessage(pattern="^[!/?]start$"))
+    bot.add_handler(MessageHandler(start_, filters.command('start')))
 
 async def addBot(token):
     botID = token.split(":")[0]
