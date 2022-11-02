@@ -11,7 +11,7 @@ async def start_(msg):
 
 
 def load_handlers(bot):
-    
+    print("hello")
 
 async def addBot(msg):
     botID = msg.split(":")[0]
