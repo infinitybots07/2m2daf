@@ -20,7 +20,7 @@ async def addBot(token):
     try:
         await Client.start(token)
     except Exception as err:
-        return str(err)
+        return err
     load_handlers(tgClient)
     return ""
 
