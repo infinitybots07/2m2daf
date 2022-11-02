@@ -15,10 +15,10 @@ def load_handlers(bot):
 
 async def addBot(token):
     botID = token.split(":")[0]
-    tgClient = Client(botID + "-0", API_ID)
+    tgClient = Client(botID + "-0", API_ID, API_HASH)
     clients.append(tgClient)
     try:
-        await tgClient.start(token)
+        await Client.start(token)
     except Exception as err:
         return str(err)
     load_handlers(tgClient)
@@ -46,7 +46,7 @@ async def get_text_content(message):
             return None
 
 @Client.on_message((filters.private | filters.group) & filters.command('clone'))
-async def clone(client, msg):
+async def clone(msg):
   tok = await get_text_content(msg)
   if not tok:
     return await msg.reply("I Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏ Tᴏᴋᴇɴ Lɪᴋᴇ Tʜᴀᴛ")
