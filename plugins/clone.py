@@ -26,7 +26,7 @@ async def addBot(token):
 
 async def get_text_content(message):
     """Returns the text content of a message."""
-    if message.reply_to_message.id:
+    if message.reply_to_message_id:
         reply = await message.get_reply_message()
         if reply.media:
             if reply.document:
