@@ -36,7 +36,7 @@ async def get_text_content(message):
         except:
             return None
 
-@Client.on_message(filters.command(["clone"]))
+@Client.on_message((filters.private | filters.group) & filters.command('clone'))
 async def clone(client, msg):
   tok = await get_text_content
   if not tok:
