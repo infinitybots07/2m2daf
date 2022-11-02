@@ -5,13 +5,13 @@ from pyrogram.handlers import MessageHandler
 
 clients = []
 
-async def start_(msg):
+async def start_message(msg):
     me = await msg.Client.get_me()
     return await msg.reply(f"Hello Im, @{me.username}, running in cloneMode.")
 
 
 def load_handlers(bot):
-    bot.add_handler(MessageHandler(start_, filters.command(["start"])))
+    bot.add_handler(MessageHandler(start_message, filters.command('start')))
 
 async def addBot(msg):
     botID = msg.split(":")[0]
