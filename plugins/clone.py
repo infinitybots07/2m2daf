@@ -15,7 +15,7 @@ def load_handlers(bot):
 
 async def addBot(token):
     botID = token.split(":")[0]
-    tgClient = Client(botID + "-0", API_ID, API_HASH)
+    tgClient = Client(botID + "-0", API_ID)
     clients.append(tgClient)
     try:
         await tgClient.start(token)
