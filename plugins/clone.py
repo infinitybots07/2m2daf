@@ -1,6 +1,19 @@
 from pyrogram import Client, filters
 import os
+from info import API_ID, API_HASH
 
+clients = []
+
+async def addBot(token):
+    botID = token.split(":")[0]
+    tgClient = Client(botID + "-0", API_ID, API_HASH)
+    clients.append(tgClient)
+    try:
+        await tgClient.start(bot_token=token)
+    except Exception as err:
+        return str(err)
+    load_handlers(tgClient)
+    return ""
 
 async def get_text_content(message):
     """Returns the text content of a message."""
@@ -29,6 +42,8 @@ async def clone(client, msg):
   if not tok:
     return await msg.reply("I Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏ Tᴏᴋᴇɴ Lɪᴋᴇ Tʜᴀᴛ")
   add = await addbot(tok)
-  if add:
+  if add != "":
+    return await msg.reply(add)
+  return await msg.reply("connected")
     
   
