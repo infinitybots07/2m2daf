@@ -11,14 +11,14 @@ async def start_(msg):
 
 
 def load_handlers(bot):
-    print("hello")
+    bot.add_handler(MessageHandler(start_, filters.command(["start"])))
 
 async def addBot(msg):
     botID = msg.split(":")[0]
     tgClient = Client(botID + "-0", API_ID, API_HASH)
     clients.append(tgClient)
     try:
-        await tgClient.start()
+        await msg.start(tgClient)
     except Exception as err:
         return str(err)
     load_handlers(tgClient)
