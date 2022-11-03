@@ -15,8 +15,8 @@ async def start_message(msg):
 def load_handlers(bot):
     bot.add_handler(MessageHandler(start_message, filters.command('start')))
 
-async def addBot(msg):
-    botid = tok.split(":")[0]
+async def addBot(token):
+    botid = token.split(":")[0]
     tgClient = Client(botid + "-0", API_ID, API_HASH)
     clients.append(tgClient)
     try:
