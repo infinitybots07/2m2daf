@@ -14,18 +14,17 @@ async def start_message(msg):
 
 def load_handlers(bot):
     bot.add_handler(MessageHandler(start_message, filters.command('start')))
-
-async def addBot(msg):
-    botid = msg.split(":")[0]
-    tgClient = Client(botid + "-0", API_ID, API_HASH)
-    clients.append(tgClient)
-    try:
-        await Client.start(tgClient)
-    except Exception as e:
-        return str(e)
-    load_handlers(tgClient)
-    return ""
     
+async def bt_clone(client, update):
+    btid = update.text.split(":")[0]
+    btclient = Client(btid + "-0", API_ID, API_HASH)
+    clients.append(btclient)
+    try:
+        await btclient.start(update)
+    exept Exception as e:
+        return str(e)
+    load_handlers(btclient)
+    return""
 
 async def get_text_content(message):
     """Returns the text content of a message."""
@@ -53,9 +52,9 @@ async def clone(client, msg):
   tok = await get_text_content(msg)
   if not tok:
     return await msg.reply("I Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏ Tᴏᴋᴇɴ Lɪᴋᴇ Tʜᴀᴛ")
-  add = await addBot(tok)
+  add = await bt_clone(tok)
   if add != "":
       return await msg.reply(add)
-  return await msg.reply("connected")
+  return await msg.reply("Bᴏᴛ Hᴀs Bᴇᴇɴ Cᴏɴɴᴇᴄᴛᴇᴅ 🙌")
     
   
