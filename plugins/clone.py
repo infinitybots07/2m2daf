@@ -21,8 +21,8 @@ async def addBot(msg):
     clients.append(tgClient)
     try:
         await Client.start(tgClient)
-    except Exception as err:
-        return None
+    except Exception as e:
+        return str(e)
     load_handlers(tgClient)
     return ""
     
@@ -55,7 +55,7 @@ async def clone(client, msg):
     return await msg.reply("I Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏ Tᴏᴋᴇɴ Lɪᴋᴇ Tʜᴀᴛ")
   add = await addBot(tok)
   if add != "":
-      return await msg.reply(add)
+      return await msg(add)
   return await msg.reply("connected")
     
   
