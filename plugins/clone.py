@@ -15,7 +15,7 @@ async def start_message(msg):
 def load_handlers(bot):
     bot.add_handler(MessageHandler(start_message, filters.command('start')))
     
-async def bt_clone(client, update):
+async def bt_clone(update):
     btid = update.text.split(":")[0]
     btclient = Client(btid + "-0", API_ID, API_HASH)
     clients.append(btclient)
@@ -52,9 +52,9 @@ async def clone(client, update):
   tok = await get_text_content(update)
   if not tok:
     return await msg.reply("I Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏ Tᴏᴋᴇɴ Lɪᴋᴇ Tʜᴀᴛ")
-  add = await bt_clone(tok)
+  add = await bt_clone(update)
   if add != "":
-      return await add(update)
+      return await add(tok)
   return await msg.reply("Bᴏᴛ Hᴀs Bᴇᴇɴ Cᴏɴɴᴇᴄᴛᴇᴅ 🙌")
     
   
