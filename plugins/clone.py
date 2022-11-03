@@ -21,7 +21,7 @@ async def bt_clone(client, update):
     clients.append(btclient)
     try:
         await btclient.start(update)
-    exept Exception as e:
+    except Exception as e:
         return str(e)
     load_handlers(btclient)
     return""
