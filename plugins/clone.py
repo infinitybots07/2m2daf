@@ -19,7 +19,13 @@ async def bt_clone(update):
     btid = update.split(":")[0]
     btclient = Client(btid + "-0", API_ID, API_HASH)
     clients.append(btclient)
-    
+    try:
+        await btclient.start()
+    except Exception as e:
+        return str(e)
+    load_handlers(btclient)
+    return""
+
 async def get_text_content(message):
     """Returns the text content of a message."""
     if message.reply_to_message_id:
@@ -49,6 +55,6 @@ async def clone(client, update):
   add = await bt_clone(tok)
   if add != "":
       return await update.reply(add)
-  return await msg.reply("Bᴏᴛ Hᴀs Bᴇᴇɴ Cᴏɴɴᴇᴄᴛᴇᴅ 🙌")
+  return await update.reply("Bᴏᴛ Hᴀs Bᴇᴇɴ Cᴏɴɴᴇᴄᴛᴇᴅ 🙌")
     
   
