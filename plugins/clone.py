@@ -21,7 +21,10 @@ async def addBot(msg):
     clients.append(tgClient)
     try:
         await Client.start(tgClient)
-        return""
+    except Exception as err:
+        return None
+    load_handlers(tgClient)
+    return ""
     
 
 async def get_text_content(message):
