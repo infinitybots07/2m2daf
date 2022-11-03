@@ -53,7 +53,7 @@ async def clone(client, msg):
   tok = await get_text_content(msg)
   if not tok:
     return await msg.reply("I Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏ Tᴏᴋᴇɴ Lɪᴋᴇ Tʜᴀᴛ")
-  add = await addBot()
+  add = await addBot(msg)
   if add != "":
       return await msg.add(tok)
   return await msg.reply("connected")
