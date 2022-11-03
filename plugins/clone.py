@@ -1,12 +1,13 @@
 from pyrogram import Client, filters, errors
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import os
 from info import API_ID, API_HASH
 from pyrogram.handlers import MessageHandler
-
+import plugin.pm_filter as pm
 clients = []
 
 async def start_message(msg):
-    me = await msg.Client.get_me()
+    me = await msg.get_me()
     return await msg.reply(f"Hello Im, @{me.username}, running in cloneMode.")
 
 
