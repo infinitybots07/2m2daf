@@ -5,11 +5,13 @@ from info import API_ID, API_HASH
 from pyrogram.handlers import MessageHandler
 import plugins.pm_filter as pm
 
-clients = []
+clients = {}
 
 async def start_message(msg):
     me = await msg.get_me()
-    return await msg.reply(f"Hello Im, @{me.username}, running in cloneMode.")
+    await msg.reply_text(
+        text = f"Yᴏ Yᴏ !\n\nMʏ Nᴀᴍᴇ Is {me.username}\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇʀ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ"
+    )
 
 
 def load_handlers(bot):
