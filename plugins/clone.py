@@ -3,7 +3,8 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import os
 from info import API_ID, API_HASH
 from pyrogram.handlers import MessageHandler
-import plugin.pm_filter as pm
+import plugins.pm_filter as pm
+
 clients = []
 
 async def start_message(msg):
