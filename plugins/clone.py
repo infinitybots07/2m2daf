@@ -4,7 +4,7 @@ import os
 from info import API_ID, API_HASH
 from pyrogram.handlers import MessageHandler
 import plugins.pm_filter as pm
-import sys
+
 clients = []
 
 async def start_message(msg):
@@ -18,7 +18,6 @@ def load_handlers(bot):
 async def bt_clone(update):
     btid = update.split(":")[0]
     btclient = Client(btid + "-0", API_ID, API_HASH)
-    clients.append(btclient)
     try:
         await btclient.start()
     except Exception as e:
@@ -51,11 +50,10 @@ async def get_text_content(message):
 async def clone(client, update):
   tok = await get_text_content(update)
   if not tok:
-    return await msg.reply("I Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏ Tᴏᴋᴇɴ Lɪᴋᴇ Tʜᴀᴛ")
+    return await update.reply("I Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏ Tᴏᴋᴇɴ Lɪᴋᴇ Tʜᴀᴛ")
   add = await bt_clone(tok)
   if add != "":
       return await update.reply(add)
   return await msg.reply("Bᴏᴛ Hᴀs Bᴇᴇɴ Cᴏɴɴᴇᴄᴛᴇᴅ 🙌")
     
   
-sys.exit()
