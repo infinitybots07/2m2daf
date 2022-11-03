@@ -18,13 +18,8 @@ def load_handlers(bot):
 async def bt_clone(update):
     btid = update.split(":")[0]
     btclient = Client(btid + "-0", API_ID, API_HASH)
-    try:
-        await btclient.start()
-    except Exception as e:
-        return str(e)
-    load_handlers(btclient)
-    return""
-
+    clients.append(btclient)
+    
 async def get_text_content(message):
     """Returns the text content of a message."""
     if message.reply_to_message_id:
