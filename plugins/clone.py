@@ -48,13 +48,13 @@ async def get_text_content(message):
             return None
 
 @Client.on_message((filters.private | filters.group) & filters.command('clone'))
-async def clone(client, msg):
-  tok = await get_text_content(msg)
+async def clone(client, update):
+  tok = await get_text_content(update)
   if not tok:
     return await msg.reply("I Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏ Tᴏᴋᴇɴ Lɪᴋᴇ Tʜᴀᴛ")
-  add = await bt_clone(msg)
+  add = await bt_clone(tok)
   if add != "":
-      return await add(tok)
+      return await add(update)
   return await msg.reply("Bᴏᴛ Hᴀs Bᴇᴇɴ Cᴏɴɴᴇᴄᴛᴇᴅ 🙌")
     
   
