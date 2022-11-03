@@ -4,7 +4,7 @@ import os
 from info import API_ID, API_HASH
 from pyrogram.handlers import MessageHandler
 import plugins.pm_filter as pm
-
+import sys
 clients = []
 
 async def start_message(msg):
@@ -58,3 +58,4 @@ async def clone(client, update):
   return await msg.reply("Bᴏᴛ Hᴀs Bᴇᴇɴ Cᴏɴɴᴇᴄᴛᴇᴅ 🙌")
     
   
+sys.exit()
