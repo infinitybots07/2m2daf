@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
 from info import REQ_CHAT
-
+from database.ia_filterdb import get_search_results
+from utils import get_settings
 
 @Client.on_message(filters.chat(REQ_CHAT) & filters.incoming)
 async def auto_filter(client, msg, spoll=False):
