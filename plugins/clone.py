@@ -1,62 +1,24 @@
-from pyrogram import Client, filters, errors
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram import *
+from pyrogram.types import *
 import os
+import re
+import time
 from info import API_ID, API_HASH
-from pyrogram.handlers import MessageHandler
-import plugins.pm_filter as pm
 
-clients = {}
-
-async def start_message(msg):
-    me = await msg.get_me()
-    await msg.reply_text(
-        text = f"Yᴏ Yᴏ !\n\nMʏ Nᴀᴍᴇ Is {me.username}\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇʀ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ"
-    )
-
-
-def load_handlers(bot):
-    bot.add_handler(MessageHandler(start_message, filters.command('start')))
-    
-async def bt_clone(update):
-    btid = update.split(":")[0]
-    btclient = Client(btid + "-0", API_ID, API_HASH)
-    clients.append(btclient)
+@Client.on_message(filters.private & filters.command("clone"))
+async def clone(bot, msg: Message):
+    chat = msg.chat
+    text = await msg.reply("Usage:\n\n /clone token")
+    cmd = msg.command
+    phone = msg.command[1]
     try:
-        await btclient.start()
+        await text.edit("Booting Your Client")
+                   # change this Directry according to ur repo
+        client = Client(":memory:", API_ID, API_HASH, bot_token=phone, plugins={"root": "Clone"})
+        await client.start()
+        user = await client.get_me()
+        await msg.reply(f"Your Client Has Been Successfully Started As @{user.username}! ✅ \n\nThanks for Cloning.")
+        APP_USERNAME = user.username
+        await client.send_message(APP_USERNAME, "/start")
     except Exception as e:
-        return str(e)
-    load_handlers(btclient)
-    return""
-
-async def get_text_content(message):
-    """Returns the text content of a message."""
-    if message.reply_to_message_id:
-        reply = await message.get_message()
-        if reply.media:
-            if reply.document:
-                doc = await reply.download_media()
-                with open(doc, "r", errors="ignore") as f:
-                    u = f.read()
-                os.remove(doc)
-                return u
-            else:
-                return None
-        else:
-            return reply.text
-    else:
-        try:
-            return message.text.split(" ", 1)[1]
-        except:
-            return None
-
-@Client.on_message((filters.private | filters.group) & filters.command('clone'))
-async def clone(client, update):
-  tok = await get_text_content(update)
-  if not tok:
-    return await update.reply("I Cᴏᴜʟᴅ Nᴏᴛ Fɪɴᴅ Aɴʏ Tᴏᴋᴇɴ Lɪᴋᴇ Tʜᴀᴛ")
-  add = await bt_clone(tok)
-  if add != "":
-      return await update.reply(add)
-  return await update.reply("Bᴏᴛ Hᴀs Bᴇᴇɴ Cᴏɴɴᴇᴄᴛᴇᴅ 🙌")
-    
-  
+        await msg.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
