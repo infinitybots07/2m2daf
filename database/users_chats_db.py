@@ -36,6 +36,19 @@ class Database:
             ),
         )
     
+    def addthumb(chat_id, file_id):
+	dbcol.update_one({"_id":chat_id},{"$set":{"file_id":file_id}})
+	
+    def delthumb(chat_id):
+	dbcol.update_one({"_id":chat_id},{"$set":{"file_id":None}})
+	
+def find(chat_id):
+	id =  {"_id":chat_id}
+	x = dbcol.find(id)
+	for i in x:
+             lgcd = i["file_id"]
+             return lgcd
+    
     async def status(self, group_id: int):
         """
         Get the total filters, total connected
