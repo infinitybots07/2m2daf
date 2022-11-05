@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from utils import temp
+from plugins.clone import CLONE_NAME
 from pyrogram.types import *
 
 @Client.on_message(filters.command(['start']) & filters.private)
@@ -9,6 +9,6 @@ async def clone_start(client, msg):
       InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="about")
   ]]
   await msg.reply_text(
-      text = f"<b>Yᴏ Yᴏ !\nIᴀᴍ {temp.B_NAME} Aɴ Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>",
+      text = f"<b>Yᴏ Yᴏ !\nIᴀᴍ {CLONE_NAME} Aɴ Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>",
       reply_markup = InlineKeyboardMarkup(btn)
   )
