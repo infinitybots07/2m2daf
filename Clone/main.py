@@ -23,7 +23,7 @@ async def give_filter2(client, message):
   
   
 @Client.on_callback_query()
-async def cb_handler2(client: Client, query: CabllbackQuery):
+async def cb_handler2(client: Client, query: CallbackQuery):
     if query.data == "c_help":
         btn = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data="c_start")
