@@ -3,7 +3,7 @@ from pyrogram.types import *
 from plugins.clone import client
 @Client.on_message(filters.command(['start']) & filters.private)
 async def clone_start(bot, msg):
-  me = await client.get_me()
+  me = await msg.Client.get_me()
   btn = [[
       InlineKeyboardButton('❗Hᴇʟᴘ', callback_data="help"),
       InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="about")
