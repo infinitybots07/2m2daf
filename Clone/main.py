@@ -6,8 +6,8 @@ from plugins.pm_filter import auto_filter, manual_filter
 async def clone_start(bot, msg):
  
   btn = [[
-      InlineKeyboardButton('❗Hᴇʟᴘ', callback_data="help"),
-      InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="about")
+      InlineKeyboardButton('❗Hᴇʟᴘ', callback_data="c_help"),
+      InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="c_about")
   ]]
   await msg.reply_text(
       text = f"<b>Yᴏ Yᴏ !\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>",
@@ -24,12 +24,36 @@ async def give_filter(client, message):
   
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CabllbackQuery):
-    btn = [[
-        InlineKeyboardButton('Bᴀᴄᴋ', ca
-    if query.data = "help":
-       await query.message.edit_text("Coming Soon..", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML)
-     
-     
+    
+    if query.data = "c_help":
+        btn = [[
+            InlineKeyboardButton('Bᴀᴄᴋ', callback_data="c_start")
+        ]]
+        await query.message.edit_text("Coming Soon..", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML)
+    elif query.data = "c_about":
+        btn = [[
+            InlineKeyboardButton('Bᴀᴄᴋ', callback_data="c_start")
+        ]]
+        await query.message.edit_text("Coming Soon..", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML)
+    elif query.data = "c_start":
+        btn = [[
+            InlineKeyboardButton('❗Hᴇʟᴘ', callback_data="c_help"),
+            InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="c_about")
+        ]]
+        await query.message.edit_text(
+            text = f"<b>Yᴏ Yᴏ !\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>",
+            reply_markup = InlineKeyboardMarkup(btn)
+        )
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
      
      
      
