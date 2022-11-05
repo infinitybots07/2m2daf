@@ -18,7 +18,7 @@ async def clone(bot, msg: Message):
         await client.start()
         user = await client.get_me()
         await msg.reply(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
-        APP_USERNAME = user.username
-        await Client.send_message(APP_USERNAME, "/start")
+        CLONE_NAME = user.username
+        await Client.send_message(CLONE_NAME, "/start")
     except Exception as e:
-        await msg.reply(f"**❌ ERROR:**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
+        await msg.reply(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
