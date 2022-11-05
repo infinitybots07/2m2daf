@@ -9,7 +9,7 @@ class Database:
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
         self.col = self.db.users
-  
+        
         self.fcol = self.db["Filter_Collection"]
         self.grp = self.db.groups
         
@@ -38,18 +38,7 @@ class Database:
         )
     
     
-    def addthumb(chat_id, file_id):
-	self.col.update_one({"_id":chat_id},{"$set":{"file_id":file_id}})
-	
-    def delthumb(chat_id):
-	self.col.update_one({"_id":chat_id},{"$set":{"file_id":None}})
-	
-    def find(chat_id):
-	id =  {"_id":chat_id}
-	x = self.col.find(id)
-	for i in x:
-             lgcd = i["file_id"]
-             return lgcd
+    
 	
     async def status(self, group_id: int):
         """
