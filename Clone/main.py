@@ -23,7 +23,17 @@ async def give_filter(client, message):
   
   
 @Client.on_callback_query()
-async def cb_handler(client: Client, query: CallbackQuery):
-   
+async def cb_handler(client: Client, query: CabllbackQuery):
+    btn = [[
+        InlineKeyboardButton('Bᴀᴄᴋ', ca
     if query.data = "help":
-       await query.message.edit_text("Coming Soon..", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.p
+       await query.message.edit_text("Coming Soon..", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML)
+     
+     
+     
+     
+     
+     
+     
+     
+     
