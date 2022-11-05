@@ -1,6 +1,6 @@
 from pyrogram import *
 from pyrogram.types import *
-from plugins.clone import client
+
 @Client.on_message(filters.command(['start']) & filters.private)
 async def clone_start(bot, msg):
  
