@@ -16,15 +16,14 @@ async def clone_start(bot, msg):
 
   
 @Client.on_message(filters.group & filters.text & filters.incoming)
-async def give_filter(client, message):
+async def give_filter2(client, message):
     k = await manual_filters(client, message)
     if k == False:
         await auto_filter(client, message)  
   
   
 @Client.on_callback_query()
-async def cb_handler(client: Client, query: CabllbackQuery):
-    
+async def cb_handler2(client: Client, query: CabllbackQuery):
     if query.data = "c_help":
         btn = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data="c_start")
