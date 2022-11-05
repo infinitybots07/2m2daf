@@ -1,5 +1,6 @@
 from pyrogram import *
 from pyrogram.types import *
+from plugins.pm_filter import auto_filter, manual_filter
 
 @Client.on_message(filters.command(['start']) & filters.private)
 async def clone_start(bot, msg):
@@ -14,10 +15,15 @@ async def clone_start(bot, msg):
   )
 
   
-  
+@Client.on_message(filters.group & filters.text & filters.incoming)
+async def give_filter(client, message):
+    k = await manual_filters(client, message)
+    if k == False:
+        await auto_filter(client, message)  
   
   
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
-    if query.data = "help":
    
+    if query.data = "help":
+       await query.message.edit_text("Coming Soon..", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.p
