@@ -24,17 +24,17 @@ async def give_filter2(client, message):
   
 @Client.on_callback_query()
 async def cb_handler2(client: Client, query: CabllbackQuery):
-    if query.data = "c_help":
+    if query.data == "c_help":
         btn = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data="c_start")
         ]]
         await query.message.edit_text("Coming Soon..", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML)
-    elif query.data = "c_about":
+    elif query.data == "c_about":
         btn = [[
             InlineKeyboardButton('Bᴀᴄᴋ', callback_data="c_start")
         ]]
         await query.message.edit_text("Coming Soon..", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML)
-    elif query.data = "c_start":
+    elif query.data == "c_start":
         btn = [[
             InlineKeyboardButton('❗Hᴇʟᴘ', callback_data="c_help"),
             InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="c_about")
