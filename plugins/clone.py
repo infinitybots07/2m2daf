@@ -39,7 +39,7 @@ async def mybots(client, message):
         buttons = []
         ttl = bot_id
         tt2 = await ttl.get_me()
-        title = tt2
+        title = tt2.username
         
         buttons.append(
             [
