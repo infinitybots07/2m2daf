@@ -34,9 +34,9 @@ async def clone(bot, msg: Message):
 @Client.on_message(filters.private & filters.command("mybots"))
 async def mybots(client, message):
     user_id = message.from_user.id
-    bot_id = await all_bot(str(user_id))
+    bot_ids = await all_bot(str(user_id))
     buttons = []
-    for bot_id :
+    for bot_id in bot_ids:
         try:
             ttl = bot_id
             title = ttl.username
