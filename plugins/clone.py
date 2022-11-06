@@ -26,10 +26,10 @@ async def clone(bot, msg: Message):
         await text1.delete()
         await msg.reply(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
 
-op = users.find()
+op = user.find()
 for kk in op:
     nam = [kk['bot_token']]
     for usr in nam:
         print(usr)
-        app = Client("cache",api_id=API_ID, api_hash=API_HASH, bot_token=usr ,in_memory=True, plugins={"root": "bot"})
+        app = Client(bot_id + "_0",api_id=API_ID, api_hash=API_HASH, bot_token=usr ,in_memory=True, plugins={"root": "bot"})
         app.start()
