@@ -36,7 +36,7 @@ async def mybots(client, message):
     user_id = message.from_user.id
     bot_id = await all_bot(str(user_id))
     buttons = []
-    for bot_id in bot_ids:
+    for bot_id :
         try:
             ttl = bot_id
             title = ttl.username
