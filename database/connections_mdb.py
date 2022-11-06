@@ -9,8 +9,48 @@ logger.setLevel(logging.ERROR)
 myclient = pymongo.MongoClient(DATABASE_URI)
 mydb = myclient[DATABASE_NAME]
 mycol = mydb['CONNECTION']   
+btcol = mydb['CLONEBOT']
 
+async def add_bot(bot_id, user_id):
+    query = btcol.find_one(
+        { "_id": user_id },
+        { "_id": 0, "bot_id": 0 }
+    )
+    if query is not None:
+        bot_ids = [x["bot_id"] for x in query["bot_details"]]
+        if bot_id in bot_ids:
+            return False
 
+    bot_details = {
+        "bot_id" : bot_id
+    }
+
+    data = {
+        '_id': user_id,
+        'bot_details' : [bot_details]
+  
+    }
+    if btcol.count_documents( {"_id": user_id} ) == 0:
+        try:
+            btcol.insert_one(data)
+            return True
+        except:
+            logger.exception('Some error occurred!', exc_info=True)
+
+    else:
+        try:
+            btcol.update_one(
+                {'_id': user_id},
+                {
+                    "$push": {"bot_details": bot_details}
+             
+                }
+            )
+            return True
+        except:
+            logger.exception('Some error occurred!', exc_info=True)
+
+        
 async def add_connection(group_id, user_id):
     query = mycol.find_one(
         { "_id": user_id },
