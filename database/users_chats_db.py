@@ -37,9 +37,10 @@ class Database:
             ),
         )
     
-    
-    
-	
+    async def set_bot(self, id, bot):
+        await self.col.update_one({'id': id}, {'$set': {'bot': bot}})
+
+   
     async def status(self, group_id: int):
         """
         Get the total filters, total connected
