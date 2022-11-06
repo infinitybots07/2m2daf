@@ -4,7 +4,7 @@ import os
 import re
 import time
 from info import API_ID, API_HASH
-from database.connections_mdb import add_bot
+from database.connections_mdb import add_bot, all_bot
 
 
 @Client.on_message(filters.private & filters.command("clone"))
