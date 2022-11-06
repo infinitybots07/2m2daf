@@ -16,7 +16,7 @@ async def clone(bot, msg: Message):
     try:
         await text1.edit("<b>Tʀʏɪɴɢ Tᴏ Cᴏɴɴᴇᴄᴛ Yᴏᴜʀ Bᴏᴛ...</b>")
                   
-        client = Client(bot_id, API_ID, API_HASH, bot_token=phone, plugins={"root": "Clone"})
+        client = Client(bot_id + "_0", API_ID, API_HASH, bot_token=phone, plugins={"root": "Clone"})
         await client.start()
         idle()
         user = await client.get_me()
