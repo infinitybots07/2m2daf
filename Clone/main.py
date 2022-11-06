@@ -384,11 +384,21 @@ async def cb_handler2(client: Client, query: CallbackQuery):
         ]
         try:
             if settings['botpm']:
-                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+                await client.send_cached_media(
+                    chat_id=query.from_user.id,
+                    file_id=file_id,
+                    caption=f_caption
+                )
+                await query.answer(f'Hᴇʏ {query.from_user.mention} ! I Hᴀᴠᴇ Sᴇɴᴅ Fɪʟᴇ Iɴ Pᴍ\nFɪʟᴇ Nᴀᴍᴇ : {file.file_name}\nFɪʟᴇ Sɪᴢᴇ : {file_size}\n Eɴᴅ', show_alert=True)
                 return
             else:
-                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
-              
+                await client.send_cached_media(
+                    chat_id=query.from_user.id,
+                    file_id=file_id,
+                    caption=f_caption
+                )
+                await query.answer(f'Hᴇʏ {query.from_user.mention} ! I Hᴀᴠᴇ Sᴇɴᴅ Fɪʟᴇ Iɴ Pᴍ\nFɪʟᴇ Nᴀᴍᴇ : {file.file_name}\nFɪʟᴇ Sɪᴢᴇ : {file_size}\n Eɴᴅ', show_alert=True)
+                
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
         except PeerIdInvalid:
