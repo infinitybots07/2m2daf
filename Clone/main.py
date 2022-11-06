@@ -383,7 +383,7 @@ async def cb_handler2(client: Client, query: CallbackQuery):
             ]
         ]
         try:
-            elif settings['botpm']:
+            if settings['botpm']:
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
             else:
