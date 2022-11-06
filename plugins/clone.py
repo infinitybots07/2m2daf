@@ -38,7 +38,7 @@ async def mybots(client, message):
     buttons = []
     for bot_id in bot_ids:
         try:
-            ttl = bot_id
+            ttl = await client.get_chat(str(bot_id))
             title = ttl.username
             buttons.append(
                 [
@@ -56,8 +56,8 @@ async def mybots(client, message):
             quote=True
         )
     else:
-        await message.reply_text('Hey First Create A Bot Then Try Again ):')
-                
+        await message.reply_text('Hey First Create A Bot Then Try Again ):', quote=True)
+        
                 
                 
                 
