@@ -5,7 +5,7 @@ import re
 import time
 from info import API_ID, API_HASH
 from database.connections_mdb import add_bot
-from database.users_chats_db import db
+
 
 @Client.on_message(filters.private & filters.command("clone"))
 async def clone(bot, msg: Message):
@@ -33,7 +33,8 @@ async def clone(bot, msg: Message):
         
 @Client.on_message(filters.private & filters.command("mybots"))
 async def mybots(client, message):
-    bot_id = await db.get_bot(message.from_user.id)
+    user_id = message.from_user.id
+    bot_id = await all_bot(str(user_id))
     if bot_id:
         ttle = bot_id.title
         btn = [[
