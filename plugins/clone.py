@@ -23,33 +23,30 @@ async def clone(bot, msg: Message):
         user = await client.get_me()
         bot_id = user.id
         user_id = msg.from_user.id
-        await text1.delete()
         await add_bot(str(bot_id), str(user_id))
-        await msg.reply(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
+        await text1.edit(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
      
     except Exception as e:
-        await text1.delete()
-        await msg.reply(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
+        
+        await text1.edit(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
         
 @Client.on_message(filters.private & filters.command("mybots"))
 async def mybots(client, message):
     user_id = message.from_user.id
-    bot_ids = await all_bot(str(user_id))
+    bot_id = await all_bot(str(user_id))
     buttons = []
-    for bot_id in bot_ids:
-        try:
-            ttl = await client.get_chat(int(bot_id))
-            title = ttl.username
-            buttons.append(
-                [
-                    InlineKeyboardButton(
-                        text=f"{title}", callback_data=f"botcb:{bot_id}"
-                    )
-                ]
-            )
-        except:
-            pass
-    if buttons:
+    if bot_id:
+        buttons = []
+        ttl = await client.get_chat(int(bot_id))
+        title = ttl.username
+        buttons.append(
+            [
+             
+                InlineKeyboardButton(
+                    text=f"{title}", callback_data=f"botcb:{bot_id}"
+                )
+            ]
+        )
         await message.reply_text(
             "Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
             reply_markup=InlineKeyboardMarkup(buttons),
