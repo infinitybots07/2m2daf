@@ -11,6 +11,18 @@ mydb = myclient[DATABASE_NAME]
 mycol = mydb['CONNECTION']   
 btcol = mydb['CLONEBOT']
 
+
+
+async def all_bot(user_id):
+    query = btcol.find_one(
+        { "_id": user_id },
+        { "_id": 0, "bot_id": 0 }
+    )
+    if query is not None:
+        return [x["bot_id"] for x in query["bot_details"]]
+    else:
+        return None
+
 async def add_bot(bot_id, user_id):
     query = btcol.find_one(
         { "_id": user_id },
