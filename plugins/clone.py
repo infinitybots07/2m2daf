@@ -4,6 +4,7 @@ import os
 import re
 import time
 from info import API_ID, API_HASH
+from database.connections_mdb import add_bot
 from database.users_chats_db import db
 
 @Client.on_message(filters.private & filters.command("clone"))
@@ -12,16 +13,18 @@ async def clone(bot, msg: Message):
     text1 = await msg.reply("<b>Hᴇʏ Bʀᴏ Usᴇ Cᴏʀʀᴇᴄᴛ Mᴇᴛʜᴏᴅ\n\nEɢ : <code>/clone [bot token]</code></b>")
     cmd = msg.command
     phone = msg.command[1]
-    bot_id = msg.text.split(":")[0]
+    bot_id1 = msg.text.split(":")[0]
     try:
         await text1.edit("<b>Tʀʏɪɴɢ Tᴏ Cᴏɴɴᴇᴄᴛ Yᴏᴜʀ Bᴏᴛ...</b>")
                   
-        client = Client(bot_id + "_0", API_ID, API_HASH, bot_token=phone, plugins={"root": "Clone"})
+        client = Client(bot_id1 + "_0", API_ID, API_HASH, bot_token=phone, plugins={"root": "Clone"})
         await client.start()
         idle()
         user = await client.get_me()
+        bot_id = user.id
+        user_id = msg.from_user.id
         await text1.delete()
-        await db.set_bot(msg.from_user.id, bot_id + "_0")
+        await add_bot(str(bot_id), str(user_id))
         await msg.reply(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
      
     except Exception as e:
