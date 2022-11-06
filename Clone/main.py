@@ -47,7 +47,147 @@ async def clone_start(bot, msg):
       reply_markup = InlineKeyboardMarkup(btn)
   )
 
-  
+@Client.on_message(filters.command('settings') & filters.private)
+async def settings(client, message):
+    userid = message.from_user.id if message.from_user else None
+    if not userid:
+        return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
+    chat_type = message.chat.type
+
+    if chat_type == enums.ChatType.PRIVATE:
+        grpid = await active_connection(str(userid))
+        if grpid is not None:
+            grp_id = grpid
+            try:
+                chat = await client.get_chat(grpid)
+                title = chat.title
+            except:
+                await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                return
+        else:
+            await message.reply_text("I'm not connected to any groups!", quote=True)
+            return
+
+    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        grp_id = message.chat.id
+        title = message.chat.title
+
+    else:
+        return
+
+    st = await client.get_chat_member(grp_id, userid)
+    if (
+            st.status != enums.ChatMemberStatus.ADMINISTRATOR
+            and st.status != enums.ChatMemberStatus.OWNER
+            and str(userid) not in ADMINS
+    ):
+        return
+    settings = await get_settings(grp_id)
+    if settings is not None:
+
+        buttons = [
+            [
+                InlineKeyboardButton('Fɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ',
+                                     callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Sɪɴɢʟᴇ' if settings["button"] else 'Dᴏᴜʙʟᴇ',
+                                     callback_data=f'setgs#button#{settings["button"]}#{str(grp_id)}')
+            ],
+            
+            
+            [
+                InlineKeyboardButton('Iᴍᴅʙ', callback_data=f'setgs#imdb#{settings["imdb"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Yᴇs' if settings["imdb"] else 'Nᴏ',
+                                     callback_data=f'setgs#imdb#{settings["imdb"]}#{str(grp_id)}')
+            ],
+            [
+                InlineKeyboardButton('Sᴘᴇʟʟ Cʜᴇᴄᴋ',
+                                     callback_data=f'setgs#spell_check#{settings["spell_check"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Nᴇᴡ' if settings["spell_check"] else 'Dᴇғᴀᴜʟᴛ',
+                                     callback_data=f'setgs#spell_check#{settings["spell_check"]}#{str(grp_id)}')
+            ],
+            
+            [
+                InlineKeyboardButton('Cʟᴏsᴇ Sᴇᴛᴛɪɴɢs', callback_data='close_data')
+            ]
+        ]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        if settings["button"]:
+            stats="Sɪɴɢʟᴇ"
+        else:
+            stats="Dᴏᴜʙʟᴇ"
+        if settings["imdb"]:
+            stats4="Yᴇs"
+        else:
+            stats4="Nᴏ"
+        if settings["spell_check"]:
+            stats5="Nᴇᴡ"
+        else:
+            stats5="Dᴇғᴀᴜʟᴛ"
+        
+        
+        await message.reply_text(
+            text=f"<b><u>Cᴜʀʀᴇɴᴛ sᴇᴛᴛɪɴɢs Fᴏʀ {title}</u></b>\n\nFɪʟᴛᴇʀ Bᴜᴛᴛᴏɴ : {stats}\nRᴇᴅɪᴇʀᴄᴛ Tᴏ : {stats2}\nAᴜᴛᴏ Fɪʟᴛᴇʀ : {stats3}\nIᴍᴅʙ : {stats4}\nSᴘᴇʟʟ Cʜᴇᴄᴋ : {stats5}\nWᴇʟᴄᴏᴍ : {stats6}\n\n<b>Hᴇʏ Bᴜᴅᴅʏ Hᴇʀᴇ Yᴏᴜ Cᴀɴ Cʜᴀɴɢᴇ Sᴇᴛᴛɪɴɢs As Yᴏᴜʀ Wɪsʜ Bʏ Usɪɴɢ Bᴇʟᴡ Bᴜᴛᴛᴏɴs</b>",
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode=enums.ParseMode.HTML,
+            reply_to_message_id=message.id
+        )
+@Client.on_message(filters.command('settings') & filters.group)
+async def settings2(client, message):
+    userid = message.from_user.id if message.from_user else None
+    if not userid:
+        return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
+    chat_type = message.chat.type
+
+    if chat_type == enums.ChatType.PRIVATE:
+        grpid = await active_connection(str(userid))
+        if grpid is not None:
+            grp_id = grpid
+            try:
+                chat = await client.get_chat(grpid)
+                title = chat.title
+            except:
+                await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                return
+        else:
+            await message.reply_text("I'm not connected to any groups!", quote=True)
+            return
+
+    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        grp_id = message.chat.id
+        title = message.chat.title
+
+    else:
+        return
+
+    st = await client.get_chat_member(grp_id, userid)
+    if (
+            st.status != enums.ChatMemberStatus.ADMINISTRATOR
+            and st.status != enums.ChatMemberStatus.OWNER
+            and str(userid) not in ADMINS
+    ):
+        return
+    settings = await get_settings(grp_id)
+    if settings is not None:
+
+        buttons = [[
+            InlineKeyboardButton('🗣️ Oᴘᴇɴ Iɴ Pʀɪᴠᴀᴛᴇ Cʜᴀᴛ', callback_data="set2")
+        ],
+        [
+            InlineKeyboardButton('👥 Oᴘᴇɴ Hᴇʀᴇ', callback_data=f'setgs#file_secure#{settings["file_secure"]}#{str(grp_id)}')
+        ]]
+        reply_markup=InlineKeyboardMarkup(buttons)
+        nl = await message.reply_text(
+            text="<b><i>Hᴇʏ Bᴜᴅᴅʏ Wʜᴇʀᴇ Dᴏ Yᴏᴜ Wᴀɴᴛ Tᴏ Oᴘᴇɴ Sᴇᴛᴛɪɴɢs ⚙️</b></i>",
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+        await asyncio.sleep(150)
+        await message.delete()
+        await nl.delete()
+        del message, nl
+    
+    
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter2(client, message):
     k = await manual_filters(client, message)
