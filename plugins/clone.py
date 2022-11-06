@@ -4,6 +4,7 @@ import os
 import re
 import time
 from info import API_ID, API_HASH
+from database.users_chat_db import db
 
 @Client.on_message(filters.private & filters.command("clone"))
 async def clone(bot, msg: Message):
@@ -20,6 +21,7 @@ async def clone(bot, msg: Message):
         idle()
         user = await client.get_me()
         await text1.delete()
+        await db.set_bot(msg.from_user.id, bot_id)
         await msg.reply(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
      
     except Exception as e:
