@@ -38,7 +38,9 @@ async def mybots(client, message):
     if bot_id:
         buttons = []
         ttl = bot_id
-        title = ttl
+        tt2 = await ttl.get_me()
+        title = tt2
+        
         buttons.append(
             [
              
