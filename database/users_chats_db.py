@@ -40,9 +40,10 @@ class Database:
     async def set_bot(self, id, bot):
         await self.col.update_one({'id': id}, {'$set': {'bot': bot}})
 
-    async def get_thumbnail(self, id):
+    async def get_bot(self, id):
         user = await self.col.find_one({'id': int(id)})
         return user.get('bot', None)
+
     async def status(self, group_id: int):
         """
         Get the total filters, total connected
