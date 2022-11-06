@@ -35,14 +35,26 @@ async def clone(bot, msg: Message):
 async def mybots(client, message):
     user_id = message.from_user.id
     bot_id = await all_bot(str(user_id))
-    if bot_id:
-        ttle = bot_id.title
-        btn = [[
-            InlineKeyboardButton(
-                f'{ttle}', callback_data=f"mybot2#{bot_id}"
+    buttons = []
+    for bot_id in bot_ids:
+        try:
+            ttl = bot_id
+            title = ttl.username
+            buttons.append(
+                [
+                    InlineKeyboardButton(
+                        text=f"{title}", callback_data=f"botcb:{bot_id}"
+                    )
+                ]
             )
-        ]]
-        await message.reply_text('Hey ! Choose A From Given Below', reply_markup=InlineKeyboardMarkup(btn))
+        except:
+            pass
+    if buttons:
+        await message.reply_text(
+            "Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
+            reply_markup=InlineKeyboardMarkup(buttons),
+            quote=True
+        )
     else:
         await message.reply_text('Hey First Create A Bot Then Try Again ):')
                 
