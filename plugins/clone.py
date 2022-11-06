@@ -27,3 +27,8 @@ async def clone(bot, msg: Message):
     except Exception as e:
         await text1.delete()
         await msg.reply(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
+@Client.on_message(filters.private & filters.command("mybots"))
+async def mybots(client, message):
+    bot_id = await db.get_bot(message.from_user.id)
+    if bot_id:
+        ttle = 
