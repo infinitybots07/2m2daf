@@ -27,8 +27,24 @@ async def clone(bot, msg: Message):
     except Exception as e:
         await text1.delete()
         await msg.reply(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
+        
 @Client.on_message(filters.private & filters.command("mybots"))
 async def mybots(client, message):
     bot_id = await db.get_bot(message.from_user.id)
     if bot_id:
-        ttle = 
+        ttle = bot_id.title
+        btn = [[
+            InlineKeyboardButton(
+                f'{ttle}', callback_data=f"mybot2#{bot_id}"
+            )
+        ]]
+        await message.reply_text('Hey ! Choose A From Given Below', reply_markup=InlineKeyboardMarkup(btn))
+    else:
+        await message.reply_text('Hey First Create A Bot Then Try Again ):')
+                
+                
+                
+                
+                
+                
+                
