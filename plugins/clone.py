@@ -37,7 +37,7 @@ async def mybots(client, message):
     buttons = []
     if bot_id:
         buttons = []
-        ttl = bot_id
+        ttl = bot_id.bot_id
         tt2 = await client.get_chat(int(ttl))
         title = tt2.username
         
