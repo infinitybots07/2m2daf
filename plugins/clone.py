@@ -34,6 +34,12 @@ async def clone(bot, msg: Message):
 async def mybots(client, message):
     user_id = message.from_user.id
     bot_ids = await all_bot(str(user_id))
+    if bot_ids is None:
+        await message.reply_text(
+            "There are no active connections!! Connect to some groups first.",
+            quote=True
+        )
+        return
     buttons = []
     for bot_id in bot_ids:
         try:
@@ -52,12 +58,15 @@ async def mybots(client, message):
             pass
         if buttons:
             await message.reply_text(
-                "Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
+                text="Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
                 reply_markup=InlineKeyboardMarkup(buttons),
                 quote=True
             )
         else:
-            await message.reply_text('Hey First Create A Bot Then Try Again ):', quote=True)
+            await message.reply_text(
+                'Hey First Create A Bot Then Try Again ):',
+                quote=True
+            )
         
                 
                 
