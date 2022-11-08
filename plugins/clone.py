@@ -50,9 +50,9 @@ async def mybots(client, message):
             )
         except:
             pass
-        if bot_id:
+        if buttons:
             await message.reply_text(
-                text="Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
+                "Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
                 reply_markup=InlineKeyboardMarkup(buttons),
                 quote=True
             )
