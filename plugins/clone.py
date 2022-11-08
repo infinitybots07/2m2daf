@@ -36,8 +36,7 @@ async def mybots(client, message):
     bot_ids = await all_bot(str(user_id))
     buttons = []
     for bot_id in bot_ids:
-        if bot_id:
-            buttons = []
+        try:
             ttl = bot_id
             tt2 = await client.get_chat(int(ttl))
             title = tt2.username
@@ -51,7 +50,7 @@ async def mybots(client, message):
             )
         except:
             pass
-        
+        if bot_id:
             await message.reply_text(
                 text="Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
                 reply_markup=InlineKeyboardMarkup(buttons),
