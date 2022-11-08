@@ -35,27 +35,27 @@ async def mybots(client, message):
     user_id = message.from_user.id
     bot_ids = await all_bot(str(user_id))
     buttons = []
-    if bot_ids:
-        buttons = []
-        ttl = bot_ids.bot_id
-        tt2 = await client.get_chat(int(ttl))
-        title = tt2.username
-        
-        buttons.append(
-            [
+    for bot_id in bot_ids:
+        if bot_id:
+            buttons = []
+            ttl = bot_id
+            tt2 = await client.get_chat(int(ttl))
+            title = tt2.username
+            buttons.append(
+                [
              
-                InlineKeyboardButton(
-                    text=f"{title}", callback_data=f"botcb:{bot_id}"
-                )
-            ]
-        )
-        await message.reply_text(
-            "Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
-            reply_markup=InlineKeyboardMarkup(buttons),
-            quote=True
-        )
-    else:
-        await message.reply_text('Hey First Create A Bot Then Try Again ):', quote=True)
+                    InlineKeyboardButton(
+                        text=f"{title}", callback_data=f"botcb:{bot_id}"
+                    )
+                ]
+            )
+            await message.reply_text(
+                text="Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
+                reply_markup=InlineKeyboardMarkup(buttons),
+                quote=True
+            )
+        else:
+            await message.reply_text('Hey First Create A Bot Then Try Again ):', quote=True)
         
                 
                 
