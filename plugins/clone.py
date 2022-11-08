@@ -65,6 +65,7 @@ async def mybots(client, message):
     else:
         await message.reply_text(
             'Hey First Create A Bot Then Try Again ):',
+            reply_markup=InlineKeyboardMarkup(buttons),
             quote=True
         )
         
