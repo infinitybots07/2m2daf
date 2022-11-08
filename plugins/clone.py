@@ -57,15 +57,14 @@ async def mybots(client, message):
         except:
             pass
     if buttons:
-        await message.reply_text(
+        await message.reply(
             text="Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
             reply_markup=InlineKeyboardMarkup(buttons),
             quote=True
         )
     else:
-        await message.reply_text(
+        await message.reply(
             'Hey First Create A Bot Then Try Again ):',
-            reply_markup=InlineKeyboardMarkup(buttons),
             quote=True
         )
         
