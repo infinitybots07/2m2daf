@@ -49,6 +49,9 @@ async def mybots(client, message):
                     )
                 ]
             )
+        except:
+            pass
+        
             await message.reply_text(
                 text="Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
                 reply_markup=InlineKeyboardMarkup(buttons),
