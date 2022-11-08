@@ -33,11 +33,11 @@ async def clone(bot, msg: Message):
 @Client.on_message(filters.private & filters.command("mybots"))
 async def mybots(client, message):
     user_id = message.from_user.id
-    bot_id = await all_bot(str(user_id))
+    bot_ids = await all_bot(str(user_id))
     buttons = []
-    if bot_id:
+    if bot_ids:
         buttons = []
-        ttl = bot_id.bot_id
+        ttl = bot_ids.bot_id
         tt2 = await client.get_chat(int(ttl))
         title = tt2.username
         
