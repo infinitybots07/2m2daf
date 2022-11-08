@@ -30,7 +30,7 @@ async def clone(bot, msg: Message):
         
         await text1.edit(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
         
-@Client.on_message(filters.private & filters.command("mybots"))
+@Client.on_message(filters.private & filters.command(["mybots"]))
 async def mybots(client, message):
     user_id = message.from_user.id
     bot_ids = await all_bot(str(user_id))
@@ -56,17 +56,17 @@ async def mybots(client, message):
             )
         except:
             pass
-        if buttons:
-            await message.reply_text(
-                text="Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
-                reply_markup=InlineKeyboardMarkup(buttons),
-                quote=True
-            )
-        else:
-            await message.reply_text(
-                'Hey First Create A Bot Then Try Again ):',
-                quote=True
-            )
+    if buttons:
+        await message.reply_text(
+            text="Yᴏᴜʀ Cᴏɴɴᴇᴄᴛᴇᴅ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs Rᴇ Gɪᴠᴇɴ Bᴇʟᴏᴡ :\n\n",
+            reply_markup=InlineKeyboardMarkup(buttons),
+            quote=True
+        )
+    else:
+        await message.reply_text(
+            'Hey First Create A Bot Then Try Again ):',
+            quote=True
+        )
         
                 
                 
