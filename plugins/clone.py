@@ -8,9 +8,9 @@ from database.connections_mdb import add_bot, all_bot
 from database.users_chats_db import db
 
 @Client.on_message(filters.private & filters.command("clone"))
-async def clone(bot, msg: Message):
+async def clone(bot: Client, msg: Message):
     chat = msg.chat
-    post:Message = await Client.ask(phone=message.command[1], text = "Oᴋᴀʏ Nᴏᴡ Sᴇɴᴛ Mᴇ Bᴏᴛ Tᴏᴋᴇɴ", timeout = 360)
+    post:Message = await bot.ask(phone=message.command[1], text = "Oᴋᴀʏ Nᴏᴡ Sᴇɴᴛ Mᴇ Bᴏᴛ Tᴏᴋᴇɴ", timeout = 360)
     cmd = msg.command
     bot_id1 = phone.text.split(":")[0]
     try:
