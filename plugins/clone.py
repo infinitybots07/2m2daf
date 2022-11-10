@@ -8,9 +8,9 @@ from database.connections_mdb import add_bot, all_bot
 from database.users_chats_db import db
 
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
-async def clone(bot:Client, msg:Message):
+async def clone(bot, msg:Message):
     chat = msg.chat
-    post:Message = await bot.ask(phone=message.command[1], text = "Oᴋᴀʏ Nᴏᴡ Sᴇɴᴛ Mᴇ Bᴏᴛ Tᴏᴋᴇɴ", timeout = 360)
+    post:Message = await bot.Client.ask(phone=message.command[1], text = "Oᴋᴀʏ Nᴏᴡ Sᴇɴᴛ Mᴇ Bᴏᴛ Tᴏᴋᴇɴ", timeout = 360)
     cmd = msg.command
     bot_id1 = phone.text.split(":")[0]
     try:
@@ -22,6 +22,7 @@ async def clone(bot:Client, msg:Message):
         user = await client.get_me()
         bot_id = user.id
         user_id = msg.from_user.id
+     
         await add_bot(str(bot_id), str(user_id))
         await text1.edit(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
      
