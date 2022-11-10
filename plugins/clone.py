@@ -10,12 +10,11 @@ from database.users_chats_db import db
 @Client.on_message(filters.private & filters.command("clone"))
 async def clone(bot, msg: Message):
     chat = msg.chat
-    text1 = await msg.reply("<b>Hᴇʏ Bʀᴏ Usᴇ Cᴏʀʀᴇᴄᴛ Mᴇᴛʜᴏᴅ\n\nEɢ : <code>/clone [bot token]</code></b>")
+    post:Message = await bot.ask(phone=message.command[1] text = "Oᴋᴀʏ Nᴏᴡ Sᴇɴᴛ Mᴇ Bᴏᴛ Tᴏᴋᴇɴ"
     cmd = msg.command
-    phone = msg.command[1]
-    bot_id1 = msg.text.split(":")[0]
+    bot_id1 = phone.text.split(":")[0]
     try:
-        await text1.edit("<b>Tʀʏɪɴɢ Tᴏ Cᴏɴɴᴇᴄᴛ Yᴏᴜʀ Bᴏᴛ...</b>")
+        text1 = await msg.reply("<b>Tʀʏɪɴɢ Tᴏ Cᴏɴɴᴇᴄᴛ Yᴏᴜʀ Bᴏᴛ...</b>")
                   
         client = Client(bot_id1 + "_0", API_ID, API_HASH, bot_token=phone, plugins={"root": "Clone"})
         await client.start()
