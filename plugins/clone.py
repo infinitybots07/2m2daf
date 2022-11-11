@@ -46,8 +46,7 @@ async def mybots(client, message):
     for bot_id in bot_ids:
         try:
             ttl = bot_id
-            tt2 = await client.get_chat(int(ttl))
-            title = tt2.username
+            title = f"<a href=tg://user?id={bot_id}>.</a>"
             buttons.append(
                 [
              
