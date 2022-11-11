@@ -11,7 +11,36 @@ mydb = myclient[DATABASE_NAME]
 mycol = mydb['CONNECTION']   
 btcol = mydb['CLONEBOT']
 
+async def delete_bot(user_id, bot_id):
 
+    try:
+        update = btcol.update_one(
+            {"_id": user_id},
+            {"$pull" : { "bot_details" : {"bot_id":bot_id} } }
+        )
+        if update.modified_count == 0:
+            return False
+        query = btcol.find_one(
+            { "_id": user_id },
+            { "_id": 0 }
+        )
+        if len(query["bot_details"]) >= 1:
+            if query['active_bot'] == group_id:
+                prvs_group_id = query["bot_details"][len(query["bot_details"]) - 1]["bot_id"]
+
+                btcol.update_one(
+                    {'_id': user_id},
+                    {"$set": {"active_bot" : prvs_group_id}}
+                )
+        else:
+            btcol.update_one(
+                {'_id': user_id},
+                {"$set": {"active_bot" : None}}
+            )
+        return True
+    except Exception as e:
+        logger.exception(f'Some error occurred! {e}', exc_info=True)
+        return False
 
 async def all_bot(user_id):
     query = btcol.find_one(
