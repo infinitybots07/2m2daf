@@ -12,7 +12,7 @@ from database.users_chats_db import db
 async def clone(bot:Client, msg:Message):
     chat = msg.chat
     post:Message = await bot.ask(chat_id=msg.from_user.id, text = "Oᴋᴀʏ Nᴏᴡ Sᴇɴᴛ Mᴇ Bᴏᴛ Tᴏᴋᴇɴ", timeout = 360)
-    phone = post.command[1]
+    phone = post.command
     cmd = msg.command
     bot_id1 = post.text.split(":")[0]
     try:
