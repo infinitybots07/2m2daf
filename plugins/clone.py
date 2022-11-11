@@ -6,7 +6,6 @@ import re
 import time
 from info import API_ID, API_HASH
 from database.connections_mdb import add_bot, all_bot
-from database.users_chats_db import db
 
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
 async def clone(bot:Client, msg:Message):
@@ -35,7 +34,7 @@ async def clone(bot:Client, msg:Message):
 @Client.on_message(filters.private & filters.command(["mybots"]))
 async def mybots(client, message):
     user_id = message.from_user.id
-    bot_ids = await db.get_bot(user_id)
+    bot_ids = await all_bot(str(user_id))
     if bot_ids is None:
         await message.reply_text(
             "There are no active connections!! Connect to some groups first.",
