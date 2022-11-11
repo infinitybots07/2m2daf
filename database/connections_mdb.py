@@ -23,7 +23,7 @@ async def all_bot(user_id):
     else:
         return None
 
-async def add_bot(bot_id, user_id):
+async def add_bot(bot_id, user_id, bot_name):
     query = btcol.find_one(
         { "_id": user_id },
         { "_id": 0, "active_bot": 0 }
@@ -35,6 +35,7 @@ async def add_bot(bot_id, user_id):
 
     bot_details = {
         "bot_id" : bot_id
+        "bot_name" : bot_name
     }
 
     data = {
