@@ -370,7 +370,7 @@ def remove_escapes(text: str) -> str:
             res += text[counter]
     return res
 
-async def encode(string):
+def encode(string):
     string_bytes = string.encode("ascii")
     base64_bytes = base64.b64encode(string_bytes)
     base64_string = base64_bytes.decode("ascii")
