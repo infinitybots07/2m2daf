@@ -34,7 +34,7 @@ async def add_bot(bot_id, user_id, bot_name):
             return False
 
     bot_details = {
-        "bot_id" : bot_id
+        "bot_id" : bot_id,
         "bot_name" : bot_name
     }
 
