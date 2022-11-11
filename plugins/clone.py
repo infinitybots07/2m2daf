@@ -43,7 +43,7 @@ async def mybots(client, message):
     buttons = []
     for bot_id in bot_ids:
         try:
-            bot = await client.get_me([bot_id])
+            bot = await client.get_me(int(bot_id))
             title = bot.username
             buttons.append(
                 [
