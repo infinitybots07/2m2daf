@@ -66,8 +66,87 @@ async def mybots(client, message):
             'Hey First Create A Bot Then Try Again ):',
             quote=True
         )
-        
+@Client.on_callback_query()
+   if "botcb" in query.data:
+        await query.answer()
+
+        bot_id = query.data.split(":")[1]
+
+        hr = await client.get_chat(int(bot_id))
+        title = hr.title
+        user_id = query.from_user.id
+
+      
+
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("Dᴇʟᴇᴛᴇ", callback_data=f"deletebcb:{group_id}")],
+            [InlineKeyboardButton("Bᴀᴄᴋ", callback_data="backbcb")]
+        ])
+
+        await query.message.edit_text(
+            f"Bot Name :- **{title}**",
+            reply_markup=keyboard,
+            parse_mode=enums.ParseMode.MARKDOWN
+        )
+        return await query.answer('Hᴀᴘᴘʏ Aʟʟᴇ Dᴀ')
+    
+    
+    elif "deletebcb" in query.data:
+        await query.answer()
+
+        user_id = query.from_user.id
+        bot_id = query.data.split(":")[1]
+
+        delcon = await delete_bot(str(user_id), str(bot_id))
+
+        if delcon:
+            await query.message.edit_text(
+                "Successfully deleted connection"
+            )
+        else:
+            await query.message.edit_text(
+                f"Some error occurred!!",
+                parse_mode=enums.ParseMode.MARKDOWN
+            )
+        return await query.answer('𝙿𝙻𝙴𝙰𝚂𝙴 𝚂𝙷𝙰𝚁𝙴 𝙰𝙽𝙳 𝚂𝚄𝙿𝙿𝙾𝚁𝚃')
+    elif query.data == "backbcb":
+        await query.answer()
+
+        userid = query.from_user.id
+
+        bot_ids = await all_bot(str(userid))
+        if bot_ids is None:
+            await query.message.edit_text(
+                "There are no active connections!! Connect to some groups first.",
+            )
+            return await query.answer('𝙿𝙻𝙴𝙰𝚂𝙴 𝚂𝙷𝙰𝚁𝙴 𝙰𝙽𝙳 𝚂𝚄𝙿𝙿𝙾𝚁𝚃')
+        buttons = []
+        for bot_id in bot_ids:
+            try:
+                ttl = await client.get_chat(int(bot_id))
+                title = ttl.username
                 
+                buttons.append(
+                    [
+                        InlineKeyboardButton(
+                            text=f"{title}", callback_data=f"botcb:{bot_id}"
+                        )
+                    ]
+                )
+            except:
+                pass
+        if buttons:
+            await query.message.edit_text(
+                "Your connected group details ;\n\n",
+                reply_markup=InlineKeyboardMarkup(buttons)
+            )
+        else:
+            await query.message.edit(
+                "Hello"
+            )
+
+    
+   
                 
                 
                 
