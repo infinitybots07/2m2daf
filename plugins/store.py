@@ -1,68 +1,58 @@
+#(©)Codexbotz
 
- 
-import re 
- 
-from pyromod import listen 
-from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup 
-from pyrogram import Client, filters 
-from pyrogram.errors import PeerIdInvalid, MessageIdInvalid
+from pyrogram import Client, filters
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from utils import encode, get_message_id
 
-from utils import encode
- 
-@Client.on_message(filters.command("batch") & filters.private & ~filters.bot, group=3) 
-async def batch(bot:Client, update:Message): 
- 
-    user_id = update.from_user.id 
- 
-    post1:Message = await bot.ask(chat_id=update.chat.id, text="Please Forward The First Post From The Channel (Where I Am an admin)", timeout=360) 
-    if not post1: return 
- 
-    if not post1.forward_from_chat: 
- 
-        await update.reply_text("Please Forward The Message With Quotes (ie : Forwarded From ...)") 
-        return 
- 
-    chat_id1 = post1.forward_from_chat.id 
-    try : 
- 
-        msg_id1 = post1.forward_from_message_id 
-        await bot.get_messages( 
-            chat_id=chat_id1, 
-            message_ids=msg_id1 
-        ) 
-    except PeerIdInvalid: 
-        return await update.reply_text("Looks like Im Not A Member Of The Chat Where This Message Is Posted") 
-    except MessageIdInvalid: 
-        return await update.reply_text("Looks Like The Message You Forwarded No Longer Exists") 
-    except Exception as e: 
-        print(e) 
-        return await update.reply_text("Something Went Wrong Please Try Again Later") 
- 
-    post2 = await bot.ask(chat_id=update.chat.id, text="Now Forward The Last Message From The Same Channel", timeout=360) 
-    if not post2 : return 
- 
-    chat_id2 = post2.forward_from_chat.id 
-    if not chat_id1==chat_id2 : 
-        return await update.reply_text("These Two Messages Arent From The Same Chat") 
- 
-    try : 
- 
-        msg_id2 = post2.forward_from_message_id 
-        await bot.get_messages( 
-            chat_id=chat_id2, 
-            message_ids=msg_id2 
-        ) 
-    except PeerIdInvalid: 
-        return await update.reply_text("Looks like Im Not A Member Of The Chat Where This Message Is Posted") 
-    except MessageIdInvalid: 
-        return await update.reply_text("Looks Like The Message You Forwarded No Longer Exists") 
-    except Exception as e: 
-        print(e) 
-        return await update.reply_text("Something Went Wrong Please Try Again Later")
-    if not msg_id1<=msg_id2: 
-        return await update.reply_text("The First Message Has To Be Posted Above The Second In The Channel To Generate A Batch") 
- 
-    encoded = await encode(f"get-{msg_id1 * abs(chat_id1)}-{msg_id2 * abs(chat_id1)}") 
-    url = f"https://t.me/DoraFilterBot?start={encoded}" 
- 
-    await update.reply_text(f"Woohoo... I've Successfully Generated A Link For Your Batch\n{url}\nPS:This Link Will Only Work As Long As I AM An Admin In The From Channel")
+@Client.on_message(filters.private & filters.command('batch'))
+async def batch(client: Client, message: Message):
+    while True:
+        try:
+            first_message = await client.ask(text = "<b>𝙵𝙾𝚁𝚆𝙰𝚁𝙳 𝚃𝙷𝙴 𝙵𝙸𝚁𝚂𝚃 𝙼𝙴𝚂𝚂𝙰𝙶𝙴 𝙵𝚁𝙾𝙼 𝚃𝙷𝙴 𝙳𝙱 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 (𝚆𝙸𝚃𝙷 𝙵𝙾𝚁𝚆𝙰𝚁𝙳 𝚀𝙾𝚄𝚃𝙴)....\n\n𝙾𝚁\n\n𝚂𝙴𝙽𝙳 𝚃𝙷𝙴 𝙿𝙾𝚂𝚃 𝙻𝙸𝙽𝙺</b>", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=60)
+        except:
+            return
+        f_msg_id = await get_message_id(client, first_message)
+        if f_msg_id:
+            break
+        else:
+            await first_message.reply("<b>🚫 𝙴𝚁𝚁𝙾𝚁\n\n𝚃𝙷𝙸𝚂 𝙵𝙾𝚁𝚆𝙰𝚁𝙳𝙴𝙳 𝙿𝙾𝚂𝚃 𝙸𝚂 𝙽𝙾𝚃 𝙵𝚁𝙾𝙼 𝙼𝚈 𝙳𝙱 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝙾𝚁 𝙻𝙸𝙽𝙺 𝙸𝚂 𝙽𝙾𝚃 𝚃𝙰𝙺𝙴𝙽 𝙵𝚁𝙾𝙼 𝙳𝙱 𝙲𝙷𝙰𝙽𝙽𝙴𝙻...</b>", quote = True)
+            continue
+
+    while True:
+        try:
+            second_message = await client.ask(text = "<b>𝙵𝙾𝚁𝚆𝙰𝚁𝙳 𝚃𝙷𝙴 𝙻𝙰𝚂𝚃 𝙼𝙴𝚂𝚂𝙰𝙶𝙴 𝙵𝚁𝙾𝙼 𝚃𝙷𝙴 𝙳𝙱 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 (𝚆𝙸𝚃𝙷 𝙵𝙾𝚁𝚆𝙰𝚁𝙳 𝚀𝙾𝚄𝚃𝙴)....\n\n𝙾𝚁\n\n𝚂𝙴𝙽𝙳 𝚃𝙷𝙴 𝙿𝙾𝚂𝚃 𝙻𝙸𝙽𝙺</b>", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=60)
+        except:
+            return
+        s_msg_id = await get_message_id(client, second_message)
+        if s_msg_id:
+            break
+        else:
+            await second_message.reply("<b>🚫 𝙴𝚛𝚛𝚘𝚛\n\n𝚃𝙷𝙸𝚂 𝙵𝙾𝚁𝚆𝙰𝚁𝙳𝙴𝙳 𝙿𝙾𝚂𝚃 𝙸𝚂 𝙽𝙾𝚃 𝙵𝚁𝙾𝙼 𝙼𝚈 𝙳𝙱 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝙾𝚁 𝙻𝙸𝙽𝙺 𝙸𝚂 𝙽𝙾𝚃 𝚃𝙰𝙺𝙴𝙽 𝙵𝚁𝙾𝙼 𝙳𝙱 𝙲𝙷𝙰𝙽𝙽𝙴𝙻...</b>", quote = True)
+            continue
+
+
+    string = f"get-{f_msg_id * abs(client.db_channel.id)}-{s_msg_id * abs(client.db_channel.id)}"
+    base64_string = await encode(string)
+    link = f"https://t.me/{client.username}?start={base64_string}"
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("𝚂𝙷𝙰𝚁𝙴 𝚄𝚁𝙻", url=f'https://telegram.me/share/url?url={link}')]])
+    await second_message.reply_text(f"<b>𝙷𝙴𝚁𝙴 𝙸𝚂 𝚈𝙾𝚄𝚁 𝙻𝙸𝙽𝙺</b>\n\n{link}", quote=True, reply_markup=reply_markup)
+
+
+@Bot.on_message(filters.private & filters.command('genlink'))
+async def link_generator(client: Client, message: Message):
+    while True:
+        try:
+            channel_message = await client.ask(text = "Forward Message from the DB Channel (with Quotes)..\nor Send the DB Channel Post link", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=60)
+        except:
+            return
+        msg_id = await get_message_id(client, channel_message)
+        if msg_id:
+            break
+        else:
+            await channel_message.reply("<b>🚫 𝙴𝚛𝚛𝚘𝚛\n\n𝚃𝙷𝙸𝚂 𝙵𝙾𝚁𝚆𝙰𝚁𝙳𝙴𝙳 𝙿𝙾𝚂𝚃 𝙸𝚂 𝙽𝙾𝚃 𝙵𝚁𝙾𝙼 𝙼𝚈 𝙳𝙱 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 𝙾𝚁 𝙻𝙸𝙽𝙺 𝙸𝚂 𝙽𝙾𝚃 𝚃𝙰𝙺𝙴𝙽 𝙵𝚁𝙾𝙼 𝙳𝙱 𝙲𝙷𝙰𝙽𝙽𝙴𝙻...</b>", quote = True)
+            continue
+
+    base64_string = await encode(f"get-{msg_id * abs(client.db_channel.id)}")
+    link = f"https://t.me/{client.username}?start={base64_string}"
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("𝚂𝙷𝙰𝚁𝙴 𝚄𝚁𝙻", url=f'https://telegram.me/share/url?url={link}')]])
+    await channel_message.reply_text(f"<b>𝙷𝙴𝚁𝙴 𝙸𝚂 𝚈𝙾𝚄𝚁 𝙻𝙸𝙽𝙺</b>\n\n{link}", quote=True, reply_markup=reply_markup)
