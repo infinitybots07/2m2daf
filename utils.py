@@ -370,21 +370,11 @@ def remove_escapes(text: str) -> str:
             res += text[counter]
     return res
 
-def encode(s: bytes) -> str:
-    r = b""
-    n = 0
-
-    for i in s + bytes([22]) + bytes([4]):
-        if i == 0:
-            n += 1
-        else:
-            if n:
-                r += b"\x00" + bytes([n])
-                n = 0
-
-            r += bytes([i])
-
-    return base64.urlsafe_b64encode(r).decode().rstrip("=")
+async def encode(string):
+    string_bytes = string.encode("ascii")
+    base64_bytes = base64.b64encode(string_bytes)
+    base64_string = base64_bytes.decode("ascii")
+    return base64_string
 
 def humanbytes(size):
     if not size:
