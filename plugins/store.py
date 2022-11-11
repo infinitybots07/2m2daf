@@ -58,12 +58,11 @@ async def batch(bot:Client, update:Message):
         return await update.reply_text("Looks Like The Message You Forwarded No Longer Exists") 
     except Exception as e: 
         print(e) 
-        return await update.reply_text("Something Went Wrong Please Try Again Later") 
- 
+        return await update.reply_text("Something Went Wrong Please Try Again Later")
     if not msg_id1<=msg_id2: 
         return await update.reply_text("The First Message Has To Be Posted Above The Second In The Channel To Generate A Batch") 
  
-    encoded = await encode(f"{str(chat_id1).replace('-100','')} {msg_id1} {msg_id2}") 
+    encoded = await encode(f"get-{msg_id1 * abs(chat_id1)}-{msg_id2 * abs(chat_id1)}") 
     url = f"https://t.me/DoraFilterBot?start={encoded}" 
  
     await update.reply_text(f"Woohoo... I've Successfully Generated A Link For Your Batch\n{url}\nPS:This Link Will Only Work As Long As I AM An Admin In The From Channel")
