@@ -1,5 +1,6 @@
 from pyrogram import *
 from pyrogram.types import *
+from pyromod import listen
 import os
 import re
 import time
@@ -10,7 +11,7 @@ from database.users_chats_db import db
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
 async def clone(bot, msg:Message):
     chat = msg.chat
-    post:Message = await bot.Client.ask(phone=message.command[1], text = "Oᴋᴀʏ Nᴏᴡ Sᴇɴᴛ Mᴇ Bᴏᴛ Tᴏᴋᴇɴ", timeout = 360)
+    post:Message = await bot.ask(chat_id=msg.from_user.id, text = "Oᴋᴀʏ Nᴏᴡ Sᴇɴᴛ Mᴇ Bᴏᴛ Tᴏᴋᴇɴ", timeout = 360)
     cmd = msg.command
     bot_id1 = phone.text.split(":")[0]
     try:
