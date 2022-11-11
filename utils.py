@@ -376,12 +376,36 @@ def encode(string):
     base64_string = base64_bytes.decode("ascii")
     return base64_string
 
-async def decode(base64_string):
+def decode(base64_string):
     base64_bytes = base64_string.encode("ascii")
     string_bytes = base64.b64decode(base64_bytes) 
     string = string_bytes.decode("ascii")
     return string
 
+def get_message_id(client, message):
+    if message.forward_from_chat:
+        if message.forward_from_chat.id == client.db_channel.id:
+            return message.forward_from_message_id
+        else:
+            return 0
+    elif message.forward_sender_name:
+        return 0
+    elif message.text:
+        pattern = "https://t.me/(?:c/)?(.*)/(\d+)"
+        matches = re.match(pattern,message.text)
+        if not matches:
+            return 0
+        channel_id = matches.group(1)
+        msg_id = int(matches.group(2))
+        if channel_id.isdigit():
+            if f"-100{channel_id}" == str(client.db_channel.id):
+                return msg_id
+        else:
+            if channel_id == client.db_channel.username:
+                return msg_id
+    else:
+        return
+    
 def humanbytes(size):
     if not size:
         return ""
