@@ -67,7 +67,9 @@ async def mybots(client, message):
             quote=True
         )
 @Client.on_callback_query()
-   if "botcb" in query.data:
+async def callback(client:Client, query:CallbackQuery):
+    
+    if "botcb" in query.data:
         await query.answer()
 
         bot_id = query.data.split(":")[1]
