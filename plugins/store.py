@@ -38,7 +38,7 @@ async def batch(client: Client, message: Message):
     await second_message.reply_text(f"<b>𝙷𝙴𝚁𝙴 𝙸𝚂 𝚈𝙾𝚄𝚁 𝙻𝙸𝙽𝙺</b>\n\n{link}", quote=True, reply_markup=reply_markup)
 
 
-@Bot.on_message(filters.private & filters.command('genlink'))
+@Client.on_message(filters.private & filters.command('genlink'))
 async def link_generator(client: Client, message: Message):
     while True:
         try:
