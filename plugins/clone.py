@@ -5,7 +5,7 @@ import os
 import re
 import time
 from info import API_ID, API_HASH
-from database.connections_mdb import add_bot, all_bot
+from database.connections_mdb import add_bot, all_bot, delete_bot
 
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
 async def clone(bot:Client, msg:Message):
@@ -75,7 +75,7 @@ async def callback(client:Client, query:CallbackQuery):
         bot_id = query.data.split(":")[1]
 
         hr = await client.get_chat(int(bot_id))
-        title = hr.title
+        title = hr.username
         user_id = query.from_user.id
 
       
