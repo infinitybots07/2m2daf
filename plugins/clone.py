@@ -23,8 +23,7 @@ async def clone(bot:Client, msg:Message):
         user = await client.get_me()
         bot_id = user.id
         user_id = msg.from_user.id
-        bot_name = user.username
-        await add_bot(str(bot_id), str(user_id), str(bot_name))
+        await add_bot(str(bot_id), str(user_id))
         await text1.edit(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
      
     except Exception as e:
@@ -35,7 +34,6 @@ async def clone(bot:Client, msg:Message):
 async def mybots(client, message):
     user_id = message.from_user.id
     bot_ids = await all_bot(str(user_id))
-    bot_name = await all_bot(str(user_id))
     if bot_ids is None:
         await message.reply_text(
             "There are no active connections!! Connect to some groups first.",
@@ -45,7 +43,8 @@ async def mybots(client, message):
     buttons = []
     for bot_id in bot_ids:
         try:
-            title = bot_name
+            bot = await client.get_me([bot_id])
+            title = bot.username
             buttons.append(
                 [
              
