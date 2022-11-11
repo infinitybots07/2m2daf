@@ -44,12 +44,12 @@ async def mybots(client, message):
     for bot_id in bot_ids:
         try:
             bot = bot_id
-            title = <a href=tg://user?id={bot}>.</a>
+            
             buttons.append(
                 [
              
                     InlineKeyboardButton(
-                        text=f"{title}", callback_data=f"botcb:{bot_id}"
+                        text=f"{<a href=tg://user?id={bot}>.</a>}", callback_data=f"botcb:{bot_id}"
                     )
                 ]
             )
