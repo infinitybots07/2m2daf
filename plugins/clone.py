@@ -49,7 +49,7 @@ async def mybots(client, message):
                 [
              
                     InlineKeyboardButton(
-                        text=f"{<a href=tg://user?id={bot}>.</a>}", callback_data=f"botcb:{bot_id}"
+                        text=f"<a href=tg://user?id={bot}>.</a>", callback_data=f"botcb:{bot_id}"
                     )
                 ]
             )
