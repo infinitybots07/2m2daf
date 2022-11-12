@@ -81,7 +81,8 @@ async def callback(client:Client, query:CallbackQuery):
       
 
         keyboard = InlineKeyboardMarkup([
-            [InlineKeyboardButton("Dᴇʟᴇᴛᴇ", callback_data=f"deletebcb:{bot_id}")],
+            [InlineKeyboardButton("Sᴛᴀʀᴛ Tᴇxᴛ", callback_data = f"text:{bot_id}"),
+            InlineKeyboardButton("Dᴇʟᴇᴛᴇ", callback_data=f"deletebcb:{bot_id}")],
             [InlineKeyboardButton("Bᴀᴄᴋ", callback_data="backbcb")]
         ])
 
@@ -145,6 +146,23 @@ async def callback(client:Client, query:CallbackQuery):
         else:
             await query.message.edit(
                 "Hello"
+            )
+            
+    elif query.data == "text":
+        
+        post:Message = await query.ask(chat_id = query.from_user.id, text="Okay Now Sent Text To Set Your Start Text 🙌", timeout=360)
+        text = post.text
+        try:
+            set_pic = await db.set_pic(bot_id, text)
+            await query.reply(
+                "Successfully Your Start Text Was Updated",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton('🔙 Bᴀᴄᴋ', callback_data=f"botcb:{bot_id}")
+                        ]
+                    ]
+                )
             )
 
     
