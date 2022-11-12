@@ -164,7 +164,8 @@ async def callback(client:Client, query:CallbackQuery):
                     ]
                 )
             )
-
+        except:
+            pass
     
    
                 
