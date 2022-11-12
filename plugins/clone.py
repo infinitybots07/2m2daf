@@ -6,7 +6,7 @@ import re
 import time
 from info import API_ID, API_HASH
 from database.connections_mdb import add_bot, all_bot, delete_bot
-from datsbase.users_chats_db import db
+from database.users_chats_db import db
 
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
 async def clone(bot:Client, msg:Message):
