@@ -74,8 +74,8 @@ async def callback(client:Client, query:CallbackQuery):
 
         bot_id = query.data.split(":")[1]
 
-        hr = await client.get_chat(int(bot_id))
-        title = hr.username
+        hr = bot_id
+        title = hr
         user_id = query.from_user.id
 
       
@@ -125,8 +125,8 @@ async def callback(client:Client, query:CallbackQuery):
         buttons = []
         for bot_id in bot_ids:
             try:
-                ttl = await client.get_chat(int(bot_id))
-                title = ttl.username
+                ttl = bot_id
+                title = ttl
                 
                 buttons.append(
                     [
