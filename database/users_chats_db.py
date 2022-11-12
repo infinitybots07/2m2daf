@@ -9,7 +9,7 @@ class Database:
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
         self.col = self.db.users
-        
+        self.btcol = self.db["Clone_Bot"]
         self.fcol = self.db["Filter_Collection"]
         self.grp = self.db.groups
         
@@ -37,12 +37,12 @@ class Database:
             ),
         )
     
-    async def set_bot(self, id, bot):
-        await self.col.update_one({'id': id}, {'$set': {'bot': bot}})
+    async def add_pic(self, id, pic):	
+        await self.btcol.update_one({'id' : id}, {'$set' : {'pic' : pic}})
 
-    async def get_bot(self, id):
-        user = await self.col.find_one({'id': int(id)})
-        return user.get('bot', None)
+    async def get_pic(self, id):
+        bot = await self.btcol.find_one({'id' : int(id)})
+        return bot.get('pic', None)
 
     async def status(self, group_id: int):
         """
