@@ -37,12 +37,12 @@ class Database:
             ),
         )
     
-    async def add_pic(self, id, pic):	
-        await self.btcol.update_one({'id' : id}, {'$set' : {'pic' : pic}})
+    async def add_pic(self, id, text):	
+        await self.btcol.update_one({'id' : id}, {'$set' : {'text' : text}})
 
     async def get_pic(self, id):
         bot = await self.btcol.find_one({'id' : int(id)})
-        return bot.get('pic', None)
+        return bot.get('text', None)
 
     async def status(self, group_id: int):
         """
