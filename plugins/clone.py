@@ -151,11 +151,11 @@ async def callback(client:Client, query:CallbackQuery):
             
     elif query.data == "text":
         
-        post:CallbackQuey = await client.ask(chat_id = query.from_user.id, text="Okay Now Sent Text To Set Your Start Text 🙌", timeout=360)
-        text = post.text
+        post:CallbackQuey = await query.ask(chat_id = query.from_user.id, text="Okay Now Sent Text To Set Your Start Text 🙌", timeout=360)
+        st_text = post.text
         try:
             await query.reply("Saving You Text...")
-            set_pic = await db.set_pic(bot_id, text)
+            set_pic = await db.set_pic(bot_id, st_text)
             await query.edit(
                 "Successfully Your Start Text Was Updated",
                 reply_markup=InlineKeyboardMarkup(
