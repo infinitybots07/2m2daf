@@ -6,6 +6,7 @@ import re
 import time
 from info import API_ID, API_HASH
 from database.connections_mdb import add_bot, all_bot, delete_bot
+from datsbase.users_chats_db import db
 
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
 async def clone(bot:Client, msg:Message):
@@ -150,11 +151,12 @@ async def callback(client:Client, query:CallbackQuery):
             
     elif query.data == "text":
         
-        post:Message = await client.ask(chat_id = query.from_user.id, text="Okay Now Sent Text To Set Your Start Text 🙌", timeout=360)
+        post:CallbackQuey = await client.ask(chat_id = query.from_user.id, text="Okay Now Sent Text To Set Your Start Text 🙌", timeout=360)
         text = post.text
         try:
+            await query.reply("Saving You Text...")
             set_pic = await db.set_pic(bot_id, text)
-            await query.reply(
+            await query.edit(
                 "Successfully Your Start Text Was Updated",
                 reply_markup=InlineKeyboardMarkup(
                     [
