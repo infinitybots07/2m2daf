@@ -81,7 +81,7 @@ async def callback(client:Client, query:CallbackQuery):
       
 
         keyboard = InlineKeyboardMarkup([
-            [InlineKeyboardButton("Dᴇʟᴇᴛᴇ", callback_data=f"deletebcb:{group_id}")],
+            [InlineKeyboardButton("Dᴇʟᴇᴛᴇ", callback_data=f"deletebcb:{bot_id}")],
             [InlineKeyboardButton("Bᴀᴄᴋ", callback_data="backbcb")]
         ])
 
