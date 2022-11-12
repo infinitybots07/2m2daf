@@ -150,7 +150,7 @@ async def callback(client:Client, query:CallbackQuery):
             
     elif query.data == "text":
         
-        post:Message = await query.ask(chat_id = query.from_user.id, text="Okay Now Sent Text To Set Your Start Text 🙌", timeout=360)
+        post:Message = await client.ask(chat_id = query.from_user.id, text="Okay Now Sent Text To Set Your Start Text 🙌", timeout=360)
         text = post.text
         try:
             set_pic = await db.set_pic(bot_id, text)
