@@ -25,12 +25,12 @@ async def delete_bot(user_id, bot_id):
             { "_id": 0 }
         )
         if len(query["bot_details"]) >= 1:
-            if query['active_bot'] == group_id:
-                prvs_group_id = query["bot_details"][len(query["bot_details"]) - 1]["bot_id"]
+            if query['active_bot'] == bot_id:
+                prvs_bot_id = query["bot_details"][len(query["bot_details"]) - 1]["bot_id"]
 
                 btcol.update_one(
                     {'_id': user_id},
-                    {"$set": {"active_bot" : prvs_group_id}}
+                    {"$set": {"active_bot" : prvs_bot_id}}
                 )
         else:
             btcol.update_one(
