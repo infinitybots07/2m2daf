@@ -41,8 +41,8 @@ class Database:
         await self.btcol.update_one({'id' : id}, {'$set' : {'text' : text}})
 
     async def get_pic(self, id):
-        bot = await self.btcol.find_one({'id' : int(id)})
-        return bot.get('text', None)
+        user = await self.btcol.find_one({'id' : int(id)})
+        return user.get('text', None)
 
     async def status(self, group_id: int):
         """
