@@ -4,6 +4,7 @@ from pyromod import listen
 import os
 import re
 import time
+import asyncio
 from info import API_ID, API_HASH
 from database.connections_mdb import add_bot, all_bot, delete_bot
 from database.users_chats_db import db
@@ -99,7 +100,7 @@ async def callback(client:Client, query:CallbackQuery):
     
     elif qyery.data == "stop":
         ml = await query.message.edit("Cᴀɴᴄᴇʟᴇᴅ...✅")
-        
+        await client.stopEvent.set()
         await asyncio.sleep(10)
         await ml.delete()
         
