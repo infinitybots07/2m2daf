@@ -154,8 +154,8 @@ async def callback(client:Client, query:CallbackQuery):
         post:Message = await client.ask(chat_id = query.from_user.id, text="<i>Okay Now Sent Text To Set Your Start Text 🙌</i>", timeout=360)
         st_text = post.text
         try:
-            await query.message.reply("Saving You Text...")
-            set_pic = await db.set_pic(bot_id, st_text)
+            st2 = await query.message.reply("Saving You Text...")
+            set_pic = await db.add_pic(bot_id, st_text)
             await query.message.edit(
                 "Successfully Your Start Text Was Updated",
                 reply_markup=InlineKeyboardMarkup(
@@ -167,7 +167,8 @@ async def callback(client:Client, query:CallbackQuery):
                 )
             )
         except Exception as e:
-            await query.message.edit(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
+            await st2.delete()
+            await query.message.reply(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
         
                 
                 
