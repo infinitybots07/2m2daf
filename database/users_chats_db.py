@@ -42,7 +42,7 @@ class Database:
 
     async def get_pic(self, id):
         user = await self.btcol.find_one({'id' : int(id)})
-        return user.get('text', None)
+        return user.get('text')
 
     async def status(self, group_id: int):
         """
