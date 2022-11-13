@@ -8,7 +8,7 @@ import asyncio
 from info import API_ID, API_HASH
 from database.connections_mdb import add_bot, all_bot, delete_bot
 from database.users_chats_db import db
-
+from utils_bot import cancel
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
 async def clone(bot:Client, msg:Message):
     chat = msg.chat
@@ -100,7 +100,7 @@ async def callback(client:Client, query:CallbackQuery):
     
     elif query.data == "stop":
         ml = await query.message.edit("Cᴀɴᴄᴇʟᴇᴅ...✅")
-        
+        await cancel()
         await asyncio.sleep(10)
         await ml.delete()
         
