@@ -99,8 +99,9 @@ async def callback(client:Client, query:CallbackQuery):
         return await query.answer('Hᴀᴘᴘʏ Aʟʟᴇ Dᴀ')
     
     elif query.data == "stop":
+        client.stopEvent.set()
         ml = await query.message.edit("Cᴀɴᴄᴇʟᴇᴅ...✅")
-        await cancel()
+        
         await asyncio.sleep(10)
         await ml.delete()
         
