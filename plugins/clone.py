@@ -82,7 +82,7 @@ async def callback(client:Client, query:CallbackQuery):
       
 
         keyboard = InlineKeyboardMarkup([
-            [InlineKeyboardButton("Sᴛᴀʀᴛ Tᴇxᴛ", callback_data = f"start_text:{bot_id}"),
+            [InlineKeyboardButton("Sᴛᴀʀᴛ Tᴇxᴛ", callback_data = f"if_text:{bot_id}"),
             InlineKeyboardButton("Dᴇʟᴇᴛᴇ", callback_data=f"deletebcb:{bot_id}")],
             [InlineKeyboardButton("Bᴀᴄᴋ", callback_data="backbcb")]
         ])
@@ -200,5 +200,7 @@ async def callback(client:Client, query:CallbackQuery):
                             InlineKeyboardButton("🗃️ Fɪʟʟɪɴɢs", callback_data="fillings")
                         ]
                     ]
-                
+                ),
+                parse_mode=enums.ParseMode.HTML
+            )
                                                                                                                                                                                                                                    
