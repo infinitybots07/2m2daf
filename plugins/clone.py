@@ -172,7 +172,7 @@ async def callback(client:Client, query:CallbackQuery):
     
     elif "if_text" in query.data:
         bot_id = query.data.split(":")[1]
-        get_pic = await db.add_pic(bot_id)
+        get_pic = await db.get_pic(bot_id)
         if get_pic:
             await query.answer()
             btn = [[
