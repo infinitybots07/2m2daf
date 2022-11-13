@@ -170,7 +170,7 @@ async def callback(client:Client, query:CallbackQuery):
             await st2.delete()
             await query.message.reply(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
     
-    elif "if_text" in data:
+    elif "if_text" in query.data:
         bot_id = query.data.split(":")[1]
         get_pic = await db.get_pic(bot_id)
         if get_pic:
