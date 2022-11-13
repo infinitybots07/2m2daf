@@ -98,7 +98,7 @@ async def callback(client:Client, query:CallbackQuery):
         )
         return await query.answer('Hᴀᴘᴘʏ Aʟʟᴇ Dᴀ')
     
-    elif qyery.data == "stop":
+    elif query.data == "stop":
         ml = await query.message.edit("Cᴀɴᴄᴇʟᴇᴅ...✅")
         await client.stopEvent.set()
         await asyncio.sleep(10)
