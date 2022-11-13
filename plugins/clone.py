@@ -169,7 +169,36 @@ async def callback(client:Client, query:CallbackQuery):
         except Exception as e:
             await st2.delete()
             await query.message.reply(f"**❌ Eʀʀᴏʀ :**\n\n`{str(e)}`\n\nIғ Hᴀᴠᴇ Aɴʏ Dᴏᴜʙᴛ Asᴋ Iɴ Sᴜᴘᴘᴏʀᴛ ❗")
+    
     elif "if_text" in data:
         bot_id = query.data.split(":")[1]
+        get_pic = await db.get_pic(bot_id)
+        if get_pic:
+            await query.answer()
+            btn = [[
+                InlineKeyboardButton("⚒️ Yᴏᴜʀ Sᴛᴀʀᴛ Tᴇxᴛ ⚒️", callback_data=f"get_stext:{bot_id}")
+                ],[
+                InlineKeyboardButton("🔙 Bᴀᴄᴋ", callback_data=f"botcb:{bot_id}"),
+                InlineKeyboardButton("♻️ Rᴇsᴇᴛ", callback_data=f"resetcb:{bot_id}")
+            ]]
+            await query.message.edit(
+                "<u><b>Sᴛᴀʀᴛ Tᴇxᴛ</u></b>\n\n<i>• You Can Set Custom Start Text Through This Module...\n• Click [Your Start Text] Button To See Your Start Text\n• Click [Reset] Button To Reset Your Start Text Settings...",
+                reply_markup=InlineKeyboardMarkup(btn),
+                parse_mode=enums.ParseMode.HTML
+            )
+        else:
+            await query.answer()
+            await query.message.edit(
+                "<u><b>Start Text</u></b>\n\n<i>• You Can Add Custom Start Text For Your Bot...</i>",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton("➕ Aᴅᴅ Sᴛᴀʀᴛ Tᴇxᴛ ➕", callback_data=f"start_text:{bot_id}")
+                        ],
+                        [
+                            InlineKeyboardButton("🔙 Bᴀᴄᴋ", callback_data=f"botcb:{bot_id}"),
+                            InlineKeyboardButton("🗃️ Fɪʟʟɪɴɢs", callback_data="fillings")
+                        ]
+                    ]
                 
-                
+                                                                                                                                                                                                                                   
