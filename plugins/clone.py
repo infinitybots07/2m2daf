@@ -82,7 +82,7 @@ async def callback(client:Client, query:CallbackQuery):
       
 
         keyboard = InlineKeyboardMarkup([
-            [InlineKeyboardButton("Sᴛᴀʀᴛ Tᴇxᴛ", callback_data = f"text:{bot_id}"),
+            [InlineKeyboardButton("Sᴛᴀʀᴛ Tᴇxᴛ", callback_data = f"start_text:{bot_id}"),
             InlineKeyboardButton("Dᴇʟᴇᴛᴇ", callback_data=f"deletebcb:{bot_id}")],
             [InlineKeyboardButton("Bᴀᴄᴋ", callback_data="backbcb")]
         ])
@@ -149,8 +149,8 @@ async def callback(client:Client, query:CallbackQuery):
                 "Hello"
             )
             
-    elif query.data == "text":
-        
+    elif "start_text" in query.data:
+        bot_id = query.data.split(":")[1]
         post:CallbackQuey = await query.ask(chat_id = query.from_user.id, text="Okay Now Sent Text To Set Your Start Text 🙌", timeout=360)
         st_text = post.text
         try:
