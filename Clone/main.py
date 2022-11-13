@@ -37,15 +37,18 @@ SPELL_CHECK = {}
 
 @Client.on_message(filters.command(['start']) & filters.private)
 async def clone_start(bot, msg):
- 
-  btn = [[
-      InlineKeyboardButton('❗Hᴇʟᴘ', callback_data="c_help"),
-      InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="c_about")
-  ]]
-  await msg.reply_text(
-      text = f"<b>Yᴏ Yᴏ !\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>",
-      reply_markup = InlineKeyboardMarkup(btn)
-  )
+    
+    me = await client.get_me()
+    bot_id = me.id
+    C_TEXT = await db.get_pic(bot_id) if db.get_pic else "<b>Yᴏ Yᴏ !\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>"
+    btn = [[
+        InlineKeyboardButton('❗Hᴇʟᴘ', callback_data="c_help"),
+        InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="c_about")
+    ]]
+    await msg.reply_text(
+        text = C_TEXT,
+        reply_markup = InlineKeyboardMarkup(btn)
+    )
 
 @Client.on_message(filters.command('settings') & filters.private)
 async def settings(client, message):
