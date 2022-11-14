@@ -38,7 +38,7 @@ SPELL_CHECK = {}
 @Client.on_message(filters.command(['start']) & filters.private)
 async def clone_start(bot, msg):
     
-    me = await bot.Client.get_me()
+    me = await msg.Client.get_me()
     bot_id = me.id
     C_TEXT = await db.get_pic(bot_id) if db.get_pic else "<b>Yᴏ Yᴏ !\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>"
     btn = [[
