@@ -38,52 +38,20 @@ FILTER_MODE = {}
 
     
 @Client.on_message(filters.group & filters.text & filters.incoming)
-async def give_filter(client,message):
-    group_id = message.chat.id
-    name = message.text
-    settings = await get_settings(message.chat.id)
-    keywords = await get_filters(group_id)
-    for keyword in reversed(sorted(keywords, key=len)):
-        pattern = r"( |^|[^\w])" + re.escape(keyword) + r"( |$|[^\w])"
-        if re.search(pattern, name, flags=re.IGNORECASE):
-            reply_text, btn, alert, fileid = await find_filter(group_id, keyword)
-
-            if reply_text:
-                reply_text = reply_text.replace("\\n", "\n").replace("\\t", "\t")
-
-            if btn is not None:
-                try:
-                    if fileid == "None":
-                        if btn == "[]":
-                            await message.reply_text(reply_text, disable_web_page_preview=True)
-                        else:
-                            button = eval(btn)
-                            await message.reply_text(
-                                reply_text,
-                                disable_web_page_preview=True,
-                                reply_markup=InlineKeyboardMarkup(button)
-                            )
-                    elif btn == "[]":
-                        await message.reply_cached_media(
-                            fileid,
-                            caption=reply_text or ""
-                        )
-                    else:
-                        button = eval(btn) 
-                        await message.reply_cached_media(
-                            fileid,
-                            caption=reply_text or "",
-                            reply_markup=InlineKeyboardMarkup(button)
-                        )
-                except Exception as e:
-                    print(e)
-                break 
-
-    else:
-        if settings["file_secure"]:
-            await auto_filter(client, message)
-        else:
-            FILTER_MODE == "False"
+async def give_filter(client, message):
+    await global_filters(client, message)
+    mf = await manual_filters(client, message)
+    if mf == False:
+        settings = await get_settings(message.chat.id)
+        try:
+            if settings['file_secure']:
+                await auto_filter(client, message)
+        except KeyError:
+            grpid = await active_connection(str(message.from_user.id))
+            await save_group_settings(grpid, 'file_secure', True)
+            settings = await get_settings(message.chat.id)
+            if settings['file_secure']:
+                await auto_filter(client, message)
             
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
