@@ -23,7 +23,7 @@ async def rm_all_session():
     await string.delete_many({})
 
 async def get_all_bot():
-    lol = await string.find({})
+    lol = [n async for n in string.find({})]
     return lol
 
 async def is_session_in_db(client):
