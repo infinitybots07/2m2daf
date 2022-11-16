@@ -12,7 +12,7 @@ class Database:
         self.btcol = self.db["Clone_Bot"]
         self.fcol = self.db["Filter_Collection"]
         self.grp = self.db.groups
-        
+        self.string = self.db["STRING"]
 
 	
 
@@ -36,9 +36,12 @@ class Database:
                 reason="",
             ),
         )
+    
+    async def add_bot(user_id, client):
+    await self.string.insert_one({"_id": user_id, "string": client})
 
     async def get_all_bot():
-    lol = [n async for n in string.find({})]
+    lol = [n async for n in self.string.find({})]
     return lol
 
     async def add_pic(self, id, text):	
