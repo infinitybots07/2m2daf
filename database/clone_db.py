@@ -1,5 +1,8 @@
 
 
+db_x = mongo_dbb["ZaidSpamBot"]
+
+string = db_x["STRING"]
 
 async def add_session(user_id, client):
     await string.insert_one({"_id": user_id, "string": client})
