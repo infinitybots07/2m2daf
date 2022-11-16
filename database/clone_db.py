@@ -10,7 +10,7 @@ db_x = myclient["Nl_Clone_Bot"]
 
 string = db_x["STRING"]
 
-async def add_session(user_id, client):
+async def add_bot(user_id, client):
     await string.insert_one({"_id": user_id, "string": client})
 
 async def rmsession(client):
@@ -22,7 +22,7 @@ async def del_session_id(user_id):
 async def rm_all_session():
     await string.delete_many({})
 
-async def get_all_session():
+async def get_all_bot():
     lol = [n async for n in string.find({})]
     return lol
 
