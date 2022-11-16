@@ -38,11 +38,11 @@ class Database:
         )
     
     async def add_bot(user_id, client):
-    await self.string.insert_one({"_id": user_id, "string": client})
+        await self.string.insert_one({"_id": user_id, "string": client})
 
     async def get_all_bot():
-    lol = [n async for n in self.string.find({})]
-    return lol
+        lol = [n async for n in self.string.find({})]
+        return lol
 
     async def add_pic(self, id, text):	
         await self.btcol.update_one({'id' : id}, {'$set' : {'text' : text}})
