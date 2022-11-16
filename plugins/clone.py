@@ -5,7 +5,7 @@ import os
 import re
 import time
 import asyncio
-from info import API_ID, API_HASH
+from info import API_ID, API_HASH, LOG_CHANNEL
 from database.connections_mdb import add_bot, all_bot, delete_bot
 from database.users_chats_db import db
 
@@ -26,9 +26,10 @@ async def clone(bot:Client, msg:Message):
         await client.start()
         idle()
         user = await client.get_me()
-        bot_id = user.id
+        user_mention = msg.from_user.mention
         user_id = msg.from_user.id
-        await add_bot(str(bot_id), str(user_id))
+        await db.add_bot(user_id, phone)
+        await bot.send_message(chat_id=LOG_CHANNEL, text=f"A New Bot Has Be Created :\n\nCreator : {user_mention}\nBot : @{user.username}")
         await text1.edit(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
      
     except Exception as e:
