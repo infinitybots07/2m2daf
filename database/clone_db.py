@@ -1,6 +1,12 @@
+import pymongo
+from info import DATABASE_URI2
 
+#-------------»[Create_DB]«--------------#
 
-db_x = mongo_dbb["ZaidSpamBot"]
+myclient = pymongo.MongoClient(DATABASE_URI2)
+db_x = myclient["Nl_Clone_Bot"]
+
+###_________»[Storage]«______________###
 
 string = db_x["STRING"]
 
