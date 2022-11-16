@@ -28,11 +28,13 @@ class Bot(Client):
         )
 
     async def start(self):
+  
         b_users, b_chats = await db.get_banned()
         temp.BANNED_USERS = b_users
         temp.BANNED_CHATS = b_chats
         await super().start()
         await Media.ensure_indexes()
+        
         me = await self.get_me()
         temp.ME = me.id
         temp.U_NAME = me.username
@@ -40,7 +42,18 @@ class Bot(Client):
         self.username = '@' + me.username
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         logging.info(LOG_STR)
-
+        string = await get_all_session()
+        for i in string:
+           try:
+              pyroman = Client(session_name=f"{i['string']}", api_id=6435225, api_hash="4e984ea35f854762dcde906dce426c2d", plugins=dict(root=f"Zaid.Player"))
+              await pyroman.start()
+              user = await pyroman.get_me()
+              print(f"[INFO]: Started {user.first_name}")
+          except BaseException as eb:
+              print(eb)
+      print(f"Total Client = {len(string)} User")
+      await idle()
+        
     async def stop(self, *args):
         await super().stop()
         logging.info("Bot stopped. Bye.")
