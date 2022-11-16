@@ -10,7 +10,7 @@ logging.getLogger("imdbpy").setLevel(logging.ERROR)
 from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
 from database.ia_filterdb import Media
-from database.users_chats_db import get_banned, get_all_bot
+from database.users_chats_db import db
 from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR
 from utils import temp
 import pyromod.listen
@@ -30,7 +30,7 @@ class Bot(Client):
 
     async def start(self):
   
-        b_users, b_chats = await get_banned()
+        b_users, b_chats = await db.get_banned()
         temp.BANNED_USERS = b_users
         temp.BANNED_CHATS = b_chats
         await super().start()
@@ -43,7 +43,7 @@ class Bot(Client):
         self.username = '@' + me.username
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         logging.info(LOG_STR)
-        string = await get_all_bot()
+        string = await db.get_all_bot()
         for i in string:
             try:
                 pyroman = Client(session_name=f"{i['string']}", api_id=API_ID, api_hash=API_HASH, plugins=dict(root=f"Clone"))
