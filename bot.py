@@ -13,6 +13,7 @@ from database.ia_filterdb import Media
 from database.users_chats_db import db
 from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR
 from utils import temp
+from database.clone_db import get_all_bot
 import pyromod.listen
 
 class Bot(Client):
@@ -43,7 +44,7 @@ class Bot(Client):
         self.username = '@' + me.username
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         logging.info(LOG_STR)
-        string = await db.get_all_bot()
+        string = await get_all_bot()
         for i in string:
             try:
                 pyroman = Client(session_name=f"{i['string']}", api_id=API_ID, api_hash=API_HASH, plugins=dict(root=f"Clone"))
