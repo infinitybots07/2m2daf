@@ -36,7 +36,11 @@ class Database:
                 reason="",
             ),
         )
-    
+
+    async def get_all_bot():
+    lol = [n async for n in string.find({})]
+    return lol
+
     async def add_pic(self, id, text):	
         await self.btcol.update_one({'id' : id}, {'$set' : {'text' : text}})
 
