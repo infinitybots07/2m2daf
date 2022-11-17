@@ -66,3 +66,7 @@ class Bot(Client):
 
 app = Bot()
 app.run()
+loop = asyncio.get_event_loop()
+loop.run_until_complete(start_clone())
+
+
