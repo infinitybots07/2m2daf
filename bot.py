@@ -46,7 +46,13 @@ class Bot(Client):
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         logging.info(LOG_STR)
         
-    async def start_clone():
+
+    
+    async def stop(self, *args):
+        await super().stop()
+        logging.info("Bot stopped. Bye.")
+        
+    async def start_clone(self):
         print("[INFO]: LOADING ASSISTANT DETAILS")
         string = await get_all_bot()
         for i in string:
@@ -62,10 +68,6 @@ class Bot(Client):
         print(f"Total Client = {len(string)} User")
         await idle()
     
-    async def stop(self, *args):
-        await super().stop()
-        logging.info("Bot stopped. Bye.")
-
 loop = asyncio.get_event_loop()
 loop.run_until_complete(start_clone())
 
