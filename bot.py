@@ -18,63 +18,43 @@ from database.clone_db import get_all_bot
 import pyromod.listen
 
 
-class Bot(Client):
+bot = Client(
+    name=SESSION
+    api_id=API_ID
+    api_hash=API_HASH
+    bot_token=BOT_TOKEN
+    plugins={"root", "plugins"}
+)
 
-    def __init__(self):
-        super().__init__(
-            name=SESSION,
-            api_id=API_ID,
-            api_hash=API_HASH,
-            bot_token=BOT_TOKEN,
-            workers=100,
-            plugins={"root": "plugins"},
-            sleep_threshold=10,
-        )
 
-    async def start_bot():
-        print("[INFO]: LOADING ASSISTANT DETAILS")
-        string = await get_all_bot()
-        for i in string:
-            try:
-                pyroman = Client(session_name=f"{i['string']}", api_id=API_ID, api_hash=API_HASH, plugins=dict(root=f"Clone"))
-                await pyroman.start()
-                user = await pyroman.get_me()
-                temp.CL = user.id
-                temp.C_NAME = user.username
-                print(f"[INFO]: Started {user.first_name}")
-            except BaseException as eb:
-                print(eb)
-        print(f"Total Client = {len(string)} User")
-        await idle()
-        
-    async def start(self):
-  
-        b_users, b_chats = await db.get_banned()
-        temp.BANNED_USERS = b_users
-        temp.BANNED_CHATS = b_chats
-        await super().start()
-        await Media.ensure_indexes()
-        
-        me = await self.get_me()
-        temp.ME = me.id
-        temp.U_NAME = me.username
-        temp.B_NAME = me.first_name
-        self.username = '@' + me.username
-        logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
-        logging.info(LOG_STR)
-        
-
-    
-    async def stop(self, *args):
-        await super().stop()
-        logging.info("Bot stopped. Bye.")
-        
+async def start_bot():
+    b_users, b_chats = await db.get_banned()
+    temp.BANNED_USERS = b_users
+    temp.BANNED_CHATS = b_chats
+    await bot.start()
+    await Media.ensure_indexes()
+    me = await bot.get_me()
+    temp.ME = me.id
+    temp.U_NAME = me.username
+    temp.B_NAME = me.first_name
+    bot.username = '@' + me.username
+    print("[INFO]: LOADING ASSISTANT DETAILS")
+    string = await get_all_bot()
+    for i in string:
+        try:
+            pyroman = Client(session_name=f"{i['string']}", api_id=API_ID, api_hash=API_HASH, plugins=dict(root=f"Clone"))
+            await pyroman.start()
+            user = await pyroman.get_me()
+            temp.CL = user.id
+            temp.C_NAME = user.username
+            print(f"[INFO]: Started {user.first_name}")
+        except BaseException as eb:
+            print(eb)
+    print(f"Total Client = {len(string)} User")
+    logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
+    logging.info(LOG_STR)
     
     
 loop = asyncio.get_event_loop()
 loop.run_until_complete(start_bot())
-
-app = Bot()
-app.run()
-
 
