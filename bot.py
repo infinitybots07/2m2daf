@@ -16,7 +16,7 @@ from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR
 from utils import temp
 from database.clone_db import get_all_bot
 import pyromod.listen
-from bot import start_bot
+
 
 class Bot(Client):
 
