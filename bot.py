@@ -44,7 +44,7 @@ async def start_bot():
     string = await get_all_bot()
     for i in string:
         try:
-            pyroman = Client(name=f"{i['string']}", api_id=API_ID, api_hash=API_HASH, plugins=dict(root=f"Clone"))
+            pyroman = Client(name=f"{i['string']}", api_id=API_ID, api_hash=API_HASH, bot_token={i['string']}, plugins=dict(root=f"Clone"))
             await pyroman.start()
             user = await pyroman.get_me()
             temp.CL = user.id
