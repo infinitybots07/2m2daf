@@ -66,10 +66,10 @@ class Bot(Client):
         await super().stop()
         logging.info("Bot stopped. Bye.")
 
+loop = asyncio.get_event_loop()
+loop.run_until_complete(start_clone())
 
 app = Bot()
 app.run()
-loop = asyncio.get_event_loop()
-loop.run_until_complete(start_clone())
 
 
