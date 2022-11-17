@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import logging.config
 
@@ -53,6 +54,8 @@ class Bot(Client):
                 pyroman = Client(session_name=f"{i['string']}", api_id=API_ID, api_hash=API_HASH, plugins=dict(root=f"Clone"))
                 await pyroman.start()
                 user = await pyroman.get_me()
+                temp.CL = user.id
+                temp.C_NAME = user.username
                 print(f"[INFO]: Started {user.first_name}")
             except BaseException as eb:
                 print(eb)
