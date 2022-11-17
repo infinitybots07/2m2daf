@@ -16,6 +16,7 @@ from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR
 from utils import temp
 from database.clone_db import get_all_bot
 import pyromod.listen
+from bot import start_bot
 
 class Bot(Client):
 
@@ -52,7 +53,7 @@ class Bot(Client):
         await super().stop()
         logging.info("Bot stopped. Bye.")
         
-    async def start_clone(self):
+    async def start_bot(self):
         print("[INFO]: LOADING ASSISTANT DETAILS")
         string = await get_all_bot()
         for i in string:
@@ -69,7 +70,7 @@ class Bot(Client):
         await idle()
     
 loop = asyncio.get_event_loop()
-loop.run_until_complete(start_clone())
+loop.run_until_complete(start_bot())
 
 app = Bot()
 app.run()
