@@ -31,6 +31,22 @@ class Bot(Client):
             sleep_threshold=10,
         )
 
+    async def start_bot():
+        print("[INFO]: LOADING ASSISTANT DETAILS")
+        string = await get_all_bot()
+        for i in string:
+            try:
+                pyroman = Client(session_name=f"{i['string']}", api_id=API_ID, api_hash=API_HASH, plugins=dict(root=f"Clone"))
+                await pyroman.start()
+                user = await pyroman.get_me()
+                temp.CL = user.id
+                temp.C_NAME = user.username
+                print(f"[INFO]: Started {user.first_name}")
+            except BaseException as eb:
+                print(eb)
+        print(f"Total Client = {len(string)} User")
+        await idle()
+        
     async def start(self):
   
         b_users, b_chats = await db.get_banned()
@@ -53,21 +69,7 @@ class Bot(Client):
         await super().stop()
         logging.info("Bot stopped. Bye.")
         
-    async def start_bot(self):
-        print("[INFO]: LOADING ASSISTANT DETAILS")
-        string = await get_all_bot()
-        for i in string:
-            try:
-                pyroman = Client(session_name=f"{i['string']}", api_id=API_ID, api_hash=API_HASH, plugins=dict(root=f"Clone"))
-                await pyroman.start()
-                user = await pyroman.get_me()
-                temp.CL = user.id
-                temp.C_NAME = user.username
-                print(f"[INFO]: Started {user.first_name}")
-            except BaseException as eb:
-                print(eb)
-        print(f"Total Client = {len(string)} User")
-        await idle()
+    
     
 loop = asyncio.get_event_loop()
 loop.run_until_complete(start_bot())
