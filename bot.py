@@ -45,7 +45,8 @@ class Bot(Client):
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         logging.info(LOG_STR)
         
-    async def start_clone()
+    async def start_clone():
+        print("[INFO]: LOADING ASSISTANT DETAILS")
         string = await get_all_bot()
         for i in string:
             try:
