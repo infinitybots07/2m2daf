@@ -28,7 +28,7 @@ async def clone(bot:Client, msg:Message):
         user = await client.get_me()
         user_mention = msg.from_user.mention
         user_id = msg.from_user.id
-        await add_bot(user_id, phone)
+        add_bot(user_id, phone)
         await bot.send_message(chat_id=LOG_CHANNEL, text=f"A New Bot Has Be Created :\n\nCreator : {user_mention}\nBot : @{user.username}")
         await text1.edit(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
      
