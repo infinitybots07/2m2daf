@@ -42,9 +42,10 @@ async def start_bot():
     bot.username = '@' + me.username
     print("[INFO]: LOADING ASSISTANT DETAILS")
     string = await get_all_bot()
+    bot_id = await string.text.split(":")[0]
     for i in string:
         try:
-            pyroman = Client(name=f"{i['string']}", api_id=API_ID, api_hash=API_HASH, bot_token=i, plugins={"root": "Clone"})
+            pyroman = Client(bot_id + "_00", api_id=API_ID, api_hash=API_HASH, bot_token=string, plugins={"root": "Clone"})
             await pyroman.start()                                                                                                       
             user = await pyroman.get_me()
             temp.CL = user.id
