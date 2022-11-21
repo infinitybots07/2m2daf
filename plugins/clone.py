@@ -7,7 +7,7 @@ import time
 import asyncio
 from info import API_ID, API_HASH, LOG_CHANNEL
 from database.connections_mdb import add_bot, all_bot, delete_bot
-from database.clone_db import add_bot
+from database.clone_db import add_bot, get_all_bot
 
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
 async def clone(bot:Client, msg:Message):
@@ -207,7 +207,15 @@ async def clone_start():
       string = await get_all_bot()
       try:
           cloneboy = Client("c_string", api_id=API_ID, api_hash=API_HASH, bot_token=string, plugins={"root": "Clone"})
-      except 
+          user = await cloneboy.get_me()
+      except BaseException as eb:
+            print(eb)
+    print(f"Total Client = {len(string)} User")
+    await idle()
+
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(start_bot()) 
       
           
 
