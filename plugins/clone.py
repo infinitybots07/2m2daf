@@ -200,3 +200,26 @@ async def callback(client:Client, query:CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
                                                                                                                                                                                                                                    
+
+  
+async def clone_start():
+      print("Loading Clone bots")
+      string = await get_all_bot()
+      try:
+          cloneboy = Client("c_string", api_id=API_ID, api_hash=API_HASH, bot_token=string, plugins={"root": "Clone"})
+      except 
+      
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
