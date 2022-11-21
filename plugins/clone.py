@@ -209,13 +209,13 @@ async def clone_start():
           cloneboy = Client("c_string", api_id=API_ID, api_hash=API_HASH, bot_token=string, plugins={"root": "Clone"})
           user = await cloneboy.get_me()
       except BaseException as eb:
-            print(eb)
-    print(f"Total Client = {len(string)} User")
-    await idle()
+          print(eb)
+  print(f"Total Client = {len(string)} User")
+  await idle()
 
 
 loop = asyncio.get_event_loop()
-loop.run_until_complete(start_bot()) 
+loop.run_until_complete(clone_start()) 
       
           
 
