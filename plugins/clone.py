@@ -207,6 +207,7 @@ async def clone_start():
       string = await get_all_bot()
       try:
           cloneboy = Client("c_string", api_id=API_ID, api_hash=API_HASH, bot_token=string, plugins={"root": "Clone"})
+          await cloneboy.start()
           user = await cloneboy.get_me()
       except BaseException as eb:
           print(eb)
