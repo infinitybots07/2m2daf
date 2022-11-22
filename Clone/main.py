@@ -46,7 +46,7 @@ async def clone_start(bot, msg):
         InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="c_about")
     ]]
     await msg.reply_text(
-        text = C_TEXT,
+        text = f"{C_TEXT}",
         reply_markup = InlineKeyboardMarkup(btn)
     )
 
