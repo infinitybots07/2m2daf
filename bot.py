@@ -36,7 +36,7 @@ class Bot(Client):
         temp.BANNED_CHATS = b_chats
         await super().start()
         await Media.ensure_indexes()
-        await clone_start()
+ 
         me = await self.get_me()
         temp.ME = me.id
         temp.U_NAME = me.username
@@ -44,7 +44,8 @@ class Bot(Client):
         self.username = '@' + me.username
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         logging.info(LOG_STR)
-
+        await clone_start()
+        
     async def stop(self, *args):
         await super().stop()
         logging.info("Bot stopped. Bye.")
