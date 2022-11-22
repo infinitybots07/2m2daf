@@ -214,9 +214,6 @@ async def clone_start():
       await idle()
 
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(clone_start()) 
-      
           
 
 
