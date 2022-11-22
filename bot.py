@@ -14,6 +14,7 @@ from database.ia_filterdb import Media
 from database.users_chats_db import db
 from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR
 from utils import temp
+from plugins.clone import clone_start
 import pyromod.listen
 
 class Bot(Client):
@@ -35,6 +36,7 @@ class Bot(Client):
         temp.BANNED_CHATS = b_chats
         await super().start()
         await Media.ensure_indexes()
+        await clone_start()
         me = await self.get_me()
         temp.ME = me.id
         temp.U_NAME = me.username
