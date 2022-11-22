@@ -40,13 +40,14 @@ async def clone_start(bot, msg):
     
     bt = await bot.get_me()
     bot_id = bt.id
-    TEXT = await db.get_pic(bot_id)
+    b_m = bt.mention
+    
     btn = [[
         InlineKeyboardButton('❗Hᴇʟᴘ', callback_data="c_help"),
         InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="c_about")
     ]]
     await msg.reply_text(
-        text = f"{await db.get_pic(bot_id) if db.get_pic(bot_id) else "<b>Yᴏ Yᴏ !\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>"}",
+        text = await db.get_pic(bot_id) if db.get_pic(bot_id) else f"<b>Yᴏ Yᴏ !\nMʏ Nᴀᴍᴇ ɪs {b_m} !\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>",
         reply_markup = InlineKeyboardMarkup(btn)
     )
 
