@@ -32,7 +32,6 @@ BANNED = {}
 SMART_OPEN = '“'
 SMART_CLOSE = '”'
 START_CHAR = ('\'', '"', SMART_OPEN)
-self.stopEvent = threading.Event()
 
 # temp db for banned 
 class temp(object):
@@ -47,6 +46,7 @@ class temp(object):
     SETTINGS = {}
    
 async def cancel(self):
+    self.stopEvent = threading.Event()
     self.stopEvent.set()
     
 async def is_subscribed(bot, query):
