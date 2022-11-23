@@ -14,8 +14,8 @@ async def add_bot(user_id, client):
     await string.insert_one({"_id": user_id, "string": client})
 
 async def get_bot(user_id):
-    bt = string.find_one({"_id": user_id})
-    return bt
+    text = string.find_one({"_id": user_id})
+    return text
 
 async def rmsession(client):
     await string.delete_one({"string": client})
