@@ -42,7 +42,7 @@ async def delete_bot(user_id, bot_id):
         logger.exception(f'Some error occurred! {e}', exc_info=True)
         return False
 
-async def all_id(user_id):
+async def all_bot(user_id):
     query = btcol.find_one(
         { "_id": user_id },
         { "_id": 0, "active_bot": 0 }
@@ -52,7 +52,7 @@ async def all_id(user_id):
     else:
         return None
 
-async def add_bot(bot_id, user_id):
+async def add_id(bot_id, user_id):
     query = btcol.find_one(
         { "_id": user_id },
         { "_id": 0, "active_bot": 0 }
