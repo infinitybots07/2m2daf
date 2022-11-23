@@ -52,7 +52,7 @@ async def clone_start(bot, msg):
         start_text=f"<b>Yᴏ Yᴏ !\nMʏ Nᴀᴍᴇ ɪs {b_m} !\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>"
     
     await msg.reply_text(
-        text = f"{msg.text}",
+        text = start_text,
         reply_markup = InlineKeyboardMarkup(btn)
     )
 
