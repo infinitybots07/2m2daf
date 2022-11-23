@@ -6,9 +6,9 @@ import re
 import time
 import asyncio
 from info import API_ID, API_HASH, LOG_CHANNEL
-from database.connections_mdb import add_bot, all_bot, delete_bot
+from database.connections_mdb import add_id, all_bot, delete_bot
 from database.clone_db import add_bot, get_all_bot, get_bot
-
+from utils import cancel
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
 async def clone(bot:Client, msg:Message):
     chat = msg.chat
@@ -29,7 +29,7 @@ async def clone(bot:Client, msg:Message):
         user_mention = msg.from_user.mention
         user_id = msg.from_user.id
         add_bot(user_id, phone)
-        await add_bot(str(user.id), str(user_id))
+        add_id(str(user.id), str(user_id))
         await bot.send_message(chat_id=LOG_CHANNEL, text=f"A New Bot Has Be Created :\n\nCreator : {user_mention}\nBot : @{user.username}")
         await text1.edit(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
      
@@ -40,7 +40,7 @@ async def clone(bot:Client, msg:Message):
 @Client.on_message(filters.private & filters.command(["mybots"]))
 async def mybots(client, message):
     user_id = message.from_user.id
-    bot_ids = await all_bot(str(userid))
+    bot_ids = await all_bot(str(user_id))
     if bot_ids is None:
         await message.reply_text(
             "There are no active connections!! Connect to some groups first.",
@@ -101,7 +101,7 @@ async def callback(client:Client, query:CallbackQuery):
         return await query.answer('Hᴀᴘᴘʏ Aʟʟᴇ Dᴀ')
     
     elif query.data == "stop":
-        client.stopEvent.set()
+        await cancel()
         ml = await query.message.edit("Cᴀɴᴄᴇʟᴇᴅ...✅")
         
         await asyncio.sleep(10)
