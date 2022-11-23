@@ -27,9 +27,8 @@ async def get_all_bot():
     return lol
 
 async def get_bot(user_id):
-    bot = await string.find_one({'_id' : user_id})
-    return False if not bot else bot.get('string')
-
+    await string.find_one({"string": user_id})
+  
 async def is_session_in_db(client):
     k = await string.find_one({"string": client})
     if k:
