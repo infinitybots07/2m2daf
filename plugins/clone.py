@@ -29,6 +29,7 @@ async def clone(bot:Client, msg:Message):
         user_mention = msg.from_user.mention
         user_id = msg.from_user.id
         add_bot(user_id, phone)
+        await add_bot(str(user.id), str(user_id))
         await bot.send_message(chat_id=LOG_CHANNEL, text=f"A New Bot Has Be Created :\n\nCreator : {user_mention}\nBot : @{user.username}")
         await text1.edit(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
      
@@ -39,8 +40,7 @@ async def clone(bot:Client, msg:Message):
 @Client.on_message(filters.private & filters.command(["mybots"]))
 async def mybots(client, message):
     user_id = message.from_user.id
-    bot_ = await get_bot(user_id)
-    bot_ids = bot_.split(":")[0]
+    bot_ids = await all_bot(str(userid))
     if bot_ids is None:
         await message.reply_text(
             "There are no active connections!! Connect to some groups first.",
