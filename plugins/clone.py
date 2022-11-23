@@ -7,7 +7,7 @@ import time
 import asyncio
 from info import API_ID, API_HASH, LOG_CHANNEL
 from database.connections_mdb import add_bot, all_bot, delete_bot
-from database.clone_db import add_bot, get_all_bot
+from database.clone_db import add_bot, get_all_bot, get_bot
 
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
 async def clone(bot:Client, msg:Message):
