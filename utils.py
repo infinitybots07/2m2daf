@@ -8,6 +8,7 @@ from typing import Union
 import re
 import os
 import base64
+import threading
 from datetime import datetime
 from typing import List
 from pyrogram import enums
@@ -31,6 +32,7 @@ BANNED = {}
 SMART_OPEN = '“'
 SMART_CLOSE = '”'
 START_CHAR = ('\'', '"', SMART_OPEN)
+self.stopEvent = threading.Event()
 
 # temp db for banned 
 class temp(object):
@@ -44,7 +46,9 @@ class temp(object):
     B_NAME = None
     SETTINGS = {}
    
-
+async def cancel(self):
+    self.stopEvent.set()
+    
 async def is_subscribed(bot, query):
     try:
         user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
