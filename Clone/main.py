@@ -51,8 +51,9 @@ async def clone_start(bot, msg):
     except:
         start_text=f"<b>Yᴏ Yᴏ !\nMʏ Nᴀᴍᴇ ɪs {b_m} !\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>"
         pass
+    START_CLONE = start_text
     await msg.reply_text(
-        text = start_text.format(mention=msg.from_user.mention),
+        text = START_CLONE.format(mention=msg.from_user.mention),
         reply_markup = InlineKeyboardMarkup(btn)
     )
 
