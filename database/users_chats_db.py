@@ -43,7 +43,7 @@ class Database:
 
     async def get_pic(self, id):
         bot = await self.btcol.find_one({'id' : int(id)})
-        return False if not bot else bot.get('text')
+        return bot.get('text', None)
 
     async def status(self, group_id: int):
         """
