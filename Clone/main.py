@@ -53,7 +53,7 @@ async def clone_start(bot, msg):
         pass
     START_CLONE = start_text
     await msg.reply_text(
-        text = START_CLONE.format(mention=msg.from_user.mention),
+        text = START_CLONE,
         reply_markup = InlineKeyboardMarkup(btn)
     )
 
