@@ -47,12 +47,12 @@ async def clone_start(bot, msg):
         InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="c_about")
     ]]
     try:
-        start_text=start_text.text
+        start_text=start_text
     except:
         start_text=f"<b>Yᴏ Yᴏ !\nMʏ Nᴀᴍᴇ ɪs {b_m} !\nIᴀᴍ A Sɪᴍᴘʟᴇ Aᴜᴛᴏ Fɪʟᴛᴇ + Fɪʟᴇ Sʜᴀʀᴇ Bᴏᴛ...</b>"
         pass
     await msg.reply_text(
-        text = start_text,
+        text = start_text.format(mention=msg.from_user.mention),
         reply_markup = InlineKeyboardMarkup(btn)
     )
 
