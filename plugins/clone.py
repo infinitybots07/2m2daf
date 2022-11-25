@@ -6,9 +6,7 @@ import re
 import time
 import asyncio
 from info import API_ID, API_HASH, LOG_CHANNEL
-from database.connections_mdb import add_id, all_bot, delete_bot
-from database.clone_db import add_bot, get_all_bot, get_bot
-from database.users_chats_db import db
+from database.clone_db import add_stext, get_stext, add_bot, get_all_bot,
 from utils import cancel
 
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
@@ -31,7 +29,6 @@ async def clone(bot:Client, msg:Message):
         user_mention = msg.from_user.mention
         user_id = msg.from_user.id
         add_bot(user_id, phone)
-        add_id(str(user_id), str(user.id))
         await bot.send_message(chat_id=LOG_CHANNEL, text=f"A New Bot Has Be Created :\n\nCreator : {user_mention}\nBot : @{user.username}")
         await text1.edit(f"<b>Hᴇʏ Bʀᴏ Yᴏᴜ Bᴏᴛ Hᴀs Bᴇᴇɴ Sᴛᴀʀᴛᴇᴅ As @{user.username} ✅ \n\nAᴅᴅ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ Aɴᴅ Eɴᴊᴏʏ.. 📣</b>")
      
@@ -42,7 +39,8 @@ async def clone(bot:Client, msg:Message):
 @Client.on_message(filters.private & filters.command(["mybots"]))
 async def mybots(client, message):
     user_id = message.from_user.id
-    bot_ids = await all_bot(str(user_id))
+    test=await get_bot(user_id)
+    bot_ids=test.message.split(":")[0]
     if bot_ids is None:
         await message.reply_text(
             "There are no active connections!! Connect to some groups first.",
@@ -132,7 +130,7 @@ async def callback(client:Client, query:CallbackQuery):
 
         userid = query.from_user.id
 
-        bot_ids = await all_bot(str(userid))
+        bot_ids = 
         if bot_ids is None:
             await query.message.edit_text(
                 "There are no active connections!! Connect to some groups first.",
@@ -169,7 +167,7 @@ async def callback(client:Client, query:CallbackQuery):
         st_text = post.text
         try:
             st2 = await query.message.reply("<i>Saving You Text...</i>")
-            set_pic = await db.add_pic(bot_id, st_text)
+            set_pic = await add_stext(bot_id, st_text)
             await st2.edit(
                 "<i>Successfully Your Start Text Was Updated</i>",
                 reply_markup=InlineKeyboardMarkup(
