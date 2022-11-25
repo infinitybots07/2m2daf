@@ -113,3 +113,7 @@ async def filter_stats():
     totalcollections = len(collections)
 
     return totalcollections, totalcount
+
+async def manu():
+    mycol = mydb[collection]
+    await mycol.count_document
