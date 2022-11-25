@@ -5,10 +5,10 @@ from info import DATABASE_URI2
 
 myclient = pymongo.MongoClient(DATABASE_URI2)
 db_x = myclient["Nl_Clone_Bot"]
-
-###_________»[Storage]«______________###
-
+clonedb = db_x["clone_db"]
 string = db_x["STRING"]
+
+#-------------»[Saving_DB]«-------------#
 
 async def add_bot(user_id, client):
     await string.insert_one({"_id": user_id, "string": client})
@@ -37,9 +37,20 @@ async def is_session_in_db(client):
     else:
         return False
 
+async def count_bot():
+    b_count=await string.count_documents({})
+    return b_count
+
 async def userid_in_db(user_id):
     man = await string.find_one({"_id": user_id})
     if man:
         return True
     else:
         return False
+
+async def add_stxt(id, text):	
+    await clonedb.update_one({'id' : id}, {'$set' : {'text' : text}})
+
+async def get_stxt(id):
+    bot = await clonedb.find_one({'id' : int(id)})
+    return bot
