@@ -115,6 +115,7 @@ async def filter_stats():
     return totalcollections, totalcount
 
 async def m_count():
+    collection=mydb.list_collection_names()
     mycol = mydb[collection]
     manual=mycol.count_documents({})
     return manual
