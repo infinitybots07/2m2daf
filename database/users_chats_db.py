@@ -112,14 +112,14 @@ class Database:
     
     async def get_settings(self, id):
         default = {
-            'button'=True,
-            'autofilter'=True,
-            'botpm'=True,
-            'file_secure'=True,
-            'imdb'=True,
-            'spell_check'=False,
-            'welcome'=True,
-            'template'=True
+            'button':True,
+            'autofilter':True,
+            'botpm':True,
+            'file_secure':True,
+            'imdb':True,
+            'spell_check':False,
+            'welcome':True,
+            'template':True
         }
         chat = await self.grp.find_one({'id':int(id)})
         if chat:
