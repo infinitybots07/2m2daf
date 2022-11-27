@@ -1,12 +1,12 @@
-from pyrogram import *
-from pyrogram.types import *
-from pyromod import listen
 import os
 import re
 import time
 import asyncio
+from pyrogram import *
+from pyrogram.types import *
+from pyromod import listen
 from info import API_ID, API_HASH, LOG_CHANNEL
-from database.clone_db import add_stext, get_stext, add_bot, get_all_bot,
+from database.clone_db import add_stext, get_stext, add_bot, get_all_bot
 from utils import cancel
 
 @Client.on_message(filters.private & filters.command("clone") & ~filters.bot, group=3)
