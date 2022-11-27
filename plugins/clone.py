@@ -40,7 +40,7 @@ async def clone(bot:Client, msg:Message):
 async def mybots(client, message):
     user_id = message.from_user.id
     test=await get_bot(user_id)
-    bot_ids=test.message.split(":")[0]
+    bot_ids=[item.split(":")[0] for item in test]
     if bot_ids is None:
         await message.reply_text(
             "There are no active connections!! Connect to some groups first.",
