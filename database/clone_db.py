@@ -37,9 +37,9 @@ async def count_bot():
     return b_count
 
 
-async def add_stxt(id, text):	
+async def add_stext(id, text):	
     await clonedb.update_one({'id' : id}, {'$set' : {'text' : text}})
 
-async def get_stxt(id):
+async def get_stext(id):
     bot = await clonedb.find_one({'id' : int(id)})
     return bot
