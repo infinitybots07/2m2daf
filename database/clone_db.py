@@ -41,5 +41,5 @@ async def add_stext(id, text):
     await clonedb.update_one({'id' : id}, {'$set' : {'text' : text}})
 
 async def get_stext(id):
-    bot = await clonedb.find_one({'id' : int(id)})
+    bot = clonedb.find_one({'id' : int(id)})
     return bot
