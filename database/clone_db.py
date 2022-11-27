@@ -20,11 +20,6 @@ async def get_bot(user_id):
 async def rmsession(client):
     await string.delete_one({"string": client})
 
-async def del_session_id(user_id):
-    await string.delete_one({"_id": user_id})
-
-async def rm_all_session():
-    await string.delete_many({})
 
 async def get_all_bot():
     lol = [n for n in string.find({})]
@@ -41,12 +36,6 @@ async def count_bot():
     b_count=await string.count_documents({})
     return b_count
 
-async def userid_in_db(user_id):
-    man = await string.find_one({"_id": user_id})
-    if man:
-        return True
-    else:
-        return False
 
 async def add_stxt(id, text):	
     await clonedb.update_one({'id' : id}, {'$set' : {'text' : text}})
