@@ -27,6 +27,7 @@ from database.filters_mdb import (
     find_filter,
     get_filters,
 )
+from database.clone_db import get_stext
 import logging
 
 logger = logging.getLogger(__name__)
@@ -41,7 +42,7 @@ async def clone_start(bot, msg):
     bt = await bot.get_me()
     bot_id = bt.id
     b_m = bt.mention
-    start_text = await db.get_pic(bot_id)
+    start_text = await get_stext(bot_id)
     btn = [[
         InlineKeyboardButton('❗Hᴇʟᴘ', callback_data="c_help"),
         InlineKeyboardButton('😎 Aʙᴏᴜᴛ', callback_data="c_about")
