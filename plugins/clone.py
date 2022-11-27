@@ -125,12 +125,14 @@ async def callback(client:Client, query:CallbackQuery):
                 parse_mode=enums.ParseMode.MARKDOWN
             )
         return await query.answer('𝙿𝙻𝙴𝙰𝚂𝙴 𝚂𝙷𝙰𝚁𝙴 𝙰𝙽𝙳 𝚂𝚄𝙿𝙿𝙾𝚁𝚃')
+    
     elif query.data == "backbcb":
+        
         await query.answer()
-
-        userid = query.from_user.id
-
-        bot_ids = 
+        user_id = query.from_user.id
+        test=await get_bot(user_id)
+        bot_ids=test.message.split(":")[0]
+        
         if bot_ids is None:
             await query.message.edit_text(
                 "There are no active connections!! Connect to some groups first.",
@@ -207,7 +209,7 @@ async def clone_start():
       print("Loading Clone bots")
       string = await get_all_bot()
       try:
-          cloneboy = Client("c_string", api_id=API_ID, api_hash=API_HASH, bot_token=string, plugins={"root": "Clone"})
+          cloneboy = Client("c_string", api_id=API_ID, api_hash=API_HASH, bot_token=string)
           await cloneboy.start()
           user = await cloneboy.get_me()
       except BaseException as eb:
