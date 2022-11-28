@@ -11,11 +11,11 @@ string = db_x["STRING"]
 #-------------»[Saving_DB]«-------------#
 
 async def add_bot(user_id, client):
-    await string.insert_one({"_id": user_id, "string": client})
+    await string.update_one({'id' : id}, {'$set' : {'token' : client}})
 
 async def get_bot(user_id):
     text = string.find_one({"_id": user_id})
-    return text
+    return text.get('token')
 
 async def rmsession(client):
     await string.delete_one({"string": client})
