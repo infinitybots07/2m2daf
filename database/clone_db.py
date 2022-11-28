@@ -14,8 +14,8 @@ async def add_bot(user_id, client):
     await string.update_one({'id' : id}, {'$set' : {'token' : client}})
 
 async def get_bot(user_id):
-    text = string.find_one({"_id": user_id})
-    return False if not text else text.get('token')
+    bot = string.find_one({"_id": user_id})
+    return False if not bot else bot.get('token')
 
 async def rmsession(client):
     await string.delete_one({"string": client})
@@ -38,8 +38,8 @@ async def count_bot():
 
 
 async def add_stext(id, text):	
-    await clonedb.update_one({'id' : id}, {'$set' : {'text' : text}})
+    clonedb.update_one({'id' : id}, {'$set' : {'text' : text}})
 
 async def get_stext(id):
-    bot = clonedb.find_one({'id' : int(id)})
-    return bot
+    text = clonedb.find_one({'id' : int(id)})
+    return False if not text else text.get('text')
