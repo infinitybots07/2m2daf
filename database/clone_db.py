@@ -15,7 +15,7 @@ async def add_bot(user_id, client):
 
 async def get_bot(user_id):
     text = string.find_one({"_id": user_id})
-    return text.get('token')
+    return False if not text else text.get('token')
 
 async def rmsession(client):
     await string.delete_one({"string": client})
@@ -33,7 +33,7 @@ async def is_session_in_db(client):
         return False
 
 async def count_bot():
-    b_count=await string.count_documents({})
+    b_count=await string.token.count_documents({})
     return b_count
 
 
